@@ -220,7 +220,7 @@ async function starts() {
 
 				case 'subir':
 					if (!isBotGroupAdmins) return reply('Olá ${pushname}, comando apenas para adms!')
-					ctlclient.sendMessage(from, \n\n\n\n\n\n\n\n\n\n\n\n\n\n, text)
+					ctlclient.sendMessage(from, '\n\n\n\n\n\n\n\n\n\n\n\n\n\n', text)
 					break
 
 				case 'arquivar':
