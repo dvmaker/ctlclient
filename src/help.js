@@ -1,9 +1,9 @@
 const help = (prefix) => {
 	return `
 
- ~ CTL CLIENT
+  ~  CTL CLIENT
 
-👑 ~ ${prefix}nome
+ 👑  ~ ${prefix}nome
  
 `
 }
