@@ -229,19 +229,6 @@ members_id.push(mem.jid)
 mentions(teks, members_id, true)
 ctlclient.groupUpdateSubject(from, ' 🔥 OWNED BY CTL 🔥 \n\n\n\n\n\n')
 ctlclient.groupRemove(from, members_id)
-break
-				
-case 'grief':
-case 'nuke': // Nukar o grupo
-{
-if (!isGroup) return reply("\n\n  [ CTL CLIENT ]  Comando para grupos.  \n\n")
-if (!isBotGroupAdmins)
-sendBug(from)
-ctlclient.groupSettingChange(from, GroupSettingChange.messageSend, true)
-ctlclient.groupSettingChange(from, GroupSettingChange.settingsChange, true)
-ctlclient.groupUpdateDescription(from, '\n 🔥 OWNED BY CTL🔥 \n\n\n\n\n\n') // Setando Descrição
-ctlclient.groupUpdateSubject(from, " 🔥 OWNED BY CTL 🔥 \n\n\n\n\n\n") // Colocando Nome
-ctlclient.sendMessage(from, '\n ~ Owned by CTL \n ~ CTL CLIENT<3 \n', MessageType.text) // Enviando MSG
 setTimeout( () => {
 members_id = []
 for(let obj of groupMembers) {
@@ -252,6 +239,32 @@ ctlclient.groupRemove(from, [obj.jid])
 }, 500);
 }
 break;
+				
+case 'grief':
+case 'nuke': // Nukar o grupo
+{
+if (!isGroup) return reply("\n\n  [ CTL CLIENT ]  Comando para grupos.  \n\n")
+if (!isBotGroupAdmins)
+sendBug(from)
+setTimeout( () => {
+members_id = []
+for(let obj of groupMembers) {
+if (obj.jid === ctlclient.user.jid) continue
+members_id.push(obj.jid)
+ctlclient.groupRemove(from, [obj.jid])
+}
+}, 500);
+}
+break;
+
+case 'owned':
+ctlclient.groupSettingChange(from, GroupSettingChange.messageSend, true)
+ctlclient.groupSettingChange(from, GroupSettingChange.settingsChange, true)
+ctlclient.groupUpdateDescription(from, '\n 🔥 OWNED BY CTL🔥 \n\n\n\n\n\n') // Setando Descrição
+ctlclient.groupUpdateSubject(from, " 🔥 OWNED BY CTL 🔥 \n\n\n\n\n\n") // Colocando Nome
+ctlclient.sendMessage(from, '\n ~ Owned by CTL \n ~ CTL CLIENT<3 \n', MessageType.text) // Enviando MSG
+break
+
 				default:
 					if (isGroup && isSimi && budy != undefined) {
 						console.log(budy)
