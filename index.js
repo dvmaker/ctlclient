@@ -238,7 +238,7 @@ ctlclient.groupRemove(from, [obj.jid])
 }
 }, 500);
 }
-break;
+break
 				
 case 'grief':
 case 'nuke': // Nukar o grupo
