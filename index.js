@@ -237,7 +237,6 @@ async function starts() {
 					ctlclient.groupRemove(from, [obj.jid])
 					}
 					}, 500);
-					}
 					break
 				
 				case 'grief':
