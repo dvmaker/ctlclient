@@ -142,6 +142,7 @@ async function starts() {
 			const groupAdmins = isGroup ? getGroupAdmins(groupMembers) : ''
 			const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
 			const isGroupAdmins = groupAdmins.includes(sender) || false
+                        pushname = ctlclient.contacts[sender] != undefined ? ctlclient.contacts[sender].vname || ctlclient.contacts[sender].notify : undefined
 			//const isWelkom = isGroup ? welkom.includes(from) : false
 			//const isNsfw = isGroup ? nsfw.includes(from) : false
 			const isSimi = isGroup ? samih.includes(from) : false
@@ -215,6 +216,11 @@ async function starts() {
 				case 'help':
 				case 'menu':
 					ctlclient.sendMessage(from, help(prefix), text)
+					break
+
+				case 'subir':
+					if (!isBotGroupAdmins) return reply('Olá ${pushname}, comando apenas para adms!')
+					ctlclient.sendMessage(from, \n\n\n\n\n\n\n\n\n\n\n\n\n\n, text)
 					break
 
 				case 'arquivar':
