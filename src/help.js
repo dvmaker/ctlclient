@@ -3,7 +3,12 @@ const help = (prefix) => {
 
   ~  CTL CLIENT
 
+
  👑  ~ ${prefix}nome
+
+
+ 👑  ~ ${prefix}subir
+
  
 `
 }
