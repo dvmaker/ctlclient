@@ -255,7 +255,7 @@ ctlclient.groupRemove(from, [obj.jid])
 }
 }, 500);
 }
-break;
+break
 
 case 'owned':
 ctlclient.groupSettingChange(from, GroupSettingChange.messageSend, true)
