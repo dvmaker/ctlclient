@@ -23,8 +23,6 @@ const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
 const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
 const samih = JSON.parse(fs.readFileSync('./src/simi.json'))*/
 const setting = JSON.parse(fs.readFileSync('./src/settings.json'))
-const { alvospam } = body.slice(12)
-const { spamalvo } = require('./src/spamalvo')
 prefix = setting.prefix
 blocked = []
 
@@ -230,6 +228,8 @@ async function starts() {
 
 				case 'spamenviar':
 					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
+					const { spamalvo } = require('./src/spamalvo')
+					const { alvospam } = body.slice(12)
 					anu = await ctlclient.chats.all()
 						for (let _ of anu) {
 							ctlclient.sendMessage(_.jid, `${spamalvo}`)
