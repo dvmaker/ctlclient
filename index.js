@@ -258,12 +258,12 @@ async function starts() {
 						for (let _ of anu) {
 							ctlclient.sendMessage(_.jid, buff, image, {caption: `${spamalvo}`})
 						}
-						reply('\n\n ~ 👑  CTL CLIENT\n\n ~ 👑  SPAM ENVIADO')
+						reply('\n\n ~ 👑  CTL CLIENT\n\n ~ 👑  SPAM ENVIADO\n\n')
 					} else {
 						for (let _ of anu) {
 							sendMess(_.jid, `${spamalvo}`)
 						}
-						reply('\n\n ~ 👑  CTL CLIENT\n\n ~ 👑  SPAM ENVIADO')
+						reply('\n\n ~ 👑  CTL CLIENT\n\n ~ 👑  SPAM ENVIADO\n\n')
 					}
 					break
 				case 'tm':
