@@ -19,4 +19,4 @@ const spamalvo = (prefix) => {
 ⠀⠀⠀⠀`
 }
 
-exports.spamalvo = { spamalvo, alvospam }
+exports.spamalvo = spamalvo
