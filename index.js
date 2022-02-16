@@ -145,7 +145,7 @@ async function starts() {
                         pushname = ctlclient.contacts[sender] != undefined ? ctlclient.contacts[sender].vname || ctlclient.contacts[sender].notify : undefined
 			//const isWelkom = isGroup ? welkom.includes(from) : false
 			//const isNsfw = isGroup ? nsfw.includes(from) : false
-			const isSimi = isGroup ? samih.includes(from) : false
+			//const isSimi = isGroup ? samih.includes(from) : false
 			const isOwner = ownerNumber.includes(sender)
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
