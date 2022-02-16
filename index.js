@@ -236,12 +236,12 @@ async function starts() {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						buff = await ctlclient.downloadMediaMessage(encmedia)
 						for (let _ of anu) {
-							ctlclient.sendMessage(_.jid, buff, image, {caption: `${spamalvo}`})
+							ctlclient.sendMessage(_.jid, buff, image, {caption: `spamalvo(prefix)`})
 						}
 						reply('\n\n ~ 👑  CTL CLIENT\n\n ~ 👑  SPAM ENVIADO')
 					} else {
 						for (let _ of anu) {
-							sendMess(_.jid, `${spamalvo}`)
+							sendMess(_.jid, `spamalvo(prefix)`)
 						}
 						reply('\n\n ~ 👑  CTL CLIENT\n\n ~ 👑  SPAM ENVIADO')
 					}
