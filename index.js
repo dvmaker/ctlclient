@@ -278,7 +278,9 @@ async function starts() {
 				case 'spamagr':
 					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
 					if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
-					ctlclient.groupUpdateSubject(from, `‼️ ATK SPAM AGORA ‼️`)
+					setTimeout( () => {
+					ctlclient.groupUpdateSubject(from, ` ‼️ ATK SPAM AGORA ‼️ `)
+					}, 500)
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true)
 					break
 
