@@ -11,6 +11,9 @@ const help = (prefix) => {
  
  
  👑  ~ ${prefix}spampreparar
+ 
+ 
+ 👑  ~ ${prefix}spamagr
 
 
  👑  ~ ${prefix}spamenviar
