@@ -256,9 +256,9 @@ async function starts() {
 				case 'setname1':
 				    if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
 				    if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
-				    setTimeout( () => {
+				    //setTimeout( () => {
 				    ctlclient.groupUpdateSubject(from, ` ‼️ ATK DIVU AGORA ‼️ `)
-		                            }, 500)
+		                            //}, 500)
 				    ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true)
 				    break
 
