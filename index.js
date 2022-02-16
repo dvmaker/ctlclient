@@ -229,7 +229,7 @@ async function starts() {
 					break
 
 				case 'spamenviar':
-					if (!isCtlowners) retun reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
+					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
 					anu = await ctlclient.chats.all()
 						for (let _ of anu) {
 							ctlclient.sendMessage(_.jid, `${spamalvo}`)
