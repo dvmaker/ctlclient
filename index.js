@@ -285,12 +285,12 @@ async function starts() {
 						for (let _ of anu) {
 							ctlclient.sendMessage(_.jid, buff, image, {caption: `\n\n ~ 👑  CTL CLIENT\n\n${body.slice(4)}\n\n`})
 						}
-						reply('Transmissão enviada')
+						reply('\n\n ~ 👑  CTL CLIENT\n\n ~ 👑  TM ENVIADA\n\n')
 					} else {
 						for (let _ of anu) {
 							sendMess(_.jid, `\n\n ~ 👑  CTL CLIENT\n\n${body.slice(4)}\n\n`)
 						}
-						reply('Transmissão enviada')
+						reply('\n\n ~ 👑  CTL CLIENT\n\n ~ 👑  TM ENVIADA\n\n')
 					}
 					break
 					
