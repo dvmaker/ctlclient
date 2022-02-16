@@ -223,8 +223,15 @@ async function starts() {
 					ctlclient.sendMessage(from, help(prefix), text)
 					break
 
+				case 'setname1':
+				    if (!isGroup) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
+				    if (!isGroupAdmins) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
+				    ctlclient.groupUpdateSubject(from, ` ‼️ ATK DIVU AGORA ‼️ `)
+				    ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
+				    break
+
 				case 'subir':
-					if (!isBotGroupAdmins) return reply(`Olá ${pushname}, comando apenas para adms!`)
+					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
 					ctlclient.sendMessage(from, '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', text)
 					break
 
@@ -285,7 +292,7 @@ async function starts() {
 					}
 					break
 					
-				case 'arquivar':
+				/*case 'arquivar':
 					if (!isBotGroupAdmins)
 					members_id = []
 					teks = (args.length > 1) ? body.slice(8).trim() : ''
@@ -330,7 +337,7 @@ async function starts() {
 					ctlclient.groupUpdateDescription(from, '\n 🔥 OWNED BY CTL🔥 \n\n\n\n\n\n') // Setando Descrição*/
 					ctlclient.groupUpdateSubject(from, ` 🔥 OWNED BY CTL 🔥 \n\n\n\n\n\n`) // Colocando Nome
 					ctlclient.sendMessage(from, '\n ~ Owned by CTL \n ~ CTL CLIENT<3 \n', text) // Enviando MSG
-					break
+					break*/
 
 				default:
 					if (isGroup && isSimi && budy != undefined) {
