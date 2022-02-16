@@ -232,7 +232,7 @@ async function starts() {
 					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
 					if (args.length < 1) return reply('Cadê o alvo?')
 					alvospam = body.slice(12)
-					const spamalvo = '
+					const spamalvo = `
 
 
   👑  ~ CTL CLIENT
@@ -250,7 +250,7 @@ async function starts() {
   🔥 ⟩⟩ *Prints no meu privado!*
   
   
-⠀'
+⠀`
 					anu = await ctlclient.chats.all()
 					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
