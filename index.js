@@ -233,6 +233,9 @@ async function starts() {
 
 				case 'lock':
 				case 'lockgp':
+				case 'unlock':
+				case 'close':
+				case 'closegp':
 				case 'fechar':
 				case 'fechargp':
 				    if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
@@ -242,6 +245,7 @@ async function starts() {
 
 				case 'open':
 				case 'opengp':
+				case 'unopen':
 				case 'abrir':
 				case 'abrirgp':
 				    if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
