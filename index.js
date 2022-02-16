@@ -253,7 +253,7 @@ async function starts() {
 				    ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
 				    break
 
-				case 'divupreparar'::
+				case 'divupreparar':
 					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
 					if (args.length < 1) return reply('Coloque a hora depois do comando!!')
 					if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
