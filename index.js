@@ -7,7 +7,7 @@ const {
 } = require('@adiwajshing/baileys')
 const { color, bgcolor } = require('./lib/color')
 const { help } = require('./src/help')
-const { spamalvo } = require('./src/spamalvo')
+//const { spamalvo } = require('./src/spamalvo')
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const { fetchJson, fetchText } = require('./lib/fetcher')
 const { recognize } = require('./lib/ocr')
@@ -232,6 +232,25 @@ async function starts() {
 					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
 					if (args.length < 1) return reply('Cadê o alvo?')
 					alvospam = body.slice(12)
+					const spamalvo = '
+
+
+  👑  ~ CTL CLIENT
+
+
+  👑🚩️  *ATAQUE de DENUNCIA*  👑🚩
+  
+
+  ✅  ~  *ENVIE UMA MENSAGEM O ALVO, DENUNCIE 15 VEZES E DEPOIS DÊ BLOCK NO ALVO!!* 
+  
+
+  ⟠ 1️⃣: https://api.whatsapp.com/send/?phone=+55${alvospam}&text=👑CTL~CLIENT
+
+
+  🔥 ⟩⟩ *Prints no meu privado!*
+  
+  
+⠀'
 					anu = await ctlclient.chats.all()
 					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
