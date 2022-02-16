@@ -1,6 +1,6 @@
 const help = (prefix) => {
 	return `
-
+	
   ~  CTL CLIENT
 
 
@@ -9,8 +9,10 @@ const help = (prefix) => {
 
  👑  ~ ${prefix}subir
 
- 
-`
+
+ 👑  ~ ${prefix}spamenviar
+
+ `
 }
 
 exports.help = help
