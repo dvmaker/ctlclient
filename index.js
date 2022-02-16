@@ -223,8 +223,16 @@ async function starts() {
 					ctlclient.sendMessage(from, help(prefix), text)
 					break
 
+				case 'nome':
+					if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
+					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')    
+					if (args.length < 1) return reply('Coloque o nome depois do comando!!')
+					const ctlclientnm = body.slice(6)
+					ctlclient.groupUpdateSubject(from, `${ctlclientnm}`)
+					break
+
 				case 'setname1':
-				    if (!isGroup) return reply('O comando precisa ser enviado em grupo')
+				    if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
 				    if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
 				    setTimeout( () => {
 				    ctlclient.groupUpdateSubject(from, ` ‼️ ATK DIVU AGORA ‼️ `)
