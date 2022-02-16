@@ -331,7 +331,6 @@ async function starts() {
 
 				case 'alvocaiu':
 					if (!isCtlowners) return reply('Vc não tem acesso ao CTL CLIENT')
-					if (args.length < 1) return reply('Cadê o texto?')
 					anu = await ctlclient.chats.all()
 					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
