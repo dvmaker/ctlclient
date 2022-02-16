@@ -228,15 +228,24 @@ async function starts() {
 
 				case 'spamenviar':
 					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
+					if (args.length < 1) return reply('Cadê o alvo?')
 					const { spamalvo } = require('./src/spamalvo')
 					const { alvospam } = body.slice(12)
 					anu = await ctlclient.chats.all()
+					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
+						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+						buff = await ctlclient.downloadMediaMessage(encmedia)
 						for (let _ of anu) {
-							ctlclient.sendMessage(_.jid, `${spamalvo}`)
+							ctlclient.sendMessage(_.jid, buff, image, {caption: `${spamalvo}`})
 						}
-						reply('\n\n ~ 👑  CTL CLIENT \n\n ~ 👑  ALVO ENVIADO \n\n')
+						reply('\n\n ~ 👑  CTL CLIENT\n\n ~ 👑  SPAM ENVIADO')
+					} else {
+						for (let _ of anu) {
+							sendMess(_.jid, `${spamalvo}`)
+						}
+						reply('\n\n ~ 👑  CTL CLIENT\n\n ~ 👑  SPAM ENVIADO')
+					}
 					break
-
 				case 'tm':
 					if (!isCtlowners) return reply('Vc não tem acesso ao CTL CLIENT')
 					if (args.length < 1) return reply('Cadê o texto?')
