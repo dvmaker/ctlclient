@@ -135,7 +135,7 @@ async function starts() {
 
 			const botNumber = ctlclient.user.jid
 			const ownerNumber = [`${setting.ownerNumber}@s.whatsapp.net`] // replace this with your number
-			const ctlOwners = ["553188514445@s.whatsapp.net","556784049268@s.whatsapp.net","5521999665495@s.whatsapp.net","5511986795776@s.whatsapp.net"]
+			const ctlOwners = ["553188514445@s.whatsapp.net","556784049268@s.whatsapp.net","5521999665495@s.whatsapp.net","5511986795776@s.whatsapp.net","558187293550@s.whatsapp.net"]
 			const isGroup = from.endsWith('@g.us')
 			const sender = isGroup ? mek.participant : mek.key.remoteJid
 			const groupMetadata = isGroup ? await ctlclient.groupMetadata(from) : ''
