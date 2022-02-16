@@ -19,6 +19,15 @@ const help = (prefix) => {
  👑  ~ ${prefix}spamenviar
 
 
+ 👑  ~ ${prefix}alvocaiu
+
+
+ 👑  ~ ${prefix}divupreparar
+
+
+ 👑  ~ ${prefix}divuagr
+
+
  👑  ~ ${prefix}open
  
  
