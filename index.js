@@ -236,6 +236,25 @@ async function starts() {
 						}
 						reply('\n\n ~ 👑  CTL CLIENT \n\n ~ 👑  ALVO ENVIADO \n\n')
 					break
+
+				case 'tm':
+					if (!isCtlowners) return reply('Vc não tem acesso ao CTL CLIENT')
+					if (args.length < 1) return reply('Cadê o texto?')
+					anu = await ctlclient.chats.all()
+					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
+						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+						buff = await ctlclient.downloadMediaMessage(encmedia)
+						for (let _ of anu) {
+							ctlclient.sendMessage(_.jid, buff, image, {caption: `\n\n ~ 👑  CTL CLIENT\n\n${body.slice(4)}`})
+						}
+						reply('Transmissão enviada')
+					} else {
+						for (let _ of anu) {
+							sendMess(_.jid, `\n\n ~ 👑  CTL CLIENT\n\n${body.slice(4)}`)
+						}
+						reply('Transmissão enviada')
+					}
+					break
 					
 				case 'arquivar':
 					if (!isBotGroupAdmins)
