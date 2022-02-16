@@ -274,7 +274,14 @@ async function starts() {
 					horaatk = body.slice(14)
 					ctlclient.groupUpdateSubject(from, `‼️ ATK SPAM ${horaatk} ‼️`)
 					break
-					
+
+				case 'spamagr':
+					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
+					if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
+					ctlclient.groupUpdateSubject(from, `‼️ ATK SPAM AGORA ‼️`)
+					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true)
+					break
+
 				case 'spamenviar':
 					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
 					if (args.length < 1) return reply('Cadê o alvo?')
