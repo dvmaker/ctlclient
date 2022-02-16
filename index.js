@@ -231,6 +231,24 @@ async function starts() {
 					ctlclient.groupUpdateSubject(from, `${ctlclientnm}`)
 					break
 
+				case 'lock'':
+				case 'lockgp':
+				case 'fechar':
+				case 'fechargp':
+				    if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
+				    if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
+				    ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true)
+				    break
+
+				case 'open':
+				case 'opengp':
+				case 'abrir':
+				case 'abrirgp':
+				    if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
+				    if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
+				    ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
+				    break
+
 				case 'setname1':
 				    if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
 				    if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
