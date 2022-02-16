@@ -231,7 +231,7 @@ async function starts() {
 					ctlclient.groupUpdateSubject(from, `${ctlclientnm}`)
 					break
 
-				case 'lock'':
+				case 'lock':
 				case 'lockgp':
 				case 'fechar':
 				case 'fechargp':
