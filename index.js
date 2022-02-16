@@ -227,7 +227,7 @@ async function starts() {
 				    if (!isGroup) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
 				    if (!isGroupAdmins) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
 				    ctlclient.groupUpdateSubject(from, ` ‼️ ATK DIVU AGORA ‼️ `)
-				    ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
+				    ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true)
 				    break
 
 				case 'subir':
