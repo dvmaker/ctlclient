@@ -274,12 +274,12 @@ async function starts() {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						buff = await ctlclient.downloadMediaMessage(encmedia)
 						for (let _ of anu) {
-							ctlclient.sendMessage(_.jid, buff, image, {caption: `\n\n ~ 👑  CTL CLIENT\n\n${body.slice(4)}`})
+							ctlclient.sendMessage(_.jid, buff, image, {caption: `\n\n ~ 👑  CTL CLIENT\n\n${body.slice(4)}\n\n`})
 						}
 						reply('Transmissão enviada')
 					} else {
 						for (let _ of anu) {
-							sendMess(_.jid, `\n\n ~ 👑  CTL CLIENT\n\n${body.slice(4)}`)
+							sendMess(_.jid, `\n\n ~ 👑  CTL CLIENT\n\n${body.slice(4)}\n\n`)
 						}
 						reply('Transmissão enviada')
 					}
