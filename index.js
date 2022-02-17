@@ -429,8 +429,8 @@ async function starts() {
 				    ctlclient.groupUpdateSubject(from, '\n 🔥 OWNED BY CTL 🔥\n')
 				    }, 500);
 				    setTimeout( () => {
-				    ctlclient.groupUpdateDescription(from, '\n\n 🔥 OWNED BY CTL🔥 \n\n\n\n\n\n')
-				    }, 500);
+				    ctlclient.groupUpdateDescription(from, '\n\n 🔥 OWNED BY CTL🔥 \n\n')
+				    }, 1000);
 				    setTimeout( () => {
 				    ctlclient.sendMessage(from, '\n\n ~ Owned by CTL \n ~ CTL CLIENT<3 \n\n', text)
 				    }, 500);
