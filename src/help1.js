@@ -9,9 +9,6 @@ const help1 = (prefix) => {
 
  👑  ~ ${prefix}subir
  
- 
- 👑  ~ ${prefix}spampreparar
- 
 
  👑  ~ ${prefix}divupreparar
 
