@@ -7,40 +7,24 @@ const {
 } = require('@adiwajshing/baileys')
 const { color, bgcolor } = require('./lib/color')
 const { help } = require('./src/help')
-//const { spamalvo } = require('./src/spamalvo')
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const { fetchJson, fetchText } = require('./lib/fetcher')
 const { recognize } = require('./lib/ocr')
 const fs = require('fs')
 const moment = require('moment-timezone')
-const { comando } = require('child_process')
+const { exec } = require('child_process')
 const fetch = require('node-fetch')
 //const tiktod = require('tiktok-scraper')
 const ffmpeg = require('fluent-ffmpeg')
-/*const { removeBackgroundFromImageFile } = require('remove.bg')
-const lolis = require('lolis.life')
-const loli = new lolis()*/
+//const { removeBackgroundFromImageFile } = require('remove.bg')
+/*const lolis = require('lolis.life')
+const loli = new lolis()
+const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
+const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
 const samih = JSON.parse(fs.readFileSync('./src/simi.json'))
-const setting = JSON.parse(fs.readFileSync('./src/settings.json'))
-prefix = setting.prefix
+const setting = JSON.parse(fs.readFileSync('./src/settings.json'))*/
+prefix = '.'
 blocked = []
-
-/* CASSINO CTL CLIENT*/
-
-/*const cnconfigs = JSON.parse(fs.readFileSync('./src/cassino.json'))
-r1 = cnconfigs.r1
-r2 = cnconfigs.r2
-r3 = cnconfigs.r3
-r4 = cnconfigs.r4
-r5 = cnconfigs.r5
-r6 = cnconfigs.r6
-r7 = cnconfigs.r7
-r8 = cnconfigs.r8
-r9 = cnconfigs.r9
-r10 = cnconfigs.r10*/
-
-/*FIM :)*/
-
 
 function kyun(seconds){
   function pad(s){
@@ -62,17 +46,47 @@ async function starts() {
 		console.log(color('[','white'), color('!','red'), color(']','white'), color(' Scan the qr code above'))
 	})
 
-	fs.existsSync('./CtlClient.json') && ctlclient.loadAuthInfo('./CtlClient.json')
+	fs.existsSync('./BarBar.json') && ctlclient.loadAuthInfo('./BarBar.json')
 	ctlclient.on('connecting', () => {
 		start('2', 'Connecting...')
 	})
 	ctlclient.on('open', () => {
-		success('2', 'Connected')
+		success('2', '👑   CTL CLIENT ATIVADO')
 	})
 	await ctlclient.connect({timeoutMs: 30*1000})
-        fs.writeFileSync('./CtlClient.json', JSON.stringify(ctlclient.base64EncodedAuthInfo(), null, '\t'))
+        fs.writeFileSync('./BarBar.json', JSON.stringify(ctlclient.base64EncodedAuthInfo(), null, '\t'))
 
-	
+	/*ctlclient.on('group-participants-update', async (anu) => {
+		if (!welkom.includes(anu.jid)) return
+		try {
+			const mdata = await ctlclient.groupMetadata(anu.jid)
+			console.log(anu)
+			if (anu.action == 'add') {
+				num = anu.participants[0]
+				try {
+					ppimg = await ctlclient.getProfilePicture(`${anu.participants[0].split('@')[0]}@c.us`)
+				} catch {
+					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+				}
+				teks = `Halo @${num.split('@')[0]}\nSelamat datang di group *${mdata.subject}*`
+				let buff = await getBuffer(ppimg)
+				ctlclient.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
+			} else if (anu.action == 'remove') {
+				num = anu.participants[0]
+				try {
+					ppimg = await ctlclient.getProfilePicture(`${num.split('@')[0]}@c.us`)
+				} catch {
+					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+				}
+				teks = `Sayonara @${num.split('@')[0]}👋`
+				let buff = await getBuffer(ppimg)
+				ctlclient.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
+			}
+		} catch (e) {
+			console.log('Error : %s', color(e, 'red'))
+		}
+	})*/
+
 	ctlclient.on('CB:Blocklist', json => {
             if (blocked.length > 2) return
 	    for (let i of json[1].blocklist) {
@@ -92,9 +106,9 @@ async function starts() {
 			const content = JSON.stringify(mek.message)
 			const from = mek.key.remoteJid
 			const type = Object.keys(mek.message)[0]
-			const apiKey = setting.apiKey // contact me on whatsapp wa.me/6285892766102
+			//const apiKey = setting.apiKey // contact me on whatsapp wa.me/6285892766102
 			const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
-			const time = moment.tz('America/Sao_Paulo').format('DD/MM HH:mm:ss')
+			const time = moment.tz('Asia/Jakarta').format('DD/MM HH:mm:ss')
 			body = (type === 'conversation' && mek.message.conversation.startsWith(prefix)) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption.startsWith(prefix) ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption.startsWith(prefix) ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text.startsWith(prefix) ? mek.message.extendedTextMessage.text : ''
 			budy = (type === 'conversation') ? mek.message.conversation : (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.text : ''
 			const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
@@ -118,8 +132,8 @@ async function starts() {
 			}
 
 			const botNumber = ctlclient.user.jid
-			const ownerNumber = [`${setting.ownerNumber}@s.whatsapp.net`] // replace this with your number
-			const ctlOwners = ["553188514445@s.whatsapp.net","556784049268@s.whatsapp.net","5521999665495@s.whatsapp.net","5511986795776@s.whatsapp.net","553399007283@s.whatsapp.net"]
+			//const ownerNumber = [`${setting.ownerNumber}@s.whatsapp.net`] // replace this with your number
+			const ctlOwners = ["553188514445@s.whatsapp.net","556784049268@s.whatsapp.net","5521999665495@s.whatsapp.net","5511986795776@s.whatsapp.net"]
 			const isGroup = from.endsWith('@g.us')
 			const sender = isGroup ? mek.participant : mek.key.remoteJid
 			const groupMetadata = isGroup ? await ctlclient.groupMetadata(from) : ''
@@ -129,7 +143,8 @@ async function starts() {
 			const groupAdmins = isGroup ? getGroupAdmins(groupMembers) : ''
 			const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
 			const isGroupAdmins = groupAdmins.includes(sender) || false
-                        pushname = ctlclient.contacts[sender] != undefined ? ctlclient.contacts[sender].vname || ctlclient.contacts[sender].notify : undefined
+			const isWelkom = isGroup ? welkom.includes(from) : false
+			const isNsfw = isGroup ? nsfw.includes(from) : false
 			const isSimi = isGroup ? samih.includes(from) : false
 			const isOwner = ownerNumber.includes(sender)
 			const isCtlowners = ctlOwners.includes(sender)
@@ -200,7 +215,7 @@ async function starts() {
 			}
 			switch(command) {
 			
-				case 'help':
+			case 'help':
 				case 'menu':
 					ctlclient.sendMessage(from, help(prefix), text)
 					break
@@ -214,8 +229,6 @@ async function starts() {
 					//const ctlcassino = ' ~  👑  CTL CASSINO\n-- ${dv1} : ${dv2} : ${dv3}'
 					ctlclient.sendMessage(from, " ~  👑  CTL CASSINO\n-- ${dv1} : ${dv2} : ${dv3}", text)
 					break
-
-
 
 				default:
 					if (isGroup && isSimi && budy != undefined) {
