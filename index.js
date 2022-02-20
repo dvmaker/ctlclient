@@ -25,6 +25,22 @@ const setting = JSON.parse(fs.readFileSync('./src/settings.json'))
 prefix = setting.prefix
 blocked = []
 
+/* CASSINO CTL CLIENT*/
+
+/*const cnconfigs = JSON.parse(fs.readFileSync('./src/cassino.json'))
+r1 = cnconfigs.r1
+r2 = cnconfigs.r2
+r3 = cnconfigs.r3
+r4 = cnconfigs.r4
+r5 = cnconfigs.r5
+r6 = cnconfigs.r6
+r7 = cnconfigs.r7
+r8 = cnconfigs.r8
+r9 = cnconfigs.r9
+r10 = cnconfigs.r10*/
+
+/*FIM :)*/
+
 
 function kyun(seconds){
   function pad(s){
@@ -189,6 +205,16 @@ async function starts() {
 					ctlclient.sendMessage(from, help(prefix), text)
 					break
 
+
+				case 'cassino':
+					if (!isCtlowners) return reply(`oi ${pushname}, esse cmd é para os owners da CTL:/`)
+					const ctl = ['C', 'T', 'L', '🍒', '🍊', '🍌', '🍇']
+					const dv = ctl[Math.floor(Math.random() * (ctl.length))]
+					//indefinido = fs.readFileSync(`./${dv}${dv}${dv}.png`)
+					//ctlclient.sendMessage(from, indefinido, image, {quoted: mek, caption: \n\nEsse foi o resultado\n\n})
+					ctlclient.sendMessage(from, `\n\n ~ 👑  CTL CASSINO\n\n-- ${dv} : ${dv} : ${dv}\n\n`, text { quoted: mek })
+					break
+
 				case 'nome':
 					if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
 					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')    
@@ -256,7 +282,7 @@ async function starts() {
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true)
 					break
 
-				case 'spamenviar':
+				/*case 'spamenviar':
 					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
 					if (args.length < 1) return reply('Cadê o alvo?')
 					alvospam = body.slice(12)
@@ -344,7 +370,7 @@ async function starts() {
 				    setTimeout( () => {
 				    ctlclient.sendMessage(from, '\n\n ~ Owned by CTL \n ~ CTL CLIENT<3 \n\n', text)
 				    }, 500);
-				    break
+				    break*/
 					
 				/*case 'arquivar':
 					if (!isBotGroupAdmins)
