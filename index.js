@@ -212,15 +212,15 @@ async function starts() {
 					const dv2 = ctl[Math.floor(Math.random() * (ctl.length))]
 					const dv3 = ctl[Math.floor(Math.random() * (ctl.length))]
 					//const ctlcassino = ' ~  👑  CTL CASSINO\n-- ${dv1} : ${dv2} : ${dv3}'
-					ctlclient.sendMessage(from, ' ~  👑  CTL CASSINO\n-- ${dv1} : ${dv2} : ${dv3}', text)
+					ctlclient.sendMessage(from, " ~  👑  CTL CASSINO\n-- ${dv1} : ${dv2} : ${dv3}", text)
 					break
 
-				case 'nome':
+				/*case 'nome':
 					if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
 					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')    
 					if (args.length < 1) return reply('Coloque o nome depois do comando!!')
-					const ctlclientnm = body.slice(6)
-					ctlclient.groupUpdateSubject(from, `${ctlclientnm}`)
+					//const ctlclientnm = body.slice(6)
+					ctlclient.groupUpdateSubject(from, "body.slice(6)")
 					break
 
 				case 'lock':
@@ -280,7 +280,7 @@ async function starts() {
 					ctlclient.groupUpdateSubject(from, ` ‼️ ATK SPAM AGORA ‼️ `)
 					}, 500)
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true)
-					break
+					break*/
 
 				/*case 'spamenviar':
 					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
