@@ -214,7 +214,7 @@ async function starts() {
 			switch(command) {
 			
 			case 'teste':
-			ctlclient.senMessage(from, hello, text)
+			ctlclient.senMessage(from, 'hello', text)
 			break
 
 				default:
