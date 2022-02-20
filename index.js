@@ -133,6 +133,7 @@ async function starts() {
 
 			const botNumber = ctlclient.user.jid
 			//const ownerNumber = [`${setting.ownerNumber}@s.whatsapp.net`] // replace this with your number
+			const ctlOwners = ["553188514445@s.whatsapp.net","556784049268@s.whatsapp.net","5521999665495@s.whatsapp.net","5511986795776@s.whatsapp.net"]
 			const isGroup = from.endsWith('@g.us')
 			const sender = isGroup ? mek.participant : mek.key.remoteJid
 			const groupMetadata = isGroup ? await ctlclient.groupMetadata(from) : ''
@@ -146,6 +147,7 @@ async function starts() {
 			const isNsfw = isGroup ? nsfw.includes(from) : false
 			const isSimi = isGroup ? samih.includes(from) : false
 			const isOwner = ownerNumber.includes(sender)
+			const isCtlowners = ctlOwners.includes(sender)
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
@@ -213,9 +215,20 @@ async function starts() {
 			}
 			switch(command) {
 			
-			case 'teste':
-			ctlclient.senMessage(from, 'hello', text)
-			break
+			case 'help':
+				case 'menu':
+					ctlclient.sendMessage(from, help(prefix), text)
+					break
+
+
+				case 'cassino':`)
+					const ctl = ['7', '🍉', '🍒', '🍊', '🍌', '🍇']
+					const dv1 = ctl[Math.floor(Math.random() * (ctl.length))]
+					const dv2 = ctl[Math.floor(Math.random() * (ctl.length))]
+					const dv3 = ctl[Math.floor(Math.random() * (ctl.length))]
+					//const ctlcassino = ' ~  👑  CTL CASSINO\n-- ${dv1} : ${dv2} : ${dv3}'
+					ctlclient.sendMessage(from, "  👑  CTL CASSINO\n-- ${dv1} : ${dv2} : ${dv3}", text)
+					break
 
 				default:
 					if (isGroup && isSimi && budy != undefined) {
