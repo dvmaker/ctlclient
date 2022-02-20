@@ -208,7 +208,7 @@ async function starts() {
 
 				case 'cassino':
 					if (!isCtlowners) return reply(`oi ${pushname}, esse cmd é para os owners da CTL:/`)
-					const ctl = ['C', 'T', 'L', '🍒', '🍊', '🍌', '🍇']
+					const ctl = ['7', '🍉', '🍒', '🍊', '🍌', '🍇']
 					const dv1 = ctl[Math.floor(Math.random() * (ctl.length))]
 					const dv2 = ctl[Math.floor(Math.random() * (ctl.length))]
 					const dv3 = ctl[Math.floor(Math.random() * (ctl.length))]
