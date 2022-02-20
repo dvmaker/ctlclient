@@ -212,7 +212,7 @@ async function starts() {
 					const dv = ctl[Math.floor(Math.random() * (ctl.length))]
 					//indefinido = fs.readFileSync(`./${dv}${dv}${dv}.png`)
 					//ctlclient.sendMessage(from, indefinido, image, {quoted: mek, caption: \n\nEsse foi o resultado\n\n})
-					ctlclient.sendMessage(from, `\n\n ~ 👑  CTL CASSINO\n\n-- ${dv} : ${dv} : ${dv}\n\n`, text { quoted: mek })
+					ctlclient.sendMessage(from, `\n\n ~ 👑  CTL CASSINO\n\n-- ${dv} : ${dv} : ${dv}\n\n`, text, {quoted: mek })
 					break
 
 				case 'nome':
