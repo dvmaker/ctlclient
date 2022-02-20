@@ -211,7 +211,8 @@ async function starts() {
 					const dv1 = ctl[Math.floor(Math.random() * (ctl.length))]
 					const dv2 = ctl[Math.floor(Math.random() * (ctl.length))]
 					const dv3 = ctl[Math.floor(Math.random() * (ctl.length))]
-					ctlclient.sendMessage(from, `\n\n ~ 👑  CTL CASSINO\n\n-- ${dv1} : ${dv2} : ${dv3}\n\n`, text)
+					const ctlcassino = `\n\n ~ 👑  CTL CASSINO\n\n-- ${dv1} : ${dv2} : ${dv3}\n\n`
+					ctlclient.sendMessage(from, `${ctlcassino}`, text)
 					break
 
 				case 'nome':
