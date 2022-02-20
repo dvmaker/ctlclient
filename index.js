@@ -211,7 +211,7 @@ async function starts() {
 					const dv1 = ctl[Math.floor(Math.random() * (ctl.length))]
 					const dv2 = ctl[Math.floor(Math.random() * (ctl.length))]
 					const dv3 = ctl[Math.floor(Math.random() * (ctl.length))]
-					const ctlcassino = `\n\n ~ 👑  CTL CASSINO\n\n-- ${dv1} : ${dv2} : ${dv3}\n\n`
+					const ctlcassino = ` ~ 👑  CTL CASSINO\n-- ${dv1} : ${dv2} : ${dv3}`
 					ctlclient.sendMessage(from, `${ctlcassino}`, text)
 					break
 
