@@ -209,10 +209,12 @@ async function starts() {
 				case 'cassino':
 					if (!isCtlowners) return reply(`oi ${pushname}, esse cmd é para os owners da CTL:/`)
 					const ctl = ['C', 'T', 'L', '🍒', '🍊', '🍌', '🍇']
-					const dv = ctl[Math.floor(Math.random() * (ctl.length))]
+					const dv1 = ctl[Math.floor(Math.random() * (ctl.length))]
+					const dv2 = ctl[Math.floor(Math.random() * (ctl.length))]
+					const dv3 = ctl[Math.floor(Math.random() * (ctl.length))]
 					//indefinido = fs.readFileSync(`./${dv}${dv}${dv}.png`)
 					//ctlclient.sendMessage(from, indefinido, image, {quoted: mek, caption: \n\nEsse foi o resultado\n\n})
-					ctlclient.sendMessage(from, `\n\n ~ 👑  CTL CASSINO\n\n-- ${dv} : ${dv} : ${dv}\n\n`, text, {quoted: mek })
+					ctlclient.sendMessage(from, `\n\n ~ 👑  CTL CASSINO\n\n-- ${dv1} : ${dv2} : ${dv3}\n\n`, text, {quoted: mek })
 					break
 
 				case 'nome':
