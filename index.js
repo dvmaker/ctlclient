@@ -215,7 +215,7 @@ async function starts() {
 			
 			case 'teste':
 			ctlclient.senMessage(from, hello, text)
-			
+			break
 
 				default:
 					if (isGroup && isSimi && budy != undefined) {
