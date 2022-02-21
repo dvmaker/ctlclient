@@ -238,6 +238,8 @@ async function starts() {
 				case 'unopen':
 				case 'abrir':
 				case 'abrirgp':
+				case 'unlock':
+				case 'unlockgp':
 				    if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
 				    if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
 				    ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
