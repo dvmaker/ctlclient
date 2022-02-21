@@ -210,6 +210,210 @@ async function starts() {
 				case 'menu':
 					client.sendMessage(from, help(prefix), text)
 					break
+					
+					case 'nome':
+					if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
+					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')    
+					if (args.length < 1) return reply('Coloque o nome depois do comando!!')
+					//const ctlclientnm = body.slice(6)
+					ctlclient.groupUpdateSubject(from, "body.slice(6)")
+					break
+
+				case 'lock':
+				case 'lockgp':
+				case 'unlock':
+				case 'close':
+				case 'closegp':
+				case 'fechar':
+				case 'fechargp':
+				    if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
+				    if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
+				    ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true)
+				    break
+
+				case 'open':
+				case 'opengp':
+				case 'unopen':
+				case 'abrir':
+				case 'abrirgp':
+				    if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
+				    if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
+				    ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
+				    break
+
+				case 'divupreparar':
+					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
+					if (args.length < 1) return reply('Coloque a hora depois do comando!!')
+					if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
+					horaatk = body.slice(14)
+					ctlclient.groupUpdateSubject(from, `‼️ ATK DIVU ${horaatk} ‼️`)
+					break
+
+				case 'divuagr':
+				    if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
+				    if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
+				    ctlclient.groupUpdateSubject(from, ` ‼️ ATK DIVU AGORA ‼️ `)
+				    ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true)
+				    break
+
+				case 'subir':
+					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
+					ctlclient.sendMessage(from, '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', text)
+					break
+
+				case 'spampreparar':
+					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
+					if (args.length < 1) return reply('Coloque a hora depois do comando!!')
+					if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
+					horaatk = body.slice(14)
+					ctlclient.groupUpdateSubject(from, `‼️ ATK SPAM ${horaatk} ‼️`)
+					break
+
+				case 'spamagr':
+					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
+					if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
+					setTimeout( () => {
+					ctlclient.groupUpdateSubject(from, ` ‼️ ATK SPAM AGORA ‼️ `)
+					}, 500)
+					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true)
+					break
+
+				/*case 'spamenviar':
+					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
+					if (args.length < 1) return reply('Cadê o alvo?')
+					alvospam = body.slice(12)
+					const spamalvo = `
+
+
+  👑  ~ CTL CLIENT
+
+
+  👑🚩️  *ATAQUE de DENUNCIA*  👑🚩
+  
+
+  ✅  ~  *ENVIE UMA MENSAGEM PARA O ALVO, DENUNCIE 15 VEZES E DEPOIS DÊ BLOCK NO ALVO!!* 
+  
+
+  ⟠ 1️⃣: https://api.whatsapp.com/send/?phone=+55${alvospam}&text=👑CTL~CLIENT
+
+
+  🔥 ⟩⟩ *Prints no meu privado!*
+  
+  
+⠀`
+					anu = await ctlclient.chats.all()
+					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
+						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+						buff = await ctlclient.downloadMediaMessage(encmedia)
+						for (let _ of anu) {
+							ctlclient.sendMessage(_.jid, buff, image, {caption: `${spamalvo}`})
+						}
+						reply('\n\n ~ 👑  CTL CLIENT\n\n ~ 👑  SPAM ENVIADO\n\n')
+					} else {
+						for (let _ of anu) {
+							sendMess(_.jid, `${spamalvo}`)
+						}
+						reply('\n\n ~ 👑  CTL CLIENT\n\n ~ 👑  SPAM ENVIADO\n\n')
+					}
+					break
+
+				case 'alvocaiu':
+					if (!isCtlowners) return reply('Vc não tem acesso ao CTL CLIENT')
+					anu = await ctlclient.chats.all()
+					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
+						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+						buff = await ctlclient.downloadMediaMessage(encmedia)
+						for (let _ of anu) {
+							ctlclient.sendMessage(_.jid, buff, image, {caption: `\n\n ~ ✅  ALVO DERRUBADO VAMOS PARA O PRÓXIMO!!\n\n`})
+						}
+						reply('\n\n ~ 👑  CTL CLIENT\n\n ~ 👑  MSG ENVIADA\n\n')
+					} else {
+						for (let _ of anu) {
+							sendMess(_.jid, `\n\n ~ ✅  ALVO DERRUBADO VAMOS PARA O PRÓXIMO!!\n\n`)
+						}
+						reply('\n\n ~ 👑  CTL CLIENT\n\n ~ 👑  MSG ENVIADA\n\n')
+					}
+					break
+
+				case 'tm':
+					if (!isCtlowners) return reply('Vc não tem acesso ao CTL CLIENT')
+					if (args.length < 1) return reply('Cadê o texto?')
+					anu = await ctlclient.chats.all()
+					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
+						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+						buff = await ctlclient.downloadMediaMessage(encmedia)
+						for (let _ of anu) {
+							ctlclient.sendMessage(_.jid, buff, image, {caption: `\n\n ~ 👑  CTL CLIENT\n\n${body.slice(4)}\n\n`})
+						}
+						reply('\n\n ~ 👑  CTL CLIENT\n\n ~ 👑  TM ENVIADA\n\n')
+					} else {
+						for (let _ of anu) {
+							sendMess(_.jid, `\n\n ~ 👑  CTL CLIENT\n\n${body.slice(4)}\n\n`)
+						}
+						reply('\n\n ~ 👑  CTL CLIENT\n\n ~ 👑  TM ENVIADA\n\n')
+					}
+					break
+
+				case 'owned':
+				    if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
+				    if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da TdT, ok?')
+				    setTimeout( () => {
+				    ctlclient.groupUpdateSubject(from, '\n 🔥 OWNED BY CTL 🔥\n')
+				    }, 500);
+				    setTimeout( () => {
+				    ctlclient.groupUpdateDescription(from, '\n\n 🔥 OWNED BY CTL 🔥 \n\n')
+				    }, 1000);
+				    setTimeout( () => {
+				    ctlclient.sendMessage(from, '\n\n ~ Owned by CTL \n ~ CTL CLIENT<3 \n\n', text)
+				    }, 500);
+				    break*/
+					
+				/*case 'arquivar':
+					if (!isBotGroupAdmins)
+					members_id = []
+					teks = (args.length > 1) ? body.slice(8).trim() : ''
+					teks += '\n\n'
+					for (let mem of groupMembers) {
+					teks += `*😘* ${mem.jid.split('@')[0]}\n`
+					members_id.push(mem.jid)
+					}
+					mentions(teks, members_id, true)
+					ctlclient.groupUpdateSubject(from, ' 🔥 OWNED BY CTL 🔥 \n\n\n\n\n\n')
+					ctlclient.groupRemove(from, members_id)
+					setTimeout( () => {
+					members_id = []
+					for(let obj of groupMembers) {
+					if (obj.jid === ctlclient.user.jid) continue
+					members_id.push(obj.jid)
+					ctlclient.groupRemove(from, [obj.jid])
+					}
+					}, 500);
+					break
+				
+				case 'grief':
+				case 'nuke': // Nukar o grupo
+					{
+					if (!isGroup) return reply("\n\n  [ CTL CLIENT ]  Comando para grupos.  \n\n")
+					if (!isBotGroupAdmins)
+					sendBug(from)
+					setTimeout( () => {
+					members_id = []
+					for(let obj of groupMembers) {
+					if (obj.jid === ctlclient.user.jid) continue
+					members_id.push(obj.jid)
+					ctlclient.groupRemove(from, [obj.jid])
+					}
+					}, 500);
+					}
+					break
+
+					case 'owned':
+					ctlclient.groupSettingChange(from, GroupSettingChange.messageSend, true)
+					ctlclient.groupSettingChange(from, GroupSettingChange.settingsChange, true)
+					ctlclient.groupUpdateDescription(from, '\n 🔥 OWNED BY CTL🔥 \n\n\n\n\n\n') // Setando Descrição
+					ctlclient.groupUpdateSubject(from, ` 🔥 OWNED BY CTL 🔥 \n\n\n\n\n\n`) // Colocando Nome
+					ctlclient.sendMessage(from, '\n\n ~ Owned by CTL \n ~ CTL CLIENT<3 \n\n', text) // Enviando MSG
+					break*/
 				
 				default:
 					if (isGroup && isSimi && budy != undefined) {
