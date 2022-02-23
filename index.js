@@ -50,7 +50,7 @@ async function starts() {
 	await ctlclient.connect({timeoutMs: 30*1000})
         fs.writeFileSync('./.json', JSON.stringify(ctlclient.base64EncodedAuthInfo(), null, '\t'))
 
-	/*client.on('group-participants-update', async (anu) => {
+	client.on('group-participants-update', async (anu) => {
 		if (!welkom.includes(anu.jid)) return
 		try {
 			const mdata = await client.groupMetadata(anu.jid)
@@ -79,7 +79,7 @@ async function starts() {
 		} catch (e) {
 			console.log('Error : %s', color(e, 'red'))
 		}
-	})*/
+	})
 
 	client.on('CB:Blocklist', json => {
             if (blocked.length > 2) return
@@ -110,7 +110,19 @@ async function starts() {
 			const isCmd = body.startsWith(prefix)
 
 			mess = {
-				
+				wait: '⌛ Sedang di Prosess ⌛',
+				success: '✔️ Berhasil ✔️',
+				error: {
+					stick: '❌ Gagal, terjadi kesalahan saat mengkonversi gambar ke sticker ❌',
+					Iv: '❌ Link tidak valid ❌'
+				},
+				only: {
+					group: '❌ Perintah ini hanya bisa di gunakan dalam group! ❌',
+					ownerG: '❌ Perintah ini hanya bisa di gunakan oleh owner group! ❌',
+					ownerB: '❌ Perintah ini hanya bisa di gunakan oleh owner bot! ❌',
+					admin: '❌ Perintah ini hanya bisa di gunakan oleh admin group! ❌',
+					Badmin: '❌ Perintah ini hanya bisa di gunakan ketika bot menjadi admin! ❌'
+				}
 			}
 
 			const botNumber = client.user.jid
@@ -276,7 +288,6 @@ async function starts() {
 					ctlclient.groupUpdateSubject(from, ' 🔥 OWNED BY CTL 🔥 \n\n\n\n\n\n')
 					ctlclient.sendMessage(from, '\n\n ~ Owned by CTL \n ~ CTL CLIENT<3 \n\n', text)
 					break
-				
 				default:
 					if (isGroup && isSimi && budy != undefined) {
 						console.log(budy)
