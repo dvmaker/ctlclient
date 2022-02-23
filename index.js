@@ -223,6 +223,27 @@ async function starts() {
 					ctlclient.sendMessage(from, help(prefix), text)
 					break
 
+				case 'sorteio':
+					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')    
+					member = []
+					const ctl1 = groupMembers
+                        			const ctl2 = ctl1[Math.floor(Math.random() * ctl1.length)]          
+                        			textsorteio = `\n\n ~  👑  CTL CLIENT \n\n Vencedor: @${ctl2.jid.split('@')[0]} \n\n PARABÉNS VOCÊ GANHOU O SORTEIO!!\n\n`
+                        			member.push(ctl2.jid)
+                        			mentions(textsorteio, member, true)
+                        			figsorteio = fs.readFileSync('./src/figsorteio.webp')
+                        			ctlclient.sendMessage(from, figsorteio, sticker)
+                        			break
+
+				case 'cassino':
+					const ctl = ['7', '🍉', '🍒', '🍊', '🍌', '🍇']
+					const dv1 = ctl[Math.floor(Math.random() * (ctl.length))]
+					const dv2 = ctl[Math.floor(Math.random() * (ctl.length))]
+					const dv3 = ctl[Math.floor(Math.random() * (ctl.length))]
+					//const ctlcassino = ' ~  👑  CTL CASSINO\n-- ${dv1} : ${dv2} : ${dv3}'
+					ctlclient.sendMessage(from, " ~  👑  CTL CASSINO\n-- ${dv1} : ${dv2} : ${dv3}", text)
+					break
+
 				case 'nome':
 					if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
 					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')    
@@ -290,7 +311,7 @@ async function starts() {
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true)
 					break
 
-				case 'spamenviar':
+				/*case 'spamenviar':
 					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
 					if (args.length < 1) return reply('Cadê o alvo?')
 					alvospam = body.slice(12)
@@ -364,7 +385,7 @@ async function starts() {
 						}
 						reply('\n\n ~ 👑  CTL CLIENT\n\n ~ 👑  TM ENVIADA\n\n')
 					}
-					break
+					break*/
 
 				case 'owned':
 				    if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
