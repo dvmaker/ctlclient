@@ -474,11 +474,8 @@ async function starts() {
 					break*/
 
 				default:
-					if (isGroup && isSimi && budy != undefined) {
+					if (isGroup && budy != undefined) {
 						console.log(budy)
-						muehe = await simih(budy)
-						console.log(muehe)
-						reply(muehe)
 					} else {
 						return //console.log(color('[WARN]','red'), 'Unregistered Command from', color(sender.split('@')[0]))
 					}
