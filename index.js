@@ -7,18 +7,26 @@ const {
 } = require('@adiwajshing/baileys')
 const { color, bgcolor } = require('./lib/color')
 const { help } = require('./src/help')
+//const { spamalvo } = require('./src/spamalvo')
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const { fetchJson, fetchText } = require('./lib/fetcher')
 const { recognize } = require('./lib/ocr')
 const fs = require('fs')
 const moment = require('moment-timezone')
-const { exec } = require('child_process')
+const { comando } = require('child_process')
 const fetch = require('node-fetch')
 //const tiktod = require('tiktok-scraper')
 const ffmpeg = require('fluent-ffmpeg')
+/*const { removeBackgroundFromImageFile } = require('remove.bg')
+const lolis = require('lolis.life')
+const loli = new lolis()
+const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
+const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))*/
+const samih = JSON.parse(fs.readFileSync('./src/simi.json'))
 const setting = JSON.parse(fs.readFileSync('./src/settings.json'))
 prefix = setting.prefix
 blocked = []
+
 
 function kyun(seconds){
   function pad(s){
@@ -40,7 +48,7 @@ async function starts() {
 		console.log(color('[','white'), color('!','red'), color(']','white'), color(' Scan the qr code above'))
 	})
 
-	fs.existsSync('./BarBar.json') && ctlclient.loadAuthInfo('./BarBar.json')
+	fs.existsSync('./CtlClient.json') && ctlclient.loadAuthInfo('./CtlClient.json')
 	ctlclient.on('connecting', () => {
 		start('2', 'Connecting...')
 	})
@@ -48,7 +56,7 @@ async function starts() {
 		success('2', 'Connected')
 	})
 	await ctlclient.connect({timeoutMs: 30*1000})
-        fs.writeFileSync('./BarBar.json', JSON.stringify(ctlclient.base64EncodedAuthInfo(), null, '\t'))
+        fs.writeFileSync('./CtlClient.json', JSON.stringify(ctlclient.base64EncodedAuthInfo(), null, '\t'))
 
 	/*ctlclient.on('group-participants-update', async (anu) => {
 		if (!welkom.includes(anu.jid)) return
@@ -102,7 +110,7 @@ async function starts() {
 			const type = Object.keys(mek.message)[0]
 			const apiKey = setting.apiKey // contact me on whatsapp wa.me/6285892766102
 			const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
-			const time = moment.tz('Asia/Jakarta').format('DD/MM HH:mm:ss')
+			const time = moment.tz('America/Sao_Paulo').format('DD/MM HH:mm:ss')
 			body = (type === 'conversation' && mek.message.conversation.startsWith(prefix)) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption.startsWith(prefix) ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption.startsWith(prefix) ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text.startsWith(prefix) ? mek.message.extendedTextMessage.text : ''
 			budy = (type === 'conversation') ? mek.message.conversation : (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.text : ''
 			const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
@@ -127,6 +135,7 @@ async function starts() {
 
 			const botNumber = ctlclient.user.jid
 			const ownerNumber = [`${setting.ownerNumber}@s.whatsapp.net`] // replace this with your number
+			const ctlOwners = ["553188514445@s.whatsapp.net","556784049268@s.whatsapp.net","5521999665495@s.whatsapp.net","5511986795776@s.whatsapp.net","553399007283@s.whatsapp.net"]
 			const isGroup = from.endsWith('@g.us')
 			const sender = isGroup ? mek.participant : mek.key.remoteJid
 			const groupMetadata = isGroup ? await ctlclient.groupMetadata(from) : ''
@@ -136,10 +145,12 @@ async function starts() {
 			const groupAdmins = isGroup ? getGroupAdmins(groupMembers) : ''
 			const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
 			const isGroupAdmins = groupAdmins.includes(sender) || false
+                        pushname = ctlclient.contacts[sender] != undefined ? ctlclient.contacts[sender].vname || ctlclient.contacts[sender].notify : undefined
 			//const isWelkom = isGroup ? welkom.includes(from) : false
 			//const isNsfw = isGroup ? nsfw.includes(from) : false
-			//const isSimi = isGroup ? samih.includes(from) : false
+			const isSimi = isGroup ? samih.includes(from) : false
 			const isOwner = ownerNumber.includes(sender)
+			const isCtlowners = ctlOwners.includes(sender)
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
@@ -158,10 +169,10 @@ async function starts() {
 			const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
 			const isQuotedVideo = type === 'extendedTextMessage' && content.includes('videoMessage')
 			const isQuotedSticker = type === 'extendedTextMessage' && content.includes('stickerMessage')
-			if (!isGroup && isCmd) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mEXEC\x1b[1;37m]', time, color(command), 'from', color(sender.split('@')[0]), 'args :', color(args.length))
-			if (!isGroup && !isCmd) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'args :', color(args.length))
-			if (isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mEXEC\x1b[1;37m]', time, color(command), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
-			if (!isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
+			if (!isGroup && isCmd) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mCOMANDO\x1b[1;37m]', time, color(command), 'from', color(sender.split('@')[0]), 'args :', color(args.length))
+			if (!isGroup && !isCmd) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mMENSAGEM\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'args :', color(args.length))
+			if (isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mCOMANDO\x1b[1;37m]', time, color(command), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
+			if (!isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mMENSAGEM\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 			let authorname = ctlclient.contacts[from] != undefined ? ctlclient.contacts[from].vname || ctlclient.contacts[from].notify : undefined	
 			if (authorname != undefined) { } else { authorname = groupName }	
 			
@@ -206,19 +217,215 @@ async function starts() {
 
 			}
 			switch(command) {
+			
 				case 'help':
 				case 'menu':
 					ctlclient.sendMessage(from, help(prefix), text)
 					break
 
-				case 'cassino':`)
-					const ctl = ['7', '🍉', '🍒', '🍊', '🍌', '🍇']
-					const dv1 = ctl[Math.floor(Math.random() * (ctl.length))]
-					const dv2 = ctl[Math.floor(Math.random() * (ctl.length))]
-					const dv3 = ctl[Math.floor(Math.random() * (ctl.length))]
-					//const ctlcassino = ' ~  👑  CTL CASSINO\n-- ${dv1} : ${dv2} : ${dv3}'
-					ctlclient.sendMessage(from, " ~  👑  CTL CASSINO\n-- ${dv1} : ${dv2} : ${dv3}", text)
+				case 'nome':
+					if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
+					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')    
+					if (args.length < 1) return reply('Coloque o nome depois do comando!!')
+					const ctlclientnm = body.slice(6)
+					ctlclient.groupUpdateSubject(from, `${ctlclientnm}`)
 					break
+
+				case 'lock':
+				case 'lockgp':
+				case 'unlock':
+				case 'close':
+				case 'closegp':
+				case 'fechar':
+				case 'fechargp':
+				    if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
+				    if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
+				    ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true)
+				    break
+
+				case 'open':
+				case 'opengp':
+				case 'unopen':
+				case 'abrir':
+				case 'abrirgp':
+				    if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
+				    if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
+				    ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
+				    break
+
+				case 'divupreparar':
+					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
+					if (args.length < 1) return reply('Coloque a hora depois do comando!!')
+					if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
+					horaatk = body.slice(14)
+					ctlclient.groupUpdateSubject(from, `‼️ ATK DIVU ${horaatk} ‼️`)
+					break
+
+				case 'divuagr':
+				    if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
+				    if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
+				    ctlclient.groupUpdateSubject(from, ` ‼️ ATK DIVU AGORA ‼️ `)
+				    ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true)
+				    break
+
+				case 'subir':
+					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
+					ctlclient.sendMessage(from, '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', text)
+					break
+
+				case 'spampreparar':
+					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
+					if (args.length < 1) return reply('Coloque a hora depois do comando!!')
+					if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
+					horaatk = body.slice(14)
+					ctlclient.groupUpdateSubject(from, `‼️ ATK SPAM ${horaatk} ‼️`)
+					break
+
+				case 'spamagr':
+					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
+					if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
+					setTimeout( () => {
+					ctlclient.groupUpdateSubject(from, ` ‼️ ATK SPAM AGORA ‼️ `)
+					}, 500)
+					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true)
+					break
+
+				case 'spamenviar':
+					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
+					if (args.length < 1) return reply('Cadê o alvo?')
+					alvospam = body.slice(12)
+					const spamalvo = `
+
+
+  👑  ~ CTL CLIENT
+
+
+  👑🚩  *ATAQUE de DENUNCIA*  👑🚩
+  
+
+  ✅  ~  *ENVIE UMA MENSAGEM PARA O ALVO, DENUNCIE 15 VEZES E DEPOIS DÊ BLOCK NO ALVO!!* 
+  
+
+  ⟠ 1️⃣: https://api.whatsapp.com/send/?phone=+55${alvospam}&text=👑CTL~CLIENT
+
+
+  🔥 ⟩⟩ *Prints no meu privado!*
+  
+  
+⠀`
+					anu = await ctlclient.chats.all()
+					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
+						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+						buff = await ctlclient.downloadMediaMessage(encmedia)
+						for (let _ of anu) {
+							ctlclient.sendMessage(_.jid, buff, image, {caption: `${spamalvo}`})
+						}
+						reply('\n\n ~ 👑  CTL CLIENT\n\n ~ 👑  SPAM ENVIADO\n\n')
+					} else {
+						for (let _ of anu) {
+							sendMess(_.jid, `${spamalvo}`)
+						}
+						reply('\n\n ~ 👑  CTL CLIENT\n\n ~ 👑  SPAM ENVIADO\n\n')
+					}
+					break
+
+				case 'alvocaiu':
+					if (!isCtlowners) return reply('Vc não tem acesso ao CTL CLIENT')
+					anu = await ctlclient.chats.all()
+					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
+						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+						buff = await ctlclient.downloadMediaMessage(encmedia)
+						for (let _ of anu) {
+							ctlclient.sendMessage(_.jid, buff, image, {caption: `\n\n ~ ✅  ALVO DERRUBADO VAMOS PARA O PRÓXIMO!!\n\n`})
+						}
+						reply('\n\n ~ 👑  CTL CLIENT\n\n ~ 👑  MSG ENVIADA\n\n')
+					} else {
+						for (let _ of anu) {
+							sendMess(_.jid, `\n\n ~ ✅  ALVO DERRUBADO VAMOS PARA O PRÓXIMO!!\n\n`)
+						}
+						reply('\n\n ~ 👑  CTL CLIENT\n\n ~ 👑  MSG ENVIADA\n\n')
+					}
+					break
+
+				case 'tm':
+					if (!isCtlowners) return reply('Vc não tem acesso ao CTL CLIENT')
+					if (args.length < 1) return reply('Cadê o texto?')
+					anu = await ctlclient.chats.all()
+					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
+						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+						buff = await ctlclient.downloadMediaMessage(encmedia)
+						for (let _ of anu) {
+							ctlclient.sendMessage(_.jid, buff, image, {caption: `\n\n ~ 👑  CTL CLIENT\n\n${body.slice(4)}\n\n`})
+						}
+						reply('\n\n ~ 👑  CTL CLIENT\n\n ~ 👑  TM ENVIADA\n\n')
+					} else {
+						for (let _ of anu) {
+							sendMess(_.jid, `\n\n ~ 👑  CTL CLIENT\n\n${body.slice(4)}\n\n`)
+						}
+						reply('\n\n ~ 👑  CTL CLIENT\n\n ~ 👑  TM ENVIADA\n\n')
+					}
+					break
+
+				case 'owned':
+				    if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
+				    if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da TdT, ok?')
+				    setTimeout( () => {
+				    ctlclient.groupUpdateSubject(from, '\n 🔥 OWNED BY CTL 🔥\n')
+				    }, 500);
+				    setTimeout( () => {
+				    ctlclient.groupUpdateDescription(from, '\n\n 🔥 OWNED BY CTL 🔥 \n\n')
+				    }, 1000);
+				    setTimeout( () => {
+				    ctlclient.sendMessage(from, '\n\n ~ Owned by CTL \n ~ CTL CLIENT<3 \n\n', text)
+				    }, 500);
+				    break
+					
+				/*case 'arquivar':
+					if (!isBotGroupAdmins)
+					members_id = []
+					teks = (args.length > 1) ? body.slice(8).trim() : ''
+					teks += '\n\n'
+					for (let mem of groupMembers) {
+					teks += `*😘* ${mem.jid.split('@')[0]}\n`
+					members_id.push(mem.jid)
+					}
+					mentions(teks, members_id, true)
+					ctlclient.groupUpdateSubject(from, ' 🔥 OWNED BY CTL 🔥 \n\n\n\n\n\n')
+					ctlclient.groupRemove(from, members_id)
+					setTimeout( () => {
+					members_id = []
+					for(let obj of groupMembers) {
+					if (obj.jid === ctlclient.user.jid) continue
+					members_id.push(obj.jid)
+					ctlclient.groupRemove(from, [obj.jid])
+					}
+					}, 500);
+					break
+				
+				case 'grief':
+				case 'nuke': // Nukar o grupo
+					{
+					if (!isGroup) return reply("\n\n  [ CTL CLIENT ]  Comando para grupos.  \n\n")
+					if (!isBotGroupAdmins)
+					sendBug(from)
+					setTimeout( () => {
+					members_id = []
+					for(let obj of groupMembers) {
+					if (obj.jid === ctlclient.user.jid) continue
+					members_id.push(obj.jid)
+					ctlclient.groupRemove(from, [obj.jid])
+					}
+					}, 500);
+					}
+					break
+
+					case 'owned':
+					ctlclient.groupSettingChange(from, GroupSettingChange.messageSend, true)
+					ctlclient.groupSettingChange(from, GroupSettingChange.settingsChange, true)
+					ctlclient.groupUpdateDescription(from, '\n 🔥 OWNED BY CTL🔥 \n\n\n\n\n\n') // Setando Descrição
+					ctlclient.groupUpdateSubject(from, ` 🔥 OWNED BY CTL 🔥 \n\n\n\n\n\n`) // Colocando Nome
+					ctlclient.sendMessage(from, '\n\n ~ Owned by CTL \n ~ CTL CLIENT<3 \n\n', text) // Enviando MSG
+					break*/
 
 				default:
 					if (isGroup && isSimi && budy != undefined) {
