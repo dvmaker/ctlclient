@@ -212,6 +212,52 @@ async function starts() {
 					ctlclient.sendMessage(from, help(prefix), text)
 					break
 
+				case 'marcar':
+					if (!isGroup) return reply(mess.only.group)
+					if (!isGroupAdmins) return reply(mess.only.admin)
+					members_id = []
+					teks = (args.length > 1) ? body.slice(8).trim() : ''
+					teks += '\n\n'
+					for (let mem of groupMembers) {
+						teks += `*#* @${mem.jid.split('@')[0]}\n`
+						members_id.push(mem.jid)
+					}
+					mentions(teks, members_id, true)
+					break
+
+				case 'marcar2':
+					members_id = []
+					teks = (args.length > 1) ? body.slice(8).trim() : ''
+					teks += '\n\n'
+					for (let mem of groupMembers) {
+						teks += `╠➥ @${mem.jid.split('@')[0]}\n`
+						members_id.push(mem.jid)
+					}
+					reply(teks)
+					break
+
+				case 'marcar3':
+					members_id = []
+					teks = (args.length > 1) ? body.slice(8).trim() : ''
+					teks += '\n\n'
+					for (let mem of groupMembers) {
+						teks += `╠➥ https://wa.me/${mem.jid.split('@')[0]}\n`
+						members_id.push(mem.jid)
+					}
+					client.sendMessage(from, teks, text, {detectLinks: false, quoted: mek})
+					break
+
+				case 'marcar4':
+					members_id = []
+					teks = (args.length > 1) ? body.slice(8).trim() : ''
+					teks += '\n\n'
+					for (let mem of groupMembers) {
+						teks += `╠➥ ${mem.jid.split('@')[0]}@s.whatsapp.net\n`
+						members_id.push(mem.jid)
+					}
+					client.sendMessage(from, teks, text, {detectLinks: false, quoted: mek})
+					break
+
 				case 'removeuvc':
 				case 'removeuvoce':
 				case 'rv':
