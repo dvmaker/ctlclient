@@ -210,6 +210,15 @@ async function starts() {
 				case 'menu':
 					ctlclient.sendMessage(from, help(prefix), text)
 					break
+
+				case 'cassino':`)
+					const ctl = ['7', '🍉', '🍒', '🍊', '🍌', '🍇']
+					const dv1 = ctl[Math.floor(Math.random() * (ctl.length))]
+					const dv2 = ctl[Math.floor(Math.random() * (ctl.length))]
+					const dv3 = ctl[Math.floor(Math.random() * (ctl.length))]
+					//const ctlcassino = ' ~  👑  CTL CASSINO\n-- ${dv1} : ${dv2} : ${dv3}'
+					ctlclient.sendMessage(from, " ~  👑  CTL CASSINO\n-- ${dv1} : ${dv2} : ${dv3}", text)
+					break
 				default:
 					if (isGroup && isSimi && budy != undefined) {
 						console.log(budy)
