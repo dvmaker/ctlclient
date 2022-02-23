@@ -118,8 +118,8 @@ async function starts() {
 			const isCmd = body.startsWith(prefix)
 
 			msg = {
-				gp: '\n\n Comando para grupos!!\n\n'
-				ctlowners: '\n\n Este comando é apenas para os owners da CTL\n\n'
+				gp: '\n\n Comando para grupos!!\n\n',
+				ctlowners: '\n\n Este comando é apenas para os owners da CTL\n\n',
 			}
 
 			const botNumber = ctlclient.user.jid
