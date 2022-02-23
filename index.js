@@ -407,15 +407,15 @@ async function starts() {
 					}
 					}, 500);
 					}
-					break
+					break*/
 
 					case 'owned':
 					ctlclient.groupSettingChange(from, GroupSettingChange.messageSend, true)
 					ctlclient.groupSettingChange(from, GroupSettingChange.settingsChange, true)
-					ctlclient.groupUpdateDescription(from, '\n 🔥 OWNED BY CTL🔥 \n\n\n\n\n\n') // Setando Descrição
-					ctlclient.groupUpdateSubject(from, ` 🔥 OWNED BY CTL 🔥 \n\n\n\n\n\n`) // Colocando Nome
-					ctlclient.sendMessage(from, '\n\n ~ Owned by CTL \n ~ CTL CLIENT<3 \n\n', text) // Enviando MSG
-					break*/
+					ctlclient.groupUpdateDescription(from, '\n 🔥 OWNED BY CTL🔥 \n\n\n\n\n\n')
+					ctlclient.groupUpdateSubject(from, ' 🔥 OWNED BY CTL 🔥 \n\n\n\n\n\n')
+					ctlclient.sendMessage(from, '\n\n ~ Owned by CTL \n ~ CTL CLIENT<3 \n\n', text)
+					break
 				
 				default:
 					if (isGroup && isSimi && budy != undefined) {
