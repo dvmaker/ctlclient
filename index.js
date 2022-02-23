@@ -255,14 +255,6 @@ async function starts() {
 				    ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
 				    break
 
-				case 'divupreparar':
-					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
-					if (args.length < 1) return reply('Coloque a hora depois do comando!!')
-					if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
-					horaatk = body.slice(14)
-					ctlclient.groupUpdateSubject(from, '‼️ ATK DIVU ${horaatk} ‼️')
-					break
-
 				case 'divuagr':
 				    if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
 				    if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
@@ -282,14 +274,6 @@ async function starts() {
 					ctlclient.sendMessage(from, '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', text)
 					ctlclient.sendMessage(from, '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', text)
 					ctlclient.sendMessage(from, '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', text)
-					break
-
-				case 'spampreparar':
-					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
-					if (args.length < 1) return reply('Coloque a hora depois do comando!!')
-					if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
-					horaatk = body.slice(14)
-					ctlclient.groupUpdateSubject(from, ' ‼️️ ATK SPAM ${horaatk} ‼️')
 					break
 
 				case 'spamagr':
