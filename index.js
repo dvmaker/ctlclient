@@ -50,7 +50,7 @@ async function starts() {
 	await ctlclient.connect({timeoutMs: 30*1000})
         fs.writeFileSync('./BarBar.json', JSON.stringify(ctlclient.base64EncodedAuthInfo(), null, '\t'))
 
-	ctlclient.on('group-participants-update', async (anu) => {
+	/*ctlclient.on('group-participants-update', async (anu) => {
 		if (!welkom.includes(anu.jid)) return
 		try {
 			const mdata = await ctlclient.groupMetadata(anu.jid)
@@ -79,7 +79,7 @@ async function starts() {
 		} catch (e) {
 			console.log('Error : %s', color(e, 'red'))
 		}
-	})
+	})*/
 
 	ctlclient.on('CB:Blocklist', json => {
             if (blocked.length > 2) return
@@ -136,7 +136,7 @@ async function starts() {
 			const groupAdmins = isGroup ? getGroupAdmins(groupMembers) : ''
 			const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
 			const isGroupAdmins = groupAdmins.includes(sender) || false
-			const isWelkom = isGroup ? welkom.includes(from) : false
+			//const isWelkom = isGroup ? welkom.includes(from) : false
 			const isNsfw = isGroup ? nsfw.includes(from) : false
 			const isSimi = isGroup ? samih.includes(from) : false
 			const isOwner = ownerNumber.includes(sender)
