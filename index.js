@@ -246,8 +246,8 @@ async function starts() {
 					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
 					if (args.length < 1) return reply('Coloque a hora depois do comando!!')
 					if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
-					horaatk = body.slice(14)
-					ctlclient.groupUpdateSubject(from, `‼️ ATK DIVU ${horaatk} ‼️`)
+					/*horaatk = body.slice(14)
+					ctlclient.groupUpdateSubject(from, `‼️ ATK DIVU ${horaatk} ‼️`)*/
 					break
 
 				case 'divuagr':
@@ -275,8 +275,8 @@ async function starts() {
 					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
 					if (args.length < 1) return reply('Coloque a hora depois do comando!!')
 					if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
-					horaatk = body.slice(14)
-					ctlclient.groupUpdateSubject(from, `‼️ ATK SPAM ${horaatk} ‼️`)
+					/*horaatk = body.slice(14)
+					ctlclient.groupUpdateSubject(from, `‼️ ATK SPAM ${horaatk} ‼️`)*/
 					break
 
 				case 'spamagr':
