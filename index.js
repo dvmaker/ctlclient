@@ -10,7 +10,6 @@ const { help } = require('./src/help')
 //const { spamalvo } = require('./src/spamalvo')
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const { fetchJson, fetchText } = require('./lib/fetcher')
-const { recognize } = require('./lib/ocr')
 const fs = require('fs')
 const moment = require('moment-timezone')
 const { comando } = require('child_process')
@@ -214,48 +213,15 @@ async function starts() {
 
 				case 'marcar':
 					if (!isGroup) return reply(mess.only.group)
-					if (!isGroupAdmins) return reply(mess.only.admin)
+					if (!isCtlowners) return reply(msg.ctlowners)
 					members_id = []
 					teks = (args.length > 1) ? body.slice(8).trim() : ''
-					teks += '\n\n'
+					teks += '\n\n ~  👑 CTL CLIENT \n\n'
 					for (let mem of groupMembers) {
-						teks += `*#* @${mem.jid.split('@')[0]}\n`
+						teks += ` ~  @${mem.jid.split('@')[0]}\n\n`
 						members_id.push(mem.jid)
 					}
 					mentions(teks, members_id, true)
-					break
-
-				case 'marcar2':
-					members_id = []
-					teks = (args.length > 1) ? body.slice(8).trim() : ''
-					teks += '\n\n'
-					for (let mem of groupMembers) {
-						teks += `╠➥ @${mem.jid.split('@')[0]}\n`
-						members_id.push(mem.jid)
-					}
-					reply(teks)
-					break
-
-				case 'marcar3':
-					members_id = []
-					teks = (args.length > 1) ? body.slice(8).trim() : ''
-					teks += '\n\n'
-					for (let mem of groupMembers) {
-						teks += `╠➥ https://wa.me/${mem.jid.split('@')[0]}\n`
-						members_id.push(mem.jid)
-					}
-					ctlclient.sendMessage(from, teks, text, {detectLinks: false, quoted: mek})
-					break
-
-				case 'marcar4':
-					members_id = []
-					teks = (args.length > 1) ? body.slice(8).trim() : ''
-					teks += '\n\n'
-					for (let mem of groupMembers) {
-						teks += `╠➥ ${mem.jid.split('@')[0]}@s.whatsapp.net\n`
-						members_id.push(mem.jid)
-					}
-					ctlclient.sendMessage(from, teks, text, {detectLinks: false, quoted: mek})
 					break
 
 				case 'removeuvc':
