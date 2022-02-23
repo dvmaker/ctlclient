@@ -201,13 +201,24 @@ async function starts() {
 					client.sendMessage(from, help(prefix), text)
 					break
 					
-					case 'nome':
+				case 'nome':
 					if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
 					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')    
 					if (args.length < 1) return reply('Coloque o nome depois do comando!!')
 					//const ctlclientnm = body.slice(6)
 					ctlclient.groupUpdateSubject(from, "body.slice(6)")
 					break
+
+				case 'sorteio':
+					member = []
+					const ctl1 = groupMembers
+                        			const ctl2 = ctl1[Math.floor(Math.random() * ctl1.length)]          
+                        			textsorteio = `\n\n ~  👑  CTL CLIENT \n\n Vencedor: @${ctl2.jid.split('@')[0]} \n\n PARABÉNS VOCÊ GANHOU O SORTEIO!!\n\n`
+                        			member.push(ctl2.jid)
+                        			mentions(textsorteio, member, true)
+                        			figsorteio = fs.readFileSync('./src/figsorteio.webp')
+                        			ctlclient.sendMessage(from, figsorteio, sticker)
+                        			break
 
 				case 'cassino':`)
 					const ctl = ['7', '🍉', '🍒', '🍊', '🍌', '🍇']
@@ -217,6 +228,8 @@ async function starts() {
 					//const ctlcassino = ' ~  👑  CTL CASSINO\n-- ${dv1} : ${dv2} : ${dv3}'
 					ctlclient.sendMessage(from, " ~  👑  CTL CASSINO\n-- ${dv1} : ${dv2} : ${dv3}", text)
 					break
+
+					
 
 				case 'lock':
 				case 'lockgp':
