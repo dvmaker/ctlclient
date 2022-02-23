@@ -223,6 +223,27 @@ async function starts() {
 					ctlclient.sendMessage(from, help(prefix), text)
 					break
 
+				case 'removeuvc':
+				case 'removeuvoce':
+				case 'rv':
+				case 'ry':
+					if (!isGroup) return reply(mess.only.group)
+					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')    
+					var value = 'removeu você...'
+					var group = await ctlclient.groupMetadata(from)
+					var member = group['participants']
+					var mem = []
+					member.map( async adm => {
+					mem.push(adm.id.replace('c.us', 's.whatsapp.net'))
+					})
+					var options = {
+					text: value,
+					contextInfo: { mentionedJid: mem },
+					quoted: mek
+					}
+					ctlclient.sendMessage(from, options, text)
+					break
+
 				case 'sorteio':
 					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')    
 					member = []
