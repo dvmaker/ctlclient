@@ -117,20 +117,9 @@ async function starts() {
 			const args = body.trim().split(/ +/).slice(1)
 			const isCmd = body.startsWith(prefix)
 
-			mess = {
-				wait: '⌛ Sedang di Prosess ⌛',
-				success: '✔️ Berhasil ✔️',
-				error: {
-					stick: '❌ Gagal, terjadi kesalahan saat mengkonversi gambar ke sticker ❌',
-					Iv: '❌ Link tidak valid ❌'
-				},
-				only: {
-					group: '❌ Perintah ini hanya bisa di gunakan dalam group! ❌',
-					ownerG: '❌ Perintah ini hanya bisa di gunakan oleh owner group! ❌',
-					ownerB: '❌ Perintah ini hanya bisa di gunakan oleh owner bot! ❌',
-					admin: '❌ Perintah ini hanya bisa di gunakan oleh admin group! ❌',
-					Badmin: '❌ Perintah ini hanya bisa di gunakan ketika bot menjadi admin! ❌'
-				}
+			msg = {
+				gp: '\n\n Comando para grupos!!\n\n'
+				ctlowners: '\n\n Este comando é apenas para os owners da CTL\n\n'
 			}
 
 			const botNumber = ctlclient.user.jid
@@ -227,25 +216,23 @@ async function starts() {
 				case 'removeuvoce':
 				case 'rv':
 				case 'ry':
-					if (!isGroup) return reply(mess.only.group)
-					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')    
-					var value = 'removeu você...'
+					if (!isGroup) return reply(msg.gp)
+					if (!isCtlowners) return reply(msg.ctlowners)    
 					var group = await ctlclient.groupMetadata(from)
-					var member = group['participants']
+					var member = group["participants"]
 					var mem = []
-					member.map( async adm => {
-					mem.push(adm.id.replace('c.us', 's.whatsapp.net'))
+					member.map(async (adm) => {
+					mem.push(adm.id.replace("c.us", "s.whatsapp.net"));
 					})
-					var options = {
-					text: value,
+					var dvmaker = {
+					texto: 'Removeu você…',
 					contextInfo: { mentionedJid: mem },
-					quoted: mek
 					}
-					ctlclient.sendMessage(from, options, text)
+					ctlclient.sendMessage(from, dvmaker, text)
 					break
 
 				case 'sorteio':
-					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')    
+					if (!isCtlowners) return reply(msg.ctlowners)    
 					member = []
 					const ctl1 = groupMembers
                         			const ctl2 = ctl1[Math.floor(Math.random() * ctl1.length)]          
@@ -266,8 +253,8 @@ async function starts() {
 					break
 
 				case 'nome':
-					if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
-					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')    
+					if (!isGroup) return reply(msg.gp)
+					if (!isCtlowners) return reply(msg.ctlowners)    
 					if (args.length < 1) return reply('Coloque o nome depois do comando!!')
 					const ctlclientnm = body.slice(6)
 					ctlclient.groupUpdateSubject(from, `${ctlclientnm}`)
@@ -280,8 +267,8 @@ async function starts() {
 				case 'closegp':
 				case 'fechar':
 				case 'fechargp':
-				    if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
-				    if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
+				    if (!isGroup) return reply(msg.gp)
+				    if (!isCtlowners) return reply(msg.ctlowners)
 				    ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true)
 				    break
 
@@ -290,28 +277,28 @@ async function starts() {
 				case 'unopen':
 				case 'abrir':
 				case 'abrirgp':
-				    if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
-				    if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
+				    if (!isGroup) return reply(msg.gp)
+				    if (!isCtlowners) return reply(msg.ctlowners)
 				    ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
 				    break
 
 				case 'divupreparar':
-					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
+					if (!isCtlowners) return reply(msg.ctlowners)
 					if (args.length < 1) return reply('Coloque a hora depois do comando!!')
-					if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
+					if (!isGroup) return reply(msg.gp)
 					horaatk = body.slice(14)
 					ctlclient.groupUpdateSubject(from, `‼️ ATK DIVU ${horaatk} ‼️`)
 					break
 
 				case 'divuagr':
-				    if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
-				    if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
+				    if (!isGroup) return reply(msg.gp)
+				    if (!isCtlowners) return reply(msg.ctlowners)
 				    ctlclient.groupUpdateSubject(from, ` ‼️ ATK DIVU AGORA ‼️ `)
 				    ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true)
 				    break
 
 				case 'subir':
-					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
+					if (!isCtlowners) return reply(msg.ctlowners)
 					ctlclient.sendMessage(from, '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', text)
 					ctlclient.sendMessage(from, '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', text)
 					ctlclient.sendMessage(from, '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', text)
@@ -321,16 +308,16 @@ async function starts() {
 					break
 
 				case 'spampreparar':
-					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
+					if (!isCtlowners) return reply(msg.ctlowners)
 					if (args.length < 1) return reply('Coloque a hora depois do comando!!')
-					if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
+					if (!isGroup) return reply(msg.gp)
 					horaatk = body.slice(14)
 					ctlclient.groupUpdateSubject(from, `‼️ ATK SPAM ${horaatk} ‼️`)
 					break
 
 				case 'spamagr':
-					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
-					if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
+					if (!isCtlowners) return reply(msg.ctlowners)
+					if (!isGroup) return reply(msg.gp)
 					setTimeout( () => {
 					ctlclient.groupUpdateSubject(from, ` ‼️ ATK SPAM AGORA ‼️ `)
 					}, 500)
@@ -338,7 +325,7 @@ async function starts() {
 					break
 
 				/*case 'spamenviar':
-					if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da Ctl, ok?')
+					if (!isCtlowners) return reply(msg.ctlowners)
 					if (args.length < 1) return reply('Cadê o alvo?')
 					alvospam = body.slice(12)
 					const spamalvo = `
@@ -414,8 +401,8 @@ async function starts() {
 					break*/
 
 				case 'owned':
-				    if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
-				    if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da TdT, ok?')
+				    if (!isGroup) return reply(msg.gp)
+				    if (!isCtlowners) return reply(msg.ctlowners)
 				    setTimeout( () => {
 				    ctlclient.groupUpdateSubject(from, '\n 🔥 OWNED BY CTL 🔥\n')
 				    }, 500);
