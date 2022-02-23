@@ -244,7 +244,7 @@ async function starts() {
 						teks += `╠➥ https://wa.me/${mem.jid.split('@')[0]}\n`
 						members_id.push(mem.jid)
 					}
-					client.sendMessage(from, teks, text, {detectLinks: false, quoted: mek})
+					ctlclient.sendMessage(from, teks, text, {detectLinks: false, quoted: mek})
 					break
 
 				case 'marcar4':
@@ -255,7 +255,7 @@ async function starts() {
 						teks += `╠➥ ${mem.jid.split('@')[0]}@s.whatsapp.net\n`
 						members_id.push(mem.jid)
 					}
-					client.sendMessage(from, teks, text, {detectLinks: false, quoted: mek})
+					ctlclient.sendMessage(from, teks, text, {detectLinks: false, quoted: mek})
 					break
 
 				case 'removeuvc':
