@@ -209,6 +209,15 @@ async function starts() {
 					ctlclient.groupUpdateSubject(from, "body.slice(6)")
 					break
 
+				case 'cassino':`)
+					const ctl = ['7', '🍉', '🍒', '🍊', '🍌', '🍇']
+					const dv1 = ctl[Math.floor(Math.random() * (ctl.length))]
+					const dv2 = ctl[Math.floor(Math.random() * (ctl.length))]
+					const dv3 = ctl[Math.floor(Math.random() * (ctl.length))]
+					//const ctlcassino = ' ~  👑  CTL CASSINO\n-- ${dv1} : ${dv2} : ${dv3}'
+					ctlclient.sendMessage(from, " ~  👑  CTL CASSINO\n-- ${dv1} : ${dv2} : ${dv3}", text)
+					break
+
 				case 'lock':
 				case 'lockgp':
 				case 'unlock':
@@ -356,19 +365,7 @@ async function starts() {
 					}
 					break
 
-				case 'owned':
-				    if (!isGroup) return reply('O comando precisa ser enviado em algum grupo!!')
-				    if (!isCtlowners) return reply('Oi fofa, comando apenas pros owners da TdT, ok?')
-				    setTimeout( () => {
-				    ctlclient.groupUpdateSubject(from, '\n 🔥 OWNED BY CTL 🔥\n')
-				    }, 500);
-				    setTimeout( () => {
-				    ctlclient.groupUpdateDescription(from, '\n\n 🔥 OWNED BY CTL 🔥 \n\n')
-				    }, 1000);
-				    setTimeout( () => {
-				    ctlclient.sendMessage(from, '\n\n ~ Owned by CTL \n ~ CTL CLIENT<3 \n\n', text)
-				    }, 500);
-				    break*/
+				
 					
 				/*case 'arquivar':
 					if (!isBotGroupAdmins)
