@@ -87,6 +87,12 @@ async function starts() {
 		}
 	})*/
 	
+	const enviarfig = (stickerDir) => {
+    ctlclient.sendMessage(from, {
+        sticker: fs.readFileSync(stickerDir),
+        mimetype: 'video/webp'
+    })
+}
 
 	ctlclient.on('CB:Blocklist', json => {
             if (blocked.length > 2) return
@@ -211,7 +217,13 @@ async function starts() {
 					break
 
 				case 'fig1':
+					if (!isCtlowners) return reply(msg.ctlowners)
 					ctlclient.sendMessage(from, fs.readFileSync('./src/figsorteio.webp'), sticker, { quoted: mek })
+					break
+
+				case 'fig2':
+					if (!isCtlowners) return reply(msg.ctlowners)
+					enviarfig('./src/figsorteio.webp')
 					break
 
 				case 'marcar':
