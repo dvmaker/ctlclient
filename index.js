@@ -217,7 +217,13 @@ const enviarfig = (stickerDir) => {
 					ctlclient.sendMessage(from, help(prefix), text)
 					break
 
-				case 'fig1':
+				case 'attp':
+					if (args.length < 1) return reply(`E o texto?`)
+					attp2 = await getBuffer(`https://api.xteam.xyz/attp?file&text=${body.slice(6)}`)
+					ctlclient.sendMessage(from, attp2, sticker, {quoted: mek})
+					break
+
+				/*case 'fig1':
 					if (!isCtlowners) return reply(msg.ctlowners)
 					ctlclient.sendMessage(from, fs.readFileSync('./src/figsorteio.webp'), sticker)
 					break
@@ -225,7 +231,7 @@ const enviarfig = (stickerDir) => {
 				case 'fig2':
 					if (!isCtlowners) return reply(msg.ctlowners)
 					enviarfig('./src/figsorteio.webp')
-					break
+					break*/
 
 				case 'marcar':
 					if (!isGroup) return reply(msg.gp)
