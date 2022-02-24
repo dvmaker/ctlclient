@@ -35,6 +35,9 @@ const help = (prefix) => {
 
 
  👑  ~ ${prefix}cassino
+
+
+ 👑  ~ ${prefix}attp
  
 	`
 }
