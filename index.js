@@ -7,7 +7,7 @@ const {
 } = require('@adiwajshing/baileys')
 const { color, bgcolor } = require('./lib/color')
 const { help } = require('./src/help')
-//const { spamalvo } = require('./src/spamalvo')
+const { spamalvo } = require('./src/txtspam')
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const { fetchJson, fetchText } = require('./lib/fetcher')
 const fs = require('fs')
@@ -354,36 +354,18 @@ const enviarfig = (stickerDir) => {
 					if (!isCtlowners) return reply(msg.ctlowners)
 					if (args.length < 1) return reply('Cadê o alvo?')
 					alvospam = body.slice(12)
-					const spamalvo = `
-
-
-  👑  ~ CTL CLIENT
-
-
-  👑🚩  *ATAQUE de DENUNCIA*  👑🚩
-  
-
-  ✅  ~  *ENVIE UMA MENSAGEM PARA O ALVO, DENUNCIE 15 VEZES E DEPOIS DÊ BLOCK NO ALVO!!* 
-  
-
-  ⟠ 1️⃣: https://api.whatsapp.com/send/?phone=+55${alvospam}&text=👑CTL~CLIENT
-
-
-  🔥 ⟩⟩ *Prints no meu privado!*
-  
-  
-⠀`
+					
 					anu = await ctlclient.chats.all()
 					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						buff = await ctlclient.downloadMediaMessage(encmedia)
 						for (let _ of anu) {
-							ctlclient.sendMessage(_.jid, buff, image, {caption: `${spamalvo}`})
+							ctlclient.sendMessage(_.jid, buff, image, {caption: `spamalvo(alvospam)`})
 						}
 						reply('\n\n ~ 👑  CTL CLIENT\n\n ~ 👑  SPAM ENVIADO\n\n')
 					} else {
 						for (let _ of anu) {
-							sendMess(_.jid, `${spamalvo}`)
+							sendMess(_.jid, `spamalvo(alvospam)`)
 						}
 						reply('\n\n ~ 👑  CTL CLIENT\n\n ~ 👑  SPAM ENVIADO\n\n')
 					}
