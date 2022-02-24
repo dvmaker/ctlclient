@@ -86,6 +86,13 @@ async function starts() {
 			console.log('Error : %s', color(e, 'red'))
 		}
 	})*/
+	
+	const enviarfig = (stickerDir) => {
+    ctlclient.sendMessage(from, {
+        sticker: fs.readFileSync(stickerDir),
+        mimetype: 'video/webp'
+    })
+}
 
 	ctlclient.on('CB:Blocklist', json => {
             if (blocked.length > 2) return
@@ -249,8 +256,7 @@ async function starts() {
                         			textsorteio = `\n\n ~  👑  CTL CLIENT \n\n Vencedor: @${ctl2.jid.split('@')[0]} \n\n PARABÉNS VOCÊ GANHOU O SORTEIO!!\n\n`
                         			member.push(ctl2.jid)
                         			mentions(textsorteio, member, true)
-                        			figsorteio = fs.readFileSync('./src/figsorteio.webp')
-                        			ctlclient.sendMessage(from, figsorteio, sticker)
+                        			enviarfig('./src/figsorteio.webp')
                         			break
 
 				case 'cassino':
