@@ -228,7 +228,7 @@ const enviarfig = (stickerDir) => {
 					break
 
 				case 'marcar':
-					if (!isGroup) return reply(mess.only.group)
+					if (!isGroup) return reply(msg.gp)
 					if (!isCtlowners) return reply(msg.ctlowners)
 					members_id = []
 					teks = (args.length > 1) ? body.slice(8).trim() : ''
