@@ -294,7 +294,6 @@ const enviarfig = (stickerDir) => {
 
 				case 'lock':
 				case 'lockgp':
-				case 'unlock':
 				case 'close':
 				case 'closegp':
 				case 'fechar':
@@ -306,6 +305,8 @@ const enviarfig = (stickerDir) => {
 
 				case 'open':
 				case 'opengp':
+				case 'unlock':
+				case 'unlockgp':
 				case 'unopen':
 				case 'abrir':
 				case 'abrirgp':
