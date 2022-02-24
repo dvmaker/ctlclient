@@ -7,19 +7,16 @@ const help = (prefix) => {
  👑  ~ ${prefix}nome
 
 
- 👑  ~ ${prefix}subir
+ 👑  ~ ${prefix}open
  
  
+ 👑  ~ ${prefix}close
+
+
  👑  ~ ${prefix}spampreparar
  
  
  👑  ~ ${prefix}spamagr
-
-
- 👑  ~ ${prefix}spamenviar
-
-
- 👑  ~ ${prefix}alvocaiu
 
 
  👑  ~ ${prefix}divupreparar
@@ -28,12 +25,18 @@ const help = (prefix) => {
  👑  ~ ${prefix}divuagr
 
 
- 👑  ~ ${prefix}open
- 
- 
- 👑  ~ ${prefix}close
+ 👑  ~ ${prefix}rv
 
- `
+
+ 👑  ~ ${prefix}subir
+
+
+ 👑  ~ ${prefix}sorteio
+
+
+ 👑  ~ ${prefix}cassino
+ 
+	`
 }
 
 exports.help = help
