@@ -87,12 +87,6 @@ async function starts() {
 		}
 	})*/
 	
-	const enviarfig = (stickerDir) => {
-    ctlclient.sendMessage(from, {
-        sticker: fs.readFileSync(stickerDir),
-        mimetype: 'video/webp'
-    })
-}
 
 	ctlclient.on('CB:Blocklist', json => {
             if (blocked.length > 2) return
@@ -157,6 +151,13 @@ async function starts() {
 				(id == null || id == undefined || id == false) ? ctlclient.sendMessage(from, teks.trim(), extendedText, {contextInfo: {"mentionedJid": memberr}}) : ctlclient.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": memberr}})
 			}
 
+const enviarfig = (stickerDir) => {
+    ctlclient.sendMessage(from, {
+        sticker: fs.readFileSync(stickerDir),
+        mimetype: 'video/webp'
+    })
+}
+
 			colors = ['red','white','black','blue','yellow','green']
 			const isMedia = (type === 'imageMessage' || type === 'videoMessage')
 			const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
@@ -218,7 +219,7 @@ async function starts() {
 
 				case 'fig1':
 					if (!isCtlowners) return reply(msg.ctlowners)
-					ctlclient.sendMessage(from, fs.readFileSync('./src/figsorteio.webp'), sticker, { quoted: mek })
+					ctlclient.sendMessage(from, fs.readFileSync('./src/figsorteio.webp'), sticker)
 					break
 
 				case 'fig2':
