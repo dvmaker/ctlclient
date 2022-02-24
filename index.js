@@ -259,6 +259,11 @@ async function starts() {
                         			enviarfig('./src/figsorteio.webp')
                         			break
 
+				case 'fig1':
+					if (!isCtlowners) return reply(msg.ctlowners)
+					enviarfig('./src/figsorteio.webp')
+					break
+
 				case 'cassino':
 					const ctl = ['7', '🍉', '🍒', '🍊', '🍌', '🍇']
 					const dv1 = ctl[Math.floor(Math.random() * (ctl.length))]
