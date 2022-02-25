@@ -40,6 +40,7 @@ function kyun(seconds){
 
 async function starts() {
 	const ctlclient = new WAConnection()
+	ctlclient.browserDescription = [':.. LdAP ..:', "Safari", '0']
 	ctlclient.logger.level = 'warn'
 	console.log(banner.string)
 	ctlclient.on('qr', () => {
