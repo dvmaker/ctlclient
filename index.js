@@ -120,6 +120,7 @@ async function starts() {
 				gp: '\n\n Comando para grupos!!\n\n',
 				ctlowners: '\n\n Este comando é apenas para os owners da CTL\n\n',
 				espere: '\n\n Espere um pouco\n\n',
+				cadetxt: '\n\n Cadê o texto??\n\n',
 			}
 			
 
@@ -226,52 +227,12 @@ const enviarfig = (stickerDir) => {
 					break*/
 					
 					case 'attp':
-reply(msg.espere)
-if (args.length < 1) return reply(`Coloque o texto _\n\n*Exemplo ${prefix}attp pinguim*`)
-url = encodeURI(`https://api.xteam.xyz/attp?file&text=${body.slice(6)}`)
-attp2 = await getBuffer(url)
-ctlclient.sendMessage(from, attp2, sticker)		    	
-break
-case 'attp2':	//@Kratos æ„›	
-reply(msg.espere)
-if (args.length < 1) return reply('Cadê o texto?')
-teks = body.slice(6)
-url = encodeURI(`http://brizas-api.herokuapp.com/ttp/attp2?apikey=brizaloka&text=${teks}`)
-send = await getBuffer(url)
-ctlclient.sendMessage(from, send, sticker, {quoted: mek})
-break	
-case 'attp3': //@Kratos æ„›	
-reply(msg.espere)
-if (args.length < 1) return reply('Cadê o texto?')
-teks = body.slice(6)
-url = encodeURI(`http://brizas-api.herokuapp.com/ttp/attp3?apikey=brizaloka&text=${teks}`)
-send = await getBuffer(url)
-ctlclient.sendMessage(from, send, sticker, {quoted: mek})
-break	
-case 'attp4': //@Kratos æ„›
-reply(msg.espere)
-if (args.length < 1) return reply('Cadê o texto?')
-teks = body.slice(6)
-url = encodeURI(`http://brizas-api.herokuapp.com/ttp/attp4?apikey=brizaloka&text=${teks}`)
-send = await getBuffer(url)
-ctlclient.sendMessage(from, send, sticker, {quoted: mek})
-break	
-case 'attp5':	//@Kratos æ„›
-reply(msg.espere)
-if (args.length < 1) return reply('Cadê o texto?')
-teks = body.slice(6)
-url = encodeURI(`http://brizas-api.herokuapp.com/ttp/attp5?apikey=brizaloka&text=${teks}`)
-send = await getBuffer(url)
-ctlclient.sendMessage(from, send, sticker, {quoted: mek})
-break
-case 'attp6':	//@Kratos æ„›
-reply(msg.espere)	
-if (args.length < 1) return reply('Cadê o texto?')
-teks = body.slice(6)
-url = encodeURI(`http://brizas-api.herokuapp.com/ttp/attp6?apikey=brizaloka&text=${teks}`)
-send = await getBuffer(url)
-ctlclient.sendMessage(from, send, sticker, {quoted: mek})
-break
+					reply(msg.espere)
+					if (args.length < 1) return reply(msg.cadetxt)
+					url = encodeURI(`https://api.xteam.xyz/attp?file&text=${body.slice(6)}`)
+					dvmaker = await getBuffer(url)
+					ctlclient.sendMessage(from, dvmaker, sticker)		    	
+					break
 
 				/*case 'fig1':
 					if (!isCtlowners) return reply(msg.ctlowners)
