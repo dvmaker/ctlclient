@@ -41,7 +41,7 @@ function kyun(seconds){
 
 async function starts() {
 	const ctlclient = new WAConnection()
-	ctlclient.browserDescription = [' ~  CTL CLIENT', "Safari", '0']
+	ctlclient.browserDescription = [' ~  Ctl Client By Davi ant Otan ', "Safari", '0']
 	ctlclient.logger.level = 'warn'
 	console.log(banner.string)
 	ctlclient.on('qr', () => {
