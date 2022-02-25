@@ -379,7 +379,7 @@ const enviarfig = (stickerDir) => {
 						reply(`\n\nEnvie fotos ou vídeos e coloque o comando na legenda, ou marque o vídeo ou imagem e coloque o comando!!\n\n`)
 					}
 					break
-${sender.split("@")[0]}
+//${sender.split("@")[0]}
 				case 'toimg':
 					if (!isQuotedSticker) return reply('\n\n Marque a fig!!\n\n')
 					const cartel = ['Aqui está', 'Está pronto', 'Aqui está meu chefe', 'Fig convertida', 'Aqui está sua imagem']
