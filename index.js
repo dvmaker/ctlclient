@@ -249,10 +249,10 @@ const enviarfig = (stickerDir) => {
 					if (!isGroup) return reply(msg.gp)
 					if (!isCtlowners) return reply(msg.ctlowners)
 					members_id = []
-					teks = (args.length > 1) ? body.slice(8).trim() : ''
-					teks += '\n\n ~  👑 CTL CLIENT \n\n'
+					/*teks = '\n\n ~  👑 CTL CLIENT'
+					teks += '\n\n'*/
 					for (let mem of groupMembers) {
-						teks += ` ~  @${mem.jid.split('@')[0]}\n\n`
+						teks += `\n\n ~  👑 CTL CLIENT\n\n\n ~  @${mem.jid.split('@')[0]}\n\n`
 						members_id.push(mem.jid)
 					}
 					mentions(teks, members_id, true)
