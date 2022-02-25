@@ -122,6 +122,10 @@ async function starts() {
 				espere: '\n\n Espere um pouco\n\n',
 			}
 			
+			pporang3 = 'https://ighteede.sirv.com/me2.jpg'
+		      }
+		const pingu = await getBuffer(pporang3)
+			
 			const fotothumb3 = {text: 'oi', sendEphemeral: true,"externalAdReply": {"title": `⚠️ NÃO CLIQUE AQUI!!! 🖐️`,"body": "","previewType": "PHOTO","thumbnailUrl": "","thumbnail": pingu, "sourceUrl": `oi https://api.whatsapp.com/send?phone=553892564417&text=Eu%20não%20resisti%20🖐️😔`},mentionedJid:[sender]
         }
         
