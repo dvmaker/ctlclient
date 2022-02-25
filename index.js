@@ -228,8 +228,8 @@ const enviarfig = (stickerDir) => {
 					break*/
 					
 					case 'attp':
-					reply(msg.espere)
 					if (args.length < 1) return reply(msg.cadetxt)
+					reply(msg.espere)
 					url = encodeURI(`https://api.xteam.xyz/attp?file&text=${body.slice(6)}`)
 					dvmaker = await getBuffer(url)
 					ctlclient.sendMessage(from, dvmaker, sticker)		    	
