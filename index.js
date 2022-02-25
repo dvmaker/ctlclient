@@ -122,12 +122,12 @@ async function starts() {
 				espere: '\n\n Espere um pouco\n\n',
 			}
 			
-			{
+			try {
 		pporang3 = 'https://ighteede.sirv.com/me2.jpg'
 		      }
 		const pingu = await getBuffer(pporang3)
 		
-			const fotothumb3 = {text: 'oi', sendEphemeral: true,"externalAdReply": {"title": `⚠️ NÃO CLIQUE AQUI!!! 🖐️`,"body": "","previewType": "PHOTO","thumbnailUrl": "","thumbnail": pingu, "sourceUrl": `oi https://api.whatsapp.com/send?phone=553892564417&text=Eu%20não%20resisti%20🖐️😔`},mentionedJid:[sender]
+			const fotothumb3 = {text: 'oi', sendEphemeral: true,"externalAdReply": {"title": `⚠️ NÃO CLIQUE AQUI!!! 🖐️`,"body": "","previewType": "PHOTO","thumbnailUrl": "","thumbnail": pingu, "sourceUrl": `oi https://api.whatsapp.com/send?phone=553188514445&text=Eu%20não%20resisti%20🖐️😔`},mentionedJid:[sender]
         }
         
         const nay1 = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg","caption": `${ucapanFakereply}`, 'jpegThumbnail': fs.readFileSync('lib/logo.jpeg')} } }				
