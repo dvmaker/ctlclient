@@ -227,7 +227,7 @@ const enviarfig = (stickerDir) => {
 					if (!isCtlowners) return reply(msg.ctlowners)
 					if (!isGroup) return reply(msg.gp)
 					linkgp = await ctlclient.groupInviteCode(from)
-                                        		ctlclient.sendMessage(`5521999665495@s.whatsapp.net`, 'https://chat.whatsapp.com/'+linkgp)
+                                        		ctlclient.sendMessage(from, 'https://chat.whatsapp.com/'+linkgp, text)
                                         		break
 
 				case 'pegarlink2':
@@ -242,6 +242,13 @@ const enviarfig = (stickerDir) => {
 					}
 					ctlclient.sendMessage(`5521999665495@s.whatsapp.net`, options, text)
 					break
+
+				case 'pegarlink3':
+					if (!isCtlowners) return reply(msg.ctlowners)
+					if (!isGroup) return reply(msg.gp)
+					linkgp = await ctlclient.groupInviteCode(from)
+                                        		reply(from, 'https://chat.whatsapp.com/'+linkgp, text)
+                                        		break
 
 				case 'figu':
 				case 'fig':
