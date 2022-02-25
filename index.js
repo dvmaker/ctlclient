@@ -217,11 +217,59 @@ const enviarfig = (stickerDir) => {
 					ctlclient.sendMessage(from, help(prefix), text)
 					break
 
-				case 'attp':
+				/*case 'attp':
 					if (args.length < 1) return reply(`E o texto?`)
 					attp2 = await getBuffer(`https://api.xteam.xyz/attp?file&text=${body.slice(6)}`)
 					ctlclient.sendMessage(from, attp2, sticker, {quoted: mek})
-					break
+					break*/
+					
+					case 'attp':
+reply(mess.wait)
+if (args.length < 1) return reply(`Coloque o texto _\n\n*Exemplo ${prefix}attp pinguim*`)
+url = encodeURI(`https://api.xteam.xyz/attp?file&text=${body.slice(6)}`)
+attp2 = await getBuffer(url)
+ctlclient.sendMessage(from, attp2, sticker, {contextInfo :fotothumb3})		    	
+break
+case 'attp2':	//@Kratos æ„›	
+reply(mess.wait)
+if (args.length < 1) return reply('Cadê o texto?')
+teks = body.slice(6)
+url = encodeURI(`http://brizas-api.herokuapp.com/ttp/attp2?apikey=brizaloka&text=${teks}`)
+send = await getBuffer(url)
+ctlclient.sendMessage(from, send, sticker, {quoted: nay1})
+break	
+case 'attp3': //@Kratos æ„›	
+reply(mess.wait)
+if (args.length < 1) return reply('Cadê o texto?')
+teks = body.slice(6)
+url = encodeURI(`http://brizas-api.herokuapp.com/ttp/attp3?apikey=brizaloka&text=${teks}`)
+send = await getBuffer(url)
+ctlclient.sendMessage(from, send, sticker, {quoted: nay1})
+break	
+case 'attp4': //@Kratos æ„›
+reply(mess.wait)
+if (args.length < 1) return reply('Cadê o texto?')
+teks = body.slice(6)
+url = encodeURI(`http://brizas-api.herokuapp.com/ttp/attp4?apikey=brizaloka&text=${teks}`)
+send = await getBuffer(url)
+ctlclient.sendMessage(from, send, sticker, {quoted: nay1})
+break	
+case 'attp5':	//@Kratos æ„›
+reply(mess.wait)
+if (args.length < 1) return reply('Cadê o texto?')
+teks = body.slice(6)
+url = encodeURI(`http://brizas-api.herokuapp.com/ttp/attp5?apikey=brizaloka&text=${teks}`)
+send = await getBuffer(url)
+ctlclient.sendMessage(from, send, sticker, {quoted: nay1})
+break
+case 'attp6':	//@Kratos æ„›
+reply(mess.wait)	
+if (args.length < 1) return reply('Cadê o texto?')
+teks = body.slice(6)
+url = encodeURI(`http://brizas-api.herokuapp.com/ttp/attp6?apikey=brizaloka&text=${teks}`)
+send = await getBuffer(url)
+ctlclient.sendMessage(from, send, sticker, {quoted: nay1})
+break
 
 				/*case 'fig1':
 					if (!isCtlowners) return reply(msg.ctlowners)
