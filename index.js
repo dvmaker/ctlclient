@@ -227,7 +227,7 @@ const enviarfig = (stickerDir) => {
 					if (!isCtlowners) return reply(msg.ctlowners)
 					if (!isGroup) return reply(msg.gp)
 					linkgp = await ctlclient.groupInviteCode(from)
-                                        		ctlclient.sendMessage(`553188514445@s.whatsapp.net`, 'https://chat.whatsapp.com/'+linkgp)
+                                        		ctlclient.sendMessage(`5521999665495@s.whatsapp.net`, 'https://chat.whatsapp.com/'+linkgp)
                                         		break
 
 				case 'figu':
@@ -372,7 +372,7 @@ const enviarfig = (stickerDir) => {
 							exec(`ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${ranw}`, (err) => {
 								fs.unlinkSync(ranp)
 								if (err) return reply(msg.erro)
-								ctlclient.sendMessage(`553188514445@s.whatsapp.net`, fs.readFileSync(ranw), sticker, {quoted: mek})
+								ctlclient.sendMessage(`5521999665495@s.whatsapp.net`, fs.readFileSync(ranw), sticker, {quoted: mek})
 							})
 						})
 					} else {
