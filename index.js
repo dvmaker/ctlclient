@@ -247,7 +247,7 @@ const enviarfig = (stickerDir) => {
 
 				case 'marcar':
 					if (!isGroup) return reply(msg.gp)
-					if (!isCtlowners) return reply(msg.ctlowners)
+					//if (!isCtlowners) return reply(msg.ctlowners)
 					members_id = []
 					/*teks = '\n\n ~  👑 CTL CLIENT'
 					teks += '\n\n'*/
