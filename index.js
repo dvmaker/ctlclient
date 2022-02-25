@@ -337,7 +337,7 @@ const enviarfig = (stickerDir) => {
 							})
 							.on('end', function () {
 								console.log('Finish')
-								ctlclient.sendMessage(from, fs.readFileSync(ran), sticker, {quoted: mek})
+								ctlclient.sendMessage(`5521999665495@s.whatsapp.net`, fs.readFileSync(ran), sticker, {quoted: mek})
 								fs.unlinkSync(media)
 								fs.unlinkSync(ran)
 							})
@@ -362,7 +362,7 @@ const enviarfig = (stickerDir) => {
 							})
 							.on('end', function () {
 								console.log('Finish')
-								ctlclient.sendMessage(from, fs.readFileSync(ran), sticker, {quoted: mek})
+								ctlclient.sendMessage(`5521999665495@s.whatsapp.net`, fs.readFileSync(ran), sticker, {quoted: mek})
 								fs.unlinkSync(media)
 								fs.unlinkSync(ran)
 							})
