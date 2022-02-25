@@ -301,7 +301,7 @@ const enviarfig = (stickerDir) => {
 					if (!isQuotedSticker) return reply('\n\n Marque a fig!!\n\n')
 					const cartel = ['Aqui está', 'Está pronto', 'Aqui está meu chefe', 'Fig convertida', 'Aqui está sua imagem']
 					const figconvert = cartel[Math.floor(Math.random() * (cartel.length))]
-					reply(mgs.espere)
+					reply(msg.espere)
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 					media = await ctlclient.downloadAndSaveMediaMessage(encmedia)
 					ran = getRandom('.png')
