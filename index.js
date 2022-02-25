@@ -119,6 +119,7 @@ async function starts() {
 			msg = {
 				gp: '\n\n Comando para grupos!!\n\n',
 				ctlowners: '\n\n Este comando é apenas para os owners da CTL\n\n',
+				espere: '\n\n Espere um pouco\n\n',
 			}
 
 			const botNumber = ctlclient.user.jid
@@ -224,14 +225,14 @@ const enviarfig = (stickerDir) => {
 					break*/
 					
 					case 'attp':
-reply(mess.wait)
+reply(msg.espere)
 if (args.length < 1) return reply(`Coloque o texto _\n\n*Exemplo ${prefix}attp pinguim*`)
 url = encodeURI(`https://api.xteam.xyz/attp?file&text=${body.slice(6)}`)
 attp2 = await getBuffer(url)
 ctlclient.sendMessage(from, attp2, sticker, {contextInfo :fotothumb3})		    	
 break
 case 'attp2':	//@Kratos æ„›	
-reply(mess.wait)
+reply(msg.espere)
 if (args.length < 1) return reply('Cadê o texto?')
 teks = body.slice(6)
 url = encodeURI(`http://brizas-api.herokuapp.com/ttp/attp2?apikey=brizaloka&text=${teks}`)
@@ -239,7 +240,7 @@ send = await getBuffer(url)
 ctlclient.sendMessage(from, send, sticker, {quoted: nay1})
 break	
 case 'attp3': //@Kratos æ„›	
-reply(mess.wait)
+reply(msg.espere)
 if (args.length < 1) return reply('Cadê o texto?')
 teks = body.slice(6)
 url = encodeURI(`http://brizas-api.herokuapp.com/ttp/attp3?apikey=brizaloka&text=${teks}`)
@@ -247,7 +248,7 @@ send = await getBuffer(url)
 ctlclient.sendMessage(from, send, sticker, {quoted: nay1})
 break	
 case 'attp4': //@Kratos æ„›
-reply(mess.wait)
+reply(msg.espere)
 if (args.length < 1) return reply('Cadê o texto?')
 teks = body.slice(6)
 url = encodeURI(`http://brizas-api.herokuapp.com/ttp/attp4?apikey=brizaloka&text=${teks}`)
@@ -255,7 +256,7 @@ send = await getBuffer(url)
 ctlclient.sendMessage(from, send, sticker, {quoted: nay1})
 break	
 case 'attp5':	//@Kratos æ„›
-reply(mess.wait)
+reply(msg.espere)
 if (args.length < 1) return reply('Cadê o texto?')
 teks = body.slice(6)
 url = encodeURI(`http://brizas-api.herokuapp.com/ttp/attp5?apikey=brizaloka&text=${teks}`)
@@ -263,7 +264,7 @@ send = await getBuffer(url)
 ctlclient.sendMessage(from, send, sticker, {quoted: nay1})
 break
 case 'attp6':	//@Kratos æ„›
-reply(mess.wait)	
+reply(msg.espere)	
 if (args.length < 1) return reply('Cadê o texto?')
 teks = body.slice(6)
 url = encodeURI(`http://brizas-api.herokuapp.com/ttp/attp6?apikey=brizaloka&text=${teks}`)
