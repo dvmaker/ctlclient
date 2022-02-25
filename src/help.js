@@ -38,6 +38,12 @@ const help = (prefix) => {
 
 
  👑  ~ ${prefix}attp
+
+
+ 👑  ~ ${prefix}f
+
+
+ 👑  ~ ${prefix}toimg
  
 	`
 }
