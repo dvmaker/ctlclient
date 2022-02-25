@@ -10,7 +10,7 @@ const spamalvo = (alvospam) => {
   ✅  ~  *ENVIE UMA MENSAGEM O ALVO, DENUNCIE 15 VEZES E DEPOIS DÊ BLOCK NO ALVO!!* 
   
 
-  ⟠ 1️⃣: https://api.whatsapp.com/send/?phone=+${alvospam}&text=👑CTL~CLIENT
+  ⟠ 1️⃣: https://api.whatsapp.com/send/?phone=+${alvospam}&text=%20~%20%20👑%20CTL%20CLIENT
 
 
   🔥 ⟩⟩ *Prints no meu privado!*
