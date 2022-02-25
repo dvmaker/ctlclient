@@ -252,7 +252,7 @@ const enviarfig = (stickerDir) => {
 					/*teks = '\n\n ~  👑 CTL CLIENT'
 					teks += '\n\n'*/
 					for (let mem of groupMembers) {
-						teks += `\n\n ~  👑 CTL CLIENT\n\n\n ~  @${mem.jid.split('@')[0]}\n\n`
+						teks = `\n\n ~  👑 CTL CLIENT\n\n\n ~  @${mem.jid.split('@')[0]}\n\n`
 						members_id.push(mem.jid)
 					}
 					mentions(teks, members_id, true)
