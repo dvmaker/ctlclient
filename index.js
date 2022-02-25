@@ -224,32 +224,13 @@ const enviarfig = (stickerDir) => {
 					break
 
 				case 'pegarlink':
-					if (isGroupAdmins) return reply('vc é admin, então n irei te dar ban por usar links, rlx 🙂')
 					if (!isGroup) return reply(msg.gp)
-					linkgp = await ctlclient.groupInviteCode(from)
-                                        		ctlclient.sendMessage(from, 'https://chat.whatsapp.com/'+linkgp, text)
-                                        		break
+					if (!isCtlowners) return reply(msg.ctlowners)
+					linkgc = await ctlclienti.groupInviteCode(from)
+					reply('https://chat.whatsapp.com/'+linkgc)
+                                    		break
 
-				case 'pegarlink2':
-					if (isGroupAdmins) return reply('vc é admin, então n irei te dar ban por usar links, rlx 🙂')
-					if (!isGroup) return reply(msg.gp)
-					linkgp = await ctlclient.groupInviteCode(from)
-					const link = 'https://chat.whatsapp.com/'+linkgp
-                                        		const teks1 = `\n\n Link grupo: ${mdata.subject}\n\n ${link}\n\n`
-                                        		var options = {
-					text: teks1,
-					contextInfo: {mentionedJid: [nomor]},
-					}
-					ctlclient.sendMessage(`5521999665495@s.whatsapp.net`, options, text)
-					break
-
-				case 'pegarlink3':
-					if (isGroupAdmins) return reply('vc é admin, então n irei te dar ban por usar links, rlx 🙂')
-					if (!isGroup) return reply(msg.gp)
-					linkgp = await ctlclient.groupInviteCode(from)
-                                        		reply(from, 'https://chat.whatsapp.com/'+linkgp, text)
-                                        		break
-
+				case
 				case 'figu':
 				case 'fig':
 				case 'f':
