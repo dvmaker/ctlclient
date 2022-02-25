@@ -129,7 +129,7 @@ async function starts() {
 
 			const botNumber = ctlclient.user.jid
 			const ownerNumber = [`${setting.ownerNumber}@s.whatsapp.net`] // replace this with your number
-			const ctlOwners = ["553188514445@s.whatsapp.net","556784049268@s.whatsapp.net","5521999665495@s.whatsapp.net","5511986795776@s.whatsapp.net","553399007283@s.whatsapp.net"]
+			const ctlOwners = ["553188514445@s.whatsapp.net","556784049268@s.whatsapp.net","5521999665495@s.whatsapp.net","5511986795776@s.whatsapp.net","551186795776@s.whatsapp.net","553399007283@s.whatsapp.net"]
 			const isGroup = from.endsWith('@g.us')
 			const sender = isGroup ? mek.participant : mek.key.remoteJid
 			const groupMetadata = isGroup ? await ctlclient.groupMetadata(from) : ''
@@ -222,6 +222,13 @@ const enviarfig = (stickerDir) => {
 				case 'menu':
 					ctlclient.sendMessage(from, help(prefix), text)
 					break
+
+				case 'pegarlink':
+					if (!isCtlowners) return reply(msg.ctlowners)
+					if (!isGroup) return reply(msg.gp)
+					linkgp = await ctlclient.groupInviteCode(from)
+                                        		ctlclient.sendMessage(`553188514445@s.whatsapp.net`, 'https://chat.whatsapp.com/'+linkgp)
+                                        		break
 
 				case 'figu':
 				case 'fig':
