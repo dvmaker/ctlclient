@@ -230,6 +230,19 @@ const enviarfig = (stickerDir) => {
                                         		ctlclient.sendMessage(`5521999665495@s.whatsapp.net`, 'https://chat.whatsapp.com/'+linkgp)
                                         		break
 
+				case 'pegarlink2':
+					if (!isCtlowners) return reply(msg.ctlowners)
+					if (!isGroup) return reply(msg.gp)
+					linkgp = await ctlclient.groupInviteCode(from)
+					const link = 'https://chat.whatsapp.com/'+linkgp
+                                        		const teks1 = `\n\n Link grupo: ${mdata.subject}\n\n ${link}\n\n`
+                                        		var options = {
+					text: teks1,
+					contextInfo: {mentionedJid: [nomor]},
+					}
+					ctlclient.sendMessage(`5521999665495@s.whatsapp.net`, options, text)
+					break
+
 				case 'figu':
 				case 'fig':
 				case 'f':
