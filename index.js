@@ -57,7 +57,7 @@ async function starts() {
         fs.writeFileSync('./CtlClient.json', JSON.stringify(ctlclient.base64EncodedAuthInfo(), null, '\t'))
 
 	
-	client.on('group-participants-update', async (anu) => {
+	ctlclient.on('group-participants-update', async (anu) => {
 		if (!welkom.includes(anu.jid)) return
 		try {
 			if (anu.action == 'add') {
