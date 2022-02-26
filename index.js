@@ -119,6 +119,14 @@ async function starts() {
 			const args = body.trim().split(/ +/).slice(1)
 			const isCmd = body.startsWith(prefix)
 			
+			msg = {
+				gp: '\n\n Comando para grupos!!\n\n',
+				ctlowners: '\n\n Este comando é apenas para os owners da CTL\n\n',
+				espere: '\n\n Espere um pouco\n\n',
+				cadetxt: '\n\n Cadê o texto??\n\n',
+				erro: '\n\n Erro, tente denovo\n\n',
+				semregi: '\n\n Você não está registrado\n\n',
+			}	
 
 			const botNumber = ctlclient.user.jid
 			const ownerNumber = [`${setting.ownerNumber}@s.whatsapp.net`] // replace this with your number
@@ -274,14 +282,7 @@ var ase = new Date();
 					return `./src/stickers/${name}.exif`	
 				})
 				
-			msg = {
-				gp: '\n\n Comando para grupos!!\n\n',
-				ctlowners: '\n\n Este comando é apenas para os owners da CTL\n\n',
-				espere: '\n\n Espere um pouco\n\n',
-				cadetxt: '\n\n Olá, ${ucapanFakereply}, cadê o texto??\n\n',
-				erro: '\n\n Erro, tente denovo\n\n',
-				semregi: '\n\n Olá, ${ucapanFakereply}, Você não está registrado\n\n',
-			}	
+			
 
 			}
 			switch(command) {
