@@ -56,16 +56,15 @@ async function starts() {
 	await ctlclient.connect({timeoutMs: 30*1000})
         fs.writeFileSync('./CtlClient.json', JSON.stringify(ctlclient.base64EncodedAuthInfo(), null, '\t'))
 
-	ctlclient.on('group-participants-update', async (anu) => {
+	
+	client.on('group-participants-update', async (anu) => {
 		if (!welkom.includes(anu.jid)) return
 		try {
-			const mdata = await ctlclient.groupMetadata(anu.jid)
-			console.log(anu)
 			if (anu.action == 'add') {
-				audio = fs.readFileSync('./src/audios/bvtag.m4a');
-				ctlclient.sendMessage(from, audio, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
-				ctlclient.sendMessage(from, tag(prefix, waktoonyabro), text)
-				
+			audio = fs.readFileSync('./src/audios/bvtag.m4a');
+			ctlclient.sendMessage(from, audio, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+			ctlclient.sendMessage(from, tag(prefix, waktoonyabro), text)
+				} 
 		} catch (e) {
 			console.log('Error : %s', color(e, 'red'))
 		}
