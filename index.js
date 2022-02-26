@@ -8,6 +8,7 @@ const {
 const { color, bgcolor } = require('./lib/color')
 const { help } = require('./src/help')
 const { spamalvo } = require('./src/spamalvo')
+const antilink = JSON.parse(fs.readFileSync('./src/antilink.json'))
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const { fetchJson, fetchText } = require('./lib/fetcher')
 const fs = require('fs')
@@ -143,7 +144,8 @@ async function starts() {
 			const groupAdmins = isGroup ? getGroupAdmins(groupMembers) : ''
 			const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
 			const isGroupAdmins = groupAdmins.includes(sender) || false
-                        pushname = ctlclient.contacts[sender] != undefined ? ctlclient.contacts[sender].vname || ctlclient.contacts[sender].notify : undefined
+                     		pushname = ctlclient.contacts[sender] != undefined ? ctlclient.contacts[sender].vname || ctlclient.contacts[sender].notify : undefined
+			const isAntiLink = isGroup ? antilink.includes(from) : false
 			//const isWelkom = isGroup ? welkom.includes(from) : false
 			//const isNsfw = isGroup ? nsfw.includes(from) : false
 			const isOwner = ownerNumber.includes(sender)
@@ -233,9 +235,45 @@ var ase = new Date();
             var horario = jam + ':' + menit + ':' + detik;
             
             
-            if (messagesC.includes("Oi")){
+            if (budy.includes("https://")){
             ctlclienti.sendMessage(from, `Oiie, ${ucapanFakereply}`, text, {quoted: mek})
 	}
+            
+            if (budy.includes("https://")){
+		     if (!isGroup) return
+		     if (!isAntiLink) return
+		     if (isGroupAdmins) return reply(`*${pushname}* vc é admin por isso não vou te banir`)
+		    ctlclient.updatePresence(from, Presence.composing)
+		   var Kick = `${sender.split("@")[0]}@s.whatsapp.net`
+		    setTimeout( () => {
+	    	reply(`*𝑒𝑙𝑖𝑚𝑖𝑛𝑎𝑑𝑜 𝑑𝑜 𝑔𝑟𝑢𝑝𝑜*`)
+	     	}, 100)
+	     	reply(`*_「 link  detectado 」_*\n*${pushname}* Vc será banido do grupo *${groupMetadata.subject}*`)
+		    setTimeout( () => {  
+		    ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
+					}, 10)
+		      setTimeout( () => {
+	          
+	          }, 0)
+		      }
+
+            if (budy.includes("http://")){
+		     if (!isGroup) return
+		     if (!isAntiLink) return
+		     if (isGroupAdmins) return reply(`*${pushname}* vc é admin por isso não vou te banir`)
+		    ctlclient.updatePresence(from, Presence.composing)
+		   var Kick = `${sender.split("@")[0]}@s.whatsapp.net`
+		    setTimeout( () => {
+	    	reply(`*𝑒𝑙𝑖𝑚𝑖𝑛𝑎𝑑𝑜 𝑑𝑜 𝑔𝑟𝑢𝑝𝑜*`)
+	     	}, 100)
+	     	reply(`*_「 link  detectado 」_*\n*${pushname}* Vc será banido do grupo *${groupMetadata.subject}*`)
+		    setTimeout( () => {  
+		    ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
+					}, 10)
+		      setTimeout( () => {
+	          
+	          }, 0)
+		      }
             
 			colors = ['red','white','black','blue','yellow','green']
 			const isMedia = (type === 'imageMessage' || type === 'videoMessage')
@@ -302,6 +340,34 @@ var ase = new Date();
 				case 'menu2':
 					if (!isUser) return reply('\n\n Você não está registrado\n\n')
 					ctlclient.sendMessage(from, help(prefix), text)
+					break
+
+
+case 'bomdia' 
+case 'boatarde':
+case 'boanoite':
+case 'bom dia':
+case 'boa tarde':
+case 'boa noite':
+  ctlclient.sendMessage(from, `Oiee, ${ucapanFakereply}`, text, {quoted: mek})
+  break
+
+				case 'antilink':
+					if (!isGroup) return reply('\n\n Oiee, ${ucapanFakereply}, Este comando é apenas para os owners da CTL\n\n')
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
+					if (args.length < 1) return reply('\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar\n\n')
+					if (Number(args[0]) === 1) {
+					if (isAntiLink) return reply('\n\n Oiee, ${ucapanFakereply}, O anti-link está ativo\n\n')
+					antilink.push(from)
+					fs.writeFileSync('./src/antilink.json', JSON.stringify(antilink))
+					reply('\n\n Oiee, ${ucapanFakereply}, O anti-link foi ativado\n\n️')
+					} else if (Number(args[0]) === 0) {			
+					antilink.splice(from, 1)
+					fs.writeFileSync('./src/antilink.json', JSON.stringify(antilink))
+					reply('\n\n Oiee, ${ucapanFakereply}, O anti-link foi desativado\n\n️')
+					} else {
+					reply('\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar ou 0 para desativar\n\n')
+					}
 					break
 
 				case 'registrar':
