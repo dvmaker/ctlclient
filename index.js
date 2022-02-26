@@ -118,14 +118,6 @@ async function starts() {
 			const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
 			const args = body.trim().split(/ +/).slice(1)
 			const isCmd = body.startsWith(prefix)
-
-			msg = {
-				gp: '\n\n Comando para grupos!!\n\n',
-				ctlowners: '\n\n Este comando é apenas para os owners da CTL\n\n',
-				espere: '\n\n Espere um pouco\n\n',
-				cadetxt: '\n\n Cadê o texto??\n\n',
-				erro: '\n\nErro, tente denovo\n\n',
-			}
 			
 
 			const botNumber = ctlclient.user.jid
@@ -226,8 +218,8 @@ var ase = new Date();
                 case 10: bulan1 = '11'; break;
                 case 11: bulan1 = '12'; break;
             }
-            var data = 'Data' + ': '  + tanggal + '/' + bulan1 + '/' + tahun;
-            var horario = 'Horário' + ': ' + jam + ':' + menit + ':' + detik;
+            var data = tanggal + '/' + bulan1 + '/' + tahun;
+            var horario = jam + ':' + menit + ':' + detik;
             
             
 			colors = ['red','white','black','blue','yellow','green']
@@ -279,7 +271,16 @@ var ase = new Date();
 
 				fs.writeFile(`./src/stickers/${name}.exif`, buffer, (err) => {	
 					return `./src/stickers/${name}.exif`	
-				})	
+				})
+				
+			msg = {
+				gp: '\n\n Comando para grupos!!\n\n',
+				ctlowners: '\n\n Este comando é apenas para os owners da CTL\n\n',
+				espere: '\n\n Espere um pouco\n\n',
+				cadetxt: '\n\n Olá, ${ucapanFakereply}, cadê o texto??\n\n',
+				erro: '\n\n Erro, tente denovo\n\n',
+				semregi: '\n\n Olá, ${ucapanFakereply}, Você não está registrado\n\n',
+			}	
 
 			}
 			switch(command) {
@@ -289,12 +290,48 @@ var ase = new Date();
 					ctlclient.sendMessage(from, help(prefix), text)
 					break
 
+				case 'help2':
+				case 'menu2':
+					if (!isUser) return reply(msg.semregi)
+					ctlclient.sendMessage(from, help(prefix), text)
+					break
+
+				case 'registrar':
+					ctlclient.updatePresence(from, Presence.composing)
+					if (args.length < 1) return reply(`\n\n Olá, ${ucapanFakereply}, você precisa colocar seu nome e sua idade\n\n Exemplo: ${registrar}Marcelo|20\n\n`)
+					var reg = body.slice(11)
+					var nome = reg.split("|")[0];
+					var idade = reg.split("|")[1];
+					ctlclient.sendMesage(from, `\n\n Olá, ${ucapanFakereply}, você ainda será avaliado pelo Davi e ele irá te falar se você foi aprovado ou não\n\n Data do pedido de registro: ${data}\n\n Hora do pedido registro: ${horario}\n\n Nome: ${nome}\n\n Número: wa.me/${sender.split("@")[0]}\n\nIdade: ${idade}\n\n Use ${prefix}help ou ${menu} para ver os comandos\n\n Total de usuários ${user.length}\n\n`, text, {quoted: mek})
+					ctlclient.sendMessage(`5521999665495@s.whatsapp.net`, `\n\n Data do pedido de registro: ${data}\n\n Hora do pedido registro: ${horario}\n\n Nome: ${nome}\n\n Número: wa.me/${sender.split("@")[0]}\n\n Idade: ${idade}\n\n Total de usuários: ${user.length}\n\n`, text, {quoted: mek})
+					break
+
+				case 'aprovar2':
+					ctlclient.updatePresence(from, Presence.composing)
+					if (args.length < 1) return reply(`\n\nVocê precisa colocar o número da pessoa!!\n\n`)
+					if (!isCtlowners) return reply(msg.ctlowners)
+					var reg = body.slice(11)
+					var nome = reg.split("|")[0];
+					var idade = reg.split("|")[1];
+					
+					fs.writeFileSync('./src/user.json', JSON.stringify(user))
+					ctlclient.sendMessage(from, '\n\n ✅ APROVADO\n\n', text, {quoted: mek})
+					break
+
+				case 'aprovar':
+					if (!isCtlowners) return reply(msg.ctlowners)
+					ctl = body.slice(8)
+					dvmaker.push(ctl)
+					fs.writeFileSync('./src/user.json', JSON.stringify(dvmaker))
+					reply('\n\n ✅ APROVADO\n\n')
+					break
+
 				case 'hora':
-					ctlclient.sendMessage(from, `${horario}`, text)
+					ctlclient.sendMessage(from, `Horário: ${horario}`, text)
 					break
 
 				case 'data':
-					ctlclient.sendMessage(from, `${data}`, text)
+					ctlclient.sendMessage(from, `Data: ${data}`, text)
 					break
 
 				case 'report':
