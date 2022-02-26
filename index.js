@@ -226,8 +226,8 @@ var ase = new Date();
                 case 10: bulan1 = 'novembro'; break;
                 case 11: bulan1 = 'dezembro'; break;
             }
-            var tampilHari = '' + hari + ', ' + tanggal + ' ' + bulan1 + ' ' + tahun;
-            var tampilJam = 'Horário' + ': ' + jam + ':' + menit + ':' + detik;
+            var data = 'Data' + ':' + tanggal + ':' + bulan1 + ':' + tahun;
+            var horario = 'Horário' + ': ' + jam + ':' + menit + ':' + detik;
             
             
 			colors = ['red','white','black','blue','yellow','green']
@@ -291,6 +291,10 @@ var ase = new Date();
 
 				case 'testehora':
 					ctlclient.sendMessage(from, `${tampilJam}`, text)
+					break
+
+				case 'testehora2':
+					ctlclient.sendMessage(from, `${time}`, text)
 					break
 
 				case 'testedata':
