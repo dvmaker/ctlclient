@@ -226,7 +226,7 @@ var ase = new Date();
                 case 10: bulan1 = 'novembro'; break;
                 case 11: bulan1 = 'dezembro'; break;
             }
-            var data = 'Data' + ':' + tanggal + ':' + bulan1 + ':' + tahun;
+            var data = 'Data' + ':'  + tanggal + '/' + bulan1 + '/' + tahun;
             var horario = 'Horário' + ': ' + jam + ':' + menit + ':' + detik;
             
             
@@ -290,7 +290,7 @@ var ase = new Date();
 					break
 
 				case 'hora':
-					ctlclient.sendMessage(from, `${hora}`, text)
+					ctlclient.sendMessage(from, `${horario}`, text)
 					break
 
 				case 'data':
