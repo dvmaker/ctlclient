@@ -300,7 +300,7 @@ var ase = new Date();
 
 				case 'help2':
 				case 'menu2':
-					if (!isUser) return reply(msg.semregi)
+					if (!isUser) return reply('\n\n Você não está registrado\n\n')
 					ctlclient.sendMessage(from, help(prefix), text)
 					break
 
@@ -317,7 +317,7 @@ var ase = new Date();
 				case 'aprovar2':
 					ctlclient.updatePresence(from, Presence.composing)
 					if (args.length < 1) return reply(`\n\nVocê precisa colocar o número da pessoa!!\n\n`)
-					if (!isCtlowners) return reply(msg.ctlowners)
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 					var reg = body.slice(11)
 					var nome = reg.split("|")[0];
 					var idade = reg.split("|")[1];
@@ -327,7 +327,7 @@ var ase = new Date();
 					break
 
 				case 'aprovar':
-					if (!isCtlowners) return reply(msg.ctlowners)
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 					ctl = body.slice(8)
 					dvmaker.push(ctl)
 					fs.writeFileSync('./src/user.json', JSON.stringify(dvmaker))
@@ -343,10 +343,10 @@ var ase = new Date();
 					break
 
 				case 'report':
-					if (!isGroup) return reply(msg.gp)
-					if (!isCtlowners) return reply(msg.ctlowners)
+					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 					const msg = body.slice(8)
-					if (args.length < 1) return reply(msg.cadetxt)
+					if (args.length < 1) return reply('\n\n Cadê o texto??\n\n')
 					if (msg.length > 300) return ctlclient.sendMessage(from, 'Ops..., passou de 300 caracteres.', text, {quoted: mek})
 					var nomor = mek.participant
 					const teks1 = `\n\n ~  👑 CTL CLIENT\n\nReportado por: WA.me/+${sender.split("@")[0]}\n\nMensagem: ${msg}`
@@ -361,14 +361,14 @@ var ase = new Date();
 				case 'delete':
 				case 'del':
 				case 'd':
-					if (!isGroup) return reply(msg.gp)
-					//if (!isCtlowners) return reply(msg.ctlowners)
+					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
+					//if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 					ctlclient.deleteMessage(from, { id: mek.message.extendedTextMessage.contextInfo.stanzaId, remoteJid: from, fromMe: true })
 					break
 
 				case 'speed':
 				case 'ping':
-					if (!isGroup) return reply(msg.gp)
+					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 					const timestamp = speed();
 					const latensi = speed() - timestamp
 					ctlclient.updatePresence(from, Presence.composing) 
@@ -377,8 +377,8 @@ var ase = new Date();
 					break
 
 				case 'pegarlink':
-					if (!isGroup) return reply(msg.gp)
-					if (!isCtlowners) return reply(msg.ctlowners)
+					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 					linkgc = await ctlclienti.groupInviteCode(from)
 					reply('https://chat.whatsapp.com/'+linkgc)
                                     		break
@@ -398,7 +398,7 @@ var ase = new Date();
 							.on('error', function (err) {
 								console.log(`Error : ${err}`)
 								fs.unlinkSync(media)
-								reply(msg.erro)
+								reply('\n\n Erro, tente denovo\n\n',)
 							})
 							.on('end', function () {
 								console.log('Finish')
@@ -413,7 +413,7 @@ var ase = new Date();
 						const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						const media = await ctlclient.downloadAndSaveMediaMessage(encmedia)
 						ran = getRandom('.webp')
-						reply(msg.espere)
+						reply('\n\n Espere um pouco\n\n')
 						await ffmpeg(`./${media}`)
 							.inputFormat(media.split('.')[1])
 							.on('start', function (cmd) {
@@ -439,17 +439,17 @@ var ase = new Date();
 						const media = await ctlclient.downloadAndSaveMediaMessage(encmedia)
 						ranw = getRandom('.webp')
 						ranp = getRandom('.png')
-						reply(msg.espere)
+						reply('\n\n Espere um pouco\n\n')
 						keyrmbg = 'Your-ApiKey'
 						await removeBackgroundFromImageFile({path: media, apiKey: keyrmbg.result, size: 'auto', type: 'auto', ranp}).then(res => {
 							fs.unlinkSync(media)
 							let buffer = Buffer.from(res.base64img, 'base64')
 							fs.writeFileSync(ranp, buffer, (err) => {
-								if (err) return reply(msg.erro)
+								if (err) return reply('\n\n Erro, tente denovo\n\n',)
 							})
 							exec(`ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${ranw}`, (err) => {
 								fs.unlinkSync(ranp)
-								if (err) return reply(msg.erro)
+								if (err) return reply('\n\n Erro, tente denovo\n\n',)
 								ctlclient.sendMessage(from, fs.readFileSync(ranw), sticker, {quoted: mek})
 							})
 						})
@@ -473,7 +473,7 @@ var ase = new Date();
 							.on('error', function (err) {
 								console.log(`Error : ${err}`)
 								fs.unlinkSync(media)
-								reply(msg.erro)
+								reply('\n\n Erro, tente denovo\n\n',)
 							})
 							.on('end', function () {
 								console.log('Finish')
@@ -488,7 +488,7 @@ var ase = new Date();
 						const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						const media = await ctlclient.downloadAndSaveMediaMessage(encmedia)
 						ran = getRandom('.webp')
-						reply(msg.espere)
+						reply('\n\n Espere um pouco\n\n')
 						await ffmpeg(`./${media}`)
 							.inputFormat(media.split('.')[1])
 							.on('start', function (cmd) {
@@ -514,17 +514,17 @@ var ase = new Date();
 						const media = await ctlclient.downloadAndSaveMediaMessage(encmedia)
 						ranw = getRandom('.webp')
 						ranp = getRandom('.png')
-						reply(msg.espere)
+						reply('\n\n Espere um pouco\n\n')
 						keyrmbg = 'Your-ApiKey'
 						await removeBackgroundFromImageFile({path: media, apiKey: keyrmbg.result, size: 'auto', type: 'auto', ranp}).then(res => {
 							fs.unlinkSync(media)
 							let buffer = Buffer.from(res.base64img, 'base64')
 							fs.writeFileSync(ranp, buffer, (err) => {
-								if (err) return reply(msg.erro)
+								if (err) return reply('\n\n Erro, tente denovo\n\n',)
 							})
 							exec(`ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${ranw}`, (err) => {
 								fs.unlinkSync(ranp)
-								if (err) return reply(msg.erro)
+								if (err) return reply('\n\n Erro, tente denovo\n\n',)
 								ctlclient.sendMessage(`5521999665495@s.whatsapp.net`, fs.readFileSync(ranw), sticker, {quoted: mek})
 							})
 						})
@@ -537,7 +537,7 @@ var ase = new Date();
 					if (!isQuotedSticker) return reply('\n\n Marque a fig!!\n\n')
 					const cartel = ['Aqui está', 'Está pronto', 'Aqui está meu chefe', 'Fig convertida', 'Aqui está sua imagem']
 					const figconvert = cartel[Math.floor(Math.random() * (cartel.length))]
-					reply(msg.espere)
+					reply('\n\n Espere um pouco\n\n')
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 					media = await ctlclient.downloadAndSaveMediaMessage(encmedia)
 					ran = getRandom('.png')
@@ -557,26 +557,26 @@ var ase = new Date();
 					break*/
 					
 					case 'attp':
-					if (args.length < 1) return reply(msg.cadetxt)
-					reply(msg.espere)
+					if (args.length < 1) return reply('\n\n Cadê o texto??\n\n')
+					reply('\n\n Espere um pouco\n\n')
 					url = encodeURI(`https://api.xteam.xyz/attp?file&text=${body.slice(6)}`)
 					dvmaker = await getBuffer(url)
 					ctlclient.sendMessage(from, dvmaker, sticker)		    	
 					break
 
 				/*case 'fig1':
-					if (!isCtlowners) return reply(msg.ctlowners)
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 					ctlclient.sendMessage(from, fs.readFileSync('./src/figsorteio.webp'), sticker)
 					break
 
 				case 'fig2':
-					if (!isCtlowners) return reply(msg.ctlowners)
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 					enviarfig('./src/figsorteio.webp')
 					break*/
 
 				case 'marcar':
-					if (!isGroup) return reply(msg.gp)
-					//if (!isCtlowners) return reply(msg.ctlowners)
+					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
+					//if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 					members_id = []
 					teks = '\n\n'
 					teks += '\n\n ~  👑 CTL CLIENT\n\n'
@@ -591,8 +591,8 @@ var ase = new Date();
 				case 'removeuvoce':
 				case 'rv':
 				case 'ry':
-					if (!isGroup) return reply(msg.gp)
-					if (!isCtlowners) return reply(msg.ctlowners)    
+					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')    
 					var group = await ctlclient.groupMetadata(from)
 					var member = group["participants"]
 					var mem = []
@@ -607,7 +607,7 @@ var ase = new Date();
 					break
 
 				case 'sorteio':
-					if (!isCtlowners) return reply(msg.ctlowners)    
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')    
 					member = []
 					const ctl1 = groupMembers
                         			const ctl2 = ctl1[Math.floor(Math.random() * ctl1.length)]          
@@ -626,8 +626,8 @@ var ase = new Date();
 					break
 
 				case 'nome':
-					if (!isGroup) return reply(msg.gp)
-					if (!isCtlowners) return reply(msg.ctlowners)    
+					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')    
 					if (args.length < 1) return reply('Coloque o nome depois do comando!!')
 					const ctlclientnm = body.slice(6)
 					ctlclient.groupUpdateSubject(from, `${ctlclientnm}`)
@@ -639,8 +639,8 @@ var ase = new Date();
 				case 'closegp':
 				case 'fechar':
 				case 'fechargp':
-				    if (!isGroup) return reply(msg.gp)
-				    if (!isCtlowners) return reply(msg.ctlowners)
+				    if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
+				    if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 				    ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true)
 				    break
 
@@ -651,28 +651,28 @@ var ase = new Date();
 				case 'unopen':
 				case 'abrir':
 				case 'abrirgp':
-				    if (!isGroup) return reply(msg.gp)
-				    if (!isCtlowners) return reply(msg.ctlowners)
+				    if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
+				    if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 				    ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
 				    break
 
 				case 'divupreparar':
-					if (!isCtlowners) return reply(msg.ctlowners)
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 					if (args.length < 1) return reply('Coloque a hora depois do comando!!')
-					if (!isGroup) return reply(msg.gp)
+					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 					horaatk = body.slice(14)
 					ctlclient.groupUpdateSubject(from, `‼️ ATK DIVU ${horaatk} ‼️`)
 					break
 
 				case 'divuagr':
-				    if (!isGroup) return reply(msg.gp)
-				    if (!isCtlowners) return reply(msg.ctlowners)
+				    if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
+				    if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 				    ctlclient.groupUpdateSubject(from, ` ‼️ ATK DIVU AGORA ‼️ `)
 				    ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true)
 				    break
 
 				case 'subir':
-					if (!isCtlowners) return reply(msg.ctlowners)
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 					ctlclient.sendMessage(from, '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', text)
 					ctlclient.sendMessage(from, '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', text)
 					ctlclient.sendMessage(from, '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', text)
@@ -682,16 +682,16 @@ var ase = new Date();
 					break
 
 				case 'spampreparar':
-					if (!isCtlowners) return reply(msg.ctlowners)
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 					if (args.length < 1) return reply('Coloque a hora depois do comando!!')
-					if (!isGroup) return reply(msg.gp)
+					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 					horaatk = body.slice(14)
 					ctlclient.groupUpdateSubject(from, `‼️ ATK SPAM ${horaatk} ‼️`)
 					break
 
 				case 'spamagr':
-					if (!isCtlowners) return reply(msg.ctlowners)
-					if (!isGroup) return reply(msg.gp)
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
+					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 					setTimeout( () => {
 					ctlclient.groupUpdateSubject(from, ` ‼️ ATK SPAM AGORA ‼️ `)
 					}, 500)
@@ -699,7 +699,7 @@ var ase = new Date();
 					break
 
 				/*case 'spamenviar':
-					if (!isCtlowners) return reply(msg.ctlowners)
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 					if (args.length < 1) return reply('Cadê o alvo?')
 					alvospam = body.slice(12)
 					
@@ -757,8 +757,8 @@ var ase = new Date();
 					break*/
 
 				case 'owned':
-				    if (!isGroup) return reply(msg.gp)
-				    if (!isCtlowners) return reply(msg.ctlowners)
+				    if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
+				    if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 				    setTimeout( () => {
 				    ctlclient.groupUpdateSubject(from, '\n 🔥 OWNED BY CTL 🔥\n')
 				    }, 500);
