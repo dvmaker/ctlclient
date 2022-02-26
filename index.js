@@ -133,7 +133,7 @@ async function starts() {
 
 			const botNumber = ctlclient.user.jid
 			const ownerNumber = [`${setting.ownerNumber}@s.whatsapp.net`] // replace this with your number
-			const ctlOwners = ["553188514445@s.whatsapp.net","556784049268@s.whatsapp.net","5521999665495@s.whatsapp.net","5511986795776@s.whatsapp.net","551186795776@s.whatsapp.net","5511986795776@s.whatsapp.net"]
+			const ctlOwners = ["553188514445@s.whatsapp.net","556784049268@s.whatsapp.net","5521999665495@s.whatsapp.net","5511986795776@s.whatsapp.net","551186795776@s.whatsapp.net","5511959140941@s.whatsapp.net","551159140941@s.whatsapp.net"]
 			//const ctlOwners = ["553188514445@s.whatsapp.net","556784049268@s.whatsapp.net","5521999665495@s.whatsapp.net","553399007283@s.whatsapp.net"]
 			const isGroup = from.endsWith('@g.us')
 			const sender = isGroup ? mek.participant : mek.key.remoteJid
@@ -348,20 +348,20 @@ var ase = new Date();
 					break
 
 				case 'antilink':
-					if (!isGroup) return reply('\n\n Oiee, ${ucapanFakereply}, Este comando é apenas para os owners da CTL\n\n')
+					if (!isGroup) return reply(`\n\n Oiee, ${ucapanFakereply}, Este comando é apenas para os owners da CTL\n\n`)
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
-					if (args.length < 1) return reply('\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar\n\n')
+					if (args.length < 1) return reply(`\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar\n\n`)
 					if (Number(args[0]) === 1) {
-					if (isAntiLink) return reply('\n\n Oiee, ${ucapanFakereply}, O anti-link está ativo\n\n')
+					if (isAntiLink) return reply(`\n\n Oiee, ${ucapanFakereply}, O anti-link está ativo\n\n`)
 					antilink.push(from)
 					fs.writeFileSync('./src/antilink.json', JSON.stringify(antilink))
-					reply('\n\n Oiee, ${ucapanFakereply}, O anti-link foi ativado\n\n️')
+					reply(`\n\n Oiee, ${ucapanFakereply}, O anti-link foi ativado\n\n️`)
 					} else if (Number(args[0]) === 0) {			
 					antilink.splice(from, 1)
 					fs.writeFileSync('./src/antilink.json', JSON.stringify(antilink))
-					reply('\n\n Oiee, ${ucapanFakereply}, O anti-link foi desativado\n\n️')
+					reply(`\n\n Oiee, ${ucapanFakereply}, O anti-link foi desativado\n\n️`)
 					} else {
-					reply('\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar ou 0 para desativar\n\n')
+					reply(`\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar ou 0 para desativar\n\n`)
 					}
 					break
 
