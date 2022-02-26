@@ -343,14 +343,11 @@ var ase = new Date();
 					break
 
 
-case 'bomdia' 
-case 'boatarde':
-case 'boanoite':
-case 'bom dia':
-case 'boa tarde':
-case 'boa noite':
-  ctlclient.sendMessage(from, `Oiee, ${ucapanFakereply}`, text, {quoted: mek})
-  break
+				case 'bomdia' 
+				case 'boatarde':
+				case 'boanoite':
+					ctlclient.sendMessage(from, `Oiee, ${ucapanFakereply}`, text, {quoted: mek})
+					break
 
 				case 'antilink':
 					if (!isGroup) return reply('\n\n Oiee, ${ucapanFakereply}, Este comando é apenas para os owners da CTL\n\n')
