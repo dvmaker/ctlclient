@@ -36,7 +36,6 @@ function kyun(seconds){
   //return pad(hours) + ':' + pad(minutes) + ':' + pad(seconds)
   return `${pad(hours)} Jam ${pad(minutes)} Menit ${pad(seconds)} Detik`
 }
-
 async function starts() {
 	const ctlclient = new WAConnection()
 	ctlclient.browserDescription = [' ~  Ctl Client By Davi ant Otan ', "Safari", '0']
@@ -45,16 +44,6 @@ async function starts() {
 	ctlclient.on('qr', () => {
 		console.log(color('[','white'), color('!','red'), color(']','white'), color(' Scan the qr code above'))
 	})
-
-	fs.existsSync('./CtlClient.json') && ctlclient.loadAuthInfo('./CtlClient.json')
-	ctlclient.on('connecting', () => {
-		start('2', 'Connecting...')
-	})
-	ctlclient.on('open', () => {
-		success('2', 'Connected')
-	})
-	await ctlclient.connect({timeoutMs: 30*1000})
-        fs.writeFileSync('./CtlClient.json', JSON.stringify(ctlclient.base64EncodedAuthInfo(), null, '\t'))
 
 	ctlclient.on('group-participants-update', async (anu) => {
 		if (!welkom.includes(anu.jid)) return
@@ -990,6 +979,6 @@ var ase = new Date();
 		} catch (e) {
 			console.log('Error : %s', color(e, 'red'))
 		}
-	})
+	}
 }
 starts()
