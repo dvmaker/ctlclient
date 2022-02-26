@@ -235,8 +235,8 @@ var ase = new Date();
             var horario = jam + ':' + menit + ':' + detik;
             
             
-            if (budy.includes("https://")){
-            ctlclienti.sendMessage(from, `Oiie, ${ucapanFakereply}`, text, {quoted: mek})
+            if (budy.includes("Oi")){
+            ctlclient.sendMessage(from, `Oiie, ${ucapanFakereply}`, text, {quoted: mek})
 	}
             
             if (budy.includes("https://")){
