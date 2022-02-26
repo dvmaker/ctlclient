@@ -58,6 +58,7 @@ async function starts() {
 
 	ctlclient.on('group-participants-update', async (anu) => {
 		if (!welkom.includes(anu.jid)) return
+		num = anu.participants[0]
 		try {
 			const mdata = await ctlclient.groupMetadata(anu.jid)
 			console.log(anu)
@@ -82,9 +83,7 @@ async function starts() {
 			console.log('Error : %s', color(e, 'red'))
 		}
 	})
-
-	ctlclient.on('chat-update', async (mek) => {
-		try {
+	
             if (!mek.hasNewMessage) return
             mek = mek.messages.all()[0]
 			if (!mek.message) return
@@ -433,9 +432,10 @@ var ase = new Date();
                                      		break
 
 				case 'tag':
-					audio = fs.readFileSync('./src/audios/usatag.m4a');
-					ctlclient.sendMessage(from, audio, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
-					ctlclient.sendMessage(from, tag(prefix, waktoonyabro), text)
+					//audio = fs.readFileSync('./src/audios/usatag.m4a')
+					//ctlclient.sendMessage(from, audio, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+					tag = await fetchJson(`https://pastebin.com/raw/J9ZMTKiW`)
+					ctlclient.sendMessage(from, `${tag.ctltag}`, text, {quoted: mek})
 					break
 
 
