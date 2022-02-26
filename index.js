@@ -343,7 +343,7 @@ var ase = new Date();
 					break
 
 
-				case 'bomdia' 
+				case 'bomdia':
 				case 'boatarde':
 				case 'boanoite':
 					ctlclient.sendMessage(from, `Oiee, ${ucapanFakereply}`, text, {quoted: mek})
