@@ -8,7 +8,6 @@ const {
 const { color, bgcolor } = require('./lib/color')
 const { help } = require('./src/help')
 const { spamalvo } = require('./src/spamalvo')
-const antilink = JSON.parse(fs.readFileSync('./src/antilink.json'))
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const { fetchJson, fetchText } = require('./lib/fetcher')
 const fs = require('fs')
@@ -24,6 +23,7 @@ const loli = new lolis()
 const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
 const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))*/
 const setting = JSON.parse(fs.readFileSync('./src/settings.json'))
+const antilink = JSON.parse(fs.readFileSync('./src/antilink.json'))
 prefix = setting.prefix
 blocked = []
 
