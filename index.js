@@ -62,25 +62,10 @@ async function starts() {
 			const mdata = await ctlclient.groupMetadata(anu.jid)
 			console.log(anu)
 			if (anu.action == 'add') {
-				num = anu.participants[0]
-				try {
-					ppimg = await ctlclient.getProfilePicture(`${anu.participants[0].split('@')[0]}@c.us`)
-				} catch {
-					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
-				}
-				teks = `Halo @${num.split('@')[0]}\nSelamat datang di group *${mdata.subject}*`
-				let buff = await getBuffer(ppimg)
-				ctlclient.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
+				ctlclient.sendMessage(mdata.id, '\n\n Coloca tag ae\n\n ??? ? ??????:\n\n ? ]?? ?? ???\n\n ? ] ????????? ?????? ???? ??????????????\n\n Use .help ou .menu, para usar o Ctl Client', MessageType.text)
 			} else if (anu.action == 'remove') {
-				num = anu.participants[0]
-				try {
-					ppimg = await ctlclient.getProfilePicture(`${num.split('@')[0]}@c.us`)
-				} catch {
-					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
-				}
-				teks = `Sayonara @${num.split('@')[0]}?`
-				let buff = await getBuffer(ppimg)
-				ctlclient.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
+				teks = 'F'
+				ctlclient.sendMessage(mdata.id, teks, MessageType.text)
 			}
 		} catch (e) {
 			console.log('Error : %s', color(e, 'red'))
