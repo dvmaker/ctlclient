@@ -317,7 +317,7 @@ var ase = new Date();
 				case 'del':
 				case 'd':
 					if (!isGroup) return reply(msg.gp)
-					if (!isCtlowners) return reply(msg.ctlowners)
+					//if (!isCtlowners) return reply(msg.ctlowners)
 					ctlclient.deleteMessage(from, { id: mek.message.extendedTextMessage.contextInfo.stanzaId, remoteJid: from, fromMe: true })
 					break
 
