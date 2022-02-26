@@ -990,7 +990,6 @@ var ase = new Date();
 					}
                            }
 		}
-                           }
 		} catch (e) {
 			console.log('Error : %s', color(e, 'red'))
 		}
