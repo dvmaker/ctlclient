@@ -68,7 +68,7 @@ async function starts() {
 	    }
 	})
 
-	client.on('chat-update', async (mek) => {
+	ctlclient.on('chat-update', async (mek) => {
 		try {
             if (!mek.hasNewMessage) return
             mek = mek.messages.all()[0]
