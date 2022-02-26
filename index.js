@@ -51,11 +51,7 @@ async function starts() {
 			const mdata = await ctlclient.groupMetadata(anu.jid)
 			console.log(anu)
 			if (anu.action == 'add') {
-				ctlclient.sendMessage(mdata.id, `\n\n Eae @${num.split('@')[0]} seja bem vindo coloca tag ae\n\n ??? ? ??????:
-
-? ]?? ?? ???
-
-? ] ????????? ?????? ???? ?????????????? use ${prefix}help ou ${prefix}menu, para usar o Ctl Client`, MessageType.text)
+				ctlclient.sendMessage(mdata.id, `\n\n Eae @${num.split('@')[0]} seja bem vindo, pede a tag para algum adm ae\n\n use ${prefix}help ou ${prefix}menu, para usar o Ctl Client`, MessageType.text)
 			} else if (anu.action == 'remove') {
 				teks = 'F'
 				ctlclient.sendMessage(mdata.id, teks, MessageType.text)
