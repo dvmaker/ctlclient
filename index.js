@@ -231,6 +231,10 @@ var ase = new Date();
             var horario = jam + ':' + menit + ':' + detik;
             
             
+            if (messagesC.includes("Oi")){
+            ctlclienti.sendMessage(from, `Oiie, ${ucapanFakereply}`, text, {quoted: mek})
+	}
+            
 			colors = ['red','white','black','blue','yellow','green']
 			const isMedia = (type === 'imageMessage' || type === 'videoMessage')
 			const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
