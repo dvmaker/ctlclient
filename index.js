@@ -107,6 +107,7 @@ async function starts() {
 			global.prefix
 			global.blocked
 			const content = JSON.stringify(mek.message)
+			const speed = require('performance-now');
 			const from = mek.key.remoteJid
 			const type = Object.keys(mek.message)[0]
 			const apiKey = setting.apiKey // contact me on whatsapp wa.me/6285892766102
@@ -164,6 +165,71 @@ const enviarfig = (stickerDir) => {
     })
 }
 
+var ase = new Date();
+                        var waktoonyabro = ase.getHours();
+                        switch(waktoonyabro){
+                case 00: waktoonyabro = `Boa noite ${pushname}🌙`; break;
+                case 01: waktoonyabro = `Boa noite ${pushname}🌙`; break;
+                case 02: waktoonyabro = `Boa noite ${pushname}🌙`; break;
+                case 03: waktoonyabro = `Bom Dia ${pushname}✨`; break;
+                case 04: waktoonyabro = `Bom Dia ${pushname}✨`; break;
+                case 05: waktoonyabro = `Bom Dia ${pushname}✨`; break;
+                case 06: waktoonyabro = `Bom Dia ${pushname}✨`; break;
+                case 07: waktoonyabro = `Bom Dia ${pushname}✨`; break;
+                case 08: waktoonyabro = `Bom Dia ${pushname}✨`; break;
+                case 09: waktoonyabro = `Bom Dia ${pushname}✨`; break;
+                case 10: waktoonyabro = `Bom Dia ${pushname}✨`; break;
+                case 11: waktoonyabro = `Boa tarde ${pushname}🔥`; break;
+                case 12: waktoonyabro = `Boa tarde ${pushname}🔥`; break;
+                case 13: waktoonyabro = `Boa tarde ${pushname}🔥`; break;
+                case 14: waktoonyabro = `Boa tarde ${pushname}🔥`; break;
+                case 15: waktoonyabro = `Boa tarde ${pushname}🌹`; break;
+                case 16: waktoonyabro = `Boa tarde ${pushname}🌹`; break;
+                case 17: waktoonyabro = `Boa tarde ${pushname}🌹`; break;
+                case 18: waktoonyabro = `Boa noite ${pushname}🌙`; break;
+                case 19: waktoonyabro = `Boa noite ${pushname}🌙`; break;
+                case 20: waktoonyabro = `Boa noite ${pushname}🌙`; break;
+                case 21: waktoonyabro = `Boa noite ${pushname}🌙`; break;
+                case 22: waktoonyabro = `Boa noite ${pushname}🌙`; break;
+                case 23: waktoonyabro = `Boa noite ${pushname}🌙`; break;
+            }
+            var ucapanFakereply = '' + waktoonyabro;
+            var date = new Date();
+        var tahun = date.getFullYear();
+        var bulan1 = date.getMonth();
+        var tanggal = date.getDate();
+        var hari = date.getDay();
+        var jam = date.getHours();
+        var menit = date.getMinutes();
+        var detik = date.getSeconds();
+        var waktoo = date.getHours();
+            switch(hari) {
+                case 00: hari = 'Domigo'; break;
+                case 01: hari = 'Segunda-feira'; break;
+                case 02: hari = 'terça'; break;
+                case 03: hari = 'quarta-feira'; break;
+                case 04: hari = 'quinta-feira'; break;
+                case 05: hari = 'sexta-feira'; break;
+                case 06: hari = 'sábado'; break;
+            }
+            switch(bulan1) {
+                case 00: bulan1 = 'Janeiro'; break;
+                case 01: bulan1 = 'fevereiro'; break;
+                case 02: bulan1 = 'Março'; break;
+                case 03: bulan1 = 'abril'; break;
+                case 04: bulan1 = 'Maio'; break;
+                case 05: bulan1 = 'Junho'; break;
+                case 06: bulan1 = 'julho'; break;
+                case 07: bulan1 = 'agosto'; break;
+                case 08: bulan1 = 'setembro'; break;
+                case 09: bulan1 = 'Outubro'; break;
+                case 10: bulan1 = 'novembro'; break;
+                case 11: bulan1 = 'dezembro'; break;
+            }
+            var tampilHari = '' + hari + ', ' + tanggal + ' ' + bulan1 + ' ' + tahun;
+            var tampilJam = 'Horário' + ': ' + jam + ':' + menit + ':' + detik;
+            
+            
 			colors = ['red','white','black','blue','yellow','green']
 			const isMedia = (type === 'imageMessage' || type === 'videoMessage')
 			const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
@@ -223,6 +289,48 @@ const enviarfig = (stickerDir) => {
 					ctlclient.sendMessage(from, help(prefix), text)
 					break
 
+				case 'testehora':
+					ctlclient.sendMessage(from, `${tampilJam}`, text)
+					break
+
+				case 'testedata':
+					ctlclient.sendMessage(from, `${tampilHari}`, text)
+					break
+
+				case 'report':
+					if (!isGroup) return reply(msg.gp)
+					if (!isCtlowners) return reply(msg.ctlowners)
+					const msg = body.slice(8)
+					if (args.length < 1) return reply(msg.cadetxt)
+					if (msg.length > 300) return ctlclient.sendMessage(from, 'Ops..., passou de 300 caracteres.', text, {quoted: mek})
+					var nomor = mek.participant
+					const teks1 = `\n\n ~  👑 CTL CLIENT\n\nReportado por: WA.me/+${sender.split("@")[0]}\n\nMensagem: ${msg}`
+					var options = {
+					text: teks1,
+					contextInfo: {mentionedJid: [nomor]},
+					}
+					ctlclient.sendMessage(`553188514445@s.whatsapp.net`, options, text)
+					reply('bug reportado')
+					break
+
+				case 'delete':
+				case 'del':
+				case 'd':
+					if (!isCtlowners) return reply(msg.ctlowners)
+					ctlclient.deleteMessage(from, { id: mek.message.extendedTextMessage.contextInfo.stanzaId, remoteJid: from, fromMe: true })
+					break
+
+				case 'speed':
+				case 'ping':
+					if (!isGroup) return reply(msg.gp)
+					if (!isCtlowners) return reply(msg.ctlowners)
+					const timestamp = speed();
+					const latensi = speed() - timestamp
+					ctlclient.updatePresence(from, Presence.composing) 
+					uptime = process.uptime()
+					ctlclient.sendMessage(from, `\n\n Velocidade: ${latensi.toFixed(4)} Segundos\n\n Dispositivo: Xiaomi\n\n Data: Telkomsel\n\n Status: On-line\n\n O bot está ativo por${kyun(uptime)}`, text, { quoted: mek})
+					break
+
 				case 'pegarlink':
 					if (!isGroup) return reply(msg.gp)
 					if (!isCtlowners) return reply(msg.ctlowners)
@@ -230,7 +338,6 @@ const enviarfig = (stickerDir) => {
 					reply('https://chat.whatsapp.com/'+linkgc)
                                     		break
 
-				case
 				case 'figu':
 				case 'fig':
 				case 'f':
