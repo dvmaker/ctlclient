@@ -212,20 +212,20 @@ var ase = new Date();
                 case 05: hari = 'sexta-feira'; break;
                 case 06: hari = 'sábado'; break;
             }
-            /*switch(bulan1) {
-                case 00: bulan1 = 'Janeiro'; break;
-                case 01: bulan1 = 'fevereiro'; break;
-                case 02: bulan1 = 'Março'; break;
-                case 03: bulan1 = 'abril'; break;
-                case 04: bulan1 = 'Maio'; break;
-                case 05: bulan1 = 'Junho'; break;
-                case 06: bulan1 = 'julho'; break;
-                case 07: bulan1 = 'agosto'; break;
-                case 08: bulan1 = 'setembro'; break;
-                case 09: bulan1 = 'Outubro'; break;
-                case 10: bulan1 = 'novembro'; break;
-                case 11: bulan1 = 'dezembro'; break;
-            }*/
+            switch(bulan1) {
+                case 00: bulan1 = '1'; break;
+                case 01: bulan1 = '2'; break;
+                case 02: bulan1 = '3'; break;
+                case 03: bulan1 = '4'; break;
+                case 04: bulan1 = '5'; break;
+                case 05: bulan1 = '6'; break;
+                case 06: bulan1 = '7'; break;
+                case 07: bulan1 = '8'; break;
+                case 08: bulan1 = '9'; break;
+                case 09: bulan1 = '10'; break;
+                case 10: bulan1 = '11'; break;
+                case 11: bulan1 = '12'; break;
+            }
             var data = 'Data' + ': '  + tanggal + '/' + bulan1 + '/' + tahun;
             var horario = 'Horário' + ': ' + jam + ':' + menit + ':' + detik;
             
