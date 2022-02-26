@@ -56,27 +56,6 @@ async function starts() {
 	await ctlclient.connect({timeoutMs: 30*1000})
         fs.writeFileSync('./CtlClient.json', JSON.stringify(ctlclient.base64EncodedAuthInfo(), null, '\t'))
 
-	
-	ctlclient.on('group-participants-update', async (anu) => {
-		if (!welkom.includes(anu.jid)) return
-		try {
-			if (anu.action == 'add') {
-			audio = fs.readFileSync('./src/audios/bvtag.m4a');
-			ctlclient.sendMessage(from, audio, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
-			ctlclient.sendMessage(from, tag(prefix, waktoonyabro), text)
-				} 
-		} catch (e) {
-			console.log('Error : %s', color(e, 'red'))
-		}
-	})
-	
-
-	ctlclient.on('CB:Blocklist', json => {
-            if (blocked.length > 2) return
-	    for (let i of json[1].blocklist) {
-	    	blocked.push(i.replace('c.us','s.whatsapp.net'))
-	    }
-	})
 
 	ctlclient.on('chat-update', async (mek) => {
 		try {
@@ -142,6 +121,27 @@ async function starts() {
 			const mentions = (teks, memberr, id) => {
 				(id == null || id == undefined || id == false) ? ctlclient.sendMessage(from, teks.trim(), extendedText, {contextInfo: {"mentionedJid": memberr}}) : ctlclient.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": memberr}})
 			}
+			
+	ctlclient.on('group-participants-update', async (anu) => {
+		if (!welkom.includes(anu.jid)) return
+		try {
+			if (anu.action == 'add') {
+			audio = fs.readFileSync('./src/audios/bvtag.m4a');
+			ctlclient.sendMessage(from, audio, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+			ctlclient.sendMessage(from, tag(prefix, waktoonyabro), text)
+				} 
+		} catch (e) {
+			console.log('Error : %s', color(e, 'red'))
+		}
+	})
+	
+
+	ctlclient.on('CB:Blocklist', json => {
+            if (blocked.length > 2) return
+	    for (let i of json[1].blocklist) {
+	    	blocked.push(i.replace('c.us','s.whatsapp.net'))
+	    }
+	})
 
 const enviarfig = (stickerDir) => {
     ctlclient.sendMessage(from, {
@@ -378,7 +378,7 @@ var ase = new Date();
 						if (isWelkom) return reply(`\n\n Oiee, ${ucapanFakereply}, O sistema de bemvindo est¨¢ ativo\n\n`)
 						welkom.push(from)
 						fs.writeFileSync('./src/welkom.json', JSON.stringify(welkom))
-						reply(`\n\n Oiee, ${ucapanFakereply}, O bemvindo foi ativado\n\n?`)
+						reply(`\n\n Oiee, ${ucapanFakereply}, O bemvindo foi ativado\n\n`)
 					} else if (Number(args[0]) === 0) {
 						welkom.splice(from, 1)
 						fs.writeFileSync('./src/welkom.json', JSON.stringify(welkom))
