@@ -4,6 +4,15 @@ const help = (prefix) => {
   ~  CTL CLIENT
 
 
+ 👑  ~ ${prefix}report
+
+
+ 👑  ~ ${prefix}speed
+
+
+ 👑  ~ ${prefix}delete
+
+
  👑  ~ ${prefix}nome
 
 
