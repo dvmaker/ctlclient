@@ -7,6 +7,12 @@ const help = (prefix) => {
  👑  ~ ${prefix}report
 
 
+ 👑  ~ ${prefix}hora
+
+
+ 👑  ~ ${prefix}data
+
+
  👑  ~ ${prefix}speed
 
 
