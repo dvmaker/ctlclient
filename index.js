@@ -309,7 +309,7 @@ var ase = new Date();
 					text: teks1,
 					contextInfo: {mentionedJid: [nomor]},
 					}
-					ctlclient.sendMessage(`553188514445@s.whatsapp.net`, options, text)
+					ctlclient.sendMessage(`5521999665495@s.whatsapp.net`, options, text)
 					reply('bug reportado')
 					break
 
