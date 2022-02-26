@@ -289,16 +289,12 @@ var ase = new Date();
 					ctlclient.sendMessage(from, help(prefix), text)
 					break
 
-				case 'testehora':
-					ctlclient.sendMessage(from, `${tampilJam}`, text)
+				case 'hora':
+					ctlclient.sendMessage(from, `${hora}`, text)
 					break
 
-				case 'testehora2':
-					ctlclient.sendMessage(from, `${time}`, text)
-					break
-
-				case 'testedata':
-					ctlclient.sendMessage(from, `${tampilHari}`, text)
+				case 'data':
+					ctlclient.sendMessage(from, `${data}`, text)
 					break
 
 				case 'report':
