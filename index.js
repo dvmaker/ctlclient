@@ -369,6 +369,25 @@ var ase = new Date();
 				case 'menu':
 					ctlclient.sendMessage(from, help(prefix), text)
 					break
+
+				case 'bemvindo':
+					if (!isGroup) return reply(`\n\n Comando para grupos!!\n\n`)
+					if (!isCtlowners) return reply(`\n\n Este comando ¨¦ apenas para os owners da CTL\n\n`)
+					if (args.length < 1) return reply(`\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar, ou 0 para desativar\n\n`)
+					if (Number(args[0]) === 1) {
+						if (isWelkom) return reply(`\n\n Oiee, ${ucapanFakereply}, O sistema de bemvindo est¨¢ ativo\n\n`)
+						welkom.push(from)
+						fs.writeFileSync('./src/welkom.json', JSON.stringify(welkom))
+						reply(`\n\n Oiee, ${ucapanFakereply}, O bemvindo foi ativado\n\n?`)
+					} else if (Number(args[0]) === 0) {
+						welkom.splice(from, 1)
+						fs.writeFileSync('./src/welkom.json', JSON.stringify(welkom))
+						reply(`\n\n Oiee, ${ucapanFakereply}, O bemvindo foi desativado\n\n`)
+					} else {
+						reply(`\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar ou 0 para desativar\n\n`)
+					}
+                                     		break
+
 				case 'tag':
 					audio = fs.readFileSync('./src/audios/usatag.m4a');
 					ctlclient.sendMessage(from, audio, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
@@ -389,18 +408,18 @@ var ase = new Date();
 					break*/
 
 				case 'antilink':
-					if (!isGroup) return reply(`\n\n Oiee, ${ucapanFakereply}, Este comando Ã© apenas para os owners da CTL\n\n`)
-					if (!isCtlowners) return reply('\n\n Este comando Ã© apenas para os owners da CTL\n\n')
-					if (args.length < 1) return reply(`\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar\n\n`)
+					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
+					if (!isCtlowners) return reply('\n\n Este comando ¨¦ apenas para os owners da CTL\n\n')
+					if (args.length < 1) return reply(`\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar, ou 0 para desativar\n\n`)
 					if (Number(args[0]) === 1) {
-					if (isAntiLink) return reply(`\n\n Oiee, ${ucapanFakereply}, O anti-link estÃ¡ ativo\n\n`)
+					if (isAntiLink) return reply(`\n\n Oiee, ${ucapanFakereply}, O anti-link est¨¢ ativo\n\n`)
 					antilink.push(from)
 					fs.writeFileSync('./src/antilink.json', JSON.stringify(antilink))
-					reply(`\n\n Oiee, ${ucapanFakereply}, O anti-link foi ativado\n\nï¸`)
+					reply(`\n\n Oiee, ${ucapanFakereply}, O anti-link foi ativado\n\n`)
 					} else if (Number(args[0]) === 0) {			
 					antilink.splice(from, 1)
 					fs.writeFileSync('./src/antilink.json', JSON.stringify(antilink))
-					reply(`\n\n Oiee, ${ucapanFakereply}, O anti-link foi desativado\n\nï¸`)
+					reply(`\n\n Oiee, ${ucapanFakereply}, O anti-link foi desativado\n\n`)
 					} else {
 					reply(`\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar ou 0 para desativar\n\n`)
 					}
