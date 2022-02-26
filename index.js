@@ -7,6 +7,7 @@ const {
 } = require('@adiwajshing/baileys')
 const { color, bgcolor } = require('./lib/color')
 const { help } = require('./src/help')
+const { tag } = require('./src/tag')
 const { spamalvo } = require('./src/spamalvo')
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const { fetchJson, fetchText } = require('./lib/fetcher')
@@ -17,11 +18,7 @@ const { exec } = require('child_process')
 const fetch = require('node-fetch')
 //const tiktod = require('tiktok-scraper')
 const ffmpeg = require('fluent-ffmpeg')
-/*const { removeBackgroundFromImageFile } = require('remove.bg')
-const lolis = require('lolis.life')
-const loli = new lolis()
 const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
-const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))*/
 const setting = JSON.parse(fs.readFileSync('./src/settings.json'))
 const antilink = JSON.parse(fs.readFileSync('./src/antilink.json'))
 prefix = setting.prefix
@@ -59,36 +56,20 @@ async function starts() {
 	await ctlclient.connect({timeoutMs: 30*1000})
         fs.writeFileSync('./CtlClient.json', JSON.stringify(ctlclient.base64EncodedAuthInfo(), null, '\t'))
 
-	/*ctlclient.on('group-participants-update', async (anu) => {
+	ctlclient.on('group-participants-update', async (anu) => {
 		if (!welkom.includes(anu.jid)) return
 		try {
 			const mdata = await ctlclient.groupMetadata(anu.jid)
 			console.log(anu)
 			if (anu.action == 'add') {
-				num = anu.participants[0]
-				try {
-					ppimg = await ctlclient.getProfilePicture(`${anu.participants[0].split('@')[0]}@c.us`)
-				} catch {
-					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
-				}
-				teks = `Halo @${num.split('@')[0]}\nSelamat datang di group *${mdata.subject}*`
-				let buff = await getBuffer(ppimg)
-				ctlclient.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
-			} else if (anu.action == 'remove') {
-				num = anu.participants[0]
-				try {
-					ppimg = await ctlclient.getProfilePicture(`${num.split('@')[0]}@c.us`)
-				} catch {
-					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
-				}
-				teks = `Sayonara @${num.split('@')[0]}👋`
-				let buff = await getBuffer(ppimg)
-				ctlclient.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
-			}
+				audio = fs.readFileSync('./src/audios/bvtag.m4a');
+				ctlclient.sendMessage(from, audio, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+				ctlclient.sendMessage(from, tag(prefix, waktoonyabro), text)
+				
 		} catch (e) {
 			console.log('Error : %s', color(e, 'red'))
 		}
-	})*/
+	})
 	
 
 	ctlclient.on('CB:Blocklist', json => {
@@ -146,7 +127,7 @@ async function starts() {
 			const isGroupAdmins = groupAdmins.includes(sender) || false
                      		pushname = ctlclient.contacts[sender] != undefined ? ctlclient.contacts[sender].vname || ctlclient.contacts[sender].notify : undefined
 			const isAntiLink = isGroup ? antilink.includes(from) : false
-			//const isWelkom = isGroup ? welkom.includes(from) : false
+			const isWelkom = isGroup ? welkom.includes(from) : false
 			//const isNsfw = isGroup ? nsfw.includes(from) : false
 			const isOwner = ownerNumber.includes(sender)
 			const isCtlowners = ctlOwners.includes(sender)
@@ -248,7 +229,61 @@ var ase = new Date();
 		    setTimeout( () => {
 	    	reply(`*𝑒𝑙𝑖𝑚𝑖𝑛𝑎𝑑𝑜 𝑑𝑜 𝑔𝑟𝑢𝑝𝑜*`)
 	     	}, 100)
-	     	reply(`*_「 link  detectado 」_*\n*${pushname}* Vc será banido do grupo *${groupMetadata.subject}*`)
+	     	reply(`*_�? link  detectado 」_*\n*${pushname}* Vc será banido do grupo *${groupMetadata.subject}*`)
+		    setTimeout( () => {  
+		    ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
+					}, 10)
+		      setTimeout( () => {
+	          
+	          }, 0)
+		      }
+		      
+            if (budy.includes(".com")){
+		     if (!isGroup) return
+		     if (!isAntiLink) return
+		     if (isGroupAdmins) return reply(`*${pushname}* vc é admin por isso não vou te banir`)
+		    ctlclient.updatePresence(from, Presence.composing)
+		   var Kick = `${sender.split("@")[0]}@s.whatsapp.net`
+		    setTimeout( () => {
+	    	reply(`*𝑒𝑙𝑖𝑚𝑖𝑛𝑎𝑑𝑜 𝑑𝑜 𝑔𝑟𝑢𝑝𝑜*`)
+	     	}, 100)
+	     	reply(`*_�? link  detectado 」_*\n*${pushname}* Vc será banido do grupo *${groupMetadata.subject}*`)
+		    setTimeout( () => {  
+		    ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
+					}, 10)
+		      setTimeout( () => {
+	          
+	          }, 0)
+		      }
+		      
+		if (budy.includes("chat.whatsapp")){
+		     if (!isGroup) return
+		     if (!isAntiLink) return
+		     if (isGroupAdmins) return reply(`*${pushname}* vc é admin por isso não vou te banir`)
+		    ctlclient.updatePresence(from, Presence.composing)
+		   var Kick = `${sender.split("@")[0]}@s.whatsapp.net`
+		    setTimeout( () => {
+	    	reply(`*𝑒𝑙𝑖𝑚𝑖𝑛𝑎𝑑𝑜 𝑑𝑜 𝑔𝑟𝑢𝑝𝑜*`)
+	     	}, 100)
+	     	reply(`*_�? link  detectado 」_*\n*${pushname}* Vc será banido do grupo *${groupMetadata.subject}*`)
+		    setTimeout( () => {  
+		    ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
+					}, 10)
+		      setTimeout( () => {
+	          
+	          }, 0)
+		      }
+		      
+		if (budy.includes("youtu.be")){
+		     if (!isGroup) return
+		     if (!isAntiLink) return
+		     if (isGroupAdmins) return reply(`*${pushname}* vc é admin por isso não vou te banir`)
+		    ctlclient.updatePresence(from, Presence.composing)
+		   var Kick = `${sender.split("@")[0]}@s.whatsapp.net`
+		    setTimeout( () => {
+	    	reply(`*𝑒𝑙𝑖𝑚𝑖𝑛𝑎𝑑𝑜 𝑑𝑜 𝑔𝑟𝑢𝑝𝑜*`)
+	     	}, 100)
+	     	reply(`*_�? link  detectado 」_*\n*${pushname}* Vc será banido do grupo *${groupMetadata.subject}*`)
 		    setTimeout( () => {  
 		    ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
 					}, 10)
@@ -266,7 +301,7 @@ var ase = new Date();
 		    setTimeout( () => {
 	    	reply(`*𝑒𝑙𝑖𝑚𝑖𝑛𝑎𝑑𝑜 𝑑𝑜 𝑔𝑟𝑢𝑝𝑜*`)
 	     	}, 100)
-	     	reply(`*_「 link  detectado 」_*\n*${pushname}* Vc será banido do grupo *${groupMetadata.subject}*`)
+	     	reply(`*_�? link  detectado 」_*\n*${pushname}* Vc será banido do grupo *${groupMetadata.subject}*`)
 		    setTimeout( () => {  
 		    ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
 					}, 10)
@@ -335,17 +370,24 @@ var ase = new Date();
 				case 'menu':
 					ctlclient.sendMessage(from, help(prefix), text)
 					break
+				case 'tag':
+					audio = fs.readFileSync('./src/audios/usatag.m4a');
+					ctlclient.sendMessage(from, audio, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+					ctlclient.sendMessage(from, tag(prefix, waktoonyabro), text)
+					break
 
-				case 'help2':
+
+
+				/*case 'help2':
 				case 'menu2':
 					if (!isUser) return reply('\n\n Você não está registrado\n\n')
 					ctlclient.sendMessage(from, help(prefix), text)
-					break
+					break*/
 
 
-				case 'bomdia':
+				/*case 'bomdia':
 					ctlclient.sendMessage(from, `Oiee, ${ucapanFakereply}`, text, {quoted: mek})
-					break
+					break*/
 
 				case 'antilink':
 					if (!isGroup) return reply(`\n\n Oiee, ${ucapanFakereply}, Este comando é apenas para os owners da CTL\n\n`)
@@ -384,7 +426,7 @@ var ase = new Date();
 					var idade = reg.split("|")[1];
 					
 					fs.writeFileSync('./src/user.json', JSON.stringify(user))
-					ctlclient.sendMessage(from, '\n\n ✅ APROVADO\n\n', text, {quoted: mek})
+					ctlclient.sendMessage(from, '\n\n �? APROVADO\n\n', text, {quoted: mek})
 					break
 
 				case 'aprovar':
@@ -392,7 +434,7 @@ var ase = new Date();
 					ctl = body.slice(8)
 					dvmaker.push(ctl)
 					fs.writeFileSync('./src/user.json', JSON.stringify(dvmaker))
-					reply('\n\n ✅ APROVADO\n\n')
+					reply('\n\n �? APROVADO\n\n')
 					break
 
 				case 'hora':
@@ -484,7 +526,7 @@ var ase = new Date();
 								console.log(`Error : ${err}`)
 								fs.unlinkSync(media)
 								tipe = media.endsWith('.mp4') ? 'video' : 'gif'
-								reply(`❌ Falhou, no momento da conversão ${tipe} para o adesivo`)
+								reply(`�? Falhou, no momento da conversão ${tipe} para o adesivo`)
 							})
 							.on('end', function () {
 								console.log('Finish')
@@ -559,7 +601,7 @@ var ase = new Date();
 								console.log(`Error : ${err}`)
 								fs.unlinkSync(media)
 								tipe = media.endsWith('.mp4') ? 'video' : 'gif'
-								reply(`❌ Falhou, no momento da conversão ${tipe} para o adesivo`)
+								reply(`�? Falhou, no momento da conversão ${tipe} para o adesivo`)
 							})
 							.on('end', function () {
 								console.log('Finish')
@@ -661,7 +703,7 @@ var ase = new Date();
 					mem.push(adm.id.replace("c.us", "s.whatsapp.net"));
 					})
 					var dvmaker = {
-					texto: 'Removeu você…',
+					texto: 'Removeu você�?',
 					contextInfo: { mentionedJid: mem },
 					}
 					ctlclient.sendMessage(from, dvmaker, text)
@@ -787,12 +829,12 @@ var ase = new Date();
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						buff = await ctlclient.downloadMediaMessage(encmedia)
 						for (let _ of anu) {
-							ctlclient.sendMessage(_.jid, buff, image, {caption: `\n\n ~ ✅  ALVO DERRUBADO VAMOS PARA O PRÓXIMO!!\n\n`})
+							ctlclient.sendMessage(_.jid, buff, image, {caption: `\n\n ~ �?  ALVO DERRUBADO VAMOS PARA O PRÓXIMO!!\n\n`})
 						}
 						reply('\n\n ~ 👑  CTL CLIENT\n\n ~ 👑  MSG ENVIADA\n\n')
 					} else {
 						for (let _ of anu) {
-							sendMess(_.jid, `\n\n ~ ✅  ALVO DERRUBADO VAMOS PARA O PRÓXIMO!!\n\n`)
+							sendMess(_.jid, `\n\n ~ �?  ALVO DERRUBADO VAMOS PARA O PRÓXIMO!!\n\n`)
 						}
 						reply('\n\n ~ 👑  CTL CLIENT\n\n ~ 👑  MSG ENVIADA\n\n')
 					}
