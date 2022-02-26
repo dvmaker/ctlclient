@@ -212,7 +212,7 @@ var ase = new Date();
                 case 05: hari = 'sexta-feira'; break;
                 case 06: hari = 'sábado'; break;
             }
-            switch(bulan1) {
+            /*switch(bulan1) {
                 case 00: bulan1 = 'Janeiro'; break;
                 case 01: bulan1 = 'fevereiro'; break;
                 case 02: bulan1 = 'Março'; break;
@@ -225,8 +225,8 @@ var ase = new Date();
                 case 09: bulan1 = 'Outubro'; break;
                 case 10: bulan1 = 'novembro'; break;
                 case 11: bulan1 = 'dezembro'; break;
-            }
-            var data = 'Data' + ':'  + tanggal + '/' + bulan1 + '/' + tahun;
+            }*/
+            var data = 'Data' + ': '  + tanggal + '/' + bulan1 + '/' + tahun;
             var horario = 'Horário' + ': ' + jam + ':' + menit + ':' + detik;
             
             
