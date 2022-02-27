@@ -129,7 +129,7 @@ async function starts() {
 			}
 			const mentions = (teks, memberr, id) => {
 				(id == null || id == undefined || id == false) ? ctlclient.sendMessage(from, teks.trim(), extendedText, {contextInfo: {"mentionedJid": memberr}}) : ctlclient.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": memberr}})
-			}}
+			}
 
 
 const sekarang = new Date().getTime();
