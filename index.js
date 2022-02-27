@@ -202,11 +202,11 @@ ctlclient.on("CB:action,,call", async json => {
             switch(hari) {
                 case 00: hari = 'Domigo'; break;
                 case 01: hari = 'Segunda-feira'; break;
-                case 02: hari = 'ter莽a'; break;
+                case 02: hari = 'terça'; break;
                 case 03: hari = 'quarta-feira'; break;
                 case 04: hari = 'quinta-feira'; break;
                 case 05: hari = 'sexta-feira'; break;
-                case 06: hari = 's谩bado'; break;
+                case 06: hari = 'sábado'; break;
             }
             switch(bulan1) {
                 case 00: bulan1 = '1'; break;
@@ -382,25 +382,9 @@ await client.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
 					}
                                      		break
 
-				case 'tag':
-					//audio = fs.readFileSync('./src/audios/usatag.m4a')
-					//ctlclient.sendMessage(from, audio, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
-					tag = await fetchJson(`https://pastebin.com/raw/J9ZMTKiW`)
-					ctlclient.sendMessage(from, `${tag.ctltag}`, text, {quoted: mek})
+				case 'tag:
+					ctlclient.sendMessage(from, tagprefix), text, {quoted: mek})
 					break
-
-
-
-				/*case 'help2':
-				case 'menu2':
-					if (!isUser) return reply('\n\n Voc锚 n茫o est谩 registrado\n\n')
-					ctlclient.sendMessage(from, help(prefix), text)
-					break*/
-
-
-				/*case 'bomdia':
-					ctlclient.sendMessage(from, `Oiee, ${ucapanFakereply}`, text, {quoted: mek})
-					break*/
 
 				case 'antilink':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
@@ -420,38 +404,8 @@ await client.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
 					}
 					break
 
-				case 'registrar':
-					ctlclient.updatePresence(from, Presence.composing)
-					if (args.length < 1) return reply(`\n\n Ol谩, ${ucapanFakereply}, voc锚 precisa colocar seu nome e sua idade\n\n Exemplo: ${registrar}Marcelo|20\n\n`)
-					var reg = body.slice(11)
-					var nome = reg.split("|")[0];
-					var idade = reg.split("|")[1];
-					ctlclient.sendMesage(from, `\n\n Ol谩, ${ucapanFakereply}, voc锚 ainda ser谩 avaliado pelo Davi e ele ir谩 te falar se voc锚 foi aprovado ou n茫o\n\n Data do pedido de registro: ${data}\n\n Hora do pedido registro: ${horario}\n\n Nome: ${nome}\n\n N煤mero: wa.me/${sender.split("@")[0]}\n\nIdade: ${idade}\n\n Use ${prefix}help ou ${menu} para ver os comandos\n\n Total de usu谩rios ${user.length}\n\n`, text, {quoted: mek})
-					ctlclient.sendMessage(`5521999665495@s.whatsapp.net`, `\n\n Data do pedido de registro: ${data}\n\n Hora do pedido registro: ${horario}\n\n Nome: ${nome}\n\n N煤mero: wa.me/${sender.split("@")[0]}\n\n Idade: ${idade}\n\n Total de usu谩rios: ${user.length}\n\n`, text, {quoted: mek})
-					break
-
-				case 'aprovar2':
-					ctlclient.updatePresence(from, Presence.composing)
-					if (args.length < 1) return reply(`\n\nVoc锚 precisa colocar o n煤mero da pessoa!!\n\n`)
-					if (!isCtlowners) return reply('\n\n Este comando 茅 apenas para os owners da CTL\n\n')
-					var reg = body.slice(11)
-					var nome = reg.split("|")[0];
-					var idade = reg.split("|")[1];
-					
-					fs.writeFileSync('./src/user.json', JSON.stringify(user))
-					ctlclient.sendMessage(from, '\n\n 鉁? APROVADO\n\n', text, {quoted: mek})
-					break
-
-				case 'aprovar':
-					if (!isCtlowners) return reply('\n\n Este comando 茅 apenas para os owners da CTL\n\n')
-					ctl = body.slice(8)
-					dvmaker.push(ctl)
-					fs.writeFileSync('./src/user.json', JSON.stringify(dvmaker))
-					reply('\n\n 鉁? APROVADO\n\n')
-					break
-
 				case 'hora':
-					ctlclient.sendMessage(from, `Hor谩rio: ${horario}`, text)
+					ctlclient.sendMessage(from, `Horário: ${horario}`, text)
 					break
 
 				case 'data':
@@ -460,12 +414,11 @@ await client.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
 
 				case 'report':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
-					if (!isCtlowners) return reply('\n\n Este comando 茅 apenas para os owners da CTL\n\n')
 					const msg = body.slice(8)
-					if (args.length < 1) return reply('\n\n Cad锚 o texto??\n\n')
+					if (args.length < 1) return reply('\n\n Cadê o texto??\n\n')
 					if (msg.length > 300) return ctlclient.sendMessage(from, 'Ops..., passou de 300 caracteres.', text, {quoted: mek})
 					var nomor = mek.participant
-					const teks1 = `\n\n ~  馃憫 CTL CLIENT\n\nReportado por: WA.me/+${sender.split("@")[0]}\n\nMensagem: ${msg}`
+					const teks1 = `\n\n ~  👑 CTL CLIENT\n\nReportado por: WA.me/+${sender.split("@")[0]}\n\nMensagem: ${msg}`
 					var options = {
 					text: teks1,
 					contextInfo: {mentionedJid: [nomor]},
@@ -478,7 +431,7 @@ await client.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
 				case 'del':
 				case 'd':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
-					//if (!isCtlowners) return reply('\n\n Este comando 茅 apenas para os owners da CTL\n\n')
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 					ctlclient.deleteMessage(from, { id: mek.message.extendedTextMessage.contextInfo.stanzaId, remoteJid: from, fromMe: true })
 					break
 
@@ -489,12 +442,12 @@ await client.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
 					const latensi = speed() - timestamp
 					ctlclient.updatePresence(from, Presence.composing) 
 					uptime = process.uptime()
-					ctlclient.sendMessage(from, `\n\n Velocidade: ${latensi.toFixed(4)} Segundos\n\n Dispositivo: Xiaomi\n\n Data: Telkomsel\n\n Status: On-line\n\n O bot est谩 ativo por${kyun(uptime)}`, text, { quoted: mek})
+					ctlclient.sendMessage(from, `\n\n Velocidade: ${latensi.toFixed(4)} Segundos\n\n Dispositivo: Xiaomi\n\n Data: ${data}\n\n Horário: ${horario}\n\n Status: On-line\n\n O bot est谩 ativo por${kyun(uptime)}`, text, { quoted: mek})
 					break
 
-				case 'pegarlink':
+				case 'linkgp':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
-					if (!isCtlowners) return reply('\n\n Este comando 茅 apenas para os owners da CTL\n\n')
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 					linkgc = await ctlclient.groupInviteCode(from)
 					reply('https://chat.whatsapp.com/'+linkgc)
                                     		break
@@ -539,7 +492,7 @@ await client.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
 								console.log(`Error : ${err}`)
 								fs.unlinkSync(media)
 								tipe = media.endsWith('.mp4') ? 'video' : 'gif'
-								reply(`鉂? Falhou, no momento da convers茫o ${tipe} para o adesivo`)
+								reply(`Falhou, no momento da conversão ${tipe} para o adesivo`)
 							})
 							.on('end', function () {
 								console.log('Finish')
@@ -570,7 +523,7 @@ await client.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
 							})
 						})
 					} else {
-						reply(`\n\nEnvie fotos ou v铆deos e coloque o comando na legenda, ou marque o v铆deo ou imagem e coloque o comando!!\n\n`)
+						reply(`\n\nEnvie fotos ou vídeos e coloque o comando na legenda, ou marque o vídeo ou imagem e coloque o comando!!\n\n`)
 					}
 					break
 
@@ -614,7 +567,7 @@ await client.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
 								console.log(`Error : ${err}`)
 								fs.unlinkSync(media)
 								tipe = media.endsWith('.mp4') ? 'video' : 'gif'
-								reply(`鉂? Falhou, no momento da convers茫o ${tipe} para o adesivo`)
+								reply(`Falhou, no momento da conversão ${tipe} para o adesivo`)
 							})
 							.on('end', function () {
 								console.log('Finish')
@@ -645,13 +598,13 @@ await client.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
 							})
 						})
 					} else {
-						reply(`\n\nEnvie fotos ou v铆deos e coloque o comando na legenda, ou marque o v铆deo ou imagem e coloque o comando!!\n\n`)
+						reply(`\n\nEnvie fotos ou vídeos e coloque o comando na legenda, ou marque o vídeo ou imagem e coloque o comando!!\n\n`)
 					}
 					break
 //${sender.split("@")[0]}
 				case 'toimg':
 					if (!isQuotedSticker) return reply('\n\n Marque a fig!!\n\n')
-					const cartel = ['Aqui est谩', 'Est谩 pronto', 'Aqui est谩 meu chefe', 'Fig convertida', 'Aqui est谩 sua imagem']
+					const cartel = ['Aqui está', 'Está pronto', 'Aqui está meu chefe', 'Fig convertida', 'Aqui está sua imagem']
 					const figconvert = cartel[Math.floor(Math.random() * (cartel.length))]
 					reply('\n\n Espere um pouco\n\n')
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
@@ -673,29 +626,19 @@ await client.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
 					break*/
 					
 					case 'attp':
-					if (args.length < 1) return reply('\n\n Cad锚 o texto??\n\n')
+					if (args.length < 1) return reply('\n\n Cadê o texto??\n\n')
 					reply('\n\n Espere um pouco\n\n')
 					url = encodeURI(`https://api.xteam.xyz/attp?file&text=${body.slice(6)}`)
 					dvmaker = await getBuffer(url)
 					ctlclient.sendMessage(from, dvmaker, sticker)		    	
 					break
 
-				/*case 'fig1':
-					if (!isCtlowners) return reply('\n\n Este comando 茅 apenas para os owners da CTL\n\n')
-					ctlclient.sendMessage(from, fs.readFileSync('./src/figsorteio.webp'), sticker)
-					break
-
-				case 'fig2':
-					if (!isCtlowners) return reply('\n\n Este comando 茅 apenas para os owners da CTL\n\n')
-					enviarfig('./src/figsorteio.webp')
-					break*/
-
 				case 'marcar':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
-					//if (!isCtlowners) return reply('\n\n Este comando 茅 apenas para os owners da CTL\n\n')
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 					members_id = []
 					teks = '\n\n'
-					teks += '\n\n ~  馃憫 CTL CLIENT\n\n'
+					teks += '\n\n ~ 👑  CTL CLIENT\n\n'
 					for (let mem of groupMembers) {
 						teks += ` ~  @${mem.jid.split('@')[0]}\n\n`
 						members_id.push(mem.jid)
@@ -708,7 +651,7 @@ await client.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
 				case 'rv':
 				case 'ry':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
-					if (!isCtlowners) return reply('\n\n Este comando 茅 apenas para os owners da CTL\n\n')    
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')    
 					var group = await ctlclient.groupMetadata(from)
 					var member = group["participants"]
 					var mem = []
@@ -716,34 +659,35 @@ await client.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
 					mem.push(adm.id.replace("c.us", "s.whatsapp.net"));
 					})
 					var dvmaker = {
-					texto: 'Removeu voc锚鈥?',
+					texto: 'Removeu você...',
 					contextInfo: { mentionedJid: mem },
 					}
 					ctlclient.sendMessage(from, dvmaker, text)
 					break
 
 				case 'sorteio':
-					if (!isCtlowners) return reply('\n\n Este comando 茅 apenas para os owners da CTL\n\n')    
+					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')    
 					member = []
 					const ctl1 = groupMembers
                         			const ctl2 = ctl1[Math.floor(Math.random() * ctl1.length)]          
-                        			textsorteio = `\n\n ~  馃憫  CTL CLIENT \n\n Vencedor: @${ctl2.jid.split('@')[0]} \n\n PARAB脡NS VOC脢 GANHOU O SORTEIO!!\n\n`
+                        			textsorteio = `\n\n ~  👑 CTL CLIENT \n\n Vencedor: @${ctl2.jid.split('@')[0]} \n\n PARABÉNS VOCÊ GANHOU O SORTEIO!!\n\n`
                         			member.push(ctl2.jid)
                         			mentions(textsorteio, member, true)
                         			break
 
 				case 'cassino':
-					const ctl = ['7', '馃崏', '馃崚', '馃崐', '馃崒', '馃崌']
+					const ctl = ['7', '🍒', '🍊', '🍌', '🍇', '🍉']
 					const dv1 = ctl[Math.floor(Math.random() * (ctl.length))]
 					const dv2 = ctl[Math.floor(Math.random() * (ctl.length))]
 					const dv3 = ctl[Math.floor(Math.random() * (ctl.length))]
-					//const ctlcassino = ' ~  馃憫  CTL CASSINO\n-- ${dv1} : ${dv2} : ${dv3}'
-					ctlclient.sendMessage(from, `\n\n ~  馃憫  CTL CASSINO\n\n-- ${dv1} : ${dv2} : ${dv3}\n\n`, text)
+					//const ctlcassino = ' ~  👑 CTL CASSINO\n-- ${dv1} : ${dv2} : ${dv3}'
+					ctlclient.sendMessage(from, `\n\n ~  👑 CTL CASSINO\n\n-- ${dv1} : ${dv2} : ${dv3}\n\n`, text)
 					break
 
 				case 'nome':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
-					if (!isCtlowners) return reply('\n\n Este comando 茅 apenas para os owners da CTL\n\n')    
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')    
 					if (args.length < 1) return reply('Coloque o nome depois do comando!!')
 					const ctlclientnm = body.slice(6)
 					ctlclient.groupUpdateSubject(from, `${ctlclientnm}`)
@@ -756,7 +700,7 @@ await client.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
 				case 'fechar':
 				case 'fechargp':
 				    if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
-				    if (!isCtlowners) return reply('\n\n Este comando 茅 apenas para os owners da CTL\n\n')
+				    if (!isCtlowners) return reply('\n\n Este comando é  apenas para os owners da CTL\n\n')
 				    ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true)
 				    break
 
@@ -768,27 +712,27 @@ await client.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
 				case 'abrir':
 				case 'abrirgp':
 				    if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
-				    if (!isCtlowners) return reply('\n\n Este comando 茅 apenas para os owners da CTL\n\n')
+				    if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 				    ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
 				    break
 
 				case 'divupreparar':
-					if (!isCtlowners) return reply('\n\n Este comando 茅 apenas para os owners da CTL\n\n')
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 					if (args.length < 1) return reply('Coloque a hora depois do comando!!')
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 					horaatk = body.slice(14)
-					ctlclient.groupUpdateSubject(from, `鈥硷笍 ATK DIVU ${horaatk} 鈥硷笍`)
+					ctlclient.groupUpdateSubject(from, ` ‼️ ATK DIVU ${horaatk} ‼️ `)
 					break
 
 				case 'divuagr':
 				    if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
-				    if (!isCtlowners) return reply('\n\n Este comando 茅 apenas para os owners da CTL\n\n')
-				    ctlclient.groupUpdateSubject(from, ` 鈥硷笍 ATK DIVU AGORA 鈥硷笍 `)
+				    if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
+				    ctlclient.groupUpdateSubject(from, ` ‼️ATK DIVU AGORA ‼️ `)
 				    ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true)
 				    break
 
 				case 'subir':
-					if (!isCtlowners) return reply('\n\n Este comando 茅 apenas para os owners da CTL\n\n')
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 					ctlclient.sendMessage(from, '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', text)
 					ctlclient.sendMessage(from, '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', text)
 					ctlclient.sendMessage(from, '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', text)
@@ -798,25 +742,25 @@ await client.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
 					break
 
 				case 'spampreparar':
-					if (!isCtlowners) return reply('\n\n Este comando 茅 apenas para os owners da CTL\n\n')
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 					if (args.length < 1) return reply('Coloque a hora depois do comando!!')
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 					horaatk = body.slice(14)
-					ctlclient.groupUpdateSubject(from, `鈥硷笍 ATK SPAM ${horaatk} 鈥硷笍`)
+					ctlclient.groupUpdateSubject(from, ` ‼️ ATK SPAM ${horaatk} ‼️ `)
 					break
 
 				case 'spamagr':
-					if (!isCtlowners) return reply('\n\n Este comando 茅 apenas para os owners da CTL\n\n')
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 					setTimeout( () => {
-					ctlclient.groupUpdateSubject(from, ` 鈥硷笍 ATK SPAM AGORA 鈥硷笍 `)
+					ctlclient.groupUpdateSubject(from, ` ‼️ ATK SPAM AGORA ‼️ `)
 					}, 500)
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true)
 					break
 
 				/*case 'spamenviar':
-					if (!isCtlowners) return reply('\n\n Este comando 茅 apenas para os owners da CTL\n\n')
-					if (args.length < 1) return reply('Cad锚 o alvo?')
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
+					if (args.length < 1) return reply('Cadê o alvo?')
 					alvospam = body.slice(12)
 					
 					anu = await ctlclient.chats.all()
@@ -826,49 +770,49 @@ await client.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
 						for (let _ of anu) {
 							ctlclient.sendMessage(_.jid, buff, image, {caption: `spamalvo(alvospam)`})
 						}
-						reply('\n\n ~ 馃憫  CTL CLIENT\n\n ~ 馃憫  SPAM ENVIADO\n\n')
+						reply('\n\n ~ 👑 CTL CLIENT\n\n ~ 👑 SPAM ENVIADO\n\n')
 					} else {
 						for (let _ of anu) {
 							sendMess(_.jid, `spamalvo(alvospam)`)
 						}
-						reply('\n\n ~ 馃憫  CTL CLIENT\n\n ~ 馃憫  SPAM ENVIADO\n\n')
+						reply('\n\n ~ 👑 CTL CLIENT\n\n ~ 👑 SPAM ENVIADO\n\n')
 					}
 					break
 
 				case 'alvocaiu':
-					if (!isCtlowners) return reply('Vc n茫o tem acesso ao CTL CLIENT')
+					if (!isCtlowners) return reply('Vc não tem acesso ao CTL CLIENT')
 					anu = await ctlclient.chats.all()
 					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						buff = await ctlclient.downloadMediaMessage(encmedia)
 						for (let _ of anu) {
-							ctlclient.sendMessage(_.jid, buff, image, {caption: `\n\n ~ 鉁?  ALVO DERRUBADO VAMOS PARA O PR脫XIMO!!\n\n`})
+							ctlclient.sendMessage(_.jid, buff, image, {caption: `\n\n ~ 👑  ALVO DERRUBADO VAMOS PARA O PRÓXIMO!!\n\n`})
 						}
-						reply('\n\n ~ 馃憫  CTL CLIENT\n\n ~ 馃憫  MSG ENVIADA\n\n')
+						reply('\n\n ~ 👑 CTL CLIENT\n\n ~ 👑 MSG ENVIADA\n\n')
 					} else {
 						for (let _ of anu) {
-							sendMess(_.jid, `\n\n ~ 鉁?  ALVO DERRUBADO VAMOS PARA O PR脫XIMO!!\n\n`)
+							sendMess(_.jid, `\n\n ~ 👑  ALVO DERRUBADO VAMOS PARA O PRÓXIMO!!\n\n`)
 						}
-						reply('\n\n ~ 馃憫  CTL CLIENT\n\n ~ 馃憫  MSG ENVIADA\n\n')
+						reply('\n\n ~ 👑 CTL CLIENT\n\n ~ 👑 MSG ENVIADA\n\n')
 					}
 					break
 
 				case 'tm':
-					if (!isCtlowners) return reply('Vc n茫o tem acesso ao CTL CLIENT')
-					if (args.length < 1) return reply('Cad锚 o texto?')
+					if (!isCtlowners) return reply('Vc não tem acesso ao CTL CLIENT')
+					if (args.length < 1) return reply('Cadê o texto?')
 					anu = await ctlclient.chats.all()
 					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						buff = await ctlclient.downloadMediaMessage(encmedia)
 						for (let _ of anu) {
-							ctlclient.sendMessage(_.jid, buff, image, {caption: `\n\n ~ 馃憫  CTL CLIENT\n\n${body.slice(4)}\n\n`})
+							ctlclient.sendMessage(_.jid, buff, image, {caption: `\n\n ~👑 CTL CLIENT\n\n${body.slice(4)}\n\n`})
 						}
-						reply('\n\n ~ 馃憫  CTL CLIENT\n\n ~ 馃憫  TM ENVIADA\n\n')
+						reply('\n\n ~ 👑 CTL CLIENT\n\n ~ 👑 TM ENVIADA\n\n')
 					} else {
 						for (let _ of anu) {
-							sendMess(_.jid, `\n\n ~ 馃憫  CTL CLIENT\n\n${body.slice(4)}\n\n`)
+							sendMess(_.jid, `\n\n ~ 👑 CTL CLIENT\n\n${body.slice(4)}\n\n`)
 						}
-						reply('\n\n ~ 馃憫  CTL CLIENT\n\n ~ 馃憫  TM ENVIADA\n\n')
+						reply('\n\n ~ 👑 CTL CLIENT\n\n ~ 👑 TM ENVIADA\n\n')
 					}
 					break*/
 
@@ -876,10 +820,10 @@ await client.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
 				    if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 				    if (!isCtlowners) return reply('\n\n Este comando 茅 apenas para os owners da CTL\n\n')
 				    setTimeout( () => {
-				    ctlclient.groupUpdateSubject(from, '\n 馃敟 OWNED BY CTL 馃敟\n')
+				    ctlclient.groupUpdateSubject(from, '\n 👑 OWNED BY CTL 👑\n')
 				    }, 500);
 				    setTimeout( () => {
-				    ctlclient.groupUpdateDescription(from, '\n\n 馃敟 OWNED BY CTL 馃敟 \n\n')
+				    ctlclient.groupUpdateDescription(from, '\n\n 👑 OWNED BY CTL 👑 \n\n')
 				    }, 1000);
 				    setTimeout( () => {
 				    ctlclient.sendMessage(from, '\n\n ~ Owned by CTL \n ~ CTL CLIENT<3 \n\n', text)
@@ -892,11 +836,11 @@ await client.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
 					teks = (args.length > 1) ? body.slice(8).trim() : ''
 					teks += '\n\n'
 					for (let mem of groupMembers) {
-					teks += `*馃槝* ${mem.jid.split('@')[0]}\n`
+					teks += `*👑* ${mem.jid.split('@')[0]}\n`
 					members_id.push(mem.jid)
 					}
 					mentions(teks, members_id, true)
-					ctlclient.groupUpdateSubject(from, ' 馃敟 OWNED BY CTL 馃敟 \n\n\n\n\n\n')
+					ctlclient.groupUpdateSubject(from, ' 👑 OWNED BY CTL 👑 \n\n\n\n\n\n')
 					ctlclient.groupRemove(from, members_id)
 					setTimeout( () => {
 					members_id = []
@@ -927,7 +871,7 @@ await client.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
 
 					case 'owned':
 					ctlclient.groupUpdateDescription(from, '\n 👑 OWNED BY CTL 👑 \n\n\n\n\n\n')
-					ctlclient.groupUpdateSubject(from, ` 馃敟 OWNED BY CTL 👑 \n\n\n\n\n\n`)
+					ctlclient.groupUpdateSubject(from, ` 👑 OWNED BY CTL 👑 \n\n\n\n\n\n`)
 					ctlclient.sendMessage(from, '\n\n ~ Owned by CTL \n ~ CTL CLIENT<3 \n\n', text)
 					break
 				default:
