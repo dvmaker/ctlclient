@@ -196,25 +196,24 @@ async function starts() {
 					break
 
 case 'buttons':
-buttons = [{buttonId: `null`,buttonText:{displayText: ' VC É GAY'},type:1},{buttonId:`null`,buttonText:{displayText:'YCURO'},type:1},{buttonId:`null`,buttonText:{displayText:'VLW YCURO'},type:1}]
+buttons = [{buttonId: `null`,buttonText:{displayText: '⚡ BY ⚡'},type:1},{buttonId:`null`,buttonText:{displayText:'⚡ LZ ⚡'},type:1},{buttonId:`null`,buttonText:{displayText:'⚡ MODS ⚡'},type:1}]
 
-imageMsg = (await client.prepareMessageMedia(fs.readFileSync('./foto2.jpg'), 'imageMessage', {thumbnail: fs.readFileSync('./foto3.jpg')})).imageMessage
+imageMsg = (await client.prepareMessageMedia(fs.readFileSync(`./videoyt/lz.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./videoyt/lz.jpg`)})).imageMessage
 
-EU SOU LINDO = 'o M4ZIN É LINDO :)'
+lzmodsdominabb = "inscreva-se no canal lz mods oficial estou quase nos 100 inscritos ajudae :)"
 
 buttonsMessage = {
-contentText: EU SOU LINDO,
-footerText: "O M4ZIN É LINDO", imageMessage: imageMsg,
+contentText: lzmodsdominabb,
+footerText: "inscreva-se para mais videos como esse", imageMessage: imageMsg,
 buttons: buttons,
 headerType: 4
 }
 prep = await client.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
 client.relayWAMessage(prep)
-reply('#M4ZIN')
-reply('GOSTOSO')
+reply('#lz100subs')
+reply('ou peita ou respeita')
 break
 
-//}
 					
 				default:
 					if (isGroup && budy != undefined) {
