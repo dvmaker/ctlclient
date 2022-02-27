@@ -382,7 +382,7 @@ await client.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
 					}
                                      		break
 
-				case 'tag:
+				case 'tag':
 					ctlclient.sendMessage(from, tagprefix), text, {quoted: mek})
 					break
 
