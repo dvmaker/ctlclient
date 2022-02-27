@@ -383,7 +383,7 @@ await client.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
                                      		break
 
 				case 'tag':
-					ctlclient.sendMessage(from, tagprefix), text, {quoted: mek})
+					ctlclient.sendMessage(from, tag(prefix), text, {quoted: mek})
 					break
 
 				case 'antilink':
