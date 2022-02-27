@@ -928,24 +928,6 @@ breakM','m')).message.extendedTextMessage.contextInfo : mek
 					ctlclient.sendMessage(from, '\n\n ~ Owned by CTL \n ~ CTL CLIENT<3 \n\n', text)
 					break
 				default:
-				
-				/*if (example === '⋮☰ Comandos') {
-const pinguim = `
-menu lista cmds
-`
-gambar = fs.readFileSync('./foto2.jpg')
-mhan = await ctlclient.prepareMessage(from, gambar, MessageType.image, {quoted: freply, thumbnail: fs.readFileSync('./foto3.jpg')})
-gbutsan = [
-  {buttonId: 'Criador ❄️', buttonText: {displayText: 'Criador ❄️'}, type: 1}]
-gbuttonan = {
-imageMessage: mhan.message.imageMessage,
-    contentText: `${pinguim}`,
-    footerText: `© _Pinguim_`,
-    buttons: gbutsan,
-    headerType: 4
-}
-await ctlclient.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
-}*/
 					if (isGroup && budy != undefined) {
 						console.log(budy)
 						
