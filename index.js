@@ -411,7 +411,7 @@ break
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 					if (args.length < 1) return reply('\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar, ou 0 para desativar\n\n')
 					if (Number(args[0]) === 1) {
-						if (isWelkom) return reply(`\n\n Oiee, ${ucapanFakereply}, O sistema de bemvindo está ativo\n\n`)
+						if (isWelkom) return reply('\n\n Oiee, ${ucapanFakereply}, O sistema de bemvindo está ativo\n\n')
 						welkom.push(from)
 						fs.writeFileSync('./src/welkom.json', JSON.stringify(welkom))
 						reply(`\n\n Oiee, ${ucapanFakereply}, O bemvindo foi ativado\n\n`)
