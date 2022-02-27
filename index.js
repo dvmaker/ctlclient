@@ -5,20 +5,21 @@ const {
     Mimetype,
     GroupSettingChange
 } = require('@adiwajshing/baileys')
+const fs = require('fs')
 const { color, bgcolor } = require('./lib/color')
 const { help } = require('./src/help')
 const { tag } = require('./src/tag')
 const { spamalvo } = require('./src/spamalvo')
+const antilink = JSON.parse(fs.readFileSync('./src/antilink.json'))
+const welkom = JSON.parse(fs.readFileSync('./src/bemvindo.json'))
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const { fetchJson, fetchText } = require('./lib/fetcher')
-const fs = require('fs')
 const moment = require('moment-timezone')
 const { exec } = require('child_process')
 const { comando } = require('child_process')
 const fetch = require('node-fetch')
 //const tiktod = require('tiktok-scraper')
 const ffmpeg = require('fluent-ffmpeg')
-const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
 const setting = JSON.parse(fs.readFileSync('./src/settings.json'))
 prefix = setting.prefix
 blocked = []
