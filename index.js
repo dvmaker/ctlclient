@@ -406,7 +406,7 @@ break
 
 }
 
-				case 'bemvindo':
+				/*case 'bemvindo':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 					if (args.length < 1) return reply('\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar, ou 0 para desativar\n\n')
@@ -414,13 +414,13 @@ break
 						if (isWelkom) return reply('\n\n Oiee, ${ucapanFakereply}, O sistema de bemvindo está ativo\n\n')
 						welkom.push(from)
 						fs.writeFileSync('./src/welkom.json', JSON.stringify(welkom))
-						reply('\n\n Oiee, ${ucapanFakereply}, O bemvindo foi ativado\n\n')
+						reply(`\n\n Oiee, ${ucapanFakereply}, O bemvindo foi ativado\n\n`)
 					} else if (Number(args[0]) === 0) {
 						welkom.splice(from, 1)
 						fs.writeFileSync('./src/welkom.json', JSON.stringify(welkom))
-						reply('\n\n Oiee, ${ucapanFakereply}, O bemvindo foi desativado\n\n')
+						reply(`\n\n Oiee, ${ucapanFakereply}, O bemvindo foi desativado\n\n`)
 					} else {
-						reply('\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar ou 0 para desativar\n\n')
+						reply(`\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar ou 0 para desativar\n\n`)
 					}
                                      		break
 
@@ -431,18 +431,18 @@ break
 				case 'antilink':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
-					if (args.length < 1) return reply('\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar, ou 0 para desativar\n\n')
+					if (args.length < 1) return reply(`\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar, ou 0 para desativar\n\n`)
 					if (Number(args[0]) === 1) {
-					if (isAntiLink) return reply('\n\n Oiee, ${ucapanFakereply}, O anti-link está ativo\n\n')
+					if (isAntiLink) return reply(`\n\n Oiee, ${ucapanFakereply}, O anti-link está ativo\n\n`)
 					antilink.push(from)
 					fs.writeFileSync('./src/antilink.json', JSON.stringify(antilink))
-					reply('\n\n Oiee, ${ucapanFakereply}, O anti-link foi ativado\n\n')
+					reply(`\n\n Oiee, ${ucapanFakereply}, O anti-link foi ativado\n\n`)
 					} else if (Number(args[0]) === 0) {			
 					antilink.splice(from, 1)
 					fs.writeFileSync('./src/antilink.json', JSON.stringify(antilink))
-					reply('\n\n Oiee, ${ucapanFakereply}, O anti-link foi desativado\n\n')
+					reply(`\n\n Oiee, ${ucapanFakereply}, O anti-link foi desativado\n\n`)
 					} else {
-					reply('\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar ou 0 para desativar\n\n`)
+					reply(`\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar ou 0 para desativar\n\n`)
 					}
 					break
 
@@ -659,7 +659,7 @@ break
 						ctlclient.sendMessage(from, buffer, image, {quoted: mek, caption: `\n\n ${figconvert}\n\n`})
 						fs.unlinkSync(ran)
 					})
-					break
+					break*/
 
 				/*case 'attp':
 					if (args.length < 1) return reply(`E o texto?`)
@@ -667,15 +667,15 @@ break
 					ctlclient.sendMessage(from, attp2, sticker, {quoted: mek})
 					break*/
 					
-					case 'attp':
+					/*case 'attp':
 					if (args.length < 1) return reply('\n\n Cadê o texto??\n\n')
 					reply(msg.espere)
 					url = encodeURI(`https://api.xteam.xyz/attp?file&text=${body.slice(6)}`)
 					dvmaker = await getBuffer(url)
 					ctlclient.sendMessage(from, dvmaker, sticker)		    	
-					break
+					break*/
 
-				case 'marcar':
+				/*case 'marcar':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 					members_id = []
@@ -798,7 +798,7 @@ break
 					ctlclient.groupUpdateSubject(from, ` ‼️ ATK SPAM AGORA ‼️ `)
 					}, 500)
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true)
-					break
+					break*/
 
 				/*case 'spamenviar':
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
@@ -869,7 +869,7 @@ breakM','m')).message.extendedTextMessage.contextInfo : mek
 					}
 					break*/
 
-				case 'owned':
+				/*case 'owned':
 				    if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 				    if (!isCtlowners) return reply('\n\n Este comando 茅 apenas para os owners da CTL\n\n')
 				    setTimeout( () => {
@@ -881,7 +881,7 @@ breakM','m')).message.extendedTextMessage.contextInfo : mek
 				    setTimeout( () => {
 				    ctlclient.sendMessage(from, '\n\n ~ Owned by CTL \n ~ CTL CLIENT<3 \n\n', text)
 				    }, 500);
-				    break
+				    break*/
 					
 				/*case 'arquivar':
 					if (!isBotGroupAdmins)
@@ -929,7 +929,7 @@ breakM','m')).message.extendedTextMessage.contextInfo : mek
 					break
 				default:
 				
-				if (example === '⋮☰ Comandos') {
+				/*if (example === '⋮☰ Comandos') {
 const pinguim = `
 menu lista cmds
 `
@@ -945,7 +945,7 @@ imageMessage: mhan.message.imageMessage,
     headerType: 4
 }
 await ctlclient.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
-}
+}*/
 					if (isGroup && budy != undefined) {
 						console.log(budy)
 						
