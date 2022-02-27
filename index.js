@@ -408,11 +408,7 @@ break
 
 
 
-					case 'owned':
-					ctlclient.groupUpdateDescription(from, '\n 👑 OWNED BY CTL 👑 \n\n\n\n\n\n')
-					ctlclient.groupUpdateSubject(from, ` 👑 OWNED BY CTL 👑 \n\n\n\n\n\n`)
-					ctlclient.sendMessage(from, '\n\n ~ Owned by CTL \n ~ CTL CLIENT<3 \n\n', text)
-					break
+					
 				default:
 					if (isGroup && budy != undefined) {
 						console.log(budy)
