@@ -414,13 +414,13 @@ break
 						if (isWelkom) return reply('\n\n Oiee, ${ucapanFakereply}, O sistema de bemvindo está ativo\n\n')
 						welkom.push(from)
 						fs.writeFileSync('./src/welkom.json', JSON.stringify(welkom))
-						reply(`\n\n Oiee, ${ucapanFakereply}, O bemvindo foi ativado\n\n`)
+						reply('\n\n Oiee, ${ucapanFakereply}, O bemvindo foi ativado\n\n')
 					} else if (Number(args[0]) === 0) {
 						welkom.splice(from, 1)
 						fs.writeFileSync('./src/welkom.json', JSON.stringify(welkom))
-						reply(`\n\n Oiee, ${ucapanFakereply}, O bemvindo foi desativado\n\n`)
+						reply('\n\n Oiee, ${ucapanFakereply}, O bemvindo foi desativado\n\n')
 					} else {
-						reply(`\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar ou 0 para desativar\n\n`)
+						reply('\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar ou 0 para desativar\n\n')
 					}
                                      		break
 
