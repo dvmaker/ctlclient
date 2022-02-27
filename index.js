@@ -18,9 +18,9 @@ const { fetchJson } = require('./lib/fetcher')
 const fs = require('fs')
 const antilink = JSON.parse(fs.readFileSync('./database/json/antilink.json'))
 const moment = require('moment-timezone')
-const { exec } = require('child_process'))
+const { exec } = require('child_process')
 const fetch = require('node-fetch')
-const ffmpeg = require('fluent-ffmpeg'))
+const ffmpeg = require('fluent-ffmpeg')
 const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
 
 prefix = '.'
