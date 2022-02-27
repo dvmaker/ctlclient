@@ -4,6 +4,18 @@ const help = (prefix) => {
   ~  CTL CLIENT
 
 
+ 👑  ~ ${prefix}tag
+ 
+ 
+ 👑  ~ ${prefix}attp
+
+
+ 👑  ~ ${prefix}f
+
+
+ 👑  ~ ${prefix}toimg
+
+
  👑  ~ ${prefix}report
 
 
@@ -53,15 +65,6 @@ const help = (prefix) => {
 
 
  👑  ~ ${prefix}cassino
-
-
- 👑  ~ ${prefix}attp
-
-
- 👑  ~ ${prefix}f
-
-
- 👑  ~ ${prefix}toimg
  
 	`
 }
