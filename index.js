@@ -388,7 +388,7 @@ ctlclient.on("CB:action,,call", async json => {
 case 'buttons':
 buttons = [{buttonId: `null`,buttonText:{displayText: ' VC É GAY'},type:1},{buttonId:`null`,buttonText:{displayText:'YCURO'},type:1},{buttonId:`null`,buttonText:{displayText:`VLW YCURO'},type:1}]
 
-imageMsg = (await client.prepareMessageMedia(fs.readFileSync(`./foto2.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./foto3.jpg`)})).imageMessage
+imageMsg = (await client.prepareMessageMedia(fs.readFileSync('./foto2.jpg'), 'imageMessage', {thumbnail: fs.readFileSync('./foto3.jpg')})).imageMessage
 
 EU SOU LINDO = "o M4ZIN É LINDO :)"
 
