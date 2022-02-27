@@ -6,11 +6,11 @@ const {
     GroupSettingChange
 } = require('@adiwajshing/baileys')
 const { color, bgcolor } = require('./lib/color')
-const { help } = require('./src/help')
-const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
+const { help } = require('./src/help'))
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const { fetchJson, fetchText } = require('./lib/fetcher')
 const fs = require('fs')
+const welkom = JSON.parse(fs.readFileSync('./src/welkom.json')
 const moment = require('moment-timezone')
 const { exec } = require('child_process')
 const fetch = require('node-fetch')
