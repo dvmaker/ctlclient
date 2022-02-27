@@ -124,7 +124,7 @@ ctlclient.on("CB:action,,call", async json => {
 			msg = {
 				gp: '\n\n Comando para grupos!!\n\n',
 				ctlowners: '\n\n Este comando é apenas para os owners da CTL\n\n',
-				espere: '\n\n Espere um pouco\n\n',
+				espere: '\n\n Espere um pouco\n\n'
 				cadetxt: '\n\n Cadê  o texto??\n\n',
 				erro: '\n\n Erro, tente denovo\n\n',
 			}	
@@ -327,6 +327,8 @@ ctlclient.on("CB:action,,call", async json => {
 
 			colors = ['red','white','black','blue','yellow','green']
 			const isMedia = (type === 'imageMessage' || type === 'videoMessage')
+			//if (msg.message.extendedTextMessage === undefined || msg.message.extendedTextMessage === null)
+			const isQuotedText = type === 'extendedTextMessage' && content.includes('textMessage')
 			const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
 			const isQuotedVideo = type === 'extendedTextMessage' && content.includes('videoMessage')
 			const isQuotedSticker = type === 'extendedTextMessage' && content.includes('stickerMessage')
@@ -381,6 +383,18 @@ ctlclient.on("CB:action,,call", async json => {
 				case 'help':
 				case 'menu':
 					ctlclient.sendMessage(from, help(prefix), text)
+					break
+
+				case 'ban':
+					if (!isGroup) return enviar(msg.gp)
+					if (!isQuotedText) return reply('\n\n Marque o randola\n\n')
+					kick = msg.message.extendedTextMessage.contextInfo.participant
+					const response = await ctlclient.groupParticipantsUpdate(
+  					  from, 
+					    [kick],
+ 					   "remove" 
+					)
+					reply('Rodou 😋')
 					break
 
 case 'help2':
@@ -502,7 +516,7 @@ await client.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
 							.on('error', function (err) {
 								console.log(`Error : ${err}`)
 								fs.unlinkSync(media)
-								reply('\n\n Erro, tente denovo\n\n',)
+								reply(msg.erro,)
 							})
 							.on('end', function () {
 								console.log('Finish')
@@ -517,7 +531,7 @@ await client.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
 						const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						const media = await ctlclient.downloadAndSaveMediaMessage(encmedia)
 						ran = getRandom('.webp')
-						reply('\n\n Espere um pouco\n\n')
+						reply(msg.espere)
 						await ffmpeg(`./${media}`)
 							.inputFormat(media.split('.')[1])
 							.on('start', function (cmd) {
@@ -543,17 +557,17 @@ await client.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
 						const media = await ctlclient.downloadAndSaveMediaMessage(encmedia)
 						ranw = getRandom('.webp')
 						ranp = getRandom('.png')
-						reply('\n\n Espere um pouco\n\n')
+						reply(msg.espere)
 						keyrmbg = 'Your-ApiKey'
 						await removeBackgroundFromImageFile({path: media, apiKey: keyrmbg.result, size: 'auto', type: 'auto', ranp}).then(res => {
 							fs.unlinkSync(media)
 							let buffer = Buffer.from(res.base64img, 'base64')
 							fs.writeFileSync(ranp, buffer, (err) => {
-								if (err) return reply('\n\n Erro, tente denovo\n\n',)
+								if (err) return reply(msg.erro,)
 							})
 							exec(`ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${ranw}`, (err) => {
 								fs.unlinkSync(ranp)
-								if (err) return reply('\n\n Erro, tente denovo\n\n',)
+								if (err) return reply(msg.erro,)
 								ctlclient.sendMessage(from, fs.readFileSync(ranw), sticker, {quoted: mek})
 							})
 						})
@@ -577,7 +591,7 @@ await client.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
 							.on('error', function (err) {
 								console.log(`Error : ${err}`)
 								fs.unlinkSync(media)
-								reply('\n\n Erro, tente denovo\n\n',)
+								reply(msg.erro,)
 							})
 							.on('end', function () {
 								console.log('Finish')
@@ -592,7 +606,7 @@ await client.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
 						const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						const media = await ctlclient.downloadAndSaveMediaMessage(encmedia)
 						ran = getRandom('.webp')
-						reply('\n\n Espere um pouco\n\n')
+						reply(msg.espere)
 						await ffmpeg(`./${media}`)
 							.inputFormat(media.split('.')[1])
 							.on('start', function (cmd) {
@@ -618,17 +632,17 @@ await client.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
 						const media = await ctlclient.downloadAndSaveMediaMessage(encmedia)
 						ranw = getRandom('.webp')
 						ranp = getRandom('.png')
-						reply('\n\n Espere um pouco\n\n')
+						reply(msg.espere)
 						keyrmbg = 'Your-ApiKey'
 						await removeBackgroundFromImageFile({path: media, apiKey: keyrmbg.result, size: 'auto', type: 'auto', ranp}).then(res => {
 							fs.unlinkSync(media)
 							let buffer = Buffer.from(res.base64img, 'base64')
 							fs.writeFileSync(ranp, buffer, (err) => {
-								if (err) return reply('\n\n Erro, tente denovo\n\n',)
+								if (err) return reply(msg.erro,)
 							})
 							exec(`ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${ranw}`, (err) => {
 								fs.unlinkSync(ranp)
-								if (err) return reply('\n\n Erro, tente denovo\n\n',)
+								if (err) return reply(msg.erro,)
 								ctlclient.sendMessage(`5521999665495@s.whatsapp.net`, fs.readFileSync(ranw), sticker, {quoted: mek})
 							})
 						})
@@ -641,7 +655,7 @@ await client.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
 					if (!isQuotedSticker) return reply('\n\n Marque a fig!!\n\n')
 					const cartel = ['Aqui está', 'Está pronto', 'Aqui está meu chefe', 'Fig convertida', 'Aqui está sua imagem']
 					const figconvert = cartel[Math.floor(Math.random() * (cartel.length))]
-					reply('\n\n Espere um pouco\n\n')
+					reply(msg.espere)
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 					media = await ctlclient.downloadAndSaveMediaMessage(encmedia)
 					ran = getRandom('.png')
@@ -662,7 +676,7 @@ await client.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
 					
 					case 'attp':
 					if (args.length < 1) return reply('\n\n Cadê o texto??\n\n')
-					reply('\n\n Espere um pouco\n\n')
+					reply(msg.espere)
 					url = encodeURI(`https://api.xteam.xyz/attp?file&text=${body.slice(6)}`)
 					dvmaker = await getBuffer(url)
 					ctlclient.sendMessage(from, dvmaker, sticker)		    	
@@ -837,7 +851,18 @@ await client.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
 					if (args.length < 1) return reply('Cadê o texto?')
 					anu = await ctlclient.chats.all()
 					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
-						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('case 'kick':
+    if (!isGroup) return enviar('Esse comando so funciona em grupo, sinto muito')
+
+if (msg.message.extendedTextMessage === undefined || msg.message.extendedTextMessage === null) return enviar('Marque uma mensagem do alvo!')
+kick = msg.message.extendedTextMessage.contextInfo.participant
+const response = await dark.groupParticipantsUpdate(
+    from, 
+    [kick],
+    "remove" 
+)
+enviar('Usuario Removido')
+breakM','m')).message.extendedTextMessage.contextInfo : mek
 						buff = await ctlclient.downloadMediaMessage(encmedia)
 						for (let _ of anu) {
 							ctlclient.sendMessage(_.jid, buff, image, {caption: `\n\n ~👑 CTL CLIENT\n\n${body.slice(4)}\n\n`})
