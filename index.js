@@ -506,7 +506,7 @@ ctlclient.on("CB:action,,call", async json => {
 				case 'pegarlink':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 					if (!isCtlowners) return reply('\n\n Este comando 茅 apenas para os owners da CTL\n\n')
-					linkgc = await ctlclienti.groupInviteCode(from)
+					linkgc = await ctlclient.groupInviteCode(from)
 					reply('https://chat.whatsapp.com/'+linkgc)
                                     		break
 
