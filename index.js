@@ -196,7 +196,7 @@ async function starts() {
 					break
 
 case 'buttons':
-buttons = [{buttonId: `null`,buttonText:{displayText: ' VC É GAY'},type:1},{buttonId:`null`,buttonText:{displayText:'YCURO'},type:1},{buttonId:`null`,buttonText:{displayText:`VLW YCURO'},type:1}]
+buttons = [{buttonId: `null`,buttonText:{displayText: ' VC É GAY'},type:1},{buttonId:`null`,buttonText:{displayText:'YCURO'},type:1},{buttonId:`null`,buttonText:{displayText:'VLW YCURO'},type:1}]
 
 imageMsg = (await client.prepareMessageMedia(fs.readFileSync('./foto2.jpg'), 'imageMessage', {thumbnail: fs.readFileSync('./foto3.jpg')})).imageMessage
 
@@ -213,6 +213,8 @@ client.relayWAMessage(prep)
 reply('#M4ZIN')
 reply('GOSTOSO')
 break
+
+//}
 					
 				default:
 					if (isGroup && budy != undefined) {
