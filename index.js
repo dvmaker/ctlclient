@@ -357,9 +357,9 @@ if (budy.includes("chat.whats")){
 
 				case 'autogroup':
 				case 'autosettings':
-					buttons = [{buttonId: `null`,buttonText:{displayText: '.fechar'},type:1},{buttonId:`null`,buttonText:{displayText:'.abrir'},type:1}]
+					buttons = [{buttonId: `null`,buttonText:{displayText: '🔒 FECHAR GRUPO'},type:1},{buttonId:`null`,buttonText:{displayText:'🔓 ABRIR GRUPO'},type:1}]
 					imageMsg = (await ctlclient.prepareMessageMedia(fs.readFileSync(`./fotoautogroup.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./fotoautogroup.jpg`)})).imageMessage
-					texto = " ⌜♛⌟ 𝐂𝐋𝐎𝐒𝐄 𝐀𝐍𝐃 𝐎𝐏𝐄𝐍 𝐆𝐑𝐎𝐔𝐏 ▿ 𝐌𝐄𝐍𝐔"
+					texto = "\n\n⌜♛⌟ 𝐂𝐋𝐎𝐒𝐄 𝐀𝐍𝐃 𝐎𝐏𝐄𝐍 𝐆𝐑𝐎𝐔𝐏 ▿ 𝐌𝐄𝐍𝐔\n"
 					buttonsMessage = {
 					contentText: texto,
 					footerText: "🌟 CTL CLiENT - 2022", imageMessage: imageMsg,
