@@ -359,7 +359,7 @@ if (budy.includes("chat.whats")){
 				    break
 
 case 'testcart':
-                let pi = client.prepareMessageFromContent(from, {
+                let pi = ctlclient.prepareMessageFromContent(from, {
            "listMessage": {
 						"title": "⌜ MENU KE -2 ⌟",
 						"description": 'OjanBot',
@@ -453,7 +453,7 @@ case 'testcart':
 							}
 						]
 					}}, {})
- client.relayWAMessage(pi, {waitForAck: true})
+ ctlclient.relayWAMessage(pi, {waitForAck: true})
                 break
 
 				case 'autogroup':
