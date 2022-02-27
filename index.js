@@ -343,7 +343,7 @@ if (budy.includes("chat.whats")){
 					break
 
 				case 'attp':
-					if (!isGroup) return reply('\n\n Este é apenas para grupos!!\n\n)
+					if (!isGroup) return reply('\n\n Este é apenas para grupos!!\n\n')
 					if (args.length < 1) return reply(`Cadê o texto?`)
 					attp2 = await getBuffer(`https://api.xteam.xyz/attp?file&text=${body.slice(6)}`)
 					ctlclient.sendMessage(from, attp2, sticker, {quoted: mek})
