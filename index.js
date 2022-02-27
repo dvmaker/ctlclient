@@ -207,68 +207,6 @@ async function starts() {
             var tampilJam = + jam + ':' + menit + ':' + detik;*)
             // FIM DA FUNCTION
 
-/************** BOTÕES **************/
-
-///Button Text
-const sendButMessage = (id, text1, desc1, but = [], options = {}) => {
-const buttonMessage = {
-contentText: text1,
-footerText: desc1,
-buttons: but,
-headerType: 1
-}
-ctlclient.sendMessage(id, buttonMessage, MessageType.buttonsMessage, options)
-}
-///Button Image
-const sendButImage = async(id, text1, desc1, gam1, but = [], options = {}) => {
-kma = gam1
-mhan = await ctlclient.prepareMessage(from, kma, image)
-const buttonMessages = {
-imageMessage: mhan.message.imageMessage,
-contentText: text1,
-footerText: desc1,
-buttons: but,
-headerType: 4
-}
-ctlclient.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)
-}
-///Button Video
-const sendButVideo = async(id, text1, desc1, vid1, but = [], options = {}) => {
-kma = vid1
-mhan = await ctlclient.prepareMessage(from, kma, video)
-const buttonMessages = {
-videoMessage: mhan.message.videoMessage,
-contentText: text1,
-footerText: desc1,
-buttons: but,
-headerType: 5
-}
-ctlclient.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)
-}
-///Butão Localização
-const sendButLocation = async (id, text1, desc1, gam1, but = [], options = {}) => {
-kma = gam1
-mhan = await ctlclient.prepareMessage(from, kma, location)
-const buttonMessages = {
-locationMessage: mhan.message.locationMessage,
-contentText: text1,
-footerText: desc1,
-buttons: but,
-headerType: 6
-}
-ctlclient.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)
-}
-const replyinvisiveltag = async function(from, text){
-let anu = await ctlclient.groupMetadata(from)
-let members = anu.participants
-let ane = []
-for (let i of members){
-ane.push(i.jid)
-}
-ctlclient.sendMessage(from, text, 'extendedTextMessage', {quoted: mek, contextInfo: {"mentionedJid": ane}})
-}
-/**********************************/
-
 const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
