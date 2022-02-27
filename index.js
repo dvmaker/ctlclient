@@ -407,8 +407,8 @@ break
 }
 
 				case 'banir':
-					if (!isGroup) return reply(mess.only.group)
-					if (!isCtlowners) return reply(`\n\n Este comando é apenas para os owners da CTL\n\n`)
+					//if (!isGroup) return reply(mess.only.group)
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('A marca-alvo que você quer chutar!')
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 					if (mentioned.length > 1) {
