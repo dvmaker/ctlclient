@@ -355,6 +355,104 @@ if (budy.includes("chat.whats")){
 					ctlclient.sendMessage(from, help(prefix), text)
 					break
 
+case 'testcart':
+                let pi = client.prepareMessageFromContent(from, {
+           "listMessage": {
+						"title": "⌜ MENU KE -2 ⌟",
+						"description": 'OjanBot',
+						"buttonText": "𝐊𝐥𝐢𝐤 𝐃𝐢𝐬𝐢𝐧𝐢 ⌕",
+						"listType": "SINGLE_SELECT",
+						"sections": [
+							{
+								"title": "Pilih salah satu tot",
+								"rows": [
+									{
+										"title": `${prefix}sound22`,
+										"rowId": "ASU"
+									},
+									{
+										"title": "maker menu",
+										"rowId": "ASU"
+									},
+									{
+										"title": "owner menu",
+										"rowId": "ASU"
+									},
+									{
+										"title": "spesial menu",
+										"rowId": "ASU"
+									},
+									{
+										"title": "sertifikat menu",
+										"rowId": "ASU"
+									},
+									{
+										"title": "stick menu",
+										"rowId": "ASU"
+									},
+									{
+										"title": "randomtext",
+										"rowId": "ASU"
+									},
+									{
+										"title": "game menu",
+										"rowId": "ASU"
+									},
+									{
+										"title": "tag menu",
+										"rowId": "ASU"
+									},
+									{
+										"title": "cek menu",
+										"rowId": "ASU"
+									},
+									{
+										"title": "news menu",
+										"rowId": "ASU"
+									},
+									{
+										"title": "storage menu",
+										"rowId": "ASU"
+									},
+									{
+										"title": "porn menu",
+										"rowId": "ASU"
+									},
+									{
+										"title": "sound menu",
+										"rowId": "ASU"
+									},
+									{
+										"title": "download menu",
+										"rowId": "ASU"
+									},
+									{
+										"title": "pro menu",
+										"rowId": "ASU"
+									},
+									{
+										"title": "grup menu",
+										"rowId": "ASU"
+									},
+									{
+										"title": "asupan menu",
+										"rowId": "ASU"
+									},
+									{
+										"title": "gacha cecan",
+										"rowId": "ASU"
+									},
+									{
+										"title": "nsfw menu",
+										"rowId": "ASU"
+									}
+								]
+							}
+						]
+					}}, {})
+ client.relayWAMessage(pi, {waitForAck: true})
+                break
+
 				case 'autogroup':
 				case 'autosettings':
 					buttons = [{buttonId: `null`,buttonText:{displayText: '🔒 FECHAR GRUPO'},type:1},{buttonId:`null`,buttonText:{displayText:'🔓 ABRIR GRUPO'},type:1}]
