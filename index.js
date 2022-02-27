@@ -416,22 +416,6 @@ break*/
 
 //FIM
 default: 
-if ((budy === "ajuda") || (budy === "bot") || (budy === "Bot") || (budy === "Ajuda")) {
-gambar = fs.readFileSync('./fotos/me2.jpg')
-mhan = await ctlclient.prepareMessage(from, gambar, MessageType.image, {quoted: freply, thumbnail: fs.readFileSync('./fotos/me3.jpg'), contextInfo: {"mentionedJid": [sender]}})
-gbutsan = [
-  {buttonId: 'Regras 👮‍♀', buttonText: {displayText: 'Regras 👮‍♀'}, type: 1},
-  {buttonId: 'Meu dono ✓', buttonText: {displayText: 'Meu dono ✓'}, type: 1}]
-gbuttonan = {
-imageMessage: mhan.message.imageMessage,
-    contentText: `Olá @${sender.split("@")[0]}`,
-    footerText: `© _Pinguim_\n_caso não apareça os botões, utilize o comando .menu_`,
-    buttons: gbutsan,
-    headerType: 4
-}
-await ctlclient.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
-}
-
 if (example === '🔓 ABRIR GRUPO') {
 ctlclient.updatePresence(from, Presence.composing) 
 if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n')
@@ -443,7 +427,7 @@ ctlclient.updatePresence(from, Presence.composing)
 if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n')
 if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true);
-
+}
 
 }
 } catch (e) {
