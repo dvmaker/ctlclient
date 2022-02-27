@@ -357,7 +357,7 @@ if (budy.includes("chat.whats")){
 
 				case 'autogroup':
 				case 'autosettings':
-					buttons = [{buttonId: `null`,buttonText:{displayText: ' 🔒 FECHAR GRUPO'},type:1},{buttonId:`null`,buttonText:{displayText:' 🔓 ABRIR GRUPO'},type:1}]
+					buttons = [{buttonId: `null`,buttonText:{displayText: '.fechar'},type:1},{buttonId:`null`,buttonText:{displayText:'.abrir'},type:1}]
 					imageMsg = (await ctlclient.prepareMessageMedia(fs.readFileSync(`./fotoautogroup.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./fotoautogroup.jpg`)})).imageMessage
 					texto = " ⌜♛⌟ 𝐂𝐋𝐎𝐒𝐄 𝐀𝐍𝐃 𝐎𝐏𝐄𝐍 𝐆𝐑𝐎𝐔𝐏 ▿ 𝐌𝐄𝐍𝐔"
 					buttonsMessage = {
@@ -657,7 +657,7 @@ break*/
 
 					
 				default:
-if (example === '🔓 ABRIR GRUPO') {
+/*if (example === '🔓 ABRIR GRUPO') {
 client.updatePresence(from, Presence.composing) 
 if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n')
 if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
@@ -668,7 +668,7 @@ client.updatePresence(from, Presence.composing)
 if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n')
 if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 client.groupSettingChange (from, GroupSettingChange.messageSend, true);
-}
+}*/
 					if (isGroup && budy != undefined) {
 						console.log(budy)
 					} else {
