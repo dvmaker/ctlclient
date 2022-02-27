@@ -233,7 +233,7 @@ ctlclient.on("CB:action,,call", async json => {
             if (budy.includes("https://")){
 		     if (!isGroup) return
 		     if (!isAntiLink) return
-		     if (isGroupAdmins) return reply(`Puta desse adm fica mandando link sfd`)
+		     if (isGroupAdmins) return reply('Puta desse adm fica mandando link sfd')
 		    ctlclient.updatePresence(from, Presence.composing)
 		   var Kick = `${sender.split("@")[0]}@s.whatsapp.net`
 		    setTimeout( () => {
@@ -251,7 +251,7 @@ ctlclient.on("CB:action,,call", async json => {
             if (budy.includes(".com")){
 		     if (!isGroup) return
 		     if (!isAntiLink) return
-		     if (isGroupAdmins) return reply(`Puta desse adm fica mandando link sfd`)
+		     if (isGroupAdmins) return reply('Puta desse adm fica mandando link sfd')
 		    ctlclient.updatePresence(from, Presence.composing)
 		   var Kick = `${sender.split("@")[0]}@s.whatsapp.net`
 		    setTimeout( () => {
@@ -269,25 +269,20 @@ ctlclient.on("CB:action,,call", async json => {
 		if (budy.includes("chat.whatsapp")){
 		     if (!isGroup) return
 		     if (!isAntiLink) return
-		     if (isGroupAdmins) return reply(`Puta desse adm fica mandando link sfd`)
+		     if (isGroupAdmins) return reply('Puta desse adm fica mandando link sfd')
 		    ctlclient.updatePresence(from, Presence.composing)
 		   var Kick = `${sender.split("@")[0]}@s.whatsapp.net`
 		    setTimeout( () => {
 	    	reply(`Vai de ban 😋👍`)
 	     	}, 100)
 	     	reply(`Novo contratado do Vasco ${pushname}`)
-		    setTimeout( () => {  
 		    ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
-					}, 10)
-		      setTimeout( () => {
-	          
-	          }, 0)
 		      }
 		      
 		if (budy.includes("youtu.be")){
 		     if (!isGroup) return
 		     if (!isAntiLink) return
-		     if (isGroupAdmins) return reply(`Puta desse adm fica mandando link sfd`)
+		     if (isGroupAdmins) return reply('Puta desse adm fica mandando link sfd')
 		    ctlclient.updatePresence(from, Presence.composing)
 		   var Kick = `${sender.split("@")[0]}@s.whatsapp.net`
 		    setTimeout( () => {
@@ -305,7 +300,7 @@ ctlclient.on("CB:action,,call", async json => {
             if (budy.includes("http://")){
 		     if (!isGroup) return
 		     if (!isAntiLink) return
-		     if (isGroupAdmins) return reply(`Puta desse adm fica mandando link sfd`)
+		     if (isGroupAdmins) return reply('Puta desse adm fica mandando link sfd')
 		    ctlclient.updatePresence(from, Presence.composing)
 		   var Kick = `${sender.split("@")[0]}@s.whatsapp.net`
 		    setTimeout( () => {
@@ -434,7 +429,8 @@ await client.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
 
 				case 'antilink':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
-					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
+					if (isGroupAdmins) return reply('cmd para adms')
+					//if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 					if (args.length < 1) return reply(`\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar, ou 0 para desativar\n\n`)
 					if (Number(args[0]) === 1) {
 					if (isAntiLink) return reply(`\n\n Oiee, ${ucapanFakereply}, O anti-link está ativo\n\n`)
