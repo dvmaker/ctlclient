@@ -354,7 +354,7 @@ if (budy.includes("chat.whats")){
 				case 'help':
 				    audio = fs.readFileSync('./src/audiohelp.m4a');
 				    ctlclient.sendMessage(from, audio, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
-				    foto = fs.readFileSync('./foto1.jpg')
+				    foto = fs.readFileSync('./src/foto1.jpg')
 				    ctlclient.sendMessage(from, foto, image, {quoted: mek, caption: help(prefix)})
 				    break
 
@@ -459,7 +459,7 @@ case 'testcart':
 				case 'autogroup':
 				case 'autosettings':
 					buttons = [{buttonId: `null`,buttonText:{displayText: '🔒 FECHAR GRUPO'},type:1},{buttonId:`null`,buttonText:{displayText:'🔓 ABRIR GRUPO'},type:1}]
-					imageMsg = (await ctlclient.prepareMessageMedia(fs.readFileSync(`./foto1.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./foto1.jpg`)})).imageMessage
+					imageMsg = (await ctlclient.prepareMessageMedia(fs.readFileSync(`./src/foto1.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./src/foto1.jpg`)})).imageMessage
 					texto = "\n\n⌜♛⌟ 𝐂𝐋𝐎𝐒𝐄 𝐀𝐍𝐃 𝐎𝐏𝐄𝐍 𝐆𝐑𝐎𝐔𝐏 ▿ 𝐌𝐄𝐍𝐔\n"
 					buttonsMessage = {
 					contentText: texto,
