@@ -111,8 +111,8 @@ async function starts() {
 /
 	
 	// FUNCTION DE TEMPO 
-			const sekarang = new Date().getTime();
-			var ase = new Date();
+		//const sekarang = new Date().getTime();
+		var ase = new Date();
                         var waktoo = ase.getHours();
                         switch(waktoo){
                 case 0: waktoo = 'Boa noite'; break;
