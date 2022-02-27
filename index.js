@@ -198,7 +198,7 @@ async function starts() {
 case 'buttons':
 buttons = [{buttonId: `null`,buttonText:{displayText: '⚡ BY ⚡'},type:1},{buttonId:`null`,buttonText:{displayText:'⚡ LZ ⚡'},type:1},{buttonId:`null`,buttonText:{displayText:'⚡ MODS ⚡'},type:1}]
 
-imageMsg = (await ctlclient.prepareMessageMedia(fs.readFileSync(`./videoyt/lz.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./videoyt/lz.jpg`)})).imageMessage
+imageMsg = (await ctlclient.prepareMessageMedia(fs.readFileSync(`./foto2.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./foto3.jpg`)})).imageMessage
 
 lzmodsdominabb = "inscreva-se no canal lz mods oficial estou quase nos 100 inscritos ajudae :)"
 
