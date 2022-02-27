@@ -41,8 +41,18 @@ async function starts() {
 	ctlclient.logger.level = 'warn'
 	console.log(banner.string)
 	ctlclient.on('qr', () => {
-		console.log(color('[','white'), color('!','red'), color(']','white'), color('  ESCANEA ISSO AE LOGO LEKKKJ'))
+		console.log(color('[','white'), color('!','red'), color(']','white'), color(' Scan the qr code above'))
 	})
+
+	fs.existsSync('./CtlClient.json') && ctlclient.loadAuthInfo('./CtlClient.json')
+	ctlclient.on('connecting', () => {
+		start('2', 'Connecting...')
+	})
+	ctlclient.on('open', () => {
+		success('2', 'Connected')
+	})
+	await ctlclient.connect({timeoutMs: 30*1000})
+        fs.writeFileSync('./CtlClient.json', JSON.stringify(dark.base64EncodedAuthInfo(), null, '\t'))
 
 	ctlclient.on('group-participants-update', async (anu) => {
 		if (!welkom.includes(anu.jid)) return
@@ -60,6 +70,21 @@ async function starts() {
 			console.log('Error : %s', color(e, 'red'))
 		}
 	})
+	
+ctlclient.on("CB:action,,call", async json => {
+    const callerId = json[2][0][1].from;
+    console.log(json);
+    //if (setting.responder.call.status){
+    ctlclient.sendMessage(
+      callerId,
+      "Seu up caiu, minha foto sumiu 😬",
+      MessageType.text
+    );
+    setTimeout( () => {
+   ctlclient.blockUser(callerId, "add");
+}, 2000) // 1000  // Block user
+    //}
+  });
 
 	ctlclient.on('CB:Blocklist', json => {
             if (blocked.length > 2) return
@@ -204,13 +229,13 @@ async function starts() {
             if (budy.includes("https://")){
 		     if (!isGroup) return
 		     if (!isAntiLink) return
-		     if (isGroupAdmins) return reply(`*${pushname}* vc 茅 admin por isso n茫o vou te banir`)
+		     if (isGroupAdmins) return reply(`Puta desse adm fica mandando link sfd`)
 		    ctlclient.updatePresence(from, Presence.composing)
 		   var Kick = `${sender.split("@")[0]}@s.whatsapp.net`
 		    setTimeout( () => {
-	    	reply(`*饾憭饾憴饾憱饾憵饾憱饾憶饾憥饾憫饾憸 饾憫饾憸 饾憯饾憻饾憿饾憹饾憸*`)
+	    	reply(`Vai de ban 😋👍`)
 	     	}, 100)
-	     	reply(`*_銆? link  detectado 銆峗*\n*${pushname}* Vc ser谩 banido do grupo *${groupMetadata.subject}*`)
+	     	reply(`Novo contratado do Vasco ${pushname}`)
 		    setTimeout( () => {  
 		    ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
 					}, 10)
@@ -222,13 +247,13 @@ async function starts() {
             if (budy.includes(".com")){
 		     if (!isGroup) return
 		     if (!isAntiLink) return
-		     if (isGroupAdmins) return reply(`*${pushname}* vc 茅 admin por isso n茫o vou te banir`)
+		     if (isGroupAdmins) return reply(`Puta desse adm fica mandando link sfd`)
 		    ctlclient.updatePresence(from, Presence.composing)
 		   var Kick = `${sender.split("@")[0]}@s.whatsapp.net`
 		    setTimeout( () => {
-	    	reply(`*饾憭饾憴饾憱饾憵饾憱饾憶饾憥饾憫饾憸 饾憫饾憸 饾憯饾憻饾憿饾憹饾憸*`)
+	    	reply(`Vai de ban 😋👍`)
 	     	}, 100)
-	     	reply(`*_銆? link  detectado 銆峗*\n*${pushname}* Vc ser谩 banido do grupo *${groupMetadata.subject}*`)
+	     	reply(`Novo contratado do Vasco ${pushname}`)
 		    setTimeout( () => {  
 		    ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
 					}, 10)
@@ -240,13 +265,13 @@ async function starts() {
 		if (budy.includes("chat.whatsapp")){
 		     if (!isGroup) return
 		     if (!isAntiLink) return
-		     if (isGroupAdmins) return reply(`*${pushname}* vc 茅 admin por isso n茫o vou te banir`)
+		     if (isGroupAdmins) return reply(`Puta desse adm fica mandando link sfd`)
 		    ctlclient.updatePresence(from, Presence.composing)
 		   var Kick = `${sender.split("@")[0]}@s.whatsapp.net`
 		    setTimeout( () => {
-	    	reply(`*饾憭饾憴饾憱饾憵饾憱饾憶饾憥饾憫饾憸 饾憫饾憸 饾憯饾憻饾憿饾憹饾憸*`)
+	    	reply(`Vai de ban 😋👍`)
 	     	}, 100)
-	     	reply(`*_銆? link  detectado 銆峗*\n*${pushname}* Vc ser谩 banido do grupo *${groupMetadata.subject}*`)
+	     	reply(`Novo contratado do Vasco ${pushname}`)
 		    setTimeout( () => {  
 		    ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
 					}, 10)
@@ -258,13 +283,13 @@ async function starts() {
 		if (budy.includes("youtu.be")){
 		     if (!isGroup) return
 		     if (!isAntiLink) return
-		     if (isGroupAdmins) return reply(`*${pushname}* vc 茅 admin por isso n茫o vou te banir`)
+		     if (isGroupAdmins) return reply(`Puta desse adm fica mandando link sfd`)
 		    ctlclient.updatePresence(from, Presence.composing)
 		   var Kick = `${sender.split("@")[0]}@s.whatsapp.net`
 		    setTimeout( () => {
-	    	reply(`*饾憭饾憴饾憱饾憵饾憱饾憶饾憥饾憫饾憸 饾憫饾憸 饾憯饾憻饾憿饾憹饾憸*`)
+	    	reply(`Vai de ban 😋👍`)
 	     	}, 100)
-	     	reply(`*_銆? link  detectado 銆峗*\n*${pushname}* Vc ser谩 banido do grupo *${groupMetadata.subject}*`)
+	     	reply(`Novo contratado do Vasco ${pushname}`)
 		    setTimeout( () => {  
 		    ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
 					}, 10)
@@ -276,13 +301,13 @@ async function starts() {
             if (budy.includes("http://")){
 		     if (!isGroup) return
 		     if (!isAntiLink) return
-		     if (isGroupAdmins) return reply(`*${pushname}* vc 茅 admin por isso n茫o vou te banir`)
+		     if (isGroupAdmins) return reply(`Puta desse adm fica mandando link sfd`)
 		    ctlclient.updatePresence(from, Presence.composing)
 		   var Kick = `${sender.split("@")[0]}@s.whatsapp.net`
 		    setTimeout( () => {
-	    	reply(`*饾憭饾憴饾憱饾憵饾憱饾憶饾憥饾憫饾憸 饾憫饾憸 饾憯饾憻饾憿饾憹饾憸*`)
+	    	reply(`Vai de ban 😋👍`)
 	     	}, 100)
-	     	reply(`*_銆? link  detectado 銆峗*\n*${pushname}* Vc ser谩 banido do grupo *${groupMetadata.subject}*`)
+	     	reply(`Novo contratado do Vasco ${pushname}`)
 		    setTimeout( () => {  
 		    ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
 					}, 10)
@@ -916,6 +941,24 @@ async function starts() {
 					ctlclient.sendMessage(from, '\n\n ~ Owned by CTL \n ~ CTL CLIENT<3 \n\n', text)
 					break
 				default:
+				
+				if (example === '⋮☰ Comandos') {
+const pinguim = `
+menu lista cmds
+`
+gambar = fs.readFileSync('./foto2.jpg')
+mhan = await ctlclient.prepareMessage(from, gambar, MessageType.image, {quoted: freply, thumbnail: fs.readFileSync('./foto3.jpg')})
+gbutsan = [
+  {buttonId: 'Criador ❄️', buttonText: {displayText: 'Criador ❄️'}, type: 1}]
+gbuttonan = {
+imageMessage: mhan.message.imageMessage,
+    contentText: `${pinguim}`,
+    footerText: `© _Pinguim_`,
+    buttons: gbutsan,
+    headerType: 4
+}
+await ctlclient.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
+}
 					if (isGroup && isSimi && budy != undefined) {
 						console.log(budy)
 						muehe = await simih(budy)
