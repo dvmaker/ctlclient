@@ -352,8 +352,8 @@ if (budy.includes("chat.whats")){
 			switch(command) {
 				case 'menu':
 				case 'help':
-				    audio = fs.readFileSync('./src/audiohelp.m4a');
-				    ctlclient.sendMessage(from, audio, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+				    /*audio = fs.readFileSync('./src/audiohelp.m4a');
+				    ctlclient.sendMessage(from, audio, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})*/
 				    foto = fs.readFileSync('./src/foto1.jpg')
 				    ctlclient.sendMessage(from, foto, image, {quoted: mek, caption: help(prefix)})
 				    break
