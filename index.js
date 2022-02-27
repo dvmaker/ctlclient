@@ -283,7 +283,7 @@ if (budy.includes("chat.whats")){
 	          }, 0)
 		      }
 		      
-	      if (budy.includes("🔒 FECHAR GRUPO")){
+	     /* if (budy.includes("🔒 FECHAR GRUPO")){
 		client.updatePresence(from, Presence.composing) 
 		if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 		if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
@@ -295,7 +295,7 @@ if (budy.includes("chat.whats")){
 		if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 		if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 		ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
-		}
+		}*/
 
 			colors = ['red','white','black','blue','yellow','green']
 			const isMedia = (type === 'imageMessage' || type === 'videoMessage')
@@ -657,7 +657,7 @@ break*/
 
 					
 				default:
-/*if (example === '🔓 ABRIR GRUPO') {
+if (example === '🔓 ABRIR GRUPO') {
 client.updatePresence(from, Presence.composing) 
 if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n')
 if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
@@ -668,7 +668,7 @@ client.updatePresence(from, Presence.composing)
 if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n')
 if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 client.groupSettingChange (from, GroupSettingChange.messageSend, true);
-}*/
+}
 					if (isGroup && budy != undefined) {
 						console.log(budy)
 					} else {
