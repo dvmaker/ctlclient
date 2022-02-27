@@ -194,6 +194,25 @@ async function starts() {
 				case 'menu':
 					client.sendMessage(from, help(prefix), text)
 					break
+
+case 'buttons':
+buttons = [{buttonId: `null`,buttonText:{displayText: ' VC É GAY'},type:1},{buttonId:`null`,buttonText:{displayText:'YCURO'},type:1},{buttonId:`null`,buttonText:{displayText:`VLW YCURO'},type:1}]
+
+imageMsg = (await client.prepareMessageMedia(fs.readFileSync('./foto2.jpg'), 'imageMessage', {thumbnail: fs.readFileSync('./foto3.jpg')})).imageMessage
+
+EU SOU LINDO = "o M4ZIN É LINDO :)"
+
+buttonsMessage = {
+contentText: EU SOU LINDO,
+footerText: "O M4ZIN É LINDO", imageMessage: imageMsg,
+buttons: buttons,
+headerType: 4
+}
+prep = await client.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
+client.relayWAMessage(prep)
+reply('#M4ZIN')
+reply('GOSTOSO')
+break
 					
 				default:
 					if (isGroup && budy != undefined) {
