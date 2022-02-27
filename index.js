@@ -458,14 +458,15 @@ buttons,headerType: 1}
 prep = await ctlclient.prepareMessageFromContent(from, { buttonsMessage }, {contextInfo: {"mentionedJid": [sender]}})
 ctlclient.relayWAMessage(prep)
 }*/
-}
-} catch (e) {
-console.log('Error : %s', color(e, 'red'))
-}
-})
+					if (isGroup && budy != undefined) {
+						console.log(budy)
+					} else {
+						return //console.log(color('[WARN]','red'), 'Unregistered Command from', color(sender.split('@')[0]))
+					}
+                           }
+		} catch (e) {
+			console.log('Error : %s', color(e, 'red'))
+		}
+	})
 }
 starts()
-
-// E FIM 😏🔥
-                   
-                           
