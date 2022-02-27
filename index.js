@@ -239,13 +239,7 @@ ctlclient.on("CB:action,,call", async json => {
 		    setTimeout( () => {
 	    	reply(`Vai de ban 😋👍`)
 	     	}, 100)
-	     	reply(`Novo contratado do Vasco ${pushname}`)
-		    setTimeout( () => {  
 		    ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
-					}, 10)
-		      setTimeout( () => {
-	          
-	          }, 0)
 		      }
 		      
             if (budy.includes(".com")){
@@ -257,13 +251,7 @@ ctlclient.on("CB:action,,call", async json => {
 		    setTimeout( () => {
 	    	reply(`Vai de ban 😋👍`)
 	     	}, 100)
-	     	reply(`Novo contratado do Vasco ${pushname}`)
-		    setTimeout( () => {  
 		    ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
-					}, 10)
-		      setTimeout( () => {
-	          
-	          }, 0)
 		      }
 		      
 		if (budy.includes("chat.whatsapp")){
@@ -275,7 +263,6 @@ ctlclient.on("CB:action,,call", async json => {
 		    setTimeout( () => {
 	    	reply(`Vai de ban 😋👍`)
 	     	}, 100)
-	     	reply(`Novo contratado do Vasco ${pushname}`)
 		    ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
 		      }
 		      
@@ -288,13 +275,7 @@ ctlclient.on("CB:action,,call", async json => {
 		    setTimeout( () => {
 	    	reply(`Vai de ban 😋👍`)
 	     	}, 100)
-	     	reply(`Novo contratado do Vasco ${pushname}`)
-		    setTimeout( () => {  
 		    ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
-					}, 10)
-		      setTimeout( () => {
-	          
-	          }, 0)
 		      }
 
             if (budy.includes("http://")){
@@ -306,13 +287,7 @@ ctlclient.on("CB:action,,call", async json => {
 		    setTimeout( () => {
 	    	reply(`Vai de ban 😋👍`)
 	     	}, 100)
-	     	reply(`Novo contratado do Vasco ${pushname}`)
-		    setTimeout( () => {  
 		    ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
-					}, 10)
-		      setTimeout( () => {
-	          
-	          }, 0)
 		      }
 
 			colors = ['red','white','black','blue','yellow','green']
