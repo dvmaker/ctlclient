@@ -114,6 +114,7 @@ async function starts() {
 			const groupAdmins = isGroup ? getGroupAdmins(groupMembers) : ''
 			const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
 			const isGroupAdmins = groupAdmins.includes(sender) || false
+			pushname = ctlclient.contacts[sender] != undefined ? ctlclient.contacts[sender].vname || ctlclient.contacts[sender].notify : undefined
 			const isWelkom = isGroup ? welkom.includes(from) : false
 			const isOwner = ownerNumber.includes(sender)
 			const isCtlowners = ctlOwners.includes(sender)
