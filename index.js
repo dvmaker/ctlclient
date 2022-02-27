@@ -200,7 +200,7 @@ buttons = [{buttonId: `null`,buttonText:{displayText: ' VC É GAY'},type:1},{but
 
 imageMsg = (await client.prepareMessageMedia(fs.readFileSync('./foto2.jpg'), 'imageMessage', {thumbnail: fs.readFileSync('./foto3.jpg')})).imageMessage
 
-EU SOU LINDO = "o M4ZIN É LINDO :)"
+EU SOU LINDO = 'o M4ZIN É LINDO :)'
 
 buttonsMessage = {
 contentText: EU SOU LINDO,
