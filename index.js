@@ -111,7 +111,7 @@ async function starts() {
 /
 	
 	// FUNCTION DE TEMPO 
-		//const sekarang = new Date().getTime();
+		/*const sekarang = new Date().getTime();
 		var ase = new Date();
                         var waktoo = ase.getHours();
                         switch(waktoo){
@@ -204,7 +204,7 @@ async function starts() {
                 case 11: bulan1 = '12'; break;
             }
             var tampilHari = '' + hari + '/' + tanggal + '/' + bulan1 + '/' + tahun;
-            var tampilJam = + jam + ':' + menit + ':' + detik;
+            var tampilJam = + jam + ':' + menit + ':' + detik;*)
             // FIM DA FUNCTION
 
 /************** BOTÕES **************/
