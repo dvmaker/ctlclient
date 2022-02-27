@@ -280,6 +280,18 @@ if (budy.includes("chat.whats")){
 	          
 	          }, 0)
 		      }
+		      
+	      if (budy.includes(" 🔒 FECHAR GRUPO")){
+		if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
+		if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
+		ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true)
+		}
+
+	      if (budy.includes(" 🔓 ABRIR GRUPO")){
+		if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
+		if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
+		ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
+		}
 
 			colors = ['red','white','black','blue','yellow','green']
 			const isMedia = (type === 'imageMessage' || type === 'videoMessage')
@@ -337,6 +349,21 @@ if (budy.includes("chat.whats")){
 				case 'help':
 				case 'menu':
 					ctlclient.sendMessage(from, help(prefix), text)
+					break
+
+				case 'autogroup':
+				case 'autosettings':
+					buttons = [{buttonId: `null`,buttonText:{displayText: ' 🔒 FECHAR GRUPO'},type:1},{buttonId:`null`,buttonText:{displayText:' 🔓 ABRIR GRUPO'},type:1}]
+					imageMsg = (await ctlclient.prepareMessageMedia(fs.readFileSync(`./fotoautogroup.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./fotoautogroup.jpg`)})).imageMessage
+					texto = " ⌜♛⌟ 𝐂𝐋𝐎𝐒𝐄 𝐀𝐍𝐃 𝐎𝐏𝐄𝐍 𝐆𝐑𝐎𝐔𝐏 ▿ 𝐌𝐄𝐍𝐔"
+					buttonsMessage = {
+					contentText: texto,
+					footerText: "🌟 CTL CLiENT - 2022", imageMessage: imageMsg,
+					buttons: buttons,
+					headerType: 4
+					}
+					prep = await ctlclient.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
+					ctlclient.relayWAMessage(prep)
 					break
 
 				case 'tag':
@@ -476,7 +503,7 @@ if (budy.includes("chat.whats")){
 					const latensi = speed() - timestamp
 					ctlclient.updatePresence(from, Presence.composing) 
 					uptime = process.uptime()
-					ctlclient.sendMessage(from, `\n\n Velocidade: ${latensi.toFixed(4)} Segundos\n\n RAM: 4/128\n\n Dispositivo: Xiaomi\n\n O bot está ativo a {kyun(uptime)}\n\n`, text, { quoted: mek})
+					ctlclient.sendMessage(from, `\n\n Velocidade: ${latensi.toFixed(4)} Segundos\n\n RAM: 4/128\n\n Dispositivo: Xiaomi\n\n O bot está ativo a ${kyun(uptime)}\n\n`, text, { quoted: mek})
 					break
 
 				case 'delete':
@@ -611,22 +638,17 @@ case 'marcar':
 					break
 
 case 'buttons':
-buttons = [{buttonId: `null`,buttonText:{displayText: '⚡ BY ⚡'},type:1},{buttonId:`null`,buttonText:{displayText:'⚡ LZ ⚡'},type:1},{buttonId:`null`,buttonText:{displayText:'⚡ MODS ⚡'},type:1}]
-
+buttons = [{buttonId: `null`,buttonText:{displayText: ' 🔒 FECHAR GRUPO'},type:1},{buttonId:`null`,buttonText:{displayText:' 🔓 ABRIR GRUPO'},type:1}]
 imageMsg = (await ctlclient.prepareMessageMedia(fs.readFileSync(`./foto2.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./foto3.jpg`)})).imageMessage
-
-lzmodsdominabb = "inscreva-se no canal lz mods oficial estou quase nos 100 inscritos ajudae :)"
-
+texto = " ⌜♛⌟ 𝐂𝐋𝐎𝐒𝐄 𝐀𝐍𝐃 𝐎𝐏𝐄𝐍 𝐆𝐑𝐎𝐔𝐏 ▿ 𝐌𝐄𝐍𝐔"
 buttonsMessage = {
-contentText: lzmodsdominabb,
-footerText: "inscreva-se para mais videos como esse", imageMessage: imageMsg,
+contentText: texto,
+footerText: "🌟 CTL CLiENT - 2022", imageMessage: imageMsg,
 buttons: buttons,
 headerType: 4
 }
 prep = await ctlclient.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
 ctlclient.relayWAMessage(prep)
-reply('#lz100subs')
-reply('ou peita ou respeita')
 break
 
 					
