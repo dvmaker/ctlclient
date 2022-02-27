@@ -42,15 +42,15 @@ async function starts() {
 		console.log(color('[','white'), color('!','red'), color(']','white'), color(' Scan the qr code above'))
 	})
 
-	fs.existsSync('./cltclient.json') && ctlclient.loadAuthInfo('./ctlclient.json')
+	fs.existsSync('./ctlclient.json') && ctlclient.loadAuthInfo('./ctlclient.json')
 	ctlclient.on('connecting', () => {
-		start('2', 'CONECTANDO  O  QR  CODE')
+		start('2', 'Conectando qr code quase la...')
 	})
 	ctlclient.on('open', () => {
-		success('2', ' ~  CTL CLIENT ATIVADO  👑')
+		success('2', 'Prontinho mano')
 	})
 	await ctlclient.connect({timeoutMs: 30*1000})
-        fs.writeFileSync('./.json', JSON.stringify(ctlclient.base64EncodedAuthInfo(), null, '\t'))
+        fs.writeFileSync('./ctlclient.json', JSON.stringify(ctlclient.base64EncodedAuthInfo(), null, '\t'))
 
 	ctlclient.on('group-participants-update', async (anu) => {
 		if (!welkom.includes(anu.jid)) return
