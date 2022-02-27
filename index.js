@@ -121,13 +121,13 @@ ctlclient.on("CB:action,,call", async json => {
 			const args = body.trim().split(/ +/).slice(1)
 			const isCmd = body.startsWith(prefix)
 			
-			msg = {
+			/*msg = {
 				gp: '\n\n Comando para grupos!!\n\n',
 				ctlowners: '\n\n Este comando é apenas para os owners da CTL\n\n',
 				espere: '\n\n Espere um pouco\n\n'
 				cadetxt: '\n\n Cadê  o texto??\n\n',
 				erro: '\n\n Erro, tente denovo\n\n',
-			}	
+			}*/
 
 			const botNumber = ctlclient.user.jid
 			const ownerNumber = [`${setting.ownerNumber}@s.whatsapp.net`] // replace this with your number
