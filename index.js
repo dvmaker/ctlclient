@@ -416,19 +416,48 @@ break*/
 
 //FIM
 default: 
-if (example === '🔓 ABRIR GRUPO') {
-ctlclient.updatePresence(from, Presence.composing) 
-if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n')
-if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
-ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
-}
-if (example === '🔒 FECHAR GRUPO') {
-ctlclient.updatePresence(from, Presence.composing) 
-if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n')
-if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
-ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true);
-}
 
+/*if (example === 'Ver umenu 🛍️') {
+const getLevel = getLevelingLevel(sender)
+const getXp = getLevelingXp(sender)
+const menus = ["gunterabraço","gunters","gunterovo","gunter1","gunter2"]
+men = menus[Math.floor(Math.random() * menus.length)]
+meyunu = fs.readFileSync('./menu/'+men+'.mp4')
+ctlclient.sendMessage(from, meyunu, MessageType.video, {quoted: fdocs, mimetype: 'video/gif', ptt:true, quoted: fdocs, thumbnail: fs.readFileSync('./me3.jpg'), sendEphemeral: true, caption: help(pushname, tampilJam, tampilHari, tampilUcapan, sender, patt, getLevelingLevel, getLevelingXp, prefix) })
+}*/
+/*if (example === '⋮☰ Comandos') {
+const pinguim = `
+menu lista cmds
+`
+gambar = fs.readFileSync('./foto1.jpg')
+mhan = await ctlclient.prepareMessage(from, gambar, MessageType.image, {quoted: freply, thumbnail: fs.readFileSync('./foto2.jpg')})
+gbutsan = [
+  {buttonId: 'Criador ❄️', buttonText: {displayText: 'Criador ❄️'}, type: 1}]
+gbuttonan = {
+imageMessage: mhan.message.imageMessage,
+    contentText: `${pinguim}`,
+    footerText: `© _Pinguim_`,
+    buttons: gbutsan,
+    headerType: 4
+}
+await ctlclient.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
+}*/
+
+//MENUSSS
+/*if (body == `${prefix}${command}`) {
+buttons = [{
+                    "buttonId": `Ver menu 🛍️`,
+                    "buttonText": {
+                        "displayText": "Ver menu 🛍️"
+                    },
+                    "type": "RESPONSE"
+                    }]
+buttonsMessage = { contentText: `        ────────────────\nOlá @${sender.split("@")[0]}!!\nO comando: ${prefix}${command} não existe\n\nMano cê tem doença?😑\nSe não está no ${prefix}menu é porq não tem.\n        ────────────────`,
+footerText: '© _Pinguim_',
+buttons,headerType: 1}
+prep = await ctlclient.prepareMessageFromContent(from, { buttonsMessage }, {contextInfo: {"mentionedJid": [sender]}})
+ctlclient.relayWAMessage(prep)
+}*/
 }
 } catch (e) {
 console.log('Error : %s', color(e, 'red'))
