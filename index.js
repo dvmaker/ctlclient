@@ -403,12 +403,6 @@ client.relayWAMessage(prep)
 reply('#M4ZIN')
 reply('GOSTOSO')
 break
-
-}
-
-
-
-					
 				default:
 					if (isGroup && budy != undefined) {
 						console.log(budy)
