@@ -10,7 +10,7 @@ const {
     Mimetype,
     GroupSettingChange
 } = require('@adiwajshing/baileys')
-const { color, bgcolor } = require('./lib/color'))
+const { color, bgcolor } = require('./lib/color')
 const moment = require('./src/help')
 const tag = require('./src/tag')
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
