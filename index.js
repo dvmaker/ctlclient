@@ -961,11 +961,8 @@ imageMessage: mhan.message.imageMessage,
 }
 await ctlclient.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
 }
-					if (isGroup && isSimi && budy != undefined) {
-						console.log(budy)
-						muehe = await simih(budy)
-						console.log(muehe)
-						reply(muehe)
+					if (isGroup && && budy != undefined) {
+						
 					} else {
 						return //console.log(color('[WARN]','red'), 'Unregistered Command from', color(sender.split('@')[0]))
 					}
