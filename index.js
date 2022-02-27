@@ -97,6 +97,8 @@ async function starts() {
 			const time = moment.tz('Asia/Jakarta').format('DD/MM HH:mm:ss')
 			body = (type === 'conversation' && mek.message.conversation.startsWith(prefix)) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption.startsWith(prefix) ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption.startsWith(prefix) ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text.startsWith(prefix) ? mek.message.extendedTextMessage.text : ''
 			budy = (type === 'conversation') ? mek.message.conversation : (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.text : ''
+			example = (type === 'buttonsResponseMessage') ? mek.message.buttonsResponseMessage.selectedDisplayText : ''
+			const isButton = (type == 'buttonsResponseMessage') ? mek.message.buttonsResponseMessage.selectedButtonId : ''
 			const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
 			const args = body.trim().split(/ +/).slice(1)
 			const isCmd = body.startsWith(prefix)
@@ -281,13 +283,13 @@ if (budy.includes("chat.whats")){
 	          }, 0)
 		      }
 		      
-	      if (budy.includes(" 🔒 FECHAR GRUPO")){
+	      if (budy.includes("🔒 FECHAR GRUPO")){
 		if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 		if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 		ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true)
 		}
 
-	      if (budy.includes(" 🔓 ABRIR GRUPO")){
+	      if (budy.includes("🔓 ABRIR GRUPO")){
 		if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 		if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 		ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
@@ -637,7 +639,7 @@ case 'marcar':
 					ctlclient.sendMessage(from, `\n\n ~  👑 CTL CASSINO\n\n-- ${dv1} : ${dv2} : ${dv3}\n\n`, text)
 					break
 
-case 'buttons':
+/*case 'buttons':
 buttons = [{buttonId: `null`,buttonText:{displayText: ' 🔒 FECHAR GRUPO'},type:1},{buttonId:`null`,buttonText:{displayText:' 🔓 ABRIR GRUPO'},type:1}]
 imageMsg = (await ctlclient.prepareMessageMedia(fs.readFileSync(`./foto2.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./foto3.jpg`)})).imageMessage
 texto = " ⌜♛⌟ 𝐂𝐋𝐎𝐒𝐄 𝐀𝐍𝐃 𝐎𝐏𝐄𝐍 𝐆𝐑𝐎𝐔𝐏 ▿ 𝐌𝐄𝐍𝐔"
@@ -649,10 +651,22 @@ headerType: 4
 }
 prep = await ctlclient.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
 ctlclient.relayWAMessage(prep)
-break
+break*/
 
 					
 				default:
+if (example === '🔓 ABRIR GRUPO') {
+client.updatePresence(from, Presence.composing) 
+if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n')
+if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
+client.groupSettingChange (from, GroupSettingChange.messageSend, false)
+}
+if (example === '🔒 FECHAR GRUPO') {
+client.updatePresence(from, Presence.composing) 
+if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n')
+if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
+client.groupSettingChange (from, GroupSettingChange.messageSend, true);
+}
 					if (isGroup && budy != undefined) {
 						console.log(budy)
 					} else {
