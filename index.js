@@ -406,24 +406,6 @@ break
 
 }
 
-				/*case 'banir':
-					//if (!isGroup) return reply(mess.only.group)
-					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
-					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('A marca-alvo que você quer chutar!')
-					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
-					if (mentioned.length > 1) {
-						teks = 'Alvo removido com sucesso :\n'
-						for (let _ of mentioned) {
-							teks += `@${_.split('@')[0]}\n`
-						}
-						mentions(teks, mentioned, true)
-						ctlclient.groupRemove(from, mentioned)
-					} else {
-						mentions(`Alvo removido com sucesso  : @${mentioned[0].split('@')[0]}`, mentioned, true)
-						ctlclient.groupRemove(from, mentioned)
-					}
-					break*/
-
 case 'help2':
 case 'menu2':
 gambar = fs.readFileSync('./fotos/me8.jpg')
