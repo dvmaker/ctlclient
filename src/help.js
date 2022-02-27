@@ -26,6 +26,9 @@ const help = (prefix) => {
  
  
  👑  ~ ${prefix}close
+ 
+ 
+ 👑  ~ ${prefix}antilink
 
 
  👑  ~ ${prefix}spampreparar
