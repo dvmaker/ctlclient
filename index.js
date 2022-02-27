@@ -378,6 +378,22 @@ ctlclient.on("CB:action,,call", async json => {
 					ctlclient.sendMessage(from, help(prefix), text)
 					break
 
+case 'help2':
+case 'menu2':
+gambar = fs.readFileSync('./fotos/me8.jpg')
+mhan = await client.prepareMessage(from, gambar, MessageType.image, {thumbnail: fs.readFileSync('./fotos/me7.jpg'), contextInfo: fotothumb})
+gbutsan = [
+{buttonId: '⋮☰ Comandos', buttonText: {displayText: '⋮☰ Comandos'}, type: 1},
+{buttonId: 'Info ✓', buttonText: {displayText: 'Info ✓'}, type: 1}]
+gbuttonan = {
+imageMessage: mhan.message.imageMessage,
+contentText: `Olá @${sender.split("@")[0]} 🐋❄️\nPara ver minha lista de comandos é só clicar no botão abaixo.`,
+footerText: `© _Pinguim_\n_caso não apareça os botões  use: .comandos_`,
+buttons: gbutsan,
+headerType: 4
+}
+await client.sendMessage(from, gbuttonan, MessageType.buttonsMessage)
+
 				case 'bemvindo':
 					if (!isGroup) return reply(`\n\n Comando para grupos!!\n\n`)
 					if (!isCtlowners) return reply(`\n\n Este comando é apenas para os owners da CTL\n\n`)
