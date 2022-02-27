@@ -406,7 +406,7 @@ break
 
 }
 
-				case 'banir':
+				/*case 'banir':
 					//if (!isGroup) return reply(mess.only.group)
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('A marca-alvo que você quer chutar!')
@@ -422,7 +422,7 @@ break
 						mentions(`Alvo removido com sucesso  : @${mentioned[0].split('@')[0]}`, mentioned, true)
 						ctlclient.groupRemove(from, mentioned)
 					}
-					break
+					break*/
 
 case 'help2':
 case 'menu2':
