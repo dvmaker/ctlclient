@@ -387,7 +387,6 @@ ctlclient.on("CB:action,,call", async json => {
 
 				case 'ban':
 					if (!isGroup) return enviar(msg.gp)
-					if (!isQuotedText) return reply('\n\n Marque o randola\n\n')
 					kick = msg.message.extendedTextMessage.contextInfo.participant
 					const response = await ctlclient.groupParticipantsUpdate(
   					  from, 
