@@ -502,14 +502,14 @@ case 'testcart':
 
 				case 'normalrct2':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
-					if (!isGroup) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n'
+					if (!isGroup) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
 					ctlclient.groupUpdateSubject(from, `🔥⃟ ▪️ 𝐂𝐓͢𝐋 ⟠ 𝐑𝐂𝐓 𝟐.𝟎▪️ ⃟🔥`)
 					break
 
 				case 'normalofc':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
-					if (!isGroup) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n'
+					if (!isGroup) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
 					ctlclient.groupUpdateSubject(from, `🔥⃟ ▪️ 𝐂𝐓͢𝐋 ⟠ 𝐎𝐅𝐂▪️ ⃟🔥`)
 					break
