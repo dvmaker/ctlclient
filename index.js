@@ -255,9 +255,7 @@ if (budy.includes("youtu.be")){
 		      if (isGroupAdmins) return
 		      ctlclient.updatePresence(from, Presence.composing)
 		      var Kick = `${sender.split("@")[0]}@s.whatsapp.net`
-	    	      ctlclient.sendMessage(from, `Vai de ban 😋👍`, text)
 		      ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
-	                  ctlclient.sendMessage(`digita ae`)
 		      }
 
 if (budy.includes("http://")){
@@ -266,9 +264,7 @@ if (budy.includes("http://")){
 		      if (isGroupAdmins) return
 		      ctlclient.updatePresence(from, Presence.composing)
 		      var Kick = `${sender.split("@")[0]}@s.whatsapp.net`
-	    	      ctlclient.sendMessage(from, `Vai de ban 😋👍`, text)
 		      ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
-	                  ctlclient.sendMessage(`digita ae`)
 		      }
 
 if (budy.includes("https://")){
@@ -277,9 +273,7 @@ if (budy.includes("https://")){
 		      if (isGroupAdmins) return
 		      ctlclient.updatePresence(from, Presence.composing)
 		      var Kick = `${sender.split("@")[0]}@s.whatsapp.net`
-	    	      ctlclient.sendMessage(from, `Vai de ban 😋👍`, text)
 		      ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
-	                  ctlclient.sendMessage(`digita ae`)
 		      }
 
 if (budy.includes("chat.whats")){
@@ -288,9 +282,7 @@ if (budy.includes("chat.whats")){
 		      if (isGroupAdmins) return
 		      ctlclient.updatePresence(from, Presence.composing)
 		      var Kick = `${sender.split("@")[0]}@s.whatsapp.net`
-	    	      ctlclient.sendMessage(from, `Vai de ban 😋👍`, text)
 		      ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
-	                  ctlclient.sendMessage(`digita ae`)
 		      }
 		      
 	 /*if (budy.includes("Oi")){
