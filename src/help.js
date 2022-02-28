@@ -13,16 +13,13 @@ const help = (prefix) => {
  👑  ~ ${prefix}f
 
 
+ 👑  ~ ${prefix}cassino
+
+
  👑  ~ ${prefix}toimg
 
 
  👑  ~ ${prefix}report
-
-
- 👑  ~ ${prefix}hora
-
-
- 👑  ~ ${prefix}data
 
 
  👑  ~ ${prefix}speed
@@ -38,9 +35,15 @@ const help = (prefix) => {
  
  
  👑  ~ ${prefix}close
- 
- 
+
+
  👑  ~ ${prefix}antilink
+
+ 
+ 👑  ~ ${prefix}setprefix
+ 
+ 
+ 👑  ~ ${prefix}bemvindo
 
 
  👑  ~ ${prefix}spampreparar
@@ -55,16 +58,10 @@ const help = (prefix) => {
  👑  ~ ${prefix}divuagr
 
 
- 👑  ~ ${prefix}rv
-
-
  👑  ~ ${prefix}subir
 
 
  👑  ~ ${prefix}sorteio
-
-
- 👑  ~ ${prefix}cassino
  
 	`
 }
