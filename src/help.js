@@ -41,6 +41,9 @@ const help = (prefix) => {
 
  
  👑  ~ ${prefix}setprefix
+
+
+ 👑  ~ ${prefix}travarios
  
  
  👑  ~ ${prefix}bemvindo
