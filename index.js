@@ -59,7 +59,18 @@ async function starts() {
 			console.log(anu)
 			if (anu.action == 'add') {
 				num = anu.participants[0]
-				teks = `\n\n Eae @${num.split('@')[0]} usa a tag ae `
+				teks = `\n\n Eae @${num.split('@')[0]} usa a tag ae
+				
+𝐓𝚫𝐆 𝐞 𝐑𝐄𝐂𝚫𝐃𝐎:
+
+
+ • ]ㅤא 𝐨𝐮 ᶜᵗˡ
+
+
+ • ] 🔥ᬊ͜͡♞𝐒𝚹͢𝐔 𝐂𝐑͢𝐢𝚫⃫ 𝐃͢𝚫⃫ 𝐂͢𝚲𝐑͢𝐓𝚵͢𝐋♞͜͡ᬉ🔥
+ 
+ 
+ Use ${prefix}help ou ${prefix}menu, para usar o Ctl Client`
 				ctlclient.sendMessage(mdata.id, teks, MessageType.text)
 			} else if (anu.action == 'remove') {
 				num = anu.participants[0]
@@ -72,12 +83,6 @@ async function starts() {
 		}
 	})
 
-	ctlclient.on('CB:Blocklist', json => {
-            if (blocked.length > 2) return
-	    for (let i of json[1].blocklist) {
-	    	blocked.push(i.replace('c.us','s.whatsapp.net'))
-	    }
-	})
 
 	ctlclient.on('chat-update', async (mek) => {
 		try {
