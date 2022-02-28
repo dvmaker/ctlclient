@@ -352,10 +352,8 @@ if (budy.includes("chat.whats")){
 			switch(command) {
 				case 'menu':
 				case 'help':
-				    audio = fs.readFileSync('./src/audiohelp.m4a');
-				    ctlclient.sendMessage(from, audio, MessageType.audio, {mimetype: 'audio/mp4', ptt:true})
-				    /*foto = fs.readFileSync('./src/foto1.jpg')
-				    ctlclient.sendMessage(from, foto, image, {quoted: mek, caption: help(prefix)})*/
+				    foto = fs.readFileSync('./src/foto1.jpg')
+				    ctlclient.sendMessage(from, foto, image, {quoted: mek, caption: help(prefix)})
 				    break
 
 case 'testcart':
@@ -739,7 +737,7 @@ case 'marcar':
 					const dv2 = ctl[Math.floor(Math.random() * (ctl.length))]
 					const dv3 = ctl[Math.floor(Math.random() * (ctl.length))]
 					//const ctlcassino = ' ~  👑  CTL CASSINO\n-- ${dv1} : ${dv2} : ${dv3}'
-					ctlclient.sendMessage(from, `\n\n ~  👑 CTL CASSINO\n\n-- ${dv1} : ${dv2} : ${dv3}\n\n`, text)
+					ctlclient.sendMessage(from, `\n\n ~  👑 CTL CASSINO\n\n-- ${dv1} : ${dv2} : ${dv3}\n\n`, text, {quoted: mek})
 					break
 
 /*case 'buttons':
