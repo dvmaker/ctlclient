@@ -678,7 +678,7 @@ case 'testcart':
 				case 'fechar':
 				case 'fechargp':
 					if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n')
-					if (!isGroupAdmins) return reply('\n\n Comando apenas para adms do grupo!!\n\n'))
+					if (!isGroupAdmins) return reply('\n\n Comando apenas para adms do grupo!!\n\n')
 					//if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true)
 					break
