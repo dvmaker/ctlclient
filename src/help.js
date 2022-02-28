@@ -58,6 +58,18 @@ const help = (prefix) => {
  👑  ~ ${prefix}divuagr
 
 
+ 👑  ~ ${prefix}normalrct1
+
+
+ 👑  ~ ${prefix}normalrct2
+
+
+ 👑  ~ ${prefix}normalofc
+
+
+ 👑  ~ ${prefix}normaladms
+
+
  👑  ~ ${prefix}subir
 
 
