@@ -478,7 +478,9 @@ case 'testcart':
 
 				case 'autogroup':
 				case 'autosettings':
-					buttons = [{buttonId: `null`,buttonText:{displayText: '🔒 FECHAR GRUPO'},type:1},{buttonId:`null`,buttonText:{displayText:'🔓 ABRIR GRUPO'},type:1}]
+					if (!isGroup) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para grupos!!\n\n')    
+					buttons = [{buttonId: `.fechar`,buttonText:{displayText: '🔒 FECHAR GRUPO'},type:1},{buttonId:`.abrir`,buttonText:{displayText:'🔓 ABRIR GRUPO'},type:1}]
 					imageMsg = (await ctlclient.prepareMessageMedia(fs.readFileSync(`./src/foto1.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./src/foto1.jpg`)})).imageMessage
 					texto = "\n\n⌜♛⌟ 𝐂𝐋𝐎𝐒𝐄 𝐀𝐍𝐃 𝐎𝐏𝐄𝐍 𝐆𝐑𝐎𝐔𝐏 ▿ 𝐌𝐄𝐍𝐔\n"
 					buttonsMessage = {
@@ -618,8 +620,7 @@ case 'testcart':
 				case 'delete':
 				case 'del':
 				case 'd':  
-					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')    
-					if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n')
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					ctlclient.deleteMessage(from, { id: mek.message.extendedTextMessage.contextInfo.stanzaId, remoteJid: from, fromMe: true })
 					break
 
@@ -671,17 +672,35 @@ case 'testcart':
 					}
 					break
 
+				case 'bemvindo':
+					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
+					if (args.length < 1) return reply('\n\n Use 1 para ativar ou 0 para desativar!!\n\n')
+					if (Number(args[0]) === 1) {
+					if (isWelkom) return reply(`\n\n Oiee, ${ucapanFakereply}, O anti-link está ativo\n\n`)
+				    	welkom.push(from)
+					fs.writeFileSync('./src/welkom.json', JSON.stringify(welkom))
+				    	reply(`\n\n Oiee, ${ucapanFakereply}, O anti-link foi ativado\n\n`)
+					} else if (Number(args[0]) === 0) {
+					welkom.splice(from, 1)
+					fs.writeFileSync('./src/welkom.json', JSON.stringify(welkom))
+					reply(`\n\n Oiee, ${ucapanFakereply}, O anti-link foi desativado\n\n`)
+					} else {
+					reply(`\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar ou 0 para desativar\n\n`)
+					}
+					break
+
 				case 'spampreparar':
+					if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n')
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					if (args.length < 1) return reply('Coloque a hora depois do comando!!')
-					if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n')
 					horaatk = body.slice(14)
 					ctlclient.groupUpdateSubject(from, `‼️ ATK SPAM ${horaatk} ‼️`)
 					break
 
 				case 'spamagr':
-					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n')
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					setTimeout( () => {
 					ctlclient.groupUpdateSubject(from, ` ‼️ ATK SPAM AGORA ‼️ `)
 					}, 500)
@@ -689,9 +708,9 @@ case 'testcart':
 					break
 
 				case 'divupreparar':
+					if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n')
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					if (args.length < 1) return reply('Coloque a hora depois do comando!!')
-					if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n')
 					horaatk = body.slice(14)
 					ctlclient.groupUpdateSubject(from, `‼️ ATK DIVU ${horaatk} ‼️`)
 					break
