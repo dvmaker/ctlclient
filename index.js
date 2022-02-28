@@ -8,6 +8,7 @@ const {
 const { color, bgcolor } = require('./lib/color')
 const { help } = require('./src/help')
 const { tag } = require('./src/tag')
+const { shultz } = require('./src/shultz')
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const { fetchJson, fetchText } = require('./lib/fetcher')
 const fs = require('fs')
@@ -493,30 +494,35 @@ case 'testcart':
 					ctlclient.relayWAMessage(prep)
 					break*/
 					
+				case 'shultz':
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
+					ctlclient.sendMessage(from, shultz, text)
+					break
+					
 				case 'normalrct1':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
-					if (!isGroup) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
 					ctlclient.groupUpdateSubject(from, `🔥⃟ ▪️ 𝐂𝐓͢𝐋 ⟠ 𝐓𝐒𝐒 𝟏𝟗𝟗𝟒▪️ ⃟🔥`)
 					break
 
 				case 'normalrct2':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
-					if (!isGroup) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
 					ctlclient.groupUpdateSubject(from, `🔥⃟ ▪️ 𝐂𝐓͢𝐋 ⟠ 𝐑𝐂𝐓 𝟐.𝟎▪️ ⃟🔥`)
 					break
 
 				case 'normalofc':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
-					if (!isGroup) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
 					ctlclient.groupUpdateSubject(from, `🔥⃟ ▪️ 𝐂𝐓͢𝐋 ⟠ 𝐎𝐅𝐂▪️ ⃟🔥`)
 					break
 
 				case 'normaladms':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
-					if (!isGroup) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
 					ctlclient.groupUpdateSubject(from, ` 𐎟 𝚫͢𝐃𝐌͢𝐢𝐍𝐒͢ 𐎟 𝐂𝐓͢𝐋 𐎟`)
 					break
