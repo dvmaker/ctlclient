@@ -301,11 +301,15 @@ if (budy.includes("chat.whats")){
 	          }, 0)
 		      }
 		      
-	 if (budy.includes("Oi")){
+	 /*if (budy.includes("Oi")){
 	                  figadolf = fs.readFileSync('./src/adolf.webp')
 		      ctlclient.sendMessage(from, figadolf, sticker, {quoted: mek})
 		      sendMess('Adolf Jackson 👍')
-		      }
+		      }*/
+		      
+	if (budy.includes("Oi")){
+	enviarfig('./src/adolf.webp')
+	}
 		      
 	     /* if (budy.includes("🔒 FECHAR GRUPO")){
 		client.updatePresence(from, Presence.composing) 
