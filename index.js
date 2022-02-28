@@ -53,7 +53,7 @@ async function starts() {
         fs.writeFileSync('./ctlclient.json', JSON.stringify(ctlclient.base64EncodedAuthInfo(), null, '\t'))
 
 
-client.on('group-participants-update', async (anu) => {
+/*client.on('group-participants-update', async (anu) => {
 		if(antifake.includes(anu.jid)) {
 	const mdata = await client.groupMetadata(anu.jid)
 			if (anu.action == 'add'){
@@ -66,7 +66,7 @@ client.on('group-participants-update', async (anu) => {
 				}
 			}
 		}
-		}
+	}*/
 
 
 	ctlclient.on('group-participants-update', async (anu) => {
