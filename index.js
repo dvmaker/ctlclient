@@ -765,6 +765,30 @@ case 'marcar':
 					ctlclient.sendMessage(from, `\n\n ~  👑 CTL CASSINO\n\n-- ${dv1} : ${dv2} : ${dv3}\n\n`, text, {quoted: mek})
 					break
 
+case 'oi':
+ctlclient.sendMessage(from, 'oi', text)
+break
+
+case 'boatarde':
+ctlclient.sendMessage(from, 'boatardee', text)
+
+				case 'autogroup':
+				case 'autosettings':
+					if (!isGroup) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para grupos!!\n\n')    
+					buttons = [{buttonId: `.oi`,buttonText:{displayText: 'mandar oi'},type:1},{buttonId:`.boatarde`,buttonText:{displayText:'mandar boa tarde'},type:1}]
+					imageMsg = (await ctlclient.prepareMessageMedia(fs.readFileSync(`./src/foto1.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./src/foto1.jpg`)})).imageMessage
+					texto = "\n\n⌜♛⌟ 𝐂𝐋𝐎𝐒𝐄 𝐀𝐍𝐃 𝐎𝐏𝐄𝐍 𝐆𝐑𝐎𝐔𝐏 ▿ 𝐌𝐄𝐍𝐔\n"
+					buttonsMessage = {
+					contentText: texto,
+					footerText: "🌟 CTL CLiENT - 2022", imageMessage: imageMsg,
+					buttons: buttons,
+					headerType: 4
+					}
+					prep = await ctlclient.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
+					ctlclient.relayWAMessage(prep)
+					break
+
 /*case 'buttons':
 buttons = [{buttonId: `null`,buttonText:{displayText: ' 🔒 FECHAR GRUPO'},type:1},{buttonId:`null`,buttonText:{displayText:' 🔓 ABRIR GRUPO'},type:1}]
 imageMsg = (await ctlclient.prepareMessageMedia(fs.readFileSync(`./foto2.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./foto3.jpg`)})).imageMessage
