@@ -369,6 +369,42 @@ if (budy.includes("chat.whats")){
 				    ctlclient.sendMessage(from, foto, image, {quoted: mek, caption: help(prefix)})
 				    break
 
+/*case "ppt":
+if (args.length < 1) return reply(`Você deve digitar ${prefix}ppt pedra, ${prefix}ppt papel ou ${prefix}ppt tesoura`)
+ppt = ["pedra","papel","tesoura"]
+ppy = ppt[Math.floor(Math.random() * ppt.length)]
+ppg = Math.floor(Math.random() * 13) + 349
+pptb = ppy
+pph = `Você ganhou ${ppg} em xp`
+if ((pptb == "pedra" && args == "papel") || 
+(pptb == "papel" && args == "tesoura") || 
+(pptb == "tesoura" && args == "pedra")) {
+var vit = "vitoria"
+} else if ((pptb == "pedra" && args == "tesoura") || 
+(pptb == "papel" && args == "pedra") || 
+(pptb == "tesoura" && args == "papel")) {
+var vit = "derrota"
+} else if ((pptb == "pedra" && args == "pedra") ||
+(pptb == "papel" && args == "papel") ||
+(pptb == "tesoura" && args == "tesoura")) {
+var vit = "empate"
+} else if (vit = "undefined") {
+return reply(ptbr.tterro())
+}
+if (vit == "vitoria") {
+var tes = "Vitória do jogador"
+}
+if (vit == "derrota" ) {
+var tes = "A vitória é do Pinguim🐧"
+}
+if (vit == "empate" ) {
+var tes = "O jogo terminou em empate 🤝"
+}
+reply(`\n\n Ctl Client jogou: ${pptb}\n\n O jogador jogou: ${args}\n\n${tes}`)
+if (tes == "Vitória do jogador") {
+reply(pph)
+}
+break*/
 
 				case 'setprefix':
 					if (args.length < 1) return reply('\n\n Você precisa colocar o novo prefixo depois do comando!!\n\n')
@@ -497,7 +533,8 @@ case 'testcart':
 				case 'travarios':
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					if (args.length < 1) return reply('Cadê o alvo')
-					ctlclient = body.slice(11)
+					ctlclient.sendMessage(`${body.slice(11)}@s.whatsapp.net`, sholtz(prefix), text)
+					/*ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)
 					ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)
 					ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)
 					ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)
@@ -505,9 +542,7 @@ case 'testcart':
 					ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)
 					ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)
 					ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)
-					ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)
-					ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)
-					ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)
+					ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)*/
 					break
 					
 				case 'normalrct1':
