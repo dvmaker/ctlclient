@@ -380,6 +380,16 @@ if (budy.includes("chat.whats")){
 				    ctlclient.sendMessage(from, foto, image, {quoted: mek, caption: help(prefix)})
 				    break
 
+
+				case 'setprefix':
+					if (args.length < 1) return reply('\n\n Você precisa colocar o novo prefixo depois do comando!!\n\n')
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n') 
+					prefix = args[0]
+					setting.prefix = prefix
+					fs.writeFileSync('./src/settings.json', JSON.stringify(setting, null, '\t'))
+					reply(`Novo prefixo: ${prefix}`)
+					break
+
 case 'testcart':
                 let pi = ctlclient.prepareMessageFromContent(from, {
            "listMessage": {
