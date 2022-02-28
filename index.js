@@ -496,7 +496,7 @@ case 'testcart':
 					
 				case 'shultz':
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
-					ctlclient.sendMessage(from, shultz, text)
+					ctlclient.sendMessage(from, shultz(prefix), text)
 					break
 					
 				case 'normalrct1':
