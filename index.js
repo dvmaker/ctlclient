@@ -53,15 +53,15 @@ async function starts() {
         fs.writeFileSync('./ctlclient.json', JSON.stringify(ctlclient.base64EncodedAuthInfo(), null, '\t'))
 
 
-/*client.on('group-participants-update', async (anu) => {
+/*ctlclient.on('group-participants-update', async (anu) => {
 		if(antifake.includes(anu.jid)) {
-	const mdata = await client.groupMetadata(anu.jid)
+	const mdata = await ctlclient.groupMetadata(anu.jid)
 			if (anu.action == 'add'){
 				num = anu.participants[0]
 				if(!num.split('@')[0].startsWith(55)) {
-				client.sendMessage(mdata.id, 'Digita️', MessageType.text)
+				ctlclient.sendMessage(mdata.id, 'Digita️', MessageType.text)
 				setTimeout(async function () {
-				client.groupRemove(mdata.id, [num])
+				ctlclient.groupRemove(mdata.id, [num])
 					}, 1000)
 				}
 			}
