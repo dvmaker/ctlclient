@@ -66,6 +66,7 @@ client.on('group-participants-update', async (anu) => {
 				}
 			}
 		}
+		}
 
 
 	ctlclient.on('group-participants-update', async (anu) => {
