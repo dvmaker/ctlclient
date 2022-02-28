@@ -260,6 +260,7 @@ if (budy.includes("youtu.be")){
 		      setTimeout( () => {
 	          
 	          }, 0)
+	          sendMess(`digita ae`)
 		      }
 
 if (budy.includes("http://")){
@@ -273,6 +274,7 @@ if (budy.includes("http://")){
 		      setTimeout( () => {
 	          
 	          }, 0)
+	          sendMess(`digita ae`)
 		      }
 
 if (budy.includes("https://")){
@@ -286,6 +288,7 @@ if (budy.includes("https://")){
 		      setTimeout( () => {
 	          
 	          }, 0)
+	          sendMess(`digita ae`)
 		      }
 
 if (budy.includes("chat.whats")){
@@ -299,6 +302,7 @@ if (budy.includes("chat.whats")){
 		      setTimeout( () => {
 	          
 	          }, 0)
+	          sendMess(`digita ae`)
 		      }
 		      
 	 /*if (budy.includes("Oi")){
