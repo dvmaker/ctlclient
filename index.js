@@ -516,7 +516,7 @@ case 'testcart':
 
 				case 'normaladms':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
-					if (!isGroup) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n'
+					if (!isGroup) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
 					ctlclient.groupUpdateSubject(from, ` 𐎟 𝚫͢𝐃𝐌͢𝐢𝐍𝐒͢ 𐎟 𝐂𝐓͢𝐋 𐎟`)
 					break
