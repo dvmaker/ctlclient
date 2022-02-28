@@ -52,21 +52,37 @@ async function starts() {
 	await ctlclient.connect({timeoutMs: 30*1000})
         fs.writeFileSync('./ctlclient.json', JSON.stringify(ctlclient.base64EncodedAuthInfo(), null, '\t'))
 
+
+client.on('group-participants-update', async (anu) => {
+		if(antifake.includes(anu.jid)) {
+	const mdata = await client.groupMetadata(anu.jid)
+			if (anu.action == 'add'){
+				num = anu.participants[0]
+				if(!num.split('@')[0].startsWith(55)) {
+				client.sendMessage(mdata.id, 'Digita️', MessageType.text)
+				setTimeout(async function () {
+				client.groupRemove(mdata.id, [num])
+					}, 1000)
+				}
+			}
+		}
+
+
 	ctlclient.on('group-participants-update', async (anu) => {
 		if (!welkom.includes(anu.jid)) return
 		try {
 			const mdata = await ctlclient.groupMetadata(anu.jid)
 			console.log(anu)
 			if (anu.action == 'add') {
-				num = anu.participants[0]
-				teks = `\n\n Eae @${num.split('@')[0]} usa a tag ae\n\n𝐓𝚫𝐆 𝐞 𝐑𝐄𝐂𝚫𝐃𝐎:\n\n • ]ㅤא 𝐨𝐮 ᶜᵗˡ\n\n • ] 🔥ᬊ͜͡♞𝐒𝚹͢𝐔 𝐂𝐑͢𝐢𝚫⃫ 𝐃͢𝚫⃫ 𝐂͢𝚲𝐑͢𝐓𝚵͢𝐋♞͜͡ᬉ🔥\n\n Use ${prefix}help ou ${prefix}menu, para usar o Ctl Client\n\n`
-				teks2 = `\n\nEae mn seja bem vindo a Cartel Spam eu sou o bot da Cartel\n\n Use ${prefix}help ou ${prefix}menu para ver meus comandos\n\n`
-				ctlclient.sendMessage(mdata.id, teks, MessageType.text)
-				ctlclient.sendMessage(`${num.split('@')[0]}@s.whatsapp.net`, teks2, MessageType.text)
+			num = anu.participants[0]
+			teks = `\n\n Eae @${num.split('@')[0]} usa a tag ae\n\n𝐓𝚫𝐆 𝐞 𝐑𝐄𝐂𝚫𝐃𝐎:\n\n • ]ㅤא 𝐨𝐮 ᶜᵗˡ\n\n • ] 🔥ᬊ͜͡♞𝐒𝚹͢𝐔 𝐂𝐑͢𝐢𝚫⃫ 𝐃͢𝚫⃫ 𝐂͢𝚲𝐑͢𝐓𝚵͢𝐋♞͜͡ᬉ🔥\n\n Use ${prefix}help ou ${prefix}menu, para usar o Ctl Client\n\n`
+			teks2 = `\n\nEae mn seja bem vindo a Cartel Spam eu sou o bot da Cartel\n\n Use ${prefix}help ou ${prefix}menu para ver meus comandos\n\n`
+			ctlclient.sendMessage(mdata.id, teks, MessageType.text)
+			ctlclient.sendMessage(`${num.split('@')[0]}@s.whatsapp.net`, teks2, MessageType.text)
 			} else if (anu.action == 'remove') {
-				num = anu.participants[0]
-				teks = `F`
-				ctlclient.sendMessage(mdata.id, teks, MessageType.text)
+			num = anu.participants[0]
+			teks = `F`
+			ctlclient.sendMessage(mdata.id, teks, MessageType.text)
 			}
 		} catch (e) {
 			console.log('Error : %s', color(e, 'red'))
@@ -127,6 +143,12 @@ async function starts() {
 			}
 			const mentions = (teks, memberr, id) => {
 				(id == null || id == undefined || id == false) ? ctlclient.sendMessage(from, teks.trim(), extendedText, {contextInfo: {"mentionedJid": memberr}}) : ctlclient.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": memberr}})
+			}
+			const enviarfig = (stickerDir) => {
+			ctlclient.sendMessage(from, {
+			sticker: fs.readFileSync(stickerDir),
+			mimetype: 'video/webp'
+			})
 			}
 
 
@@ -276,6 +298,12 @@ if (budy.includes("chat.whats")){
 		      setTimeout( () => {
 	          
 	          }, 0)
+		      }
+		      
+	 if (budy.includes("Oi")){
+	                  figadolf = fs.readFileSync('./src/adolf.webp')
+		      ctlclient.sendMessage(from, figadolf, sticker, {quoted: mek})
+		      sendMess('Adolf Jackson 👍')
 		      }
 		      
 	     /* if (budy.includes("🔒 FECHAR GRUPO")){
@@ -490,7 +518,7 @@ case 'testcart':
 							.on('error', function (err) {
 								console.log(`Error : ${err}`)
 								fs.unlinkSync(media)
-								reply(mess.error.stick)
+								reply('\n\n Erro, tente denovo\n\n')
 							})
 							.on('end', function () {
 								console.log('Finish')
@@ -505,7 +533,7 @@ case 'testcart':
 						const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						const media = await ctlclient.downloadAndSaveMediaMessage(encmedia)
 						ran = getRandom('.webp')
-						reply(mess.wait)
+						reply('\n\n Espere um pouco\n\n')
 						await ffmpeg(`./${media}`)
 							.inputFormat(media.split('.')[1])
 							.on('start', function (cmd) {
@@ -531,7 +559,7 @@ case 'testcart':
 						const media = await ctlclient.downloadAndSaveMediaMessage(encmedia)
 						ranw = getRandom('.webp')
 						ranp = getRandom('.png')
-						reply(mess.wait)
+						reply('\n\n Espere um pouco\n\n')
 						keyrmbg = 'Your-ApiKey'
 						await removeBackgroundFromImageFile({path: media, apiKey: keyrmbg.result, size: 'auto', type: 'auto', ranp}).then(res => {
 							fs.unlinkSync(media)
@@ -541,7 +569,7 @@ case 'testcart':
 							})
 							exec(`ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${ranw}`, (err) => {
 								fs.unlinkSync(ranp)
-								if (err) return reply(mess.error.stick)
+								if (err) return reply('\n\n Erro, tente denovo\n\n')
 								ctlclient.sendMessage(from, fs.readFileSync(ranw), sticker, {quoted: mek})
 							})
 						})
@@ -552,7 +580,7 @@ case 'testcart':
 
 				case 'toimg':
 					if (!isQuotedSticker) return reply('{ ❗ } *Marque a figurinha*')
-					reply(mess.wait)
+					reply('\n\n Espere um pouco\n\n')
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 					media = await ctlclient.downloadAndSaveMediaMessage(encmedia)
 					ran = getRandom('.png')
@@ -564,22 +592,6 @@ case 'testcart':
 						fs.unlinkSync(ran)
 					})
 					break
-
-				case 'tovideo':
-					if (!isQuotedSticker) return reply('{ ❗ } *Marque a figurinha*')
-					reply(mess.wait)
-					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-					media = await ctlclient.downloadAndSaveMediaMessage(encmedia)
-					ran = getRandom('.mp4')
-					exec(`ffmpeg -i ${media} ${ran}`, (err) => {
-						fs.unlinkSync(media)
-						if (err) return reply('erro')
-						buffer = fs.readFileSync(ran)
-						ctlclient.sendMessage(from, buffer, video, {quoted: mek, caption: '.'})
-						fs.unlinkSync(ran)
-					})
-					break
-
 
 				case 'report':
 					const msg = body.slice(8)
