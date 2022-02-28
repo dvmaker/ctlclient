@@ -8,7 +8,7 @@ const {
 const { color, bgcolor } = require('./lib/color')
 const { help } = require('./src/help')
 const { tag } = require('./src/tag')
-const { shultz } = require('./src/shultz')
+const { sholtz } = require('./src/sholtz')
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const { fetchJson, fetchText } = require('./lib/fetcher')
 const fs = require('fs')
@@ -494,9 +494,9 @@ case 'testcart':
 					ctlclient.relayWAMessage(prep)
 					break*/
 					
-				case 'shultz':
+				case 'sholtz':
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
-					ctlclient.sendMessage(from, shultz(prefix), text)
+					ctlclient.sendMessage(from, sholtz(prefix), text)
 					break
 					
 				case 'normalrct1':
