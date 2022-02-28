@@ -676,7 +676,7 @@ case 'testcart':
 				case 'antilink':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
-					if (args.length < 1) return reply('\n\n Use 1 para ativar ou 0 para desativar!!\n\n)
+					if (args.length < 1) return reply('\n\n Use 1 para ativar ou 0 para desativar!!\n\n')
 					if (Number(args[0]) === 1) {
 					if (isAntiLink) return reply(`\n\n Oiee, ${ucapanFakereply}, O anti-link está ativo\n\n`)
 					antilink.push(from)
