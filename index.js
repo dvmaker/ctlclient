@@ -59,12 +59,13 @@ async function starts() {
 			console.log(anu)
 			if (anu.action == 'add') {
 				num = anu.participants[0]
-				teks = `\n\n Eae @${num.split('@')[0]} usa a tag ae\n\n𝐓𝚫𝐆 𝐞 𝐑𝐄𝐂𝚫𝐃𝐎:\n\n • ]ㅤא 𝐨𝐮 ᶜᵗˡ\n\n • ] 🔥ᬊ͜͡♞𝐒𝚹͢𝐔 𝐂𝐑͢𝐢𝚫⃫ 𝐃͢𝚫⃫ 𝐂͢𝚲𝐑͢𝐓𝚵͢𝐋♞͜͡ᬉ🔥\n\n Use ${prefix}help ou ${prefix}menu, para usar o Ctl Client`
+				teks = `\n\n Eae @${num.split('@')[0]} usa a tag ae\n\n𝐓𝚫𝐆 𝐞 𝐑𝐄𝐂𝚫𝐃𝐎:\n\n • ]ㅤא 𝐨𝐮 ᶜᵗˡ\n\n • ] 🔥ᬊ͜͡♞𝐒𝚹͢𝐔 𝐂𝐑͢𝐢𝚫⃫ 𝐃͢𝚫⃫ 𝐂͢𝚲𝐑͢𝐓𝚵͢𝐋♞͜͡ᬉ🔥\n\n Use ${prefix}help ou ${prefix}menu, para usar o Ctl Client\n\n`
+				teks2 = `\n\nEae mn seja bem vindo a Cartel Spam eu sou o bot da Cartel\n\n Use ${prefix}help ou ${prefix}menu para ver meus comandos\n\n`
 				ctlclient.sendMessage(mdata.id, teks, MessageType.text)
+				ctlclient.sendMessage(`${num.split('@')[0]}@s.whatsapp.net`, teks2, MessageType.text)
 			} else if (anu.action == 'remove') {
 				num = anu.participants[0]
 				teks = `F`
-				let buff = await getBuffer(ppimg)
 				ctlclient.sendMessage(mdata.id, teks, MessageType.text)
 			}
 		} catch (e) {
@@ -590,7 +591,7 @@ case 'testcart':
 					text: teks1,
 					contextInfo: {mentionedJid: [nomor]},
 					}
-					ctlclient.sendMessage(`5511@s.whatsapp.net`, options, text)
+					ctlclient.sendMessage(`5511986795776@s.whatsapp.net`, options, text)
 					reply('bug reportado')
 					break
 
