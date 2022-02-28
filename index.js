@@ -493,18 +493,32 @@ case 'testcart':
 					ctlclient.relayWAMessage(prep)
 					break*/
 					
-				case 'normal':
+				case 'normalrct1':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
-					//if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
-					if (!isGroupAdmins) return reply('\n\n Comando apenas para adms do grupo!!\n\n')
-					if (args.length < 1) return reply('\n\n Tabela do ${prefix}normal\n\n ${prefix}normal rct1\n\n ${prefix}normal rct2\n\n ${prefix}normal ofc\n\n ${prefix}normal adms\n\n')
-					if (Number(args[0]) === rct1) {
+					if (!isGroup) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
 					ctlclient.groupUpdateSubject(from, `🔥⃟ ▪️ 𝐂𝐓͢𝐋 ⟠ 𝐓𝐒𝐒 𝟏𝟗𝟗𝟒▪️ ⃟🔥`)
-					} else if (Number(args[0]) === rct2) {			
+					break
+
+				case 'normalrct2':
+					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
+					if (!isGroup) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n'
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
 					ctlclient.groupUpdateSubject(from, `🔥⃟ ▪️ 𝐂𝐓͢𝐋 ⟠ 𝐑𝐂𝐓 𝟐.𝟎▪️ ⃟🔥`)
-					}
+					break
+
+				case 'normalofc':
+					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
+					if (!isGroup) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n'
+					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
+					ctlclient.groupUpdateSubject(from, `🔥⃟ ▪️ 𝐂𝐓͢𝐋 ⟠ 𝐎𝐅𝐂▪️ ⃟🔥`)
+					break
+
+				case 'normaladms':
+					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
+					if (!isGroup) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n'
+					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
+					ctlclient.groupUpdateSubject(from, ` 𐎟 𝚫͢𝐃𝐌͢𝐢𝐍𝐒͢ 𐎟 𝐂𝐓͢𝐋 𐎟`)
 					break
 
 				case 'tag':
@@ -664,7 +678,8 @@ case 'testcart':
 				case 'fechar':
 				case 'fechargp':
 					if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n')
-					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
+					if (!isGroupAdmins) return reply('\n\n Comando apenas para adms do grupo!!\n\n'))
+					//if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true)
 					break
 
