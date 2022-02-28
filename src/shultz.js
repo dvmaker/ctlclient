@@ -1,4 +1,4 @@
-const shultz => {
+const shultz = (prefix) => {
 	return `
  Morreu?
 
