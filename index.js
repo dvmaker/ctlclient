@@ -257,10 +257,7 @@ if (budy.includes("youtu.be")){
 		   var Kick = `${sender.split("@")[0]}@s.whatsapp.net`
 	    	reply(`Vai de ban 😋👍`)
 		    ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
-		      setTimeout( () => {
-	          
-	          }, 0)
-	          sendMess(`digita ae`)
+	          reply(`digita ae`)
 		      }
 
 if (budy.includes("http://")){
@@ -271,10 +268,7 @@ if (budy.includes("http://")){
 		   var Kick = `${sender.split("@")[0]}@s.whatsapp.net`
 	    	reply(`Vai de ban 😋👍`)
 		    ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
-		      setTimeout( () => {
-	          
-	          }, 0)
-	          sendMess(`digita ae`)
+	          reply(`digita ae`)
 		      }
 
 if (budy.includes("https://")){
@@ -285,10 +279,7 @@ if (budy.includes("https://")){
 		   var Kick = `${sender.split("@")[0]}@s.whatsapp.net`
 	    	reply(`Vai de ban 😋👍`)
 		    ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
-		      setTimeout( () => {
-	          
-	          }, 0)
-	          sendMess(`digita ae`)
+	          reply(`digita ae`)
 		      }
 
 if (budy.includes("chat.whats")){
@@ -299,10 +290,7 @@ if (budy.includes("chat.whats")){
 		   var Kick = `${sender.split("@")[0]}@s.whatsapp.net`
 	    	reply(`Vai de ban 😋👍`)
 		    ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
-		      setTimeout( () => {
-	          
-	          }, 0)
-	          sendMess(`digita ae`)
+	          reply(`digita ae`)
 		      }
 		      
 	 /*if (budy.includes("Oi")){
