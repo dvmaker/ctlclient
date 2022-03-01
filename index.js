@@ -534,8 +534,8 @@ case 'testcart':
 					
 				case 'phlogo':
 					exe = body.slice(8)
-					teks98 = exe.split("|")
-					teks99 = exe.split("|")
+					teks98 = exe.split("|")[0];
+					teks99 = exe.split("|")[1];
 					i = await getBuffer(`https://akame-api.herokuapp.com/api/textpro/pornhub?texto=${teks98}&texto2=${teks99}&apikey=QsJ2nSNx`)
 					ctlclient.sendMessage(from, i, image, {quoted: mek})
 					break
