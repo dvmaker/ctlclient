@@ -28,6 +28,18 @@ const help = (prefix) => {
  👑  ~ ${prefix}delete
 
 
+ 👑  ~ ${prefix}ddd
+
+
+ 👑  ~ ${prefix}
+
+
+ 👑  ~ ${prefix}
+
+
+ 👑  ~ ${prefix}
+
+
  👑  ~ ${prefix}nome
 
 
