@@ -861,7 +861,7 @@ break
 case 'testbutton':
 buttons = [{buttonId: `.oi`,buttonText:{displayText: 'oi'},type:1},{buttonId:`.bomdia`,buttonText:{displayText:'bomdia'},type:1},{buttonId:`.boatarde`,buttonText:{displayText:'boatarde'},type:1}]
 
-imageMsg = (await ctlclient.prepareMessageMedia(fs.readFileSync(`./foto1.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./foto1.jpg`)})).imageMessage
+imageMsg = (await ctlclient.prepareMessageMedia(fs.readFileSync(`./src/foto1.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./src/foto1.jpg`)})).imageMessage
 
 lzmodsdominabb = "CTL BUTTON"
 
