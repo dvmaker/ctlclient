@@ -550,7 +550,20 @@ case 'testcart':
 					ctlclient = body.slice(5)
 					ctl = await fetchJson(`https://akame-api.herokuapp.com/api/consulta/ddd?ddd=${ctlclient}&apikey=7mpMhfe8`)
 					foto = fs.readFileSync('./src/foto1.jpg')
-				    	ctlclient.sendMessage(from, foto, image, {quoted: mek, caption: consultaddd(prefix)})
+				    	ctlclient.sendMessage(from, foto, image, {quoted: mek, caption: `
+	
+  ~  CTL CLIENT
+
+
+  ~ 👑 DDD CONSULTADO
+  
+  
+  ~ 👑 Estado: ${ctl.resultado.estado}
+  
+  
+  ~ 👑 Cidades: ${ctl.resultado.cidades}
+  
+  `})
 				    	break
 					
 				case 'normalrct1':
