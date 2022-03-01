@@ -536,7 +536,7 @@ case 'testcart':
 					exe = body.slice(8)
 					teks98 = exe.split("|")[0];
 					teks99 = exe.split("|")[1];
-					reply(`\n\n Eae ${pushname} ${waktoonyabro}\n\n Calma ae que já estou fazendo\n\n`)
+					reply(`\n\n Eae ${waktoo}\n\n Calma ae que já estou fazendo\n\n`)
 					i = await getBuffer(`https://akame-api.herokuapp.com/api/textpro/pornhub?texto=${teks98}&texto2=${teks99}&apikey=QsJ2nSNx`)
 					ctlclient.sendMessage(from, i, image, {quoted: mek, caption: '\n\n punhetero safado\n\n'})
 					break
@@ -777,14 +777,14 @@ case 'testcart':
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 					if (args.length < 1) return reply('\n\n Use 1 para ativar ou 0 para desativar!!\n\n')
 					if (Number(args[0]) === 1) {
-					if (isWelkom) return reply(`\n\n Oiee, ${ucapanFakereply}, O anti-link está ativo\n\n`)
+					if (isWelkom) return reply(`\n\n Oiee, ${ucapanFakereply}, O sistema de bem vindo está ativo\n\n`)
 				    	welkom.push(from)
 					fs.writeFileSync('./src/welkom.json', JSON.stringify(welkom))
-				    	reply(`\n\n Oiee, ${ucapanFakereply}, O anti-link foi ativado\n\n`)
+				    	reply(`\n\n Oiee, ${ucapanFakereply}, O sistema de bem vindo foi ativado\n\n`)
 					} else if (Number(args[0]) === 0) {
 					welkom.splice(from, 1)
 					fs.writeFileSync('./src/welkom.json', JSON.stringify(welkom))
-					reply(`\n\n Oiee, ${ucapanFakereply}, O anti-link foi desativado\n\n`)
+					reply(`\n\n Oiee, ${ucapanFakereply}, O sistema de bem vindo foi desativado\n\n`)
 					} else {
 					reply(`\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar ou 0 para desativar\n\n`)
 					}
