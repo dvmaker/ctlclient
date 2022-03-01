@@ -863,7 +863,7 @@ buttons = [{buttonId: `.oi`,buttonText:{displayText: 'oi'},type:1},{buttonId:`.b
 
 imageMsg = (await ctlclient.prepareMessageMedia(fs.readFileSync(`./src/foto1.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./src/foto1.jpg`)})).imageMessage
 
-lzmodsdominabb = "CTL BUTTON"
+dvingithub = "CTL BUTTON"
 
 buttonsMessage = {
 contentText: dvingithub,
