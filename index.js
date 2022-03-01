@@ -532,6 +532,14 @@ case 'testcart':
 					ctlclient.relayWAMessage(prep)
 					break*/
 					
+				case 'phlogo':
+					exe = body.slice(8)
+					teks98 = exe.split("|")
+					teks99 = exe.split("|")
+					i = await getBuffer(`https://akame-api.herokuapp.com/api/textpro/pornhub?texto=${teks98}&texto2=${teks99}&apikey=QsJ2nSNx`)
+					ctlclientsendMessage(from, i, image, {quoted: mek})
+					break
+					
 				case 'travarios':
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					if (args.length < 1) return reply('Cadê o alvo')
