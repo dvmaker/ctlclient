@@ -9,6 +9,7 @@ const { color, bgcolor } = require('./lib/color')
 const { help } = require('./src/help')
 const { tag } = require('./src/tag')
 const { sholtz } = require('./src/sholtz')
+const { consultaddd } = require('./src/consultas/ddd')
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const { fetchJson, fetchText } = require('./lib/fetcher')
 const fs = require('fs')
@@ -544,6 +545,13 @@ case 'testcart':
 					ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)
 					ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)*/
 					break
+				case 'ddd':
+					if (args.length < 1) return reply('\n\n Coloque o ddd que você quer consultar depois do comando!!\n\n')
+					ctlclient = body.slice(5)
+					ctl = await fetchJson(`https://akame-api.herokuapp.com/api/consulta/ddd?ddd=${ctlclient}&apikey=7mpMhfe8`)
+					foto = fs.readFileSync('./src/foto1.jpg')
+				    	ctlclient.sendMessage(from, foto, image, {quoted: mek, caption: consultaddd(prefix)})
+				    	break
 					
 				case 'normalrct1':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
@@ -736,6 +744,7 @@ case 'testcart':
 					break
 
 				case 'antilink':
+				case 'antlink':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 					if (args.length < 1) return reply('\n\n Use 1 para ativar ou 0 para desativar!!\n\n')
