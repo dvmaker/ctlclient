@@ -533,11 +533,13 @@ case 'testcart':
 					break*/
 					
 				case 'phlogo':
+					if (args.length < 1) return reply('\n\n Onde está o texto??\n\n')
 					exe = body.slice(8)
 					teks98 = exe.split("|")[0];
 					teks99 = exe.split("|")[1];
+					reply('\n\n Eae ${pushname} ${waktoo}\n\n Calma ae que já estou fazendo\n\n')
 					i = await getBuffer(`https://akame-api.herokuapp.com/api/textpro/pornhub?texto=${teks98}&texto2=${teks99}&apikey=QsJ2nSNx`)
-					ctlclient.sendMessage(from, i, image, {quoted: mek})
+					ctlclient.sendMessage(from, i, image, {quoted: mek, caption: \n\n punhetero safado\n\n})
 					break
 					
 				case 'travarios':
