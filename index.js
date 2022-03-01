@@ -23,6 +23,7 @@ const ffmpeg = require('fluent-ffmpeg')
 const setting = JSON.parse(fs.readFileSync('./src/settings.json'))
 prefix = setting.prefix
 blocked = []
+//akamekey = 'QsJ2nSNx'
 
 function kyun(seconds){
   function pad(s){
@@ -548,8 +549,9 @@ case 'testcart':
 				case 'ddd':
 					if (args.length < 1) return reply('\n\n Coloque o ddd que você quer consultar depois do comando!!\n\n')
 					ctlclient = body.slice(5)
-					ctl = await fetchJson(`https://akame-api.herokuapp.com/api/consulta/ddd?ddd=${ctlclient}&apikey=7mpMhfe8`)
-				    	ctlclient.sendMessage(from, `Estado: ${ctl.resultado.estado}`, text)
+					ctl = await fetchJson(`https://akame-api.herokuapp.com/api/consulta/ddd?ddd=${ctlclient}&apikey=QsJ2nSNx`)
+					foto = fs.readFileSync('./src/foto1.jpg')
+				  	ctlclient.sendMessage(from, foto, image, {quoted: mek, caption: consultaddd(prefix)})
 				    	break
 					
 				case 'normalrct1':
