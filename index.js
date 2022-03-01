@@ -850,10 +850,32 @@ case 'oi':
 ctlclient.sendMessage(from, 'oi', text)
 break
 
+case 'bomdia':
+ctlclient.sendMessage(from, 'bomdiaa', text)
+break
+
 case 'boatarde':
 ctlclient.sendMessage(from, 'boatardee', text)
+break
 
-				case 'autogroup':
+case 'testbutton':
+buttons = [{buttonId: `.oi`,buttonText:{displayText: 'oi'},type:1},{buttonId:`.bomdia`,buttonText:{displayText:'bomdia'},type:1},{buttonId:`.boatarde`,buttonText:{displayText:'boatarde'},type:1}]
+
+imageMsg = (await client.prepareMessageMedia(fs.readFileSync(`./foto1.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./foto1.jpg`)})).imageMessage
+
+lzmodsdominabb = "CTL BUTTON"
+
+buttonsMessage = {
+contentText: dvingithub,
+footerText: "by davi - CTL 2022", imageMessage: imageMsg,
+buttons: buttons,
+headerType: 4
+}
+prep = await client.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
+client.relayWAMessage(prep)
+break
+
+				/*case 'autogroup':
 				case 'autosettings':
 					if (!isGroup) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para grupos!!\n\n')    
@@ -868,7 +890,7 @@ ctlclient.sendMessage(from, 'boatardee', text)
 					}
 					prep = await ctlclient.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
 					ctlclient.relayWAMessage(prep)
-					break
+					break*/
 
 /*case 'buttons':
 buttons = [{buttonId: `null`,buttonText:{displayText: ' 🔒 FECHAR GRUPO'},type:1},{buttonId:`null`,buttonText:{displayText:' 🔓 ABRIR GRUPO'},type:1}]
