@@ -861,7 +861,7 @@ break
 case 'testbutton':
 buttons = [{buttonId: `.oi`,buttonText:{displayText: 'oi'},type:1},{buttonId:`.bomdia`,buttonText:{displayText:'bomdia'},type:1},{buttonId:`.boatarde`,buttonText:{displayText:'boatarde'},type:1}]
 
-imageMsg = (await client.prepareMessageMedia(fs.readFileSync(`./foto1.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./foto1.jpg`)})).imageMessage
+imageMsg = (await ctlclient.prepareMessageMedia(fs.readFileSync(`./foto1.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./foto1.jpg`)})).imageMessage
 
 lzmodsdominabb = "CTL BUTTON"
 
@@ -871,8 +871,8 @@ footerText: "by davi - CTL 2022", imageMessage: imageMsg,
 buttons: buttons,
 headerType: 4
 }
-prep = await client.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
-client.relayWAMessage(prep)
+prep = await ctlclient.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
+ctlclient.relayWAMessage(prep)
 break
 
 				/*case 'autogroup':
