@@ -537,7 +537,7 @@ case 'testcart':
 					teks98 = exe.split("|")
 					teks99 = exe.split("|")
 					i = await getBuffer(`https://akame-api.herokuapp.com/api/textpro/pornhub?texto=${teks98}&texto2=${teks99}&apikey=QsJ2nSNx`)
-					ctlclientsendMessage(from, i, image, {quoted: mek})
+					ctlclient.sendMessage(from, i, image, {quoted: mek})
 					break
 					
 				case 'travarios':
