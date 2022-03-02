@@ -370,6 +370,10 @@ if (budy.includes("chat.whats")){
 				    ctlclient.sendMessage(from, foto, image, {quoted: mek, caption: help(prefix)})
 				    break
 
+case 'acharmeupai':
+ctlclient.sendMessage(from, 'assim vc me complica né', text, { quoted: mek})
+break
+
 /*case "ppt":
 if (args.length < 1) return reply(`Você deve digitar ${prefix}ppt pedra, ${prefix}ppt papel ou ${prefix}ppt tesoura`)
 ppt = ["pedra","papel","tesoura"]
