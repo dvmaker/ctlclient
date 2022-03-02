@@ -433,7 +433,7 @@ dvmaker = `
 
 
  ${ctl.resultado.Squared_(neg)}`
-ctlclient.sendMessage(from, dvmaker, text { quoted: mek})
+ctlclient.sendMessage(from, dvmaker, text, { quoted: mek})
 break
 
 /*case "ppt":
