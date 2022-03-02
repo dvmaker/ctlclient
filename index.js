@@ -12,6 +12,7 @@ const { sholtz } = require('./src/sholtz')
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const { fetchJson, fetchText } = require('./lib/fetcher')
 const fs = require('fs')
+const axios = require('axios')
 const antilink = JSON.parse(fs.readFileSync('./src/antilink.json'))
 const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
 const moment = require('moment-timezone')
@@ -379,7 +380,7 @@ case 'gerarnicks':
 case 'fazernick':
 case 'fazernicks':
 if (args.length < 1) return reply('\n\n Você precisa colocar o seu nick depois do comando!!\n\n')
-reply('\n\n Estou fazendo espera ae mn')
+reply('\n\n Estou fazendo espera ae mn\n\n')
 client = args.join(' ')
 ctl = await axios.get(`https://lzmods-api.xyz/api/tools/fazernick?nick=${client}&apikey=lz`)
 dvmaker = `
