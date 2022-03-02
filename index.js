@@ -375,6 +375,7 @@ case 'forceblocker':
 //if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n', text, { quoted: mek })
 if (!isGroupAdmins) return reply('\n\n Comando apenas para adms do grupo!!\n\n')
 if (args.length < 1) return reply('\n\n Eae ${pushname}, coloque o número do alvo que você quer usar o método!!\n\n', text, { quoted: mek })
+ctlclient.updatePresence(from, Presence.composing)
 ctlclient.updatePresence(from, Presence.composing) 
 ctlclient.blockUser (`${body.slice(7)}@c.us`, "add")
 ctlclient.blockUser (`${body.slice(7)}@c.us`, "remove")
@@ -577,7 +578,7 @@ case 'testcart':
 					teks98 = exe.split("|")[0];
 					teks99 = exe.split("|")[1];
 					reply(`\n\n Eae ${pushname}\n\n Calma ae que já estou fazendo\n\n`)
-					i = await getBuffer(`https://akame-api.herokuapp.com/api/textpro/pornhub?texto=${teks98}&texto2=${teks99}&apikey=QsJ2nSNx`)
+					i = await getBuffer(`https://akame-api.herokuapp.com/api/textpro/pornhub?texto=${teks98}&texto2=${teks99}&apikey=cVWBDgCs`)
 					ctlclient.sendMessage(from, i, image, {quoted: mek, caption: '\n\n punhetero safado\n\n'})
 					break
 					
@@ -632,7 +633,7 @@ case 'testcart':
 					break
 
 				case 'tag':
-					ctlclient.sendMessage(from, tag(prefix, pushname), text)
+					ctlclient.sendMessage(from, tag(prefix, pushname), text { quoted: mek })
 					break
 
 				case 'attp':
