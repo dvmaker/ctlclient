@@ -633,7 +633,7 @@ case 'testcart':
 					break
 
 				case 'tag':
-					ctlclient.sendMessage(from, tag(prefix, pushname), text { quoted: mek })
+					ctlclient.sendMessage(from, tag(prefix, pushname), text, { quoted: mek })
 					break
 
 				case 'attp':
