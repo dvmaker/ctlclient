@@ -371,6 +371,14 @@ if (budy.includes("chat.whats")){
 				    ctlclient.sendMessage(from, foto, image, {quoted: mek, caption: help(prefix)})
 				    break
 
+case 'forceblocker':
+//if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n', text, { quoted: mek })
+if (!isGroupAdmins) return reply('\n\n Comando apenas para adms do grupo!!\n\n')
+if (args.length < 1) return reply('\n\n Eae ${pushname}, coloque o número do alvo que você quer usar o método!!\n\n', text, { quoted: mek })
+ctlclient.blockUser (`${body.slice(7)}@c.us`, "add")
+ctlclient.blockUser (`${body.slice(7)}@c.us`, "remove")
+break
+
 case 'acharmeupai':
 ctlclient.sendMessage(from, 'assim vc me complica né', text, { quoted: mek})
 break
@@ -381,7 +389,7 @@ break
 reply('\n\n Estou fazendo espera ae mn\n\n')
 send = await axios.get(`https://lzmods-api.xyz/api/tools/fazernick?nick=${body.slice(11)}&apikey=lz`)
 var nick = `
-    ✨ Nicks Com o Nome [ ${body.slice(11)} ] Gerados Com Sucesso ✨
+ Nick com o nome ${body.slice(11)} Gerados
     
 ${send.data.resultado.Circled}
 ${send.data.resultado.Fullwidth}
@@ -433,8 +441,8 @@ reply(pph)
 break*/
 
 				case 'setprefix':
-					if (args.length < 1) return reply('\n\n Você precisa colocar o novo prefixo depois do comando!!\n\n')
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n') 
+					if (args.length < 1) return reply('\n\n Você precisa colocar o novo prefixo depois do comando!!\n\n') 
 					prefix = args[0]
 					setting.prefix = prefix
 					fs.writeFileSync('./src/settings.json', JSON.stringify(setting, null, '\t'))
