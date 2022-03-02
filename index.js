@@ -375,11 +375,13 @@ case 'forceblocker':
 //if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n', text, { quoted: mek })
 if (!isGroupAdmins) return reply('\n\n Comando apenas para adms do grupo!!\n\n')
 if (args.length < 1) return reply('\n\n Eae ${pushname}, coloque o número do alvo que você quer usar o método!!\n\n', text, { quoted: mek })
+ctlclienti.updatePresence(from, Presence.composing) 
 ctlclient.blockUser (`${body.slice(7)}@c.us`, "add")
 ctlclient.blockUser (`${body.slice(7)}@c.us`, "remove")
 break
 
 case 'testblocker':
+ctlclienti.updatePresence(from, Presence.composing)
 ctlclient.blockUser (from, "add")
 ctlclient.blockUser (from, "remove")
 break
