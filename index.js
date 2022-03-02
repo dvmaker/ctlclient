@@ -374,6 +374,68 @@ case 'acharmeupai':
 ctlclient.sendMessage(from, 'assim vc me complica né', text, { quoted: mek})
 break
 
+case 'gerarnick':
+case 'gerarnicks':
+case 'fazernick':
+case 'fazernicks':
+if (args.length < 1) return reply('\n\n Você precisa colocar o seu nick depois do comando!!\n\n')
+reply('\n\n Estou fazendo espera ae mn')
+client = args.join(' ')
+ctl = await axios.get(`https://lzmods-api.xyz/api/tools/fazernick?nick=${client}&apikey=lz`)
+dvmaker = `
+
+ Oiiie ${pushname}, o seus nicks foram gerados
+
+
+ ${ctl.resultado.Circled}
+
+
+ ${ctl.resultado.Circled_(neg)}
+
+
+ ${ctl.resultado.Fullwidth}
+
+
+ ${ctl.resultado.Math_bold}
+
+
+ ${ctl.resultado.Math_bold_Fraktur}
+
+
+ ${ctl.resultado.Math_bold_italic}
+
+
+ ${ctl.resultado.Math_bold_script}
+
+
+ ${ctl.resultado.Math_double-struck}
+
+
+ ${ctl.resultado.Math_monospace}
+
+
+ ${ctl.resultado.Math_sans}
+
+
+ ${ctl.resultado.Math_sans_bold}
+
+
+ ${ctl.resultado.Math_sans_bold_italic}
+
+
+ ${ctl.resultado.Math_sans_italic}
+
+
+ ${ctl.resultado.Parenthesized}
+
+
+ ${ctl.resultado.Squared}
+
+
+ ${ctl.resultado.Squared_(neg)}`
+ctlclient.sendMessage(from, dvmaker, text { quoted: mek})
+break
+
 /*case "ppt":
 if (args.length < 1) return reply(`Você deve digitar ${prefix}ppt pedra, ${prefix}ppt papel ou ${prefix}ppt tesoura`)
 ppt = ["pedra","papel","tesoura"]
