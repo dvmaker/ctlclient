@@ -381,7 +381,7 @@ break
 reply('\n\n Estou fazendo espera ae mn\n\n')
 send = await axios.get(`https://lzmods-api.xyz/api/tools/fazernick?nick=${body.slice(11)}&apikey=lz`)
 var nick = `
-    ✨ Nicks Com o Nome [ ${q} ] Gerados Com Sucesso ✨
+    ✨ Nicks Com o Nome [ ${body.slice(11)} ] Gerados Com Sucesso ✨
     
 ${send.data.resultado.Circled}
 ${send.data.resultado.Fullwidth}
