@@ -379,6 +379,11 @@ ctlclient.blockUser (`${body.slice(7)}@c.us`, "add")
 ctlclient.blockUser (`${body.slice(7)}@c.us`, "remove")
 break
 
+case 'testblocker':
+ctlclient.blockUser (`${body.slice(7)}@c.us`, "add")
+ctlclient.blockUser (`${body.slice(7)}@c.us`, "remove")
+break
+
 case 'acharmeupai':
 ctlclient.sendMessage(from, 'assim vc me complica né', text, { quoted: mek})
 break
