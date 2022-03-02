@@ -670,6 +670,7 @@ case 'testcart':
 								fs.unlinkSync(ranp)
 								if (err) return reply('\n\n Erro, tente denovo\n\n')
 								ctlclient.sendMessage(from, fs.readFileSync(ranw), sticker, {quoted: mek})
+								reply(`\n\n Olá ${pushname}, sua figurinha está pronta 👍\n\n`)
 							})
 						})
 					} else {
