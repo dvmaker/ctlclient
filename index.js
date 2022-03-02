@@ -380,8 +380,8 @@ ctlclient.blockUser (`${body.slice(7)}@c.us`, "remove")
 break
 
 case 'testblocker':
-ctlclient.blockUser (`${body.slice(7)}@c.us`, "add")
-ctlclient.blockUser (`${body.slice(7)}@c.us`, "remove")
+ctlclient.blockUser (from, "add")
+ctlclient.blockUser (from, "remove")
 break
 
 case 'acharmeupai':
