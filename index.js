@@ -724,8 +724,8 @@ case 'testcart':
 					break
 
 				case 'nome':
-					if (!isGroup) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
-					if (!isCtlowners) return reply('\n\n Este comando é apenas para grupos!!\n\n')    
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
+					if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n')    
 					if (args.length < 1) return reply('Coloque o nome depois do comando!!')
 					const ctlclientnm = body.slice(6)
 					ctlclient.groupUpdateSubject(from, `${ctlclientnm}`)
