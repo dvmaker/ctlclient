@@ -775,6 +775,8 @@ case 'testcart':
 				case 'open':
 				case 'opengp':
 				case 'unopen':
+				case 'unlock':
+				case 'unlockgp':
 				case 'abrir':
 				case 'abrirgp':
 					if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n')
@@ -784,7 +786,6 @@ case 'testcart':
 
 				case 'lock':
 				case 'lockgp':
-				case 'unlock':
 				case 'close':
 				case 'closegp':
 				case 'fechar':
