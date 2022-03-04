@@ -372,19 +372,22 @@ if (budy.includes("chat.whats")){
 				    break
 
 case 'forceblocker':
-//if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n', text, { quoted: mek })
-if (!isGroupAdmins) return reply('\n\n Comando apenas para adms do grupo!!\n\n')
+if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n', text, { quoted: mek })
 if (args.length < 1) return reply('\n\n Eae ${pushname}, coloque o número do alvo que você quer usar o método!!\n\n', text, { quoted: mek })
 ctlclient.updatePresence(from, Presence.composing)
-ctlclient.updatePresence(from, Presence.composing) 
-ctlclient.blockUser (`${body.slice(7)}@c.us`, "add")
-ctlclient.blockUser (`${body.slice(7)}@c.us`, "remove")
+ctlclient.blockUser (`${body.slice(14)}@c.us`, "add")
+ctlclient.blockUser (`${body.slice(14)}@c.us`, "remove")
 break
 
 case 'testblocker':
 ctlclient.updatePresence(from, Presence.composing)
 ctlclient.blockUser (from, "add")
 ctlclient.blockUser (from, "remove")
+break
+
+case 'testblocker2':
+if (args.length < 1) return reply('\n\n Eae ${pushname}, coloque o número do alvo que você quer usar o método!!\n\n', text, { quoted: mek })
+ctlclient.sendMessage(from, `${body.slice(14)}`, text)
 break
 
 case 'acharmeupai':
