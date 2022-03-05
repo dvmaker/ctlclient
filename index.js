@@ -568,14 +568,6 @@ case 'testcart':
 					ctlclient.relayWAMessage(prep)
 					break*/
 					
-					case 'linkgp':
-case 'link':
-if (!isGroup) return reply('so pra grupos cabaço', text, {quoted: mek})
-if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n', text, { quoted: mek })
-var link = await ctlclient.groupInviteCode(from)
-reply(`https://chat.whatsapp.com/${link}`)
-break
-					
 				case 'phlogo':
 					if (args.length < 1) return reply('\n\n Onde está o texto??\n\n')
 					exe = body.slice(8)
