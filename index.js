@@ -950,7 +950,7 @@ break
 case 'buttons':
 buttons = [{buttonId: `.oi`,buttonText:{displayText: '⚡ BY ⚡'},type:1},{buttonId:`.bomdia`,buttonText:{displayText:'⚡ LZ ⚡'},type:1},{buttonId:`.boatarde`,buttonText:{displayText:'⚡ MODS ⚡'},type:1}]
 
-imageMsg = (await ctlclient.prepareMessageMedia(fs.readFileSync(`./videoyt/lz.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./videoyt/lz.jpg`)})).imageMessage
+imageMsg = (await ctlclient.prepareMessageMedia(fs.readFileSync(`./ctl client/fotos/foto1.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./ctl client/fotos/foto1.jpg`)})).imageMessage
 
 lzmodsdominabb = "inscreva-se no canal lz mods oficial estou quase nos 100 inscritos ajudae :)"
 
