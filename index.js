@@ -4,54 +4,12 @@
 
 
 // não mexa
-/*const {
+const {
     WAConnection,
     MessageType,
     Presence,
     Mimetype,
     GroupSettingChange
-} = require('@adiwajshing/baileys')*/
-
-const {
-	WAMessageProto,
-	MessageOptions,
-	WAFlag,
-	WANode,
-	WAMetric,
-	ChatModification,
-	DisconectReason,
-	MessageTypeProto,
-  WAConnection,
-	WALocationMessage,
-	ReconnectMode,
-	WAContextInfo,
-	proto,
-	ProxyAgent,
-	waChatKey,
-  MimetypeMap,
-  MediaPathMap,
-  WAContactMessage,
-  WAContactsArrayMessage,
-  WAGroupInviteMessage,
-  WATextMessage,
-  WAMessageContent, 
-  WAMessage, 
-  BaileysError, 
-  WA_MESSAGE_STATUS_TYPE, 
-  MediaConnInfo, 
-  URL_REGEX, 
-  WAUrlInfo, 
-  WA_DEFAULT_EPHEMERAL, 
-  WAMediaUpload,
-	mentionedJid,
-	processTime,
-	Browser,
-  MessageType,
-  Presence,
-  WA_MESSAGE_STUB_TYPES,
-  Mimetype,
-	relayWAMessage,
-  GroupSettingChange
 } = require('@adiwajshing/baileys')
 const { color, bgcolor } = require('./ctl client/outros/color')
 const fs = require('fs')
@@ -93,6 +51,7 @@ function kyun(seconds){
 // Conexão do bot
 async function starts() {
 	const ctlclient = new WAConnection()
+	ctlclient.browserDescription = [' ~ Ctl Client By Davi ', "Safari", '0'];
 	ctlclient.logger.level = 'warn'
 	console.log(banner.string)
 	ctlclient.on('qr', () => {
