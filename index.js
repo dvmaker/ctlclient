@@ -373,25 +373,18 @@ if (budy.includes("chat.whats")){
 
 case 'forceblocker':
 if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n', text, { quoted: mek })
-if (args.length < 1) return reply('\n\n Eae ${pushname}, coloque o número do alvo que você quer usar o método!!\n\n', text, { quoted: mek })
+if (args.length < 1) return reply(`\n\n Eae ${pushname}, coloque o número do alvo que você quer usar o método!!\n\n`, text, { quoted: mek })
 ctlclient.updatePresence(from, Presence.composing)
 ctlclient.blockUser (`${body.slice(14)}@c.us`, "add")
 ctlclient.blockUser (`${body.slice(14)}@c.us`, "remove")
-break
-
-case 'testblocker':
-ctlclient.updatePresence(from, Presence.composing)
-ctlclient.blockUser (from, "add")
-ctlclient.blockUser (from, "remove")
-break
-
-case 'testblocker2':
-if (args.length < 1) return reply('\n\n Eae ${pushname}, coloque o número do alvo que você quer usar o método!!\n\n', text, { quoted: mek })
-ctlclient.sendMessage(from, `${body.slice(14)}`, text)
-break
-
-case 'acharmeupai':
-ctlclient.sendMessage(from, 'assim vc me complica né', text, { quoted: mek})
+ctlclient.blockUser (`${body.slice(14)}@c.us`, "add")
+ctlclient.blockUser (`${body.slice(14)}@c.us`, "remove")
+ctlclient.blockUser (`${body.slice(14)}@c.us`, "add")
+ctlclient.blockUser (`${body.slice(14)}@c.us`, "remove")
+ctlclient.blockUser (`${body.slice(14)}@c.us`, "add")
+ctlclient.blockUser (`${body.slice(14)}@c.us`, "remove")
+ctlclient.blockUser (`${body.slice(14)}@c.us`, "add")
+ctlclient.blockUser (`${body.slice(14)}@c.us`, "remove")
 break
 
     case 'gerarnick':
@@ -400,7 +393,7 @@ break
 reply('\n\n Estou fazendo espera ae mn\n\n')
 send = await axios.get(`https://lzmods-api.xyz/api/tools/fazernick?nick=${body.slice(11)}&apikey=lz`)
 var nick = `
- Nick com o nome ${body.slice(11)} Gerados
+ Nick com o nome [ ${body.slice(11)} ] Gerados
     
 ${send.data.resultado.Circled}
 ${send.data.resultado.Fullwidth}
@@ -574,6 +567,14 @@ case 'testcart':
 					prep = await ctlclient.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
 					ctlclient.relayWAMessage(prep)
 					break*/
+					
+					case 'linkgp':
+case 'link':
+if (!isGroup) return reply('so pra grupos cabaço', text, {quoted: mek})
+if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n', text, { quoted: mek })
+var link = await ctlclient.groupInviteCode(from)
+reply(`https://chat.whatsapp.com/${link}`)
+break
 					
 				case 'phlogo':
 					if (args.length < 1) return reply('\n\n Onde está o texto??\n\n')
