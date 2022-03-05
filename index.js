@@ -120,6 +120,7 @@ async function starts() {
       }
   }
   }
+  }
   
   //Sistema de bem-vindo
 	ctlclient.on('group-participants-update', async (anu) => {
