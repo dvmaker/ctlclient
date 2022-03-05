@@ -692,7 +692,7 @@ case 'testcart':
 					} else {
 						reply(`Envie fotos com legendas *.f* ou marque uma imagem que já foi enviada`)
 					}
-					break*/
+					break
 
 				case 'toimg':
 					if (!isQuotedSticker) return reply('{ ❗ } *Marque a figurinha*')
