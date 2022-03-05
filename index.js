@@ -67,7 +67,7 @@ async function starts() {
         fs.writeFileSync('./ctlclient.json', JSON.stringify(ctlclient.base64EncodedAuthInfo(), null, '\t'))
 
 // Antifake
-/*ctlclient.on('group-participants-update', async (anu) => {
+ctlclient.on('group-participants-update', async (anu) => {
 		if(antifake.includes(anu.jid)) {
 	const mdata = await ctlclient.groupMetadata(anu.jid)
 			if (anu.action == 'add'){
@@ -80,7 +80,7 @@ async function starts() {
 				}
 			}
 		}
-	}*/
+	}
 
 
 // Sistema de bem-vindo
@@ -152,12 +152,17 @@ pushname = ctlclient.contacts[sender] != undefined ? ctlclient.contacts[sender].
 // Definir o número do bot
 const botNumber = ctlclient.user.jid
 
+
 // Bem-vindo
 const isWelkom = isGroup ? welkom.includes(from) : false
 
 
 // Anti-link
 const isAntiLink = isGroup ? antilink.includes(from) : false
+
+
+// Anti-fake
+const isAntifake = isGroup ? antilink.includes(from) : false
 
 
 // Anti sholtz
@@ -729,11 +734,11 @@ break*/
 					if (Number(args[0]) === 1) {
 					if (isWelkom) return reply(`\n\n Oiee, ${ucapanFakereply}, O sistema de bem vindo está ativo\n\n`)
 				    	welkom.push(from)
-					fs.writeFileSync('./ctl client/welkom.json', JSON.stringify(welkom))
+					fs.writeFileSync('./ctl client/antis/welkom.json', JSON.stringify(welkom))
 				    	reply(`\n\n Oiee, ${ucapanFakereply}, O sistema de bem vindo foi ativado\n\n`)
 					} else if (Number(args[0]) === 0) {
 					welkom.splice(from, 1)
-					fs.writeFileSync('./ctl client/welkom.json', JSON.stringify(welkom))
+					fs.writeFileSync('./ctl client/antis/welkom.json', JSON.stringify(welkom))
 					reply(`\n\n Oiee, ${ucapanFakereply}, O sistema de bem vindo foi desativado\n\n`)
 					} else {
 					reply(`\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar ou 0 para desativar\n\n`)
@@ -748,12 +753,31 @@ break*/
 					if (Number(args[0]) === 1) {
 					if (isAntiLink) return reply(`\n\n Oiee, ${ucapanFakereply}, O anti-link está ativo\n\n`)
 					antilink.push(from)
-					fs.writeFileSync('./ctl client/antilink.json', JSON.stringify(antilink))
+					fs.writeFileSync('./ctl client/antis/antilink.json', JSON.stringify(antilink))
 					reply(`\n\n Oiee, ${ucapanFakereply}, O anti-link foi ativado\n\n`)
 					} else if (Number(args[0]) === 0) {			
 					antilink.splice(from, 1)
-					fs.writeFileSync('./ctl client/antilink.json', JSON.stringify(antilink))
+					fs.writeFileSync('./ctl client/antis/antilink.json', JSON.stringify(antilink))
 					reply(`\n\n Oiee, ${ucapanFakereply}, O anti-link foi desativado\n\n`)
+					} else {
+					reply(`\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar ou 0 para desativar\n\n`)
+					}
+					break
+
+				case 'antifake':
+				case 'antfake':
+					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
+					if (args.length < 1) return reply('\n\n Use 1 para ativar ou 0 para desativar!!\n\n')
+					if (Number(args[0]) === 1) {
+					if (isAntifake) return reply(`\n\n Oiee, ${ucapanFakereply}, O anti-fake está ativo\n\n`)
+					antifake.push(from)
+					fs.writeFileSync('./ctl client/antis/antifake.json', JSON.stringify(antifake))
+					reply(`\n\n Oiee, ${ucapanFakereply}, O anti-fake foi ativado\n\n`)
+					} else if (Number(args[0]) === 0) {			
+					antifake.splice(from, 1)
+					fs.writeFileSync('./ctl client/antis/antifake.json', JSON.stringify(antifake))
+					reply(`\n\n Oiee, ${ucapanFakereply}, O anti-fake foi desativado\n\n`)
 					} else {
 					reply(`\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar ou 0 para desativar\n\n`)
 					}
