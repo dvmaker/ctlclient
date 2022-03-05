@@ -134,11 +134,7 @@ teks = `\n\n Eae mn bem vindo a Cartel Spam usa a tag ae\n\n𝐓𝚫𝐆 𝐞 �
 teks2 = `\n\nEu sou o bot da Cartel\n\n Use ${prefix}help ou ${prefix}menu para ver meus comandos\n\n`
 ctlclient.sendMessage(`${num.split('@')[0]}@s.whatsapp.net`, teks, MessageType.text)
 ctlclient.sendMessage(`${num.split('@')[0]}@s.whatsapp.net`, teks2, MessageType.text)
-} else if (anu.action == 'remove') {
-num = anu.participants[0]
-teks = `F`
-ctlclient.sendMessage(mdata.id, teks, MessageType.text)
-}
+} 
   } catch (e) {
   console.log('Error : %s', color(e, 'red'))
   }
