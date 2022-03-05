@@ -11,7 +11,7 @@ const {
     Mimetype,
     GroupSettingChange
 } = require('@adiwajshing/baileys')
-const { color, bgcolor } = require('./lib/color')
+const { color, bgcolor } = require('./ctl client/outros/color')
 const fs = require('fs')
 
 // Arquivos do bot
@@ -25,8 +25,8 @@ const atalhos = JSON.parse(fs.readFileSync('./ctl client/atalhos/atalhos.json'))
 prefix = atalhos.prefix
 //
 
-const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
-const { fetchJson, fetchText } = require('./lib/fetcher')
+const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./ctl client/outros/functions')
+const { fetchJson, fetchText } = require('./ctl client/outros/fetcher')
 const axios = require('axios')
 const moment = require('moment-timezone')
 const { exec } = require('child_process')
