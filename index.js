@@ -734,11 +734,11 @@ break*/
 					if (Number(args[0]) === 1) {
 					if (isWelkom) return reply(`\n\n Oiee, ${ucapanFakereply}, O sistema de bem vindo está ativo\n\n`)
 				    	welkom.push(from)
-					fs.writeFileSync('./ctl client/antis/welkom.json', JSON.stringify(welkom))
+					fs.writeFileSync('./ctl client/antis/bemvindo.json', JSON.stringify(welkom))
 				    	reply(`\n\n Oiee, ${ucapanFakereply}, O sistema de bem vindo foi ativado\n\n`)
 					} else if (Number(args[0]) === 0) {
 					welkom.splice(from, 1)
-					fs.writeFileSync('./ctl client/antis/welkom.json', JSON.stringify(welkom))
+					fs.writeFileSync('./ctl client/antis/bemvindo.json', JSON.stringify(welkom))
 					reply(`\n\n Oiee, ${ucapanFakereply}, O sistema de bem vindo foi desativado\n\n`)
 					} else {
 					reply(`\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar ou 0 para desativar\n\n`)
