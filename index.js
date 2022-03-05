@@ -621,60 +621,6 @@ case 'testcart':
 				case 'figu':
 				case 'fig':
 				case 'f':
-					if ((isMedia && !info.message.videoMessage || isQuotedImage) && args.length == 0) {
-					const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(info).replace('quotedM','m')).message.extendedTextMessage.contextInfo : info
-					const media = await ctlclient.downloadAndSaveMediaMessage(encmedia)
-					rano = getRandom('.webp')
-					reply(enviar.espere)
-					await ffmpeg(`./${media}`)
-					.input(media)
-					.on('start', function (cmd) {
-					console.log(`Started : ${cmd}`)
-					})
-					.on('error', function (err) {
-					console.log(`Error : ${err}`)
-					exec(`webpmux -set exif ${addMetadata('CTL','CLIENT')} ${rano} -o ${rano}`, async (error) => {
-					fs.unlinkSync(media)
-					reply(enviar.stick)
-					})
-					})
-					exec(`ffmpeg -i ${media} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 800:800 ${rano}`, (err) => {
-					fs.unlinkSync(media)
-					buffer = fs.readFileSync(rano)
-					ctlclient.sendMessage(from, buffer, sticker, {quoted: mek})
-					fs.unlinkSync(rano)
-					})
-					} else if ((isMedia && info.message.videoMessage.seconds < 11 || isQuotedVideo && info.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.seconds < 11) && args.length == 0) {
-					const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(info).replace('quotedM','m')).message.extendedTextMessage.contextInfo : info
-					const media = await ctlclient.downloadAndSaveMediaMessage(encmedia)
-					rano = getRandom('.webp')
-					await ffmpeg(`./${media}`)
-					.inputFormat(media.split('.')[1])
-					.on('start', function (cmd) {
-					console.log(`Started : ${cmd}`)
-					})
-					.on('error', function (err) {
-					console.log(`Error : ${err}`)
-					exec(`webpmux -set exif ${addMetadata('CTL', 'CLIENT')} ${rano} -o ${rano}`, async (error) => {
-					fs.unlinkSync(media)
-					tipe = media.endsWith('.mp4') ? 'video' : 'gif'
-					reply(`Falha na conversão de ${tipe} para sticker`)
-					})
-					})
-					exec(`ffmpeg -i ${media} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 200:200 ${rano}`, (err) => {
-					fs.unlinkSync(media)
-					buffer = fs.readFileSync(rano)
-					ctlclient.sendMessage(from, buffer, sticker, {quoted: mek})
-					fs.unlinkSync(rano)
-					})
-					} else {
-					reply(`\n\n Coloque na legenda e envie uma foto ou video com no maximo 10 segundos\n\n`)
-					}
-					break
-
-				/*case 'figu':
-				case 'fig':
-				case 'f':
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						const media = await ctlclient.downloadAndSaveMediaMessage(encmedia)
