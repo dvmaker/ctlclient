@@ -14,6 +14,7 @@ const { fetchJson, fetchText } = require('./lib/fetcher')
 const fs = require('fs')
 const axios = require('axios')
 const antilink = JSON.parse(fs.readFileSync('./src/antilink.json'))
+const antisholtz = JSON.parse(fs.readFileSync('./src/antisholtz.json'))
 const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
 const moment = require('moment-timezone')
 const { exec } = require('child_process')
@@ -136,6 +137,7 @@ async function starts() {
 			const isOwner = ownerNumber.includes(sender)
 			const isCtlowners = ctlOwners.includes(sender)
 			const isAntiLink = isGroup ? antilink.includes(from) : false
+			const isAntisholtz = isGroup ? antilsholtz.includes(from) : false
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 			}
@@ -287,30 +289,7 @@ if (budy.includes("chat.whats")){
 		      var Kick = `${sender.split("@")[0]}@s.whatsapp.net`
 		      ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
 		      }
-		      
-	 /*if (budy.includes("Oi")){
-	                  figadolf = fs.readFileSync('./src/adolf.webp')
-		      ctlclient.sendMessage(from, figadolf, sticker, {quoted: mek})
-		      sendMess('Adolf Jackson 👍')
-		      }*/
-		      
-	if (budy.includes("Oi")){
-	enviarfig('./src/adolf.webp')
-	}
-		      
-	     /* if (budy.includes("🔒 FECHAR GRUPO")){
-		client.updatePresence(from, Presence.composing) 
-		if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
-		if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
-		ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true)
-		}
 
-	      if (budy.includes("🔓 ABRIR GRUPO")){
-	    	client.updatePresence(from, Presence.composing) 
-		if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
-		if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
-		ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
-		}*/
 
 			colors = ['red','white','black','blue','yellow','green']
 			const isMedia = (type === 'imageMessage' || type === 'videoMessage')
@@ -642,6 +621,60 @@ case 'testcart':
 				case 'figu':
 				case 'fig':
 				case 'f':
+					if ((isMedia && !info.message.videoMessage || isQuotedImage) && args.length == 0) {
+					const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(info).replace('quotedM','m')).message.extendedTextMessage.contextInfo : info
+					const media = await ctlclient.downloadAndSaveMediaMessage(encmedia)
+					rano = getRandom('.webp')
+					reply(enviar.espere)
+					await ffmpeg(`./${media}`)
+					.input(media)
+					.on('start', function (cmd) {
+					console.log(`Started : ${cmd}`)
+					})
+					.on('error', function (err) {
+					console.log(`Error : ${err}`)
+					exec(`webpmux -set exif ${addMetadata('CTL','CLIENT')} ${rano} -o ${rano}`, async (error) => {
+					fs.unlinkSync(media)
+					reply(enviar.stick)
+					})
+					})
+					exec(`ffmpeg -i ${media} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 800:800 ${rano}`, (err) => {
+					fs.unlinkSync(media)
+					buffer = fs.readFileSync(rano)
+					ctlclient.sendMessage(from, buffer, sticker, {quoted: mek})
+					fs.unlinkSync(rano)
+					})
+					} else if ((isMedia && info.message.videoMessage.seconds < 11 || isQuotedVideo && info.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.seconds < 11) && args.length == 0) {
+					const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(info).replace('quotedM','m')).message.extendedTextMessage.contextInfo : info
+					const media = await ctlclient.downloadAndSaveMediaMessage(encmedia)
+					rano = getRandom('.webp')
+					await ffmpeg(`./${media}`)
+					.inputFormat(media.split('.')[1])
+					.on('start', function (cmd) {
+					console.log(`Started : ${cmd}`)
+					})
+					.on('error', function (err) {
+					console.log(`Error : ${err}`)
+					exec(`webpmux -set exif ${addMetadata('CTL', 'CLIENT')} ${rano} -o ${rano}`, async (error) => {
+					fs.unlinkSync(media)
+					tipe = media.endsWith('.mp4') ? 'video' : 'gif'
+					reply(`Falha na conversão de ${tipe} para sticker`)
+					})
+					})
+					exec(`ffmpeg -i ${media} -vcodec libwebp -filter:v fps=fps=15 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 200:200 ${rano}`, (err) => {
+					fs.unlinkSync(media)
+					buffer = fs.readFileSync(rano)
+					ctlclient.sendMessage(from, buffer, sticker, {quoted: mek})
+					fs.unlinkSync(rano)
+					})
+					} else {
+					reply(`\n\n Coloque na legenda e envie uma foto ou video com no maximo 10 segundos\n\n`)
+					}
+					break
+
+				/*case 'figu':
+				case 'fig':
+				case 'f':
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						const media = await ctlclient.downloadAndSaveMediaMessage(encmedia)
@@ -713,7 +746,7 @@ case 'testcart':
 					} else {
 						reply(`Envie fotos com legendas *.f* ou marque uma imagem que já foi enviada`)
 					}
-					break
+					break*/
 
 				case 'toimg':
 					if (!isQuotedSticker) return reply('{ ❗ } *Marque a figurinha*')
@@ -792,20 +825,20 @@ case 'testcart':
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true)
 					break
 
-				case 'antilink':
-				case 'antlink':
+				case 'antisholtz':
+				case 'antsholtz':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
 					if (args.length < 1) return reply('\n\n Use 1 para ativar ou 0 para desativar!!\n\n')
 					if (Number(args[0]) === 1) {
-					if (isAntiLink) return reply(`\n\n Oiee, ${ucapanFakereply}, O anti-link está ativo\n\n`)
+					if (isAntiLink) return reply(`\n\n Oiee, ${ucapanFakereply}, O anti-sholtz está ativo\n\n`)
 					antilink.push(from)
-					fs.writeFileSync('./src/antilink.json', JSON.stringify(antilink))
-					reply(`\n\n Oiee, ${ucapanFakereply}, O anti-link foi ativado\n\n`)
+					fs.writeFileSync('./src/antishlotz.json', JSON.stringify(antilink))
+					reply(`\n\n Oiee, ${ucapanFakereply}, O anti-sholtz foi ativado\n\n`)
 					} else if (Number(args[0]) === 0) {			
 					antilink.splice(from, 1)
-					fs.writeFileSync('./src/antilink.json', JSON.stringify(antilink))
-					reply(`\n\n Oiee, ${ucapanFakereply}, O anti-link foi desativado\n\n`)
+					fs.writeFileSync('./src/antishlotz.json', JSON.stringify(antilink))
+					reply(`\n\n Oiee, ${ucapanFakereply}, O anti-sholtz foi desativado\n\n`)
 					} else {
 					reply(`\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar ou 0 para desativar\n\n`)
 					}
@@ -824,6 +857,25 @@ case 'testcart':
 					welkom.splice(from, 1)
 					fs.writeFileSync('./src/welkom.json', JSON.stringify(welkom))
 					reply(`\n\n Oiee, ${ucapanFakereply}, O sistema de bem vindo foi desativado\n\n`)
+					} else {
+					reply(`\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar ou 0 para desativar\n\n`)
+					}
+					break
+
+				case 'antilink':
+				case 'antlink':
+					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
+					if (args.length < 1) return reply('\n\n Use 1 para ativar ou 0 para desativar!!\n\n')
+					if (Number(args[0]) === 1) {
+					if (isAntiLink) return reply(`\n\n Oiee, ${ucapanFakereply}, O anti-link está ativo\n\n`)
+					antilink.push(from)
+					fs.writeFileSync('./src/antilink.json', JSON.stringify(antilink))
+					reply(`\n\n Oiee, ${ucapanFakereply}, O anti-link foi ativado\n\n`)
+					} else if (Number(args[0]) === 0) {			
+					antilink.splice(from, 1)
+					fs.writeFileSync('./src/antilink.json', JSON.stringify(antilink))
+					reply(`\n\n Oiee, ${ucapanFakereply}, O anti-link foi desativado\n\n`)
 					} else {
 					reply(`\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar ou 0 para desativar\n\n`)
 					}
