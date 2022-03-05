@@ -947,7 +947,26 @@ case 'boatarde':
 ctlclient.sendMessage(from, 'boatardee', text)
 break
 
-case 'testbutton':
+case 'buttons':
+buttons = [{buttonId: `.oi`,buttonText:{displayText: '⚡ BY ⚡'},type:1},{buttonId:`.bomdia`,buttonText:{displayText:'⚡ LZ ⚡'},type:1},{buttonId:`.boatarde`,buttonText:{displayText:'⚡ MODS ⚡'},type:1}]
+
+imageMsg = (await client.prepareMessageMedia(fs.readFileSync(`./videoyt/lz.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./videoyt/lz.jpg`)})).imageMessage
+
+lzmodsdominabb = "inscreva-se no canal lz mods oficial estou quase nos 100 inscritos ajudae :)"
+
+buttonsMessage = {
+contentText: lzmodsdominabb,
+footerText: "inscreva-se para mais videos como esse", imageMessage: imageMsg,
+buttons: buttons,
+headerType: 4
+}
+prep = await client.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
+client.relayWAMessage(prep)
+reply('#lz100subs')
+reply('ou peita ou respeita')
+break
+
+/*case 'testbutton':
 buttons = [{buttonId: `.oi`,buttonText:{displayText: 'oi'},type:1},{buttonId:`.bomdia`,buttonText:{displayText:'bomdia'},type:1},{buttonId:`.boatarde`,buttonText:{displayText:'boatarde'},type:1}]
 
 imageMsg = (await ctlclient.prepareMessageMedia(fs.readFileSync(`./ctl client/fotos/foto1.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./ctl client/fotos/foto1.jpg`)})).imageMessage
@@ -962,7 +981,7 @@ headerType: 4
 }
 prep = await ctlclient.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
 ctlclient.relayWAMessage(prep)
-break
+break*)
 
 
 					
