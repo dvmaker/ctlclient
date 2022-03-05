@@ -119,7 +119,7 @@ async function starts() {
 			const speed = require('performance-now');
 			const from = mek.key.remoteJid
 			const type = Object.keys(mek.message)[0]
-			const apiKey = setting.apiKey // contact me on whatsapp wa.me/6285892766102
+			//const apiKey = setting.apiKey // contact me on whatsapp wa.me/6285892766102
 			const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
 			const time = moment.tz('Asia/Jakarta').format('DD/MM HH:mm:ss')
 			body = (type === 'conversation' && mek.message.conversation.startsWith(prefix)) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption.startsWith(prefix) ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption.startsWith(prefix) ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text.startsWith(prefix) ? mek.message.extendedTextMessage.text : ''
@@ -466,8 +466,8 @@ break*/
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n') 
 					if (args.length < 1) return reply('\n\n Você precisa colocar o novo prefixo depois do comando!!\n\n') 
 					prefix = args[0]
-					setting.prefix = prefix
-					fs.writeFileSync('./ctl client/settings.json', JSON.stringify(setting, null, '\t'))
+					atalhos.prefix = prefix
+					fs.writeFileSync('./ctl client/atalhos/atalhos.json', JSON.stringify(setting, null, '\t'))
 					reply(`Novo prefixo: ${prefix}`)
 					break
 					
