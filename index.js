@@ -80,7 +80,7 @@ ctlclient.on('group-participants-update', async (anu) => {
 				}
 			}
 		}
-	}
+	})
 
 
 // Sistema de bem-vindo
