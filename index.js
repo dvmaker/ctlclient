@@ -1,3 +1,9 @@
+
+
+// Ctl Client by Davi // For Cartel Spam
+
+
+// não mexa
 const {
     WAConnection,
     MessageType,
@@ -6,25 +12,28 @@ const {
     GroupSettingChange
 } = require('@adiwajshing/baileys')
 const { color, bgcolor } = require('./lib/color')
-const { help } = require('./src/help')
-const { tag } = require('./src/tag')
-const { sholtz } = require('./src/sholtz')
+const fs = require('fs')
+
+// Arquivos do bot
+const { help } = require('./ctl client/msgs/help')
+const { tag } = require('./ctl client/msgs/tag')
+const { sholtz } = require('./ctl client/msgs/sholtz')
+const antilink = JSON.parse(fs.readFileSync('./ctl client/antis/antilink.json'))
+const antisholtz = JSON.parse(fs.readFileSync('./ctl client/antis/antisholtz.json'))
+const welkom = JSON.parse(fs.readFileSync('./ctl client/antis/bemvindo.json'))
+const atalhos = JSON.parse(fs.readFileSync('./ctl client/atalhos/atalhos.json'))
+prefix = atalhos.prefix
+//
+
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const { fetchJson, fetchText } = require('./lib/fetcher')
-const fs = require('fs')
 const axios = require('axios')
-const antilink = JSON.parse(fs.readFileSync('./src/antilink.json'))
-const antisholtz = JSON.parse(fs.readFileSync('./src/antisholtz.json'))
-const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
 const moment = require('moment-timezone')
 const { exec } = require('child_process')
 const fetch = require('node-fetch')
 //const tiktod = require('tiktok-scraper')
 const ffmpeg = require('fluent-ffmpeg')
-const setting = JSON.parse(fs.readFileSync('./src/settings.json'))
-prefix = setting.prefix
 blocked = []
-//akamekey = 'QsJ2nSNx'
 
 function kyun(seconds){
   function pad(s){
@@ -38,6 +47,7 @@ function kyun(seconds){
   return `${pad(hours)} hora(s)${pad(minutes)} Minutos ${pad(seconds)} Segundos`
 }
 
+// Conexão do bot
 async function starts() {
 	const ctlclient = new WAConnection()
 	ctlclient.logger.level = 'warn'
@@ -56,7 +66,7 @@ async function starts() {
 	await ctlclient.connect({timeoutMs: 30*1000})
         fs.writeFileSync('./ctlclient.json', JSON.stringify(ctlclient.base64EncodedAuthInfo(), null, '\t'))
 
-
+// Antifake
 /*ctlclient.on('group-participants-update', async (anu) => {
 		if(antifake.includes(anu.jid)) {
 	const mdata = await ctlclient.groupMetadata(anu.jid)
@@ -73,6 +83,7 @@ async function starts() {
 	}*/
 
 
+// Sistema de bem-vindo
 	ctlclient.on('group-participants-update', async (anu) => {
 		if (!welkom.includes(anu.jid)) return
 		try {
@@ -119,141 +130,169 @@ async function starts() {
 			const args = body.trim().split(/ +/).slice(1)
 			const isCmd = body.startsWith(prefix)
 
+// Definir acesso
+const ctlOwners = ["553188514445@s.whatsapp.net","556784049268@s.whatsapp.net","5521999665495@s.whatsapp.net","5511986795776@s.whatsapp.net","551159140941@s.whatsapp.net","5511959140941@s.whatsapp.net"]
+const isCtlowners = ctlOwners.includes(sender)
 
-			const botNumber = ctlclient.user.jid
-			const ownerNumber = [`${setting.ownerNumber}@s.whatsapp.net`] // replace this with your number
-			const ctlOwners = ["553188514445@s.whatsapp.net","556784049268@s.whatsapp.net","5521999665495@s.whatsapp.net","5511986795776@s.whatsapp.net","551159140941@s.whatsapp.net","5511959140941@s.whatsapp.net"]
-			const isGroup = from.endsWith('@g.us')
-			const sender = isGroup ? mek.participant : mek.key.remoteJid
-			const groupMetadata = isGroup ? await ctlclient.groupMetadata(from) : ''
-			const groupName = isGroup ? groupMetadata.subject : ''
-			const groupId = isGroup ? groupMetadata.jid : ''
-			const groupMembers = isGroup ? groupMetadata.participants : ''
-			const groupAdmins = isGroup ? getGroupAdmins(groupMembers) : ''
-			const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
-			const isGroupAdmins = groupAdmins.includes(sender) || false
-			pushname = ctlclient.contacts[sender] != undefined ? ctlclient.contacts[sender].vname || ctlclient.contacts[sender].notify : undefined
-			const isWelkom = isGroup ? welkom.includes(from) : false
-			const isOwner = ownerNumber.includes(sender)
-			const isCtlowners = ctlOwners.includes(sender)
-			const isAntiLink = isGroup ? antilink.includes(from) : false
-			const isAntisholtz = isGroup ? antilsholtz.includes(from) : false
+
+// Definir grupo
+const isGroup = from.endsWith('@g.us')
+const sender = isGroup ? mek.participant : mek.key.remoteJid
+const groupMetadata = isGroup ? await ctlclient.groupMetadata(from) : ''
+const groupName = isGroup ? groupMetadata.subject : ''
+const groupId = isGroup ? groupMetadata.jid : ''
+const groupMembers = isGroup ? groupMetadata.participants : ''
+const groupAdmins = isGroup ? getGroupAdmins(groupMembers) : ''
+const isGroupAdmins = groupAdmins.includes(sender) || false
+
+
+// Definir pushname
+pushname = ctlclient.contacts[sender] != undefined ? ctlclient.contacts[sender].vname || ctlclient.contacts[sender].notify : undefined
+
+
+// Definir o número do bot
+const botNumber = ctlclient.user.jid
+
+// Bem-vindo
+const isWelkom = isGroup ? welkom.includes(from) : false
+
+
+// Anti-link
+const isAntiLink = isGroup ? antilink.includes(from) : false
+
+
+// Anti sholtz
+const isAntisholtz = isGroup ? antilsholtz.includes(from) : false
+
+			
+const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
+			
+
+			
+// Mensagens rápidas	
+const reply = (teks) => {
+ctlclient.sendMessage(from, teks, text, {quoted:mek})
+}
+
+const sendMess = (hehe, teks) => {
+ctlclient.sendMessage(hehe, teks, text)
+}
+
+
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
-			}
-			const reply = (teks) => {
-				ctlclient.sendMessage(from, teks, text, {quoted:mek})
-			}
-			const sendMess = (hehe, teks) => {
-				ctlclient.sendMessage(hehe, teks, text)
 			}
 			const mentions = (teks, memberr, id) => {
 				(id == null || id == undefined || id == false) ? ctlclient.sendMessage(from, teks.trim(), extendedText, {contextInfo: {"mentionedJid": memberr}}) : ctlclient.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": memberr}})
 			}
-			const enviarfig = (stickerDir) => {
+			
+			/*const enviarfig = (stickerDir) => {
 			ctlclient.sendMessage(from, {
 			sticker: fs.readFileSync(stickerDir),
 			mimetype: 'video/webp'
 			})
-			}
+			}*/
 
 
+// Função de tempo
 const sekarang = new Date().getTime();
-			var ase = new Date();
-                        var waktoo = ase.getHours();
-                        switch(waktoo){
-                case 0: waktoo = 'Meia-noite 🌑'; break;
-                case 01: waktoo = 'De manhã cedo 🌑'; break;
-                case 02: waktoo = 'De manhã cedo 🌒'; break;
-                case 03: waktoo = 'De manhã cedo 🌓'; break;
-                case 04: waktoo = 'Alvorecer 🌔'; break;
-                case 05: waktoo = 'Alvorecer 🌔'; break;
-                case 06: waktoo = 'Bom dia 🌕'; break;
-                case 07: waktoo = 'Bom dia 🌕'; break;
-                case 08: waktoo = 'Bom dia 🌕'; break;
-                case 09: waktoo = 'Bom dia 🌕'; break;
-                case 10: waktoo = 'Bom dia 🌕'; break;
-                case 11: waktoo = 'Boa dia 🌕'; break;
-                case 12: waktoo = 'Boa tarde ☀️'; break;
-                case 13: waktoo = 'Boa tarde ☀️'; break;
-                case 14: waktoo = 'Boa tarde ☀️'; break;
-                case 15: waktoo = 'Boa tarde 🌕'; break;
-                case 16: waktoo = 'Boa tarde 🌕'; break;
-                case 17: waktoo = 'Boa tarde 🌖'; break;
-                case 18: waktoo = 'Boa noite 🌘'; break;
-                case 19: waktoo = 'Boa noite 🌑'; break;
-                case 20: waktoo = 'Boa noite 🌑'; break;
-                case 21: waktoo = 'Boa noite 🌑'; break;
-                case 22: waktoo = 'Boa noite 🌑'; break;
-                case 23: waktoo = 'Boa noite 🌑'; break;
-            }
-            var tampilUcapan = '' + waktoo;
-            //FUNCTION DE HORARIO REPLY
-            var ase = new Date();
-                        var waktoonyabro = ase.getHours();
-                        switch(waktoonyabro){
-                case 00: waktoonyabro = `Boa noite ${pushname}🌙`; break;
-                case 01: waktoonyabro = `Boa noite ${pushname}🌙`; break;
-                case 02: waktoonyabro = `Boa noite ${pushname}🌙`; break;
-                case 03: waktoonyabro = `Bom Dia ${pushname}✨`; break;
-                case 04: waktoonyabro = `Bom Dia ${pushname}✨`; break;
-                case 05: waktoonyabro = `Bom Dia ${pushname}✨`; break;
-                case 06: waktoonyabro = `Bom Dia ${pushname}✨`; break;
-                case 07: waktoonyabro = `Bom Dia ${pushname}✨`; break;
-                case 08: waktoonyabro = `Bom Dia ${pushname}✨`; break;
-                case 09: waktoonyabro = `Bom Dia ${pushname}✨`; break;
-                case 10: waktoonyabro = `Bom Dia ${pushname}✨`; break;
-                case 11: waktoonyabro = `Boa tarde ${pushname}🔥`; break;
-                case 12: waktoonyabro = `Boa tarde ${pushname}🔥`; break;
-                case 13: waktoonyabro = `Boa tarde ${pushname}🔥`; break;
-                case 14: waktoonyabro = `Boa tarde ${pushname}🔥`; break;
-                case 15: waktoonyabro = `Boa tarde ${pushname}🌹`; break;
-                case 16: waktoonyabro = `Boa tarde ${pushname}🌹`; break;
-                case 17: waktoonyabro = `Boa tarde ${pushname}🌹`; break;
-                case 18: waktoonyabro = `Boa noite ${pushname}🌙`; break;
-                case 19: waktoonyabro = `Boa noite ${pushname}🌙`; break;
-                case 20: waktoonyabro = `Boa noite ${pushname}🌙`; break;
-                case 21: waktoonyabro = `Boa noite ${pushname}🌙`; break;
-                case 22: waktoonyabro = `Boa noite ${pushname}🌙`; break;
-                case 23: waktoonyabro = `Boa noite ${pushname}🌙`; break;
-            }
-            var ucapanFakereply = '' + waktoonyabro;
-            var date = new Date();
-        var tahun = date.getFullYear();
-        var bulan1 = date.getMonth();
-        var tanggal = date.getDate();
-        var hari = date.getDay();
-        var jam = date.getHours();
-        var menit = date.getMinutes();
-        var detik = date.getSeconds();
-        var waktoo = date.getHours();
-            switch(hari) {
-                case 00: hari = 'Domigo'; break;
-                case 01: hari = 'Segunda-feira'; break;
-                case 02: hari = 'terça'; break;
-                case 03: hari = 'quarta-feira'; break;
-                case 04: hari = 'quinta-feira'; break;
-                case 05: hari = 'sexta-feira'; break;
-                case 06: hari = 'sábado'; break;
-            }
-            switch(bulan1) {
-                case 00: bulan1 = '01'; break;
-                case 01: bulan1 = '02'; break;
-                case 02: bulan1 = '03'; break;
-                case 03: bulan1 = '04'; break;
-                case 04: bulan1 = '05'; break;
-                case 05: bulan1 = '06'; break;
-                case 06: bulan1 = '07'; break;
-                case 07: bulan1 = '08'; break;
-                case 08: bulan1 = '09'; break;
-                case 09: bulan1 = '10'; break;
-                case 10: bulan1 = '11'; break;
-                case 11: bulan1 = '12'; break;
-            }
-            var data = '' + hari + '/' + tanggal + '/' + bulan1 + '/' + tahun;
-            var horario = jam + ':' + menit + ':' + detik;
+var ase = new Date();
+var waktoo = ase.getHours();
+switch(waktoo){
+case 0: waktoo = 'Meia-noite 🌑'; break;
+case 01: waktoo = 'De manhã cedo 🌑'; break;
+case 02: waktoo = 'De manhã cedo 🌒'; break;
+case 03: waktoo = 'De manhã cedo 🌓'; break;
+case 04: waktoo = 'Alvorecer 🌔'; break;
+case 05: waktoo = 'Alvorecer 🌔'; break;
+case 06: waktoo = 'Bom dia 🌕'; break;
+case 07: waktoo = 'Bom dia 🌕'; break;
+case 08: waktoo = 'Bom dia 🌕'; break;
+case 09: waktoo = 'Bom dia 🌕'; break;
+case 10: waktoo = 'Bom dia 🌕'; break;
+case 11: waktoo = 'Boa dia 🌕'; break;
+case 12: waktoo = 'Boa tarde ☀️'; break;
+case 13: waktoo = 'Boa tarde ☀️'; break;
+case 14: waktoo = 'Boa tarde ☀️'; break;
+case 15: waktoo = 'Boa tarde 🌕'; break;
+case 16: waktoo = 'Boa tarde 🌕'; break;
+case 17: waktoo = 'Boa tarde 🌖'; break;
+case 18: waktoo = 'Boa noite 🌘'; break;
+case 19: waktoo = 'Boa noite 🌑'; break;
+case 20: waktoo = 'Boa noite 🌑'; break;
+case 21: waktoo = 'Boa noite 🌑'; break;
+case 22: waktoo = 'Boa noite 🌑'; break;
+case 23: waktoo = 'Boa noite 🌑'; break;
+}
+var tampilUcapan = '' + waktoo;
+//FUNCTION DE HORARIO REPLY
+var ase = new Date();
+var waktoonyabro = ase.getHours();
+switch(waktoonyabro){
+case 00: waktoonyabro = `Boa noite ${pushname}🌙`; break;
+case 01: waktoonyabro = `Boa noite ${pushname}🌙`; break;
+case 02: waktoonyabro = `Boa noite ${pushname}🌙`; break;
+case 03: waktoonyabro = `Bom Dia ${pushname}✨`; break;
+case 04: waktoonyabro = `Bom Dia ${pushname}✨`; break;
+case 05: waktoonyabro = `Bom Dia ${pushname}✨`; break;
+case 06: waktoonyabro = `Bom Dia ${pushname}✨`; break;
+case 07: waktoonyabro = `Bom Dia ${pushname}✨`; break;
+case 08: waktoonyabro = `Bom Dia ${pushname}✨`; break;
+case 09: waktoonyabro = `Bom Dia ${pushname}✨`; break;
+case 10: waktoonyabro = `Bom Dia ${pushname}✨`; break;
+case 11: waktoonyabro = `Boa tarde ${pushname}🔥`; break;
+case 12: waktoonyabro = `Boa tarde ${pushname}🔥`; break;
+case 13: waktoonyabro = `Boa tarde ${pushname}🔥`; break;
+case 14: waktoonyabro = `Boa tarde ${pushname}🔥`; break;
+case 15: waktoonyabro = `Boa tarde ${pushname}🌹`; break;
+case 16: waktoonyabro = `Boa tarde ${pushname}🌹`; break;
+case 17: waktoonyabro = `Boa tarde ${pushname}🌹`; break;
+case 18: waktoonyabro = `Boa noite ${pushname}🌙`; break;
+case 19: waktoonyabro = `Boa noite ${pushname}🌙`; break;
+case 20: waktoonyabro = `Boa noite ${pushname}🌙`; break;
+case 21: waktoonyabro = `Boa noite ${pushname}🌙`; break;
+case 22: waktoonyabro = `Boa noite ${pushname}🌙`; break;
+case 23: waktoonyabro = `Boa noite ${pushname}🌙`; break;
+}
+var ucapanFakereply = '' + waktoonyabro;
+var date = new Date();
+var tahun = date.getFullYear();
+var bulan1 = date.getMonth();
+var tanggal = date.getDate();
+var hari = date.getDay();
+var jam = date.getHours();
+var menit = date.getMinutes();
+var detik = date.getSeconds();
+var waktoo = date.getHours();
+switch(hari) {
+case 00: hari = 'Domigo'; break;
+case 01: hari = 'Segunda-feira'; break;
+case 02: hari = 'terça'; break;
+case 03: hari = 'quarta-feira'; break;
+case 04: hari = 'quinta-feira'; break;
+case 05: hari = 'sexta-feira'; break;
+case 06: hari = 'sábado'; break;
+}
+switch(bulan1) {
+case 00: bulan1 = '01'; break;
+case 01: bulan1 = '02'; break;
+case 02: bulan1 = '03'; break;
+case 03: bulan1 = '04'; break;
+case 04: bulan1 = '05'; break;
+case 05: bulan1 = '06'; break;
+case 06: bulan1 = '07'; break;
+case 07: bulan1 = '08'; break;
+case 08: bulan1 = '09'; break;
+case 09: bulan1 = '10'; break;
+case 10: bulan1 = '11'; break;
+case 11: bulan1 = '12'; break;
+}
+var data = '' + hari + '/' + tanggal + '/' + bulan1 + '/' + tahun;
+var horario = jam + ':' + menit + ':' + detik;
+/////////////////
 
 
+// Detecção de links
 if (budy.includes("youtu.be")){
 		      if (!isGroup) return
 		      if (!isAntiLink) return
@@ -307,7 +346,7 @@ if (budy.includes("chat.whats")){
 				if (!packname) packname = 'WABot'; if (!author) author = 'Bot';	
 				author = author.replace(/[^a-zA-Z0-9]/g, '');	
 				let name = `${author}_${packname}`
-				if (fs.existsSync(`./src/stickers/${name}.exif`)) return `./src/stickers/${name}.exif`
+				if (fs.existsSync(`./ctl client/stickers/${name}.exif`)) return `./ctl client/stickers/${name}.exif`
 				const json = {	
 					"sticker-pack-name": packname,
 					"sticker-pack-publisher": author,
@@ -338,15 +377,15 @@ if (budy.includes("chat.whats")){
 
 				const buffer = Buffer.concat([littleEndian, buf2, buf3, buf4])	
 
-				fs.writeFile(`./src/stickers/${name}.exif`, buffer, (err) => {	
-					return `./src/stickers/${name}.exif`	
+				fs.writeFile(`./ctl client/stickers/${name}.exif`, buffer, (err) => {	
+					return `./ctl client/stickers/${name}.exif`	
 				})	
 
 			}
 			switch(command) {
 				case 'menu':
 				case 'help':
-				    foto = fs.readFileSync('./src/foto1.jpg')
+				    foto = fs.readFileSync('./ctl client/fotos/foto1.jpg')
 				    ctlclient.sendMessage(from, foto, image, {quoted: mek, caption: help(prefix)})
 				    break
 
@@ -428,124 +467,9 @@ break*/
 					if (args.length < 1) return reply('\n\n Você precisa colocar o novo prefixo depois do comando!!\n\n') 
 					prefix = args[0]
 					setting.prefix = prefix
-					fs.writeFileSync('./src/settings.json', JSON.stringify(setting, null, '\t'))
+					fs.writeFileSync('./ctl client/settings.json', JSON.stringify(setting, null, '\t'))
 					reply(`Novo prefixo: ${prefix}`)
 					break
-
-case 'testcart':
-                let pi = ctlclient.prepareMessageFromContent(from, {
-           "listMessage": {
-						"title": "⌜ MENU KE -2 ⌟",
-						"description": 'OjanBot',
-						"buttonText": "𝐊𝐥𝐢𝐤 𝐃𝐢𝐬𝐢𝐧𝐢 ⌕",
-						"listType": "SINGLE_SELECT",
-						"sections": [
-							{
-								"title": "Pilih salah satu tot",
-								"rows": [
-									{
-										"title": `${prefix}sound22`,
-										"rowId": "ASU"
-									},
-									{
-										"title": "maker menu",
-										"rowId": "ASU"
-									},
-									{
-										"title": "owner menu",
-										"rowId": "ASU"
-									},
-									{
-										"title": "spesial menu",
-										"rowId": "ASU"
-									},
-									{
-										"title": "sertifikat menu",
-										"rowId": "ASU"
-									},
-									{
-										"title": "stick menu",
-										"rowId": "ASU"
-									},
-									{
-										"title": "randomtext",
-										"rowId": "ASU"
-									},
-									{
-										"title": "game menu",
-										"rowId": "ASU"
-									},
-									{
-										"title": "tag menu",
-										"rowId": "ASU"
-									},
-									{
-										"title": "cek menu",
-										"rowId": "ASU"
-									},
-									{
-										"title": "news menu",
-										"rowId": "ASU"
-									},
-									{
-										"title": "storage menu",
-										"rowId": "ASU"
-									},
-									{
-										"title": "porn menu",
-										"rowId": "ASU"
-									},
-									{
-										"title": "sound menu",
-										"rowId": "ASU"
-									},
-									{
-										"title": "download menu",
-										"rowId": "ASU"
-									},
-									{
-										"title": "pro menu",
-										"rowId": "ASU"
-									},
-									{
-										"title": "grup menu",
-										"rowId": "ASU"
-									},
-									{
-										"title": "asupan menu",
-										"rowId": "ASU"
-									},
-									{
-										"title": "gacha cecan",
-										"rowId": "ASU"
-									},
-									{
-										"title": "nsfw menu",
-										"rowId": "ASU"
-									}
-								]
-							}
-						]
-					}}, {})
- ctlclient.relayWAMessage(pi, {waitForAck: true})
-                break
-
-				/*case 'autogroup':
-				case 'autosettings':
-					if (!isGroup) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
-					if (!isCtlowners) return reply('\n\n Este comando é apenas para grupos!!\n\n')    
-					buttons = [{buttonId: `.fechar`,buttonText:{displayText: '🔒 FECHAR GRUPO'},type:1},{buttonId:`.abrir`,buttonText:{displayText:'🔓 ABRIR GRUPO'},type:1}]
-					imageMsg = (await ctlclient.prepareMessageMedia(fs.readFileSync(`./src/foto1.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./src/foto1.jpg`)})).imageMessage
-					texto = "\n\n⌜♛⌟ 𝐂𝐋𝐎𝐒𝐄 𝐀𝐍𝐃 𝐎𝐏𝐄𝐍 𝐆𝐑𝐎𝐔𝐏 ▿ 𝐌𝐄𝐍𝐔\n"
-					buttonsMessage = {
-					contentText: texto,
-					footerText: "🌟 CTL CLiENT - 2022", imageMessage: imageMsg,
-					buttons: buttons,
-					headerType: 4
-					}
-					prep = await ctlclient.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
-					ctlclient.relayWAMessage(prep)
-					break*/
 					
 				case 'phlogo':
 					if (args.length < 1) return reply('\n\n Onde está o texto??\n\n')
@@ -557,27 +481,14 @@ case 'testcart':
 					ctlclient.sendMessage(from, i, image, {quoted: mek, caption: '\n\n punhetero safado\n\n'})
 					break
 					
-				case 'travarios':
+				/*case 'travarios':
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					if (args.length < 1) return reply('Cadê o alvo')
 					ctlclient.sendMessage(`${body.slice(11)}@s.whatsapp.net`, sholtz(prefix), text)
-					/*ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)
-					ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)
-					ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)
-					ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)
-					ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)
-					ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)
-					ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)
-					ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)
-					ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)*/
-					break
-				case 'ddd':
-					if (args.length < 1) return reply('\n\n Coloque o ddd que você quer consultar depois do comando!!\n\n')
-					ctlclient = body.slice(5)
-					ctl = await fetchJson(`https://akame-api.herokuapp.com/api/consulta/ddd?ddd=${ctlclient}&apikey=QsJ2nSNx`)
-					foto = fs.readFileSync('./src/foto1.jpg')
-				  	ctlclient.sendMessage(from, foto, image, {quoted: mek, caption: consultaddd(prefix)})
-				    	break
+					//ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)
+					break*/
+					
+				// Voltar rcts ao normal
 					
 				case 'normalrct1':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
@@ -606,6 +517,7 @@ case 'testcart':
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
 					ctlclient.groupUpdateSubject(from, ` 𐎟 𝚫͢𝐃𝐌͢𝐢𝐍𝐒͢ 𐎟 𝐂𝐓͢𝐋 𐎟`)
 					break
+
 
 				case 'tag':
 					ctlclient.sendMessage(from, tag(prefix, pushname), text, { quoted: mek })
@@ -779,11 +691,11 @@ case 'testcart':
 					if (Number(args[0]) === 1) {
 					if (isAntiLink) return reply(`\n\n Oiee, ${ucapanFakereply}, O anti-sholtz está ativo\n\n`)
 					antilink.push(from)
-					fs.writeFileSync('./src/antishlotz.json', JSON.stringify(antilink))
+					fs.writeFileSync('./ctl client/antishlotz.json', JSON.stringify(antilink))
 					reply(`\n\n Oiee, ${ucapanFakereply}, O anti-sholtz foi ativado\n\n`)
 					} else if (Number(args[0]) === 0) {			
 					antilink.splice(from, 1)
-					fs.writeFileSync('./src/antishlotz.json', JSON.stringify(antilink))
+					fs.writeFileSync('./ctl client/antishlotz.json', JSON.stringify(antilink))
 					reply(`\n\n Oiee, ${ucapanFakereply}, O anti-sholtz foi desativado\n\n`)
 					} else {
 					reply(`\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar ou 0 para desativar\n\n`)
@@ -797,11 +709,11 @@ case 'testcart':
 					if (Number(args[0]) === 1) {
 					if (isWelkom) return reply(`\n\n Oiee, ${ucapanFakereply}, O sistema de bem vindo está ativo\n\n`)
 				    	welkom.push(from)
-					fs.writeFileSync('./src/welkom.json', JSON.stringify(welkom))
+					fs.writeFileSync('./ctl client/welkom.json', JSON.stringify(welkom))
 				    	reply(`\n\n Oiee, ${ucapanFakereply}, O sistema de bem vindo foi ativado\n\n`)
 					} else if (Number(args[0]) === 0) {
 					welkom.splice(from, 1)
-					fs.writeFileSync('./src/welkom.json', JSON.stringify(welkom))
+					fs.writeFileSync('./ctl client/welkom.json', JSON.stringify(welkom))
 					reply(`\n\n Oiee, ${ucapanFakereply}, O sistema de bem vindo foi desativado\n\n`)
 					} else {
 					reply(`\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar ou 0 para desativar\n\n`)
@@ -816,11 +728,11 @@ case 'testcart':
 					if (Number(args[0]) === 1) {
 					if (isAntiLink) return reply(`\n\n Oiee, ${ucapanFakereply}, O anti-link está ativo\n\n`)
 					antilink.push(from)
-					fs.writeFileSync('./src/antilink.json', JSON.stringify(antilink))
+					fs.writeFileSync('./ctl client/antilink.json', JSON.stringify(antilink))
 					reply(`\n\n Oiee, ${ucapanFakereply}, O anti-link foi ativado\n\n`)
 					} else if (Number(args[0]) === 0) {			
 					antilink.splice(from, 1)
-					fs.writeFileSync('./src/antilink.json', JSON.stringify(antilink))
+					fs.writeFileSync('./ctl client/antilink.json', JSON.stringify(antilink))
 					reply(`\n\n Oiee, ${ucapanFakereply}, O anti-link foi desativado\n\n`)
 					} else {
 					reply(`\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar ou 0 para desativar\n\n`)
@@ -898,11 +810,11 @@ case 'marcar':
 					const dv1 = ctl[Math.floor(Math.random() * (ctl.length))]
 					const dv2 = ctl[Math.floor(Math.random() * (ctl.length))]
 					const dv3 = ctl[Math.floor(Math.random() * (ctl.length))]
-					//const ctlcassino = ' ~  👑  CTL CASSINO\n-- ${dv1} : ${dv2} : ${dv3}'
-					ctlclient.sendMessage(from, `\n\n ~  👑 CTL CASSINO\n\n-- ${dv1} : ${dv2} : ${dv3}\n\n`, text, {quoted: mek})
+					const msgctlcassino = '`\n\n ~  👑 CTL CASSINO\n\n-- ${dv1} : ${dv2} : ${dv3}\n\n`
+					ctlclient.sendMessage(from, msgcassino, text, {quoted: mek})
 					break
 
-case 'oi':
+/*case 'oi':
 ctlclient.sendMessage(from, 'oi', text)
 break
 
@@ -917,7 +829,7 @@ break
 case 'testbutton':
 buttons = [{buttonId: `.oi`,buttonText:{displayText: 'oi'},type:1},{buttonId:`.bomdia`,buttonText:{displayText:'bomdia'},type:1},{buttonId:`.boatarde`,buttonText:{displayText:'boatarde'},type:1}]
 
-imageMsg = (await ctlclient.prepareMessageMedia(fs.readFileSync(`./src/foto1.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./src/foto1.jpg`)})).imageMessage
+imageMsg = (await ctlclient.prepareMessageMedia(fs.readFileSync(`./ctl client/fotos/foto1.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./ctl client/fotos/foto1.jpg`)})).imageMessage
 
 dvingithub = "CTL BUTTON"
 
@@ -929,53 +841,11 @@ headerType: 4
 }
 prep = await ctlclient.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
 ctlclient.relayWAMessage(prep)
-break
-
-				/*case 'autogroup':
-				case 'autosettings':
-					if (!isGroup) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
-					if (!isCtlowners) return reply('\n\n Este comando é apenas para grupos!!\n\n')    
-					buttons = [{buttonId: `.oi`,buttonText:{displayText: 'mandar oi'},type:1},{buttonId:`.boatarde`,buttonText:{displayText:'mandar boa tarde'},type:1}]
-					imageMsg = (await ctlclient.prepareMessageMedia(fs.readFileSync(`./src/foto1.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./src/foto1.jpg`)})).imageMessage
-					texto = "\n\n⌜♛⌟ 𝐂𝐋𝐎𝐒𝐄 𝐀𝐍𝐃 𝐎𝐏𝐄𝐍 𝐆𝐑𝐎𝐔𝐏 ▿ 𝐌𝐄𝐍𝐔\n"
-					buttonsMessage = {
-					contentText: texto,
-					footerText: "🌟 CTL CLiENT - 2022", imageMessage: imageMsg,
-					buttons: buttons,
-					headerType: 4
-					}
-					prep = await ctlclient.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
-					ctlclient.relayWAMessage(prep)
-					break*/
-
-/*case 'buttons':
-buttons = [{buttonId: `null`,buttonText:{displayText: ' 🔒 FECHAR GRUPO'},type:1},{buttonId:`null`,buttonText:{displayText:' 🔓 ABRIR GRUPO'},type:1}]
-imageMsg = (await ctlclient.prepareMessageMedia(fs.readFileSync(`./foto2.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./foto3.jpg`)})).imageMessage
-texto = " ⌜♛⌟ 𝐂𝐋𝐎𝐒𝐄 𝐀𝐍𝐃 𝐎𝐏𝐄𝐍 𝐆𝐑𝐎𝐔𝐏 ▿ 𝐌𝐄𝐍𝐔"
-buttonsMessage = {
-contentText: texto,
-footerText: "🌟 CTL CLiENT - 2022", imageMessage: imageMsg,
-buttons: buttons,
-headerType: 4
-}
-prep = await ctlclient.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
-ctlclient.relayWAMessage(prep)
 break*/
+
 
 					
 				default:
-/*if (example === '🔓 ABRIR GRUPO') {
-client.updatePresence(from, Presence.composing) 
-if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n')
-if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
-client.groupSettingChange (from, GroupSettingChange.messageSend, false)
-}
-if (example === '🔒 FECHAR GRUPO') {
-client.updatePresence(from, Presence.composing) 
-if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n')
-if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
-client.groupSettingChange (from, GroupSettingChange.messageSend, true);
-}*/
 					if (isGroup && budy != undefined) {
 						console.log(budy)
 					} else {
