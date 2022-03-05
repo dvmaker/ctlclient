@@ -809,7 +809,7 @@ case 'marcar':
 					const dv1 = ctl[Math.floor(Math.random() * (ctl.length))]
 					const dv2 = ctl[Math.floor(Math.random() * (ctl.length))]
 					const dv3 = ctl[Math.floor(Math.random() * (ctl.length))]
-					const msgctlcassino = `\n\n ~  👑 CTL CASSINO\n\n-- ${dv1} : ${dv2} : ${dv3}\n\n`
+					const msgcassino = `\n\n ~  👑 CTL CASSINO\n\n-- ${dv1} : ${dv2} : ${dv3}\n\n`
 					ctlclient.sendMessage(from, msgcassino, text, {quoted: mek})
 					break
 
