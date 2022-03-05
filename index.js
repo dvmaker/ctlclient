@@ -161,7 +161,7 @@ const isAntiLink = isGroup ? antilink.includes(from) : false
 
 
 // Anti sholtz
-const isAntisholtz = isGroup ? antilsholtz.includes(from) : false
+const isAntisholtz = isGroup ? antisholtz.includes(from) : false
 
 			
 const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
