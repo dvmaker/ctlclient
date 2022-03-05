@@ -115,9 +115,7 @@ ctlclient.on('group-participants-update', async (anu) => {
   num = anu.participants[0]
   if(!num.split('@')[0].startsWith(55)) {
   ctlclient.sendMessage(mdata.id, 'Digita️', MessageType.text)
-  setTimeout(async function () {
   ctlclient.groupRemove(mdata.id, [num])
-  }, 1000)
       }
   }
   }
