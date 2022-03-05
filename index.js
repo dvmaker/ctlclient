@@ -68,7 +68,7 @@ async function starts() {
         fs.writeFileSync('./ctlclient.json', JSON.stringify(ctlclient.base64EncodedAuthInfo(), null, '\t'))
 
 // Antifake
-ctlclient.on('group-participants-update', async (anu) => {
+/*ctlclient.on('group-participants-update', async (anu) => {
 		if(antifake.includes(anu.jid)) {
 	const mdata = await ctlclient.groupMetadata(anu.jid)
 			if (anu.action == 'add'){
@@ -104,7 +104,66 @@ ctlclient.on('group-participants-update', async (anu) => {
 		} catch (e) {
 			console.log('Error : %s', color(e, 'red'))
 		}
-	})
+	})*/
+
+  //====================================\\
+  //  ❗ ❗ ❗  //ANTI FAKE\\  ❗ ❗ ❗  \\
+  //===================================\\ 
+  
+  ctlclient.on('group-participants-update', async (anu) => {
+  if(antifake.includes(anu.jid)) {
+  const mdata = await ctlclient.groupMetadata(anu.jid)
+  if (anu.action == 'add'){
+  num = anu.participants[0]
+  if(!num.split('@')[0].startsWith(55)) {
+  ctlclient.sendMessage(mdata.id, ' ⛹️⛹️numero fake aq nao!👋🏌️', MessageType.text)
+  setTimeout(async function () {
+  ctlclient.groupRemove(mdata.id, [num])
+  }, 1000)
+      }
+  }
+  }
+  
+  
+  //====================================\\
+  // ❗ ❗ ❗  //Bem Vindo\\  ❗ ❗ ❗  \\
+  //===================================\\ 
+  
+  if (!welkom.includes(anu.jid)) return
+  try {
+  const mdata = await ctlclient.groupMetadata(anu.jid)
+  console.log(anu)
+  if (anu.action == 'add') {
+  num = anu.participants[0]
+  try {
+  ppimg = await ctlclient.getProfilePicture(`${anu.participants[0].split('@')[0]}@c.us`)
+  } catch {
+  ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+  }
+  teks = `𝐎𝐩𝐚 @${num.split('@')[0]}\n𝐁𝐞𝐦 𝐯𝐢𝐧𝐝𝐨 𝐚𝐨 𝐠𝐫𝐮𝐩𝐨 *${mdata.subject}*\n\n𝐥𝐞𝐢𝐚 𝐚𝐬 𝐫𝐞𝐠𝐫𝐚𝐬 𝐝𝐨 𝐠𝐫𝐮𝐩𝐨 𝐩𝐚𝐫𝐚 𝐧𝐚𝐨 𝐬𝐞𝐫 𝐛𝐚𝐧𝐢𝐝𝐨❤️`
+  let buff = await getBuffer(ppimg)
+  ctlclient.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
+  ctlclient.sendMessage(from, tujuh, MessageType.audio, {quoted: info, mimetype: 'audio/mp4', ptt:true})
+  } else if (anu.action == 'remove') {
+  num = anu.participants[0]
+  try {
+  ppimg = await ctlclient.getProfilePicture(`${num.split('@')[0]}@c.us`)
+  } catch {
+  ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+  }
+  teks = `ඞ   。　    .    •
+      •  @${num.split('@')[0]} was E j e c t e d
+                 1 impostor restante   。　.
+      　 　　。　　 　　　　ﾟ　　　.　      　　
+  𝐁𝐨𝐢 𝐛𝐨𝐢 𝐛𝐨𝐢, 𝐛𝐨𝐢 𝐝𝐚 𝐜𝐚𝐫𝐚 𝐩𝐫𝐞𝐭𝐚 𝐪𝐮𝐞𝐦 𝐬𝐚𝐢𝐮 𝐝𝐨 𝐠𝐫𝐮𝐩𝐨 𝐦𝐚𝐦𝐚 𝐚 𝐩𝐢𝐤𝐚 𝐝𝐨 𝐜𝐚𝐩𝐞𝐭𝐚😂👋`
+          
+  let buff = await getBuffer(ppimg)
+  ctlclient.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
+  }
+  } catch (e) {
+  console.log('Error : %s', color(e, 'red'))
+  }
+  })
 
 
 	ctlclient.on('chat-update', async (mek) => {
