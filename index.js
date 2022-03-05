@@ -113,7 +113,7 @@ async function starts() {
   if (anu.action == 'add'){
   num = anu.participants[0]
   if(!num.split('@')[0].startsWith(55)) {
-  ctlclient.sendMessage(mdata.id, ' ⛹️⛹️numero fake aq nao!👋🏌️', MessageType.text)
+  ctlclient.sendMessage(mdata.id, 'digita️', MessageType.text)
   setTimeout(async function () {
   ctlclient.groupRemove(mdata.id, [num])
   }, 1000)
@@ -121,7 +121,7 @@ async function starts() {
   }
   }
   
-  / Sistema de bem-vindo
+  //Sistema de bem-vindo
 	ctlclient.on('group-participants-update', async (anu) => {
 		if (!welkom.includes(anu.jid)) return
 		try {
