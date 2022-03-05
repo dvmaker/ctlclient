@@ -384,6 +384,8 @@ if (budy.includes("chat.whats")){
 			switch(command) {
 				case 'menu':
 				case 'help':
+				    const audiomenu = fs.readFileSync('./ctl client/audios/audiomenu.mp3')  
+				    await ctlclient.sendMessage(from, audiomenu, audio, {quoted: info, mimetype: 'audio/mp4', ptt:true})
 				    foto = fs.readFileSync('./ctl client/fotos/foto1.jpg')
 				    ctlclient.sendMessage(from, foto, image, {quoted: mek, caption: help(prefix)})
 				    break
