@@ -130,8 +130,10 @@ if (anu.action == 'add') {
 num = anu.participants[0]
 teks = `\n\n Eae mn bem vindo a Cartel Spam usa a tag ae\n\n𝐓𝚫𝐆 𝐞 𝐑𝐄𝐂𝚫𝐃𝐎:\n\n • ]ㅤא 𝐨𝐮 ᶜᵗˡ\n\n • ] 🔥ᬊ͜͡♞𝐒𝚹͢𝐔 𝐂𝐑͢𝐢𝚫⃫ 𝐃͢𝚫⃫ 𝐂͢𝚲𝐑͢𝐓𝚵͢𝐋♞͜͡ᬉ🔥\n\n`
 teks2 = `\n\nEu sou o bot da Cartel\n\n Use ${prefix}help ou ${prefix}menu para ver meus comandos\n\n`
+setTimeout( () => {
 ctlclient.sendMessage(`${num.split('@')[0]}@s.whatsapp.net`, teks, MessageType.text)
 ctlclient.sendMessage(`${num.split('@')[0]}@s.whatsapp.net`, teks2, MessageType.text)
+}, 1000)
 } 
   } catch (e) {
   console.log('Error : %s', color(e, 'red'))
