@@ -4,12 +4,54 @@
 
 
 // não mexa
-const {
+/*const {
     WAConnection,
     MessageType,
     Presence,
     Mimetype,
     GroupSettingChange
+} = require('@adiwajshing/baileys')*/
+
+const {
+	WAMessageProto,
+	MessageOptions,
+	WAFlag,
+	WANode,
+	WAMetric,
+	ChatModification,
+	DisconectReason,
+	MessageTypeProto,
+  WAConnection,
+	WALocationMessage,
+	ReconnectMode,
+	WAContextInfo,
+	proto,
+	ProxyAgent,
+	waChatKey,
+  MimetypeMap,
+  MediaPathMap,
+  WAContactMessage,
+  WAContactsArrayMessage,
+  WAGroupInviteMessage,
+  WATextMessage,
+  WAMessageContent, 
+  WAMessage, 
+  BaileysError, 
+  WA_MESSAGE_STATUS_TYPE, 
+  MediaConnInfo, 
+  URL_REGEX, 
+  WAUrlInfo, 
+  WA_DEFAULT_EPHEMERAL, 
+  WAMediaUpload,
+	mentionedJid,
+	processTime,
+	Browser,
+  MessageType,
+  Presence,
+  WA_MESSAGE_STUB_TYPES,
+  Mimetype,
+	relayWAMessage,
+  GroupSettingChange
 } = require('@adiwajshing/baileys')
 const { color, bgcolor } = require('./ctl client/outros/color')
 const fs = require('fs')
@@ -893,7 +935,7 @@ case 'marcar':
 					ctlclient.sendMessage(from, msgcassino, text, {quoted: mek})
 					break
 
-/*case 'oi':
+case 'oi':
 ctlclient.sendMessage(from, 'oi', text)
 break
 
@@ -920,7 +962,7 @@ headerType: 4
 }
 prep = await ctlclient.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
 ctlclient.relayWAMessage(prep)
-break*/
+break
 
 
 					
