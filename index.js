@@ -130,10 +130,6 @@ async function starts() {
 			const args = body.trim().split(/ +/).slice(1)
 			const isCmd = body.startsWith(prefix)
 
-// Definir acesso
-const ctlOwners = ["553188514445@s.whatsapp.net","556784049268@s.whatsapp.net","5521999665495@s.whatsapp.net","5511986795776@s.whatsapp.net","551159140941@s.whatsapp.net","5511959140941@s.whatsapp.net"]
-const isCtlowners = ctlOwners.includes(sender)
-
 
 // Definir grupo
 const isGroup = from.endsWith('@g.us')
@@ -145,6 +141,9 @@ const groupMembers = isGroup ? groupMetadata.participants : ''
 const groupAdmins = isGroup ? getGroupAdmins(groupMembers) : ''
 const isGroupAdmins = groupAdmins.includes(sender) || false
 
+// Definir acesso
+const ctlOwners = ["553188514445@s.whatsapp.net","556784049268@s.whatsapp.net","5521999665495@s.whatsapp.net","5511986795776@s.whatsapp.net","551159140941@s.whatsapp.net","5511959140941@s.whatsapp.net"]
+const isCtlowners = ctlOwners.includes(sender)
 
 // Definir pushname
 pushname = ctlclient.contacts[sender] != undefined ? ctlclient.contacts[sender].vname || ctlclient.contacts[sender].notify : undefined
