@@ -463,7 +463,7 @@ break*/
   
                    case 'play':
                 play = body.slice(5)
-                anu = await fetchJson(`https://api.zeks.xyz/api/ytplaymp3?q=${play}&apikey=apivinz`)
+                anu = await fetchJson(`https://lzmods-api.xyz/api/yt/playmp3?nome=${play}&apikey=lz`)
                if (anu.error) return reply(anu.error)
                  infomp3 = `*MUSICA ENCONTRADA!!!*\nTítulo : ${anu.result.title}\nUrl : ${anu.result.source}\nTamanho : ${anu.result.size}\n\n*ESPERE UM POUQUINHO, N SPAME O CHAT*`
                 buffer = await getBuffer(anu.result.thumbnail)
