@@ -457,7 +457,7 @@ ctlclient.sendMessage(from, foto, image, {quoted: mek, caption: `
  
  `
 //ctlclient.sendMessage(from, ${msc.resultado.download}, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
-  var audio = await getBuffer(msc.resultado.download)
+  const audio = await getBuffer(msc.resultado.download)
   ctlclient.sendMessage(from, audio, document, {quoted: mek, mimetype: 'audio/mp3', filename: `${msc.resultado.titulo}.mp3`})
   break
   
