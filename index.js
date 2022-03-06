@@ -457,7 +457,7 @@ ctlclient.sendMessage(from, foto, image, {quoted: mek, caption: `
  
  `
 //ctlclient.sendMessage(from, ${msc.resultado.download}, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
-  let audio = await getBuffer(msc.resultado.download)
+  var audio = await getBuffer(msc.resultado.download)
   ctlclient.sendMessage(from, audio, document, {quoted: mek, mimetype: 'audio/mp3', filename: `${msc.resultado.titulo}.mp3`})
   break
   
@@ -483,7 +483,7 @@ case 'clonar':
 					if (args.length < 1) return reply('Marque a pessoa que você quer clonar\n\n*EXEMPLO:* clone @')
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('Tag cvk')
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid[0]
-					let { jid, id, notify } = groupMembers.find(x => x.jid === mentioned)
+					var { jid, id, notify } = groupMembers.find(x => x.jid === mentioned)
 					try {
 						pp = await ctlclient.getProfilePicture(id)
 						buffer = await getBuffer(pp)
