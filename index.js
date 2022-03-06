@@ -433,7 +433,7 @@ if (budy.includes("chat.whats")){
 				    ctlclient.sendMessage(from, foto, image, {quoted: mek, caption: help(prefix)})
 				    break
 
-case 'play':
+/*case 'play':
 if (args.length < 1) return reply(`\n\n Eae ${waktoonyabro}, você precisa colocar o nome da música depois do comando!!\n\n`, text, {quoted: mek})
 const pedido = args.join(" ")
 msc = await axios.get(`https://lzmods-api.xyz/api/yt/playmp3?nome=${pedido}&apikey=lz`)
@@ -459,7 +459,18 @@ ctlclient.sendMessage(from, foto, image, {quoted: mek, caption: `
  `})
 audio = await getBuffer(msc.data.resultado.download)
 ctlclient.sendMessage(from, audio, document, {quoted: mek, mimetype: 'audio/mp3', filename: `${msc.data.resultado.titulo}.mp3`})
-break
+break*/
+  
+                   case 'play':
+                play = body.slice(5)
+                anu = await fetchJson(`https://api.zeks.xyz/api/ytplaymp3?q=${play}&apikey=apivinz`)
+               if (anu.error) return reply(anu.error)
+                 infomp3 = `*MUSICA ENCONTRADA!!!*\nTítulo : ${anu.result.title}\nUrl : ${anu.result.source}\nTamanho : ${anu.result.size}\n\n*ESPERE UM POUQUINHO, N SPAME O CHAT*`
+                buffer = await getBuffer(anu.result.thumbnail)
+                lagu = await getBuffer(anu.result.url_audio)
+                ctlclient.sendMessage(from, buffer, image, {quoted: mek, caption: infomp3})
+                ctlclient.sendMessage(from, lagu, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
+                break
   
 case 'forceblocker':
 if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n', text, { quoted: mek })
