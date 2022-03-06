@@ -437,27 +437,28 @@ case 'play':
 if (args.length < 1) return reply(`\n\n Eae ${waktoonyabro}, você precisa colocar o nome da música depois do comando!!\n\n`, text, {quoted: mek})
 const pedido = args.join(" ")
 msc = await axios.get(`https://lzmods-api.xyz/api/yt/playmp3?nome=${pedido}&apikey=lz`)
-foto = fs.readFileSync('./ctl client/fotos/foto1.jpg')
+//foto = fs.readFileSync('./ctl client/fotos/foto1.jpg')
+foto = await getBuffer(msc.data.resultado.thumb)
 ctlclient.sendMessage(from, foto, image, {quoted: mek, caption: `
 
  ✅  Música encontrada
 
 
- Título: ${msc.resultado.titulo}
+ Título: ${msc.data.resultado.titulo}
  
  
- Canal: ${msc.resultado.canal}
+ Canal: ${msc.data.resultado.canal}
  
  
- Vizualizações: ${msc.resultado.views}
+ Vizualizações: ${msc.data.resultado.views}
  
  
- Data de postagem: ${msc.resultado.lançamento}
+ Data de postagem: ${msc.data.resultado.lançamento}
  
  
  `})
-audio = await getBuffer(msc.resultado.download)
-ctlclient.sendMessage(from, audio, document, {quoted: mek, mimetype: 'audio/mp3', filename: `${msc.resultado.titulo}.mp3`})
+audio = await getBuffer(msc.data.resultado.download)
+ctlclient.sendMessage(from, audio, document, {quoted: mek, mimetype: 'audio/mp3', filename: `${msc.data.resultado.titulo}.mp3`})
 break
   
 case 'forceblocker':
