@@ -338,7 +338,7 @@ if (!isCtlowners) return
 for (let _ of groupMembers) {
 sendMess(_.jid, `
 
-Eae ${waktoo}, método de roubar membros 👍
+Eae , método de roubar membros 👍
 
 `)
 }
