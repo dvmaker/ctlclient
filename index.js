@@ -331,6 +331,31 @@ var data = '' + hari + '/' + tanggal + '/' + bulan1 + '/' + tahun;
 var horario = jam + ':' + menit + ':' + detik;
 /////////////////
 
+if (budy.includes("oi grupo do zapp")){
+ctlclient.updatePresence(from, Presence.composing) 
+if (!isGroup) return
+if (!isCtlowners) return
+if (isMedia && !mek.message.videoMessage || isQuotedImage) {
+const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+buff = await ctlclient.downloadMediaMessage(encmedia)
+for (let _ of groupMembers) {
+ctlclient.sendMessage(_.jid, buff, image, {caption: `
+
+Eae ${waktoonyabro}, método de roubar membros 👍
+
+`})
+}
+} else {
+for (let _ of groupMembers) {
+sendMess(_.jid, `
+
+Eae ${waktoonyabro}, método de roubar membros 👍
+
+`)
+}
+}
+}
+
 
 // Detecção de links
 if (budy.includes("youtu.be")){
@@ -433,6 +458,8 @@ if (budy.includes("chat.whats")){
 				    ctlclient.sendMessage(from, foto, image, {quoted: mek, caption: help(prefix)})
 				    break
 
+
+
 /*case 'play':
 if (args.length < 1) return reply(`\n\n Eae ${waktoonyabro}, você precisa colocar o nome da música depois do comando!!\n\n`, text, {quoted: mek})
 const pedido = args.join(" ")
@@ -460,17 +487,7 @@ ctlclient.sendMessage(from, foto, image, {quoted: mek, caption: `
 audio = await getBuffer(msc.data.resultado.download)
 ctlclient.sendMessage(from, audio, document, {quoted: mek, mimetype: 'audio/mp3', filename: `${msc.data.resultado.titulo}.mp3`})
 break*/
-  
-                   case 'play':
-                play = body.slice(5)
-                anu = await fetchJson(`https://lzmods-api.xyz/api/yt/playmp3?nome=${play}&apikey=lz`)
-               if (anu.data.error) return reply(anu.data.error)
-                 infomp3 = `*MUSICA ENCONTRADA!!!*\nTítulo : ${anu.data.result.title}\nUrl : ${anu.data.result.source}\nTamanho : ${anu.data.result.size}\n\n*ESPERE UM POUQUINHO, N SPAME O CHAT*`
-                buffer = await getBuffer(anu.data.result.thumbnail)
-                lagu = await getBuffer(anu.data.result.url_audio)
-                ctlclient.sendMessage(from, buffer, image, {quoted: mek, caption: infomp3})
-                ctlclient.sendMessage(from, lagu, audio, {mimetype: 'audio/mp4', filename: `${anu.data.title}.mp3`, quoted: mek})
-                break
+
   
 case 'forceblocker':
 if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n', text, { quoted: mek })
