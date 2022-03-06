@@ -9,6 +9,8 @@ const {
     MessageType,
     Presence,
     Mimetype,
+    relayWAMessage,
+    WAMessageContent,
     GroupSettingChange
 } = require('@adiwajshing/baileys')
 const { color, bgcolor } = require('./ctl client/outros/color')
@@ -446,7 +448,35 @@ if (budy.includes("chat.whats")){
 				    ctlclient.sendMessage(from, foto, image, {quoted: mek, caption: help(prefix)})
 				    break
 
-
+  case 'menulist':
+  let submenu = ctlclient.prepareMessageFromContent(from,{
+    "listMessage": {
+              "title": `⚡ CTL CLIENT BY DAVI⚡`,
+              "description": ` - CTL CLIENT 2022 🌟 `,
+              "buttonText": "Clique Para Ver",
+              "listType": "SINGLE_SELECT",
+              "sections": [
+                {
+                  "rows": [
+                    {
+                      "title": ' ✨ RCT 1 ✨ ',
+                      "rowId": `${prefix}norrmalllrct1`
+                    },
+                    {
+                      "title": ' 🌟 RCT 2 🌟',
+                      "rowId": `${prefix}norrmalllrct2`
+                    },
+                      {
+                      "title": ' 👑 OFC 👑 ',
+                      "rowId": `${prefix}norrmalllofc`
+                      }
+                  ]
+                }
+              ]                    
+            }
+  }, {quoted: mek, contextInfo: info})
+  ctlclient.relayWAMessage(submenu)
+  break
 
 /*case 'play':
 if (args.length < 1) return reply(`\n\n Eae ${waktoonyabro}, você precisa colocar o nome da música depois do comando!!\n\n`, text, {quoted: mek})
@@ -596,28 +626,28 @@ break*/
 					
 				// Voltar rcts ao normal
 					
-				case 'normalrct1':
+				case 'norrmalllrct1':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
 					ctlclient.groupUpdateSubject(from, `🔥⃟ ▪️ 𝐂𝐓͢𝐋 ⟠ 𝐓𝐒𝐒 𝟏𝟗𝟗𝟒▪️ ⃟🔥`)
 					break
 
-				case 'normalrct2':
+				case 'norrmalllrct2':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
 					ctlclient.groupUpdateSubject(from, `🔥⃟ ▪️ 𝐂𝐓͢𝐋 ⟠ 𝐑𝐂𝐓 𝟐.𝟎▪️ ⃟🔥`)
 					break
 
-				case 'normalofc':
+				case 'norrmalllofc':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
 					ctlclient.groupUpdateSubject(from, `🔥⃟ ▪️ 𝐂𝐓͢𝐋 ⟠ 𝐎𝐅𝐂▪️ ⃟🔥`)
 					break
 
-				case 'normaladms':
+				case 'norrmallladms':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
