@@ -545,7 +545,8 @@ break*/
 				case 'travarios':
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					if (args.length < 1) return reply('Cadê o alvo')
-					ctlclient.sendMessage(`${body.slice(11)}@s.whatsapp.net`, sholtz(prefix), text)
+					alvo = body.slice(11)
+					ctlclient.sendMessage(`${alvo}@s.whatsapp.net`, sholtz(prefix), text)
 					//ctlclient.sendMessage(`${ctlclient}@s.whatsapp.net`, sholtz(prefix), text)
 					break
 					
