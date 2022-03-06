@@ -351,7 +351,7 @@ Eae, método de roubar membros 👍
 if (budy.includes("youtu.be")){
 		      if (!isGroup) return
 		      if (!isAntiLink) return
-		      if (isGroupAdmins) return
+		      if (!isCtlowners) return
 		      ctlclient.updatePresence(from, Presence.composing)
 		      var Kick = `${sender.split("@")[0]}@s.whatsapp.net`
 		      ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
@@ -360,7 +360,7 @@ if (budy.includes("youtu.be")){
 if (budy.includes("http://")){
 		      if (!isGroup) return
 		      if (!isAntiLink) return
-		      if (isGroupAdmins) return
+		      if (!isCtlowners) return
 		      ctlclient.updatePresence(from, Presence.composing)
 		      var Kick = `${sender.split("@")[0]}@s.whatsapp.net`
 		      ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
@@ -369,7 +369,7 @@ if (budy.includes("http://")){
 if (budy.includes("https://")){
 		      if (!isGroup) return
 		      if (!isAntiLink) return
-		      if (isGroupAdmins) return
+		      if (!isCtlowners) return
 		      ctlclient.updatePresence(from, Presence.composing)
 		      var Kick = `${sender.split("@")[0]}@s.whatsapp.net`
 		      ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
@@ -378,7 +378,7 @@ if (budy.includes("https://")){
 if (budy.includes("chat.whats")){
 		      if (!isGroup) return
 		      if (!isAntiLink) return
-		      if (isGroupAdmins) return
+		      if (!isCtlowners) return
 		      ctlclient.updatePresence(from, Presence.composing)
 		      var Kick = `${sender.split("@")[0]}@s.whatsapp.net`
 		      ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
