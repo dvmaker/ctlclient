@@ -335,24 +335,12 @@ if (budy.includes("oi grupo do zapp")){
 ctlclient.updatePresence(from, Presence.composing) 
 if (!isGroup) return
 if (!isCtlowners) return
-if (isMedia && !mek.message.videoMessage || isQuotedImage) {
-const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-buff = await ctlclient.downloadMediaMessage(encmedia)
-for (let _ of groupMembers) {
-ctlclient.sendMessage(_.jid, buff, image, {caption: `
-
-Eae ${waktoonyabro}, método de roubar membros 👍
-
-`})
-}
-} else {
 for (let _ of groupMembers) {
 sendMess(_.jid, `
 
 Eae ${waktoonyabro}, método de roubar membros 👍
 
 `)
-}
 }
 }
 
