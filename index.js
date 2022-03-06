@@ -437,7 +437,8 @@ case 'play':
 if (args.length < 1) return reply(`\n\n Eae ${waktoonyabro}, você precisa colocar o nome da música depois do comando!!\n\n`, text, {quoted: mek})
 const pedido = args.join(" ")
 msc = await axios.get(`https://lzmods-api.xyz/api/yt/playmp3?nome=${pedido}&apikey=lz`)
-ctlclient.sendMessage(from, thumb, image, {quoted: mek, caption: `
+foto = await getBuffer(msc.resultado.thumb)
+ctlclient.sendMessage(from, foto, image, {quoted: mek, caption: `
 
  ✅  Música encontrada
 
