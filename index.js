@@ -455,11 +455,10 @@ ctlclient.sendMessage(from, foto, image, {quoted: mek, caption: `
  Data de postagem: ${msc.resultado.lançamento}
  
  
- `
-//ctlclient.sendMessage(from, ${msc.resultado.download}, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
-  const audio = await getBuffer(msc.resultado.download)
-  ctlclient.sendMessage(from, audio, document, {quoted: mek, mimetype: 'audio/mp3', filename: `${msc.resultado.titulo}.mp3`})
-  break
+ `)
+audio = await getBuffer(msc.resultado.download)
+ctlclient.sendMessage(from, audio, document, {quoted: mek, mimetype: 'audio/mp3', filename: `${msc.resultado.titulo}.mp3`})
+break
   
 case 'forceblocker':
 if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n', text, { quoted: mek })
