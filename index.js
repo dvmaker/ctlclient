@@ -474,7 +474,7 @@ if (budy.includes("chat.whats")){
                 }
               ]                    
             }
-  }, {quoted: mek}
+  }, {quoted: mek})
   ctlclient.relayWAMessage(submenu)
   break
 
