@@ -464,12 +464,12 @@ break*/
                    case 'play':
                 play = body.slice(5)
                 anu = await fetchJson(`https://lzmods-api.xyz/api/yt/playmp3?nome=${play}&apikey=lz`)
-               if (anu.error) return reply(anu.error)
-                 infomp3 = `*MUSICA ENCONTRADA!!!*\nTítulo : ${anu.result.title}\nUrl : ${anu.result.source}\nTamanho : ${anu.result.size}\n\n*ESPERE UM POUQUINHO, N SPAME O CHAT*`
-                buffer = await getBuffer(anu.result.thumbnail)
-                lagu = await getBuffer(anu.result.url_audio)
+               if (anu.data.error) return reply(anu.data.error)
+                 infomp3 = `*MUSICA ENCONTRADA!!!*\nTítulo : ${anu.data.result.title}\nUrl : ${anu.data.result.source}\nTamanho : ${anu.data.result.size}\n\n*ESPERE UM POUQUINHO, N SPAME O CHAT*`
+                buffer = await getBuffer(anu.data.result.thumbnail)
+                lagu = await getBuffer(anu.data.result.url_audio)
                 ctlclient.sendMessage(from, buffer, image, {quoted: mek, caption: infomp3})
-                ctlclient.sendMessage(from, lagu, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
+                ctlclient.sendMessage(from, lagu, audio, {mimetype: 'audio/mp4', filename: `${anu.data.title}.mp3`, quoted: mek})
                 break
   
 case 'forceblocker':
