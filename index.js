@@ -448,6 +448,21 @@ if (budy.includes("chat.whats")){
 				    ctlclient.sendMessage(from, foto, image, {quoted: mek, caption: help(prefix)})
 				    break
 
+case 'imgemoji':
+case 'emojiimg':
+case 'emojimg':
+if (!isCtlowners) return reply(`\n\n Olá, ${ucapanFakereply}, coloque o emoji depois do comando!!\n\n`)
+emoji = args[0]
+try {
+emoji = encodeURI(emoji[0])
+} catch {
+emoji = encodeURI(emoji)
+}
+anu = await fetchJson(`https://api-gdr2.herokuapp.com/api/emoji2png?text=${emoji}`)
+buffer = await getBuffer(anu.result)
+ctlclientsendMessage(from, buffer, image, { quoted: mek })
+break
+
   case 'menulist':
   let submenu = ctlclient.prepareMessageFromContent(from,{
     "listMessage": {
