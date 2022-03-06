@@ -460,15 +460,15 @@ if (budy.includes("chat.whats")){
                   "rows": [
                     {
                       "title": ' ✨ RCT 1 ✨ ',
-                      "rowId": `${prefix}norrmalllrct1`
+                      "rowId": '.normalrct1'
                     },
                     {
                       "title": ' 🌟 RCT 2 🌟',
-                      "rowId": `${prefix}norrmalllrct2`
+                      "rowId": '.normalrct2'
                     },
                       {
                       "title": ' 👑 OFC 👑 ',
-                      "rowId": `${prefix}norrmalllofc`
+                      "rowId": '.normalofc'
                       }
                   ]
                 }
@@ -626,28 +626,28 @@ break*/
 					
 				// Voltar rcts ao normal
 					
-				case 'norrmalllrct1':
+				case 'normalrct1':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
 					ctlclient.groupUpdateSubject(from, `🔥⃟ ▪️ 𝐂𝐓͢𝐋 ⟠ 𝐓𝐒𝐒 𝟏𝟗𝟗𝟒▪️ ⃟🔥`)
 					break
 
-				case 'norrmalllrct2':
+				case 'normalrct2':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
 					ctlclient.groupUpdateSubject(from, `🔥⃟ ▪️ 𝐂𝐓͢𝐋 ⟠ 𝐑𝐂𝐓 𝟐.𝟎▪️ ⃟🔥`)
 					break
 
-				case 'norrmalllofc':
+				case 'normalofc':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
 					ctlclient.groupUpdateSubject(from, `🔥⃟ ▪️ 𝐂𝐓͢𝐋 ⟠ 𝐎𝐅𝐂▪️ ⃟🔥`)
 					break
 
-				case 'norrmallladms':
+				case 'normaladms':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
