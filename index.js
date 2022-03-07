@@ -149,13 +149,13 @@ ctlclient.sendMessage(`${num.split('@')[0]}@s.whatsapp.net`, teks2, MessageType.
 		// Chat-Uptade //
 	ctlclient.on('chat-update', async (mek) => {
 		try {
-			if (!mek.hasNewMessage) return
-			mek = mek.messages.all()[0]
+            if (!mek.hasNewMessage) return
+            mek = mek.messages.all()[0]
 			if (!mek.message) return
-			if (!mek.key.fromMe) return
 			if (mek.key && mek.key.remoteJid == 'status@broadcast') return
+			if (mek.key.fromMe) return
 			
-			// Mexa nisso abaixo se vc quiser que o bot responda a ele msm (pode deixar o o bot instável XD
+			// Mexa nisso abaixo se vc quiser que o bot responda a ele msm (pode deixar o o bot instável XD)
 			
 			//mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
 
