@@ -147,22 +147,22 @@ ctlclient.sendMessage(`${num.split('@')[0]}@s.whatsapp.net`, teks2, MessageType.
 	ctlclient.on('chat-update', async (mek) => {
 		try {
 		
-/*
+
 			if (!mek.hasNewMessage) return
 			mek = mek.messages.all()[0]
 			if (!mek.message) return
 			if (!mek.key.fromMe) return
 			if (mek.key && mek.key.remoteJid == 'status@broadcast') return
 			mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
-*/
-			
 
+			
+/*
                                     if (!mek.hasNewMessage) return
                                     mek = mek.messages.all()[0]
 			if (!mek.message) return
 			if (mek.key.fromMe) return
 			if (mek.key && mek.key.remoteJid == 'status@broadcast') return
-
+*/
 
 			global.prefix
 			global.blocked
@@ -467,7 +467,6 @@ if (budy.includes("chat.whats")){
 
 case 'groupid':
 if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n', text, { quoted: mek })
-if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n', text, { quoted: mek })
 ctlclient.sendMessage(from, `${groupId}`, text, {quoted: mek})
 break
 
