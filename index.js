@@ -146,16 +146,18 @@ ctlclient.sendMessage(`${num.split('@')[0]}@s.whatsapp.net`, teks2, MessageType.
 
 	ctlclient.on('chat-update', async (mek) => {
 		try {
-            if (!mek.hasNewMessage) return
-            mek = mek.messages.all()[0]
-			if (!mek.message) return
-			if (mek.key && mek.key.remoteJid == 'status@broadcast') return
-			if (mek.key.fromMe) return
+if (!mek.hasNewMessage) return
+mek = mek.messages.all()[0]
+if (!mek.message) return
+if (!mek.key.fromMe) return
+if (mek.key && mek.key.remoteJid == 'status@broadcast') return
+mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
 			global.prefix
 			global.blocked
 			const content = JSON.stringify(mek.message)
 			const speed = require('performance-now');
 			const from = mek.key.remoteJid
+			const from2 = mek.key.participant
 			const type = Object.keys(mek.message)[0]
 			//const apiKey = setting.apiKey // contact me on whatsapp wa.me/6285892766102
 			const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
