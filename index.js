@@ -467,7 +467,8 @@ if (budy.includes("chat.whats")){
 
 case 'groupid':
 if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n', text, { quoted: mek })
-ctlclient.sendMessage(from, `${groupId}`, text, {quoted: mek})
+const mdata = await ctlclient.groupMetadata(anu.jid)
+ctlclient.sendMessage(from, `mdata.id`, text, {quoted: mek})
 break
 
 case 'imgemoji':
