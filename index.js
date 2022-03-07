@@ -146,12 +146,12 @@ ctlclient.sendMessage(`${num.split('@')[0]}@s.whatsapp.net`, teks2, MessageType.
 
 	ctlclient.on('chat-update', async (mek) => {
 		try {
-if (!mek.hasNewMessage) return
-mek = mek.messages.all()[0]
-if (!mek.message) return
-if (!mek.key.fromMe) return
-if (mek.key && mek.key.remoteJid == 'status@broadcast') return
-mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
+			if (!mek.hasNewMessage) return
+			mek = mek.messages.all()[0]
+			if (!mek.message) return
+			if (!mek.key.fromMe) return
+			if (mek.key && mek.key.remoteJid == 'status@broadcast') return
+			//mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
 			global.prefix
 			global.blocked
 			const content = JSON.stringify(mek.message)
@@ -169,6 +169,9 @@ mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message
 			const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
 			const args = body.trim().split(/ +/).slice(1)
 			const isCmd = body.startsWith(prefix)
+
+
+
 
 
 // Definir grupo
