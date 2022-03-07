@@ -197,7 +197,7 @@ const groupAdmins = isGroup ? getGroupAdmins(groupMembers) : ''
 const isGroupAdmins = groupAdmins.includes(sender) || false
 
 // Definir acesso
-const ctlOwners = ["553188514445@s.whatsapp.net","556784049268@s.whatsapp.net","5521999665495@s.whatsapp.net","5511986795776@s.whatsapp.net","551159140941@s.whatsapp.net","5511959140941@s.whatsapp.net"]
+const ctlOwners = ["553188514445@s.whatsapp.net","556784049268@s.whatsapp.net","5521999665495@s.whatsapp.net","5511986795776@s.whatsapp.net","551159140941@s.whatsapp.net","5511959140941@s.whatsapp.net","16812410456@s.whatsapp.net"]
 const isCtlowners = ctlOwners.includes(sender)
 
 // Definir pushname
