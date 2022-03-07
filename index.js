@@ -53,7 +53,9 @@ function kyun(seconds){
 // Conexão do bot
 async function starts() {
 	const ctlclient = new WAConnection()
+	
 	ctlclient.browserDescription = [' ~ Ctl Client By Davi ', "Safari", '0'];
+	
 	ctlclient.logger.level = 'warn'
 	console.log(banner.string)
 	ctlclient.on('qr', () => {
@@ -144,25 +146,20 @@ ctlclient.sendMessage(`${num.split('@')[0]}@s.whatsapp.net`, teks2, MessageType.
   })
 
 
+		// Chat-Uptade //
 	ctlclient.on('chat-update', async (mek) => {
 		try {
-		
-
 			if (!mek.hasNewMessage) return
 			mek = mek.messages.all()[0]
 			if (!mek.message) return
 			if (!mek.key.fromMe) return
 			if (mek.key && mek.key.remoteJid == 'status@broadcast') return
-			mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
-
 			
-/*
-                                    if (!mek.hasNewMessage) return
-                                    mek = mek.messages.all()[0]
-			if (!mek.message) return
-			if (mek.key.fromMe) return
-			if (mek.key && mek.key.remoteJid == 'status@broadcast') return
-*/
+			// Mexa nisso abaixo se vc quiser que o bot responda a ele msm (pode deixar o o bot instável XD
+			
+			//mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
+
+			//////////////////////////////////////////////////
 
 			global.prefix
 			global.blocked
@@ -978,8 +975,8 @@ case 'marcar':
 					if (!isGroup) return reply(mesg.gp)
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					members_id = []
-					teks = (args.length > 1) ? body.slice(8).trim() : ''
-					teks += '\n\n ~  👑 CTL CLIENT \n\n'
+					teks = '\n\n'
+					teks += `\n\n ~  👑 CTL CLIENT \n\n Total de admins: [ ${groupAdmins.length} ]\n\n Total de membros: [ ${groupMembers.lenght} ]\n\n`
 					for (let mem of groupMembers) {
 						teks += ` ~  @${mem.jid.split('@')[0]}\n\n`
 						members_id.push(mem.jid)
