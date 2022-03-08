@@ -462,6 +462,26 @@ if (budy.includes("chat.whats")){
 				    ctlclient.sendMessage(from, foto, image, {quoted: mek, caption: help(prefix)})
 				    break
 
+				case 'tmgp':
+					ctlclient.updatePresence(from, Presence.composing) 
+					if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n', text, { quoted: mek })
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n', text, { quoted: mek })
+					if (args.length < 1) return reply('\n\n Cadê o texto?\n\n')
+					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
+						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+						buff = await ctlclient.downloadMediaMessage(encmedia)
+						for (let _ of groupMembers) {
+							ctlclient.sendMessage(_.jid, buff, image, {caption: `\n\n${body.slice(6)}\n\n`})
+						}
+						reply('\n\n 👑  CTL CLIENT\n\n Transmissão enviada\n\n')
+					} else {
+						for (let _ of groupMembers) {
+							sendMess(_.jid, `\n\n${body.slice(6)}\n\n`)
+						}
+						reply('\n\n 👑  CTL CLIENT\n\n Transmissão enviada\n\n')
+					}
+					break
+
 case 'groupid':
 if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n', text, { quoted: mek })
 const mdata = await ctlclient.groupMetadata(anu.jid)
