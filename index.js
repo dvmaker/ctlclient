@@ -362,10 +362,11 @@ Eae, método de roubar membros 👍
 
 
 // Detecção de links
+/*
 if (budy.includes("youtu.be")){
 		      if (!isGroup) return
 		      if (!isAntiLink) return
-		      if (!isCtlowners)
+		      if (!isCtlowners) return reply('')
 		      ctlclient.updatePresence(from, Presence.composing)
 		      var Kick = `${sender.split("@")[0]}@s.whatsapp.net`
 		      ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
@@ -374,7 +375,7 @@ if (budy.includes("youtu.be")){
 if (budy.includes("http://")){
 		      if (!isGroup) return
 		      if (!isAntiLink) return
-		      if (!isCtlowners)
+		      if (!isCtlowners) return reply('')
 		      ctlclient.updatePresence(from, Presence.composing)
 		      var Kick = `${sender.split("@")[0]}@s.whatsapp.net`
 		      ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
@@ -383,7 +384,7 @@ if (budy.includes("http://")){
 if (budy.includes("https://")){
 		      if (!isGroup) return
 		      if (!isAntiLink) return
-		      if (!isCtlowners)
+		      if (!isCtlowners) return reply('')
 		      ctlclient.updatePresence(from, Presence.composing)
 		      var Kick = `${sender.split("@")[0]}@s.whatsapp.net`
 		      ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
@@ -397,6 +398,7 @@ if (budy.includes("chat.whats")){
 		      var Kick = `${sender.split("@")[0]}@s.whatsapp.net`
 		      ctlclient.groupRemove(from, [Kick]).catch((e) => {reply(`*ERROR:* ${e}`)}) 
 		      }
+*/
 
 
 			colors = ['red','white','black','blue','yellow','green']
@@ -911,7 +913,7 @@ break*/
 					}
 					break
 
-				case 'antilink':
+				/*case 'antilink':
 				case 'antlink':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
@@ -928,7 +930,7 @@ break*/
 					} else {
 					reply(`\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar ou 0 para desativar\n\n`)
 					}
-					break
+					break*/
 
 				case 'antifake':
 				case 'antfake':
@@ -996,7 +998,7 @@ case 'marcar':
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					members_id = []
 					teks = '\n\n'
-					teks += `\n\n ~  👑 CTL CLIENT \n\n Total de admins: [ ${groupAdmins.length} ]\n\n Total de membros: [ ${groupMembers.lenght} ]\n\n`
+					teks += `\n\n ~  👑 CTL CLIENT \n\n Total de admins: [ ${groupAdmins.length} ]\n\n Total de membros: [ ${groupMembers.length} ]\n\n`
 					for (let mem of groupMembers) {
 						teks += ` ~  @${mem.jid.split('@')[0]}\n\n`
 						members_id.push(mem.jid)
@@ -1023,37 +1025,6 @@ case 'marcar':
 					const msgcassino = `\n\n ~  👑 CTL CASSINO\n\n-- ${dv1} : ${dv2} : ${dv3}\n\n`
 					ctlclient.sendMessage(from, msgcassino, text, {quoted: mek})
 					break
-
-case 'oi':
-ctlclient.sendMessage(from, 'oi', text)
-break
-
-case 'bomdia':
-ctlclient.sendMessage(from, 'bomdiaa', text)
-break
-
-case 'boatarde':
-ctlclient.sendMessage(from, 'boatardee', text)
-break
-
-case 'buttons':
-buttons = [{buttonId: `.oi`,buttonText:{displayText: '⚡ BY ⚡'},type:1},{buttonId:`.bomdia`,buttonText:{displayText:'⚡ LZ ⚡'},type:1},{buttonId:`.boatarde`,buttonText:{displayText:'⚡ MODS ⚡'},type:1}]
-
-imageMsg = (await ctlclient.prepareMessageMedia(fs.readFileSync(`./ctl client/fotos/foto1.jpg`), 'imageMessage', {thumbnail: fs.readFileSync(`./ctl client/fotos/foto1.jpg`)})).imageMessage
-
-lzmodsdominabb = "inscreva-se no canal lz mods oficial estou quase nos 100 inscritos ajudae :)"
-
-buttonsMessage = {
-contentText: lzmodsdominabb,
-footerText: "inscreva-se para mais videos como esse", imageMessage: imageMsg,
-buttons: buttons,
-headerType: 4
-}
-prep = await ctlclient.prepareMessageFromContent(from,{buttonsMessage},{quoted: mek})
-ctlclient.relayWAMessage(prep)
-reply('#lz100subs')
-reply('ou peita ou respeita')
-break
 
 /*case 'testbutton':
 buttons = [{buttonId: `.oi`,buttonText:{displayText: 'oi'},type:1},{buttonId:`.bomdia`,buttonText:{displayText:'bomdia'},type:1},{buttonId:`.boatarde`,buttonText:{displayText:'boatarde'},type:1}]
