@@ -687,21 +687,28 @@ break*/
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
-					ctlclient.groupUpdateSubject(from, `🔥⃟ ▪️ 𝐂𝐓͢𝐋 ⟠ 𝐓𝐒𝐒 𝟏𝟗𝟗𝟒▪️ ⃟🔥`)
+					ctlclient.groupUpdateSubject(from, `🔥 ⃟♨️ 𝐂𝐓͢𝐋 𐎟 𝟏𝟗𝟗𝟒 ♨️ 🔥⃟`)
 					break
 
 				case 'normalrct2':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
-					ctlclient.groupUpdateSubject(from, `🔥⃟ ▪️ 𝐂𝐓͢𝐋 ⟠ 𝐑𝐂𝐓 𝟐.𝟎▪️ ⃟🔥`)
+					ctlclient.groupUpdateSubject(from, `🔥 ⃟♨️ 𝐂𝐓͢𝐋 𐎟 𝟐.𝟎 ♨️ 🔥⃟`)
 					break
 
 				case 'normalofc':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
-					ctlclient.groupUpdateSubject(from, `🔥⃟ ▪️ 𝐂𝐓͢𝐋 ⟠ 𝐎𝐅𝐂▪️ ⃟🔥`)
+					ctlclient.groupUpdateSubject(from, `🔥 ⃟♨️ 𝐂𝐓͢𝐋 𐎟 𝐎𝐅𝐂 ♨️ 🔥⃟`)
+					break
+
+				case 'normalhell':
+					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
+					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
+					ctlclient.groupUpdateSubject(from, `🔥🌟 𝐂͢𝐓𝐋  𝐇͢𝐄𝐋͢𝐋 🌟🔥`)
 					break
 
 				case 'normaladms':
@@ -876,7 +883,7 @@ break*/
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true)
 					break
 
-				case 'antisholtz':
+				/*case 'antisholtz':
 				case 'antsholtz':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da CTL\n\n')
@@ -893,7 +900,7 @@ break*/
 					} else {
 					reply(`\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar ou 0 para desativar\n\n`)
 					}
-					break
+					break*/
 
 				case 'bemvindo':
 					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
@@ -910,6 +917,14 @@ break*/
 					reply(`\n\n Oiee, ${ucapanFakereply}, O sistema de bem vindo foi desativado\n\n`)
 					} else {
 					reply(`\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar ou 0 para desativar\n\n`)
+					}
+					break
+					
+				case 'normalteste':
+					if (Number(args[0]) === 1) {
+					reply('Aqui no caso seria a rct 1?')
+					} else if (Number(args[0]) === 2) {
+					reply('E aqui a 2?')
 					}
 					break
 
@@ -977,11 +992,26 @@ break*/
 					break
 
 				case 'divuagr':
-				    if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n')
-				    if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
-				    ctlclient.groupUpdateSubject(from, ` ‼️ ATK DIVU AGORA ‼️ `)
-				    ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true)
-				    break
+					if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n')
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
+					ctlclient.groupUpdateSubject(from, ` ‼️ ATK DIVU AGORA ‼️ `)
+					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true)
+					break
+
+				case 'atkpreparar':
+					if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n')
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
+					if (args.length < 1) return reply('Coloque a hora depois do comando!!')
+					horaatk = body.slice(14)
+					ctlclient.groupUpdateSubject(from, `‼️ ATAQUE ${horaatk} ‼️`)
+					break
+
+				case 'atkagr':
+					if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n')
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
+					ctlclient.groupUpdateSubject(from, ` ‼️ ATAQUE AGORA ‼️ `)
+					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, true)
+					break
 
 				case 'subir':
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
