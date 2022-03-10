@@ -684,6 +684,9 @@ break*/
 				// Voltar rcts ao normal
 
 				case 'normal':
+					if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n', text, { quoted: mek })
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n', text, { quoted: mek })
+					if (args.length < 1) return reply('\n\n Você precisa colocar qual grupo é este depois do comando!!\n\n')
 					if (Number(args[0]) === rct1) {
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
 					ctlclient.groupUpdateSubject(from, `🔥 ⃟♨️ 𝐂𝐓͢𝐋 𐎟 𝟏𝟗𝟗𝟒 ♨️ 🔥⃟`)
