@@ -683,7 +683,7 @@ break*/
 					
 				// Voltar rcts ao normal
 
-				case 'normal':
+				/*case 'normal':
 					if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n', text, { quoted: mek })
 					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n', text, { quoted: mek })
 					if (args.length < 1) return reply('\n\n Você precisa colocar qual grupo é este depois do comando!!\n\n')
@@ -707,6 +707,41 @@ break*/
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
 					ctlclient.groupUpdateSubject(from, ` 𐎟 𝚫͢𝐃𝐌͢𝐢𝐍𝐒͢ 𐎟 𝐂𝐓͢𝐋 𐎟`)
 					}
+					break*/
+					
+				case 'normalrct1':
+					if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n', text, { quoted: mek })
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n', text, { quoted: mek })
+					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
+					ctlclient.groupUpdateSubject(from, `🔥 ⃟♨️ 𝐂𝐓͢𝐋 𐎟 𝟏𝟗𝟗𝟒 ♨️ 🔥⃟`)
+					break
+					
+				case 'normalrct2':
+					if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n', text, { quoted: mek })
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n', text, { quoted: mek })
+					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
+					ctlclient.groupUpdateSubject(from, `🔥 ⃟♨️ 𝐂𝐓͢𝐋 𐎟 𝟐.𝟎 ♨️ 🔥⃟`)
+					break
+
+				case 'normalofc':
+					if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n', text, { quoted: mek })
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n', text, { quoted: mek })
+					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
+					ctlclient.groupUpdateSubject(from, `🔥 ⃟♨️ 𝐂𝐓͢𝐋 𐎟 𝐎𝐅𝐂 ♨️ 🔥⃟`)
+					break
+
+				case 'normalhell':
+					if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n', text, { quoted: mek })
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n', text, { quoted: mek })
+					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
+					ctlclient.groupUpdateSubject(from, `🔥🌟 𝐂͢𝐓𝐋  𝐇͢𝐄𝐋͢𝐋 🌟🔥`)
+					break
+
+				case 'normaladms':
+					if (!isGroup) return reply('\n\n Este comando é apenas para grupos!!\n\n', text, { quoted: mek })
+					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n', text, { quoted: mek })
+					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
+					ctlclient.groupUpdateSubject(from, ` 𐎟 𝚫͢𝐃𝐌͢𝐢𝐍𝐒͢ 𐎟 𝐂𝐓͢𝐋 𐎟`)
 					break
 
 				case 'tag':
