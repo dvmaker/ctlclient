@@ -682,42 +682,29 @@ break*/
 					break
 					
 				// Voltar rcts ao normal
-					
-				case 'normalrct1':
-					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
-					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
+
+				case 'normal':
+					if (Number(args[0]) === rct1) {
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
 					ctlclient.groupUpdateSubject(from, `🔥 ⃟♨️ 𝐂𝐓͢𝐋 𐎟 𝟏𝟗𝟗𝟒 ♨️ 🔥⃟`)
-					break
-
-				case 'normalrct2':
-					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
-					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
+					}
+					else if (Number(args[0]) === rct2) {
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
 					ctlclient.groupUpdateSubject(from, `🔥 ⃟♨️ 𝐂𝐓͢𝐋 𐎟 𝟐.𝟎 ♨️ 🔥⃟`)
-					break
-
-				case 'normalofc':
-					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
-					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
+					}
+					else if (Number(args[0]) === ofc) {
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
 					ctlclient.groupUpdateSubject(from, `🔥 ⃟♨️ 𝐂𝐓͢𝐋 𐎟 𝐎𝐅𝐂 ♨️ 🔥⃟`)
-					break
-
-				case 'normalhell':
-					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
-					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
+					}
+					else if (Number(args[0]) === hell) {
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
 					ctlclient.groupUpdateSubject(from, `🔥🌟 𝐂͢𝐓𝐋  𝐇͢𝐄𝐋͢𝐋 🌟🔥`)
-					break
-
-				case 'normaladms':
-					if (!isGroup) return reply('\n\n Comando para grupos!!\n\n')
-					if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n')
+					}
+					else if (Number(args[0]) === adms) {
 					ctlclient.groupSettingChange (from, GroupSettingChange.messageSend, false)
 					ctlclient.groupUpdateSubject(from, ` 𐎟 𝚫͢𝐃𝐌͢𝐢𝐍𝐒͢ 𐎟 𝐂𝐓͢𝐋 𐎟`)
+					}
 					break
-
 
 				case 'tag':
 					ctlclient.sendMessage(from, tag(prefix, pushname), text, { quoted: mek })
@@ -917,14 +904,6 @@ break*/
 					reply(`\n\n Oiee, ${ucapanFakereply}, O sistema de bem vindo foi desativado\n\n`)
 					} else {
 					reply(`\n\n Oiee, ${ucapanFakereply}, Use 1 para ativar ou 0 para desativar\n\n`)
-					}
-					break
-					
-				case 'normalteste':
-					if (Number(args[0]) === 1) {
-					reply('Aqui no caso seria a rct 1?')
-					} else if (Number(args[0]) === 2) {
-					reply('E aqui a 2?')
 					}
 					break
 
