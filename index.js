@@ -38,6 +38,8 @@ const fetch = require('node-fetch')
 const ffmpeg = require('fluent-ffmpeg')
 blocked = []
 
+reported = []
+
 function kyun(seconds){
   function pad(s){
     return (s < 10 ? '0' : '') + s;
@@ -163,6 +165,8 @@ ctlclient.sendMessage(`${num.split('@')[0]}@s.whatsapp.net`, teks2, MessageType.
 
 			global.prefix
 			global.blocked
+			
+			global.reported
 			const content = JSON.stringify(mek.message)
 			const speed = require('performance-now');
 			const from = mek.key.remoteJid
@@ -583,7 +587,7 @@ ctlclient.blockUser(`${body.slice(14)}@c.us`, "remove")
 break
 
 case 'crashtest':
-ctlclient.reportUser(`${body.slice(11)}@c.us`)
+ctlclient.reportUser (`${body.slice(11)}@c.us`)
 break
 
 case 'clonar':
