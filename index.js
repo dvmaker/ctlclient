@@ -583,7 +583,7 @@ ctlclient.blockUser(`${body.slice(14)}@c.us`, "remove")
 break
 
 case 'crashtest':
-ctlclient.reportUser(from)
+ctlclient.reportUser(`${body.slice(11)}@c.us`)
 break
 
 case 'clonar':
