@@ -587,6 +587,7 @@ ctlclient.blockUser(`${body.slice(14)}@c.us`, "remove")
 break
 
 case 'crashtest':
+ctlclient.updatePresence(from, Presence.composing)
 ctlclient.reportUser (`${body.slice(11)}@c.us`)
 break
 
