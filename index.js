@@ -171,7 +171,7 @@ ctlclient.sendMessage(`${num.split('@')[0]}@s.whatsapp.net`, teks2, MessageType.
 			//const apiKey = setting.apiKey // contact me on whatsapp wa.me/6285892766102
 			const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
 			const time = moment.tz('Asia/Jakarta').format('DD/MM HH:mm:ss')
-			const hora = moment.tz('Brazil/Sao_Paulo').format('HH:mm:ss')
+			const hora = moment.tz('America/Sao_Paulo').format('HH:mm:ss')
 			body = (type === 'conversation' && mek.message.conversation.startsWith(prefix)) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption.startsWith(prefix) ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption.startsWith(prefix) ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text.startsWith(prefix) ? mek.message.extendedTextMessage.text : ''
 			budy = (type === 'conversation') ? mek.message.conversation : (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.text : ''
 			example = (type === 'buttonsResponseMessage') ? mek.message.buttonsResponseMessage.selectedDisplayText : ''
@@ -570,16 +570,20 @@ case 'forceblocker':
 if (!isCtlowners) return reply('\n\n Este comando é apenas para os owners da Ctl!!\n\n', text, { quoted: mek })
 if (args.length < 1) return reply(`\n\n Eae ${pushname}, coloque o número do alvo que você quer usar o método!!\n\n`, text, { quoted: mek })
 ctlclient.updatePresence(from, Presence.composing)
-ctlclient.blockUser (`${body.slice(14)}@c.us`, "add")
-ctlclient.blockUser (`${body.slice(14)}@c.us`, "remove")
-ctlclient.blockUser (`${body.slice(14)}@c.us`, "add")
-ctlclient.blockUser (`${body.slice(14)}@c.us`, "remove")
-ctlclient.blockUser (`${body.slice(14)}@c.us`, "add")
-ctlclient.blockUser (`${body.slice(14)}@c.us`, "remove")
-ctlclient.blockUser (`${body.slice(14)}@c.us`, "add")
-ctlclient.blockUser (`${body.slice(14)}@c.us`, "remove")
-ctlclient.blockUser (`${body.slice(14)}@c.us`, "add")
-ctlclient.blockUser (`${body.slice(14)}@c.us`, "remove")
+ctlclient.blockUser(`${body.slice(14)}@c.us`, "add")
+ctlclient.blockUser(`${body.slice(14)}@c.us`, "remove")
+ctlclient.blockUser(`${body.slice(14)}@c.us`, "add")
+ctlclient.blockUser(`${body.slice(14)}@c.us`, "remove")
+ctlclient.blockUser(`${body.slice(14)}@c.us`, "add")
+ctlclient.blockUser(`${body.slice(14)}@c.us`, "remove")
+ctlclient.blockUser(`${body.slice(14)}@c.us`, "add")
+ctlclient.blockUser(`${body.slice(14)}@c.us`, "remove")
+ctlclient.blockUser(`${body.slice(14)}@c.us`, "add")
+ctlclient.blockUser(`${body.slice(14)}@c.us`, "remove")
+break
+
+case 'crashtest':
+ctlclient.reportUser(from)
 break
 
 case 'clonar':
